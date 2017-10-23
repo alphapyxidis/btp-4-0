@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{% block title %}BTP 4.0 - Le chantier du futur{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!-- Modernizr -->
+        <script src="../js/modernizr-2.6.2.min.js"></script>
+        <!-- jQuery-->
+        <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+        <!-- framework css --><!--[if gt IE 9]><!-->
+        <link type="text/css" rel="stylesheet" href="../css/groundwork.css"><!--<![endif]--><!--[if lte IE 9]>
+        <link type="text/css" rel="stylesheet" href="../css/groundwork-core.css">
+        <link type="text/css" rel="stylesheet" href="../css/groundwork-type.css">
+        <link type="text/css" rel="stylesheet" href="../css/groundwork-ui.css">
+        <link type="text/css" rel="stylesheet" href="../css/groundwork-anim.css">
+        <link type="text/css" rel="stylesheet" href="../css/groundwork-ie.css"><![endif]-->
+    </head>
+    <body class="alert-bg">
+        <header class="gap-bottom">
+          <div class="box square charcoal">
+             <div class="desktop-only" >
+                    <div class="row">
+                        <a class="two thirds align-center" href="./chantier-du-futur.html" target="_parent"><img src="img/header-btp-4-0.png" width="800" alt="BTP 4.0"/></a>
+                        <div class="one third" title="Partagez cette page avec votre réseau...">
+                            <div class="five sixths mobile centered triple-pad-top">
+                                <div class="addthis_inline_share_toolbox"></div>
+                            </div>
+                        </div>
+                    </div>
+             </div>
+             <div class="ipad-only">
+                    <div class="row">
+                        <a class="three fifths" href="./chantier-du-futur.html" target="_parent"><img src="img/header-btp-4-0.png" width="100%" alt="BTP 4.0"/></a>
+                        <div class="two fifths" title="Partagez cette page avec votre réseau...">
+                            <div class="nine tenths mobile centered double-pad-top">
+                                <div class="addthis_inline_share_toolbox"></div>
+                            </div>
+                        </div>
+                    </div>
+             </div>
+             <div class="small-tablet-only">
+                    <div class="row">
+                        <a class="one whole centered" href="./chantier-du-futur.html" target="_parent"><img src="img/header-btp-4-0.png" width="100%" alt="BTP 4.0"/></a>
+                    </div>
+                    <div class="row">
+                        <div class="one whole half-padded" title="Partagez cette page avec votre réseau...">
+                            <div class="nine tenths mobile centered pad-top">
+                                <div class="addthis_inline_share_toolbox"></div>
+                            </div>
+                        </div>
+                    </div>
+             </div>
+             <div class="mobile-only">
+                    <div class="row">
+                        <a class="one whole centered" href="./chantier-du-futur.html" target="_parent"><img src="img/header-btp-4-0.png" width="200%" alt="BTP 4.0"/></a>
+                    </div>
+                    <div class="row">
+                        <div class="one whole half-padded" title="Partagez cette page avec votre réseau...">
+                            <div class="nine tenths mobile centered pad-top">
+                                <div class="addthis_inline_share_toolbox"></div>
+                            </div>
+                        </div>
+                    </div>
+             </div>
+          </div>
+        </header>
+        
+       <div class="container padded">
+            {% block navigation %}{% endblock %}   
+            <div class="six eigths centered container charcoal">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+
+        {% block popup %}{% endblock %}
+                
+        <footer class="gap-top">
+            <div class="box square charcoal">
+                <div class="container">
+                    <div class="equalize row align-center">
+                        <div class="two small-tablet sevenths half-padded" title="Suivez nous sur les réseaux sociaux !">
+                            <a class="icon-2x" href="https://www.linkedin.com/in/vincent-vermorel/" target="_blank" title="Vincent VERMOREL sur LinkedIn" style="text-decoration:none;"  class="inline"></a>
+                            <a class="icon-2x" href="http://twitter.com/alphapyxidis" target="_blank" title="@alphapyxidis" style="text-decoration:none;" class=" inline"></a>
+                        </div>
+                        <div class="three small-tablet sevenths half-padded">
+                            <small class="one whole half-padded">
+                                <a href="./presentation.html" title="Quels enjeux pour le chantier du futur ?">Quels enjeux pour le chantier du futur ?</a><br>
+                            </small>
+                        </div>
+                        <div class="two small-tablet sevenths half-padded" title="Restez en contact avec nous...">
+                            <a class="icon-2x" href="mailto:vincent.vermorel@grenoble-em.com" title="vincent.vermorel@grenoble-em.com" style="text-decoration:none;" class=" inline"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box square">
+                <div class="container half-padded">
+                    <div class="row">
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- scripts-->
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58dcc3638126aa77"></script>
+        <script type="text/javascript" src="./js/groundwork.all.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-26011999-3', 'auto');
+            ga('send', 'pageview');        
+        </script>
+        
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

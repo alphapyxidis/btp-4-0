@@ -1,0 +1,194 @@
+{# app/Resources/views/navigation/chantier-du-futur.html.twig #}
+
+{% extends './base.html.twig' %}
+
+{% block stylesheets %}
+        <style>
+            .imagemap{
+              position: relative;
+            }
+            .imagemap a{
+				display: block;      
+				position: absolute;
+				background-color: dodgerblue;
+				opacity: 0.25;
+				filter: Alpha(opacity=20); /* IE8 and earlier */
+                cursor:help;
+            }
+			.fixed.quarter{position:fixed;top:25%}.stick.center,
+            .imagemap span{
+				display: block;      
+				position: absolute;
+				background-color: dodgerblue;
+                cursor:help;
+				opacity: 0.25;
+				filter: Alpha(opacity=20); /* IE8 and earlier */
+            }
+            @media (min-width:1025px){
+                .popup {
+                    display: none;
+                    left: 33%;
+                    width: 33%;
+                    opacity:0.9;
+                    filter: Alpha(opacity=90);
+                }
+            }
+            @media (min-width:768px) and (max-width:1024px) {
+                .popup {
+                    display: none;
+                    left: 20%;
+                    width: 60%;
+                    opacity:0.9;
+                    filter: Alpha(opacity=90);
+                }
+            }
+            @media (min-width:80px) and (max-width:767px) {
+                .popup {
+                    display: none;
+                    left: 10%;
+                    width: 80%;
+                    opacity:0.9;
+                    filter: Alpha(opacity=90);
+                }
+            }
+
+        </style>
+{% endblock %}
+
+{% block navigation %}
+            <nav role="navigation" class="nav nocollapse orange" title="Menu">
+                <ul role="menubar">
+                    <li><a href="./chantier-du-futur.html"><i class="icon-rocket"></i> Le chantier du futur</a></li>
+                    <li><a href="./presentation.html"><i class="icon-lightbulb"></i> Les enjeux de transformation</a></li>
+                    <li><a href="./resultats.html"><i class="icon-dashboard"></i> Résultats de l'enquête</a></li>
+                    <li><a class="noicon" href="./BTP 4.0 - le chantier du futur.pdf"><i class="icon-file-text"></i> Rapport complet</a></li>
+                </ul>
+            </nav>
+{% endblock %}
+
+{% block body %}
+                <div class="row padded">
+                    <br>
+                    <p class="align-center">Déplacez votre souris sur cette vue du chantier du futur pour découvrir quelles innovations numériques vont changer votre façon de travailler...</p>
+                    <br>
+                    <div class="imagemap desktop-only" style="left:20%;width:60%;">
+                        <img src="img/chantier-du-futur.png" alt="le chantier du futur">
+                        <span style="left: 62%; top: 7%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="gestion électronique des documents (GED)" onclick="show_popup('EDM')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'EDM')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'EDM')"></span>
+                        <span style="left: 84%; top: 38%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="maquette numérique (BIM)" onclick="show_popup('BIM')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'BIM')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'BIM')"></span>
+                        <span style="left: 82%; top: 79%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="fabrication additive" onclick="show_popup('fabrication-additive')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'fabrication additive')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'fabrication additive')"></span>
+                        <span style="left: 4%; top: 70%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="réalité augmentée" onclick="show_popup('AR')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'réalité augmentée')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'réalité augmentée')"></span>
+                        <span style="left: 67%; top: 21%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="planification intégrée" onclick="show_popup('planification')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'planification intégrée')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'planification intégrée')"></span>
+                        <span style="left: 85%; top: 26%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="gestion de cycle de vie (PLM)" onclick="show_popup('PLM')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'PLM')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'PLM')"></span>
+                        <span style="left: 72%; top: 55%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="télémaintenance" onclick="show_popup('telemaintenance')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'télémaintenance')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'télémaintenance')"></span>
+                        <span style="left: 25%; top: 56%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="logistique avancée" onclick="show_popup('logistique')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'logistique avancée')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'logistique avancée')"></span>
+                        <span style="left: 36%; top: 30%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="robotique collaborative" onclick="show_popup('cobots')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'cobots')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'cobots')"></span>
+                        <span style="left: 50%; top: 40%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="internet industriel des objets (IioT)" onclick="show_popup('IioT')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'IioT')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'IioT')"></span>
+                        <span style="left: 65%; top: 37%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="géolocalisation 3D" onclick="show_popup('geolocalisation')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'géolocalisation 3D')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'géolocalisation 3D')"></span>
+                        <span style="left: 22%; top: 37%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="machines communicantes (M2M)" onclick="show_popup('M2M')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'M2M')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'M2M')"></span>
+                        <span style="left: 28%; top: 9%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="drone autonome" onclick="show_popup('drone')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'drone')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'drone')"></span>
+                        <span style="left: 46%; top: 50%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="robot d'assistance physique (RAP)" onclick="show_popup('RAP')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'RAP')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'RAP')"></span>
+                    </div>
+                    <div class="imagemap ipad-only" style="left:10%;width:80%;">
+                        <img src="img/chantier-du-futur.png" alt="le chantier du futur">
+                        <span style="left: 62%; top: 7%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="gestion électronique des documents (GED)" onclick="show_popup('EDM')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'EDM')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'EDM')"></span>
+                        <span style="left: 84%; top: 38%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="maquette numérique (BIM)" onclick="show_popup('BIM')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'BIM')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'BIM')"></span>
+                        <span style="left: 82%; top: 79%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="fabrication additive" onclick="show_popup('fabrication-additive')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'fabrication additive')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'fabrication additive')"></span>
+                        <span style="left: 4%; top: 70%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="réalité augmentée" onclick="show_popup('AR')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'réalité augmentée')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'réalité augmentée')"></span>
+                        <span style="left: 67%; top: 21%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="planification intégrée" onclick="show_popup('planification')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'planification intégrée')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'planification intégrée')"></span>
+                        <span style="left: 85%; top: 26%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="gestion de cycle de vie (PLM)" onclick="show_popup('PLM')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'PLM')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'PLM')"></span>
+                        <span style="left: 72%; top: 55%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="télémaintenance" onclick="show_popup('telemaintenance')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'télémaintenance')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'télémaintenance')"></span>
+                        <span style="left: 25%; top: 56%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="logistique avancée" onclick="show_popup('logistique')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'logistique avancée')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'logistique avancée')"></span>
+                        <span style="left: 36%; top: 30%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="robotique collaborative" onclick="show_popup('cobots')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'cobots')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'cobots')"></span>
+                        <span style="left: 50%; top: 40%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="internet industriel des objets (IioT)" onclick="show_popup('IioT')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'IioT')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'IioT')"></span>
+                        <span style="left: 65%; top: 37%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="géolocalisation 3D" onclick="show_popup('geolocalisation')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'géolocalisation 3D')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'géolocalisation 3D')"></span>
+                        <span style="left: 22%; top: 37%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="machines communicantes (M2M)" onclick="show_popup('M2M')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'M2M')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'M2M')"></span>
+                        <span style="left: 28%; top: 9%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="drone autonome" onclick="show_popup('drone')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'drone')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'drone')"></span>
+                        <span style="left: 46%; top: 50%; width: 10%; height: 12%; opacity:0.0; filter: Alpha(opacity=0);" title="robot d'assistance physique (RAP)" onclick="show_popup('RAP')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'RAP')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'RAP')"></span>
+                    </div>
+                    <div class="imagemap small-tablet-only" style="left:5%;width:90%;">
+                        <img src="img/chantier-du-futur.png" alt="le chantier du futur">
+                        <span style="left: 62%; top: 7%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="gestion électronique des documents (GED)" onclick="show_popup('EDM')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'EDM')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'EDM')"></span>
+                        <span style="left: 84%; top: 38%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="maquette numérique (BIM)" onclick="show_popup('BIM')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'BIM')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'BIM')"></span>
+                        <span style="left: 82%; top: 79%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="fabrication additive" onclick="show_popup('fabrication-additive')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'fabrication additive')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'fabrication additive')"></span>
+                        <span style="left: 4%; top: 70%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="réalité augmentée" onclick="show_popup('AR')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'réalité augmentée')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'réalité augmentée')"></span>
+                        <span style="left: 67%; top: 21%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="planification intégrée" onclick="show_popup('planification')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'planification intégrée')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'planification intégrée')"></span>
+                        <span style="left: 85%; top: 26%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="gestion de cycle de vie (PLM)" onclick="show_popup('PLM')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'PLM')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'PLM')"></span>
+                        <span style="left: 72%; top: 55%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="télémaintenance" onclick="show_popup('telemaintenance')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'télémaintenance')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'télémaintenance')"></span>
+                        <span style="left: 25%; top: 56%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="logistique avancée" onclick="show_popup('logistique')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'logistique avancée')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'logistique avancée')"></span>
+                        <span style="left: 36%; top: 30%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="robotique collaborative" onclick="show_popup('cobots')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'cobots')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'cobots')"></span>
+                        <span style="left: 50%; top: 40%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="internet industriel des objets (IioT)" onclick="show_popup('IioT')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'IioT')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'IioT')"></span>
+                        <span style="left: 65%; top: 37%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="géolocalisation 3D" onclick="show_popup('geolocalisation')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'géolocalisation 3D')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'géolocalisation 3D')"></span>
+                        <span style="left: 22%; top: 37%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="machines communicantes (M2M)" onclick="show_popup('M2M')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'M2M')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'M2M')"></span>
+                        <span style="left: 28%; top: 9%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="drone autonome" onclick="show_popup('drone')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'drone')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'drone')"></span>
+                        <span style="left: 46%; top: 50%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="robot d'assistance physique (RAP)" onclick="show_popup('RAP')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'RAP')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'RAP')"></span>
+                    </div>
+                    <div class="imagemap mobile-only" style="left:2%;width:96%;">
+                        <img src="img/chantier-du-futur.png" alt="le chantier du futur">
+                        <span style="left: 62%; top: 7%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="gestion électronique des documents (GED)" onclick="show_popup('EDM')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'EDM')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'EDM')"></span>
+                        <span style="left: 84%; top: 38%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="maquette numérique (BIM)" onclick="show_popup('BIM')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'BIM')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'BIM')"></span>
+                        <span style="left: 82%; top: 79%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="fabrication additive" onclick="show_popup('fabrication-additive')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'fabrication additive')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'fabrication additive')"></span>
+                        <span style="left: 4%; top: 70%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="réalité augmentée" onclick="show_popup('AR')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'réalité augmentée')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'réalité augmentée')"></span>
+                        <span style="left: 67%; top: 21%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="planification intégrée" onclick="show_popup('planification')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'planification intégrée')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'planification intégrée')"></span>
+                        <span style="left: 85%; top: 26%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="gestion de cycle de vie (PLM)" onclick="show_popup('PLM')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'PLM')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'PLM')"></span>
+                        <span style="left: 72%; top: 55%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="télémaintenance" onclick="show_popup('telemaintenance')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'télémaintenance')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'télémaintenance')"></span>
+                        <span style="left: 25%; top: 56%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="logistique avancée" onclick="show_popup('logistique')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'logistique avancée')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'logistique avancée')"></span>
+                        <span style="left: 36%; top: 30%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="robotique collaborative" onclick="show_popup('cobots')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'cobots')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'cobots')"></span>
+                        <span style="left: 50%; top: 40%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="internet industriel des objets (IioT)" onclick="show_popup('IioT')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'IioT')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'IioT')"></span>
+                        <span style="left: 65%; top: 37%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="géolocalisation 3D" onclick="show_popup('geolocalisation')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'géolocalisation 3D')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'géolocalisation 3D')"></span>
+                        <span style="left: 22%; top: 37%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="machines communicantes (M2M)" onclick="show_popup('M2M')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'M2M')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'M2M')"></span>
+                        <span style="left: 28%; top: 9%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="drone autonome" onclick="show_popup('drone')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'drone')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'drone')"></span>
+                        <span style="left: 46%; top: 50%; width: 10%; height: 12%; opacity:0.25; filter: Alpha(opacity=25);" title="robot d'assistance physique (RAP)" onclick="show_popup('RAP')" onmouseover="ga('send', 'event', 'Navigation', 'Survol', 'RAP')" onmousedown="ga('send', 'event', 'Navigation', 'Clic', 'RAP')"></span>
+                    </div>
+                </div>
+{% endblock  %}
+
+{% block popup %}
+            <div class="popup charcoal box fixed quarter padded" id="popup">
+                <div = "row padded">
+                    <h4 id="titre_popup">Maquette numérique (BIM)</h4>
+                    <img class="one third three-up-ipad three-up-small-tablet two-up-mobile pull-left pad-right" id="img_popup" src="img/maquette-numerique.png"></img>
+                    <p class="justify" id="text_popup" >
+                    Le <b>BIM</b> (Building Information Modeling) consiste à partager de manière collaborative des informations de modélisation du bâtiment.<br>
+                    Il ne s'agit pas seulement de données géométriques, mais bien de données structurées permettant de simuler numériquement le comportement du bâtiment ou de ses composants.
+                    </p>
+                </div>
+                <i class="icon-2x icon-remove absolute top right padded" onclick="document.getElementById('popup').style.display = 'none'"></i>
+            </div>
+            <img style="display:none;" src="img/electronic-document-management.png" id="EDM" title="Gestion électronique des documents (GED)" alt="La GED, en anglais EDM (Electronic Document Management), consiste à dématérialiser les documents (plans, notes de calculs, documentations réglementaires, compte-rendus...) en utilisant des échanges électroniques. Le stockage dans le 'cloud' et les moteurs de recherche favorisant encore davantage le partage et le travail collaboratif."></img>
+            <img style="display:none;" src="img/advanced-logistics.png" id="logistique" title="Logistique avancée" alt="Les différents camions qui approvisionnent le chantier sont géolocalisés en temps réel pour permettre de connaître les délais précis de livraison et ainsi optimiser les flux et les déplacements sur site. Les niveaux de stocks de matières premières ou de composants sur site sont informatisés pour une gestion optimisée des approvisionnements."></img>
+            <img style="display:none;" src="img/maquette-numerique.png" id="BIM" title="Maquette numérique (BIM)" alt="Le BIM (Building Information Modeling) consiste à partager de manière collaborative des informations de modélisation du bâtiment. Il ne s'agit pas seulement de données géométriques, mais également de données structurées permettant de simuler numériquement le comportement du bâtiment ou de ses composants."></img>
+            <img style="display:none;" src="img/robot-assistance-physique.png" id="RAP" title="Robot d'assistance physique (RAP)" alt="Des équipements spécialisés permettent d'assister un homme au travail dans l'accomplissement d'effort pendant son activité. Cela peut être par exemple un bras robotisé, voire un exosquelette qui augmente les capacités physique de l'opérateur."></img>
+            <img style="display:none;" src="img/gestion-du-cycle-de-vie.png" id="PLM" title="Gestion du cycle de vie des produits (PLM)" alt="Les outils de PLM (Product Lifecycle Management) permettent le suivi des différentes configurations d'un produit (ou d'un document) tout au long de son cycle de vie (conception, production, exploitation). Ils permettent notamment d'informatiser les processus de révision et de validation et d'historiser les variantes d'un même produit en traçant les différentes versions des composants dont il est constitué."></img>
+            <img style="display:none;" src="img/realite-augmentee.png" id="AR" title="Réalité augmentée" alt="Consiste à afficher des informations complémentaires au contexte réel. Cela peut être via des lunettes ou un affichage tête haute, ou encore des images projetées."></img>
+            <img style="display:none;" src="img/internet-industriel-des-objets.png" id="IioT" title="Internet industriel des objets (IioT)" alt="Les objets industriels connectés (ou IioT : industrial internet of things) permettent d'échanger via le réseau internet des informations de terrain. Cela peut être des informations relatives à l'environnement ou à l'usage de l'objet. Des réseaux de communication radio bas débit permettent une couverture du territoire très étendue, ou même de connecter l'ensemble d'un site avec peu d'équipements réseau actifs."></img>
+            <img style="display:none;" src="img/communication-m2m.png" id="M2M" title="Machines communicantes (M2M)" alt="Les échanges d'information de machine à machine (M2M : machine-to-machine) ou de produit à machine, permettent l'adaptation d'une gamme de fabrication en fonction du contexte. Cela peut être par exemple le positionnement ou l'acheminement automatique d'un élément préfabriqué par un engin de manutention."></img>
+            <img style="display:none;" src="img/drone-autonome.png" id="drone" title="Drone autonome" alt="Ces systèmes permettent de surveiller l'avancement du chantier, mais aussi d'effectuer des mesures dimensionnelles ou de localiser les différents équipements sur toute l'étendue du site de construction. Ils permettent également d'effectuer des opérations de contrôle ou des interventions en hauteur en toute sécurité pour les opérateurs."></img>
+            <img style="display:none;" src="img/fabrication-additive.png" id="fabrication-additive" title="Fabrication additive" alt="Des procédés de fabrication automatisée par ajout de matière, type impression 3D, permettent de produire toute pièce ou partie de pièce spécifique à partir d'un plan numérisé sans nécessité d'usinage d'un moule ou d'un coffrage. Cela peut se réaliser sur site grâce à une machine mobile ou hors site dans un atelier de préfabrication 'généraliste'."></img>
+            <img style="display:none;" src="img/geolocalisation-3d.png" id="geolocalisation" title="Géolocalisation 3D" alt="La localisation des produits, des équipements et des personnes sur l'ensemble du site, y compris à l'intérieur des parties déjà construites permet une optimisation des déplacements ou des contrôles de sécurité lors d'opérations à risques. Cela permet également une optimisation de la gestion des flottes d'engins ou outillages spécialisés.<br>Les équipements de télémétrie permettent l'acquisition automatique en 3D des points de dimensionnement du bâtiment ou du positionnement des équipements."></img>
+            <img style="display:none;" src="img/planification-integree.png" id="planification" title="Planification intégrée" alt="L'échange entre les différents systèmes d'information permet d'intégrer la planification des approvisionnements et des fabrications et de réajuster en temps réel les plannings des sous-traitants ou co-traitants pour tenir compte des ajustements liés aux aléas."></img>
+            <img style="display:none;" src="img/robotique-collaborative.png" id="cobots" title="Robotique collaborative" alt="Des robots autonomes ou semi-automatiques évoluent en milieu non protégé et collaborent avec des hommes sur des tâches spécialisées à forte pénibilité, risquées ou pour améliorer qualité et productivité."></img>
+            <img style="display:none;" src="img/telemaintenance.png" id="telemaintenance" title="Télémaintenance" alt="Les équipements et engins de chantiers sont connectés à internet et permettent à des opérateurs de maintenance d'effectuer des diagnostics ou des interventions à distance. La maintenance préventive est améliorée du fait de la remontée en continu des paramètres de fonctionnement des équipements auprès du SAV du fournisseur."></img>
+        </div>
+{% endblock %}
+
+
+{% block javascripts %}
+        <script>
+            function init() {
+            }
+            
+            function show_popup(myId){
+                var i = document.getElementById(myId);
+                var p = document.getElementById('popup');
+                var img = document.getElementById('img_popup');
+                var titre = document.getElementById('titre_popup');
+                var texte = document.getElementById('text_popup');
+                
+                img.src=i.src;
+                titre.innerHTML=i.title;
+                texte.innerHTML=i.alt;
+                p.style.display='block';
+                
+            }    
+        </script>
+{% endblock %}
