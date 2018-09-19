@@ -10,16 +10,22 @@ use Symfony\Component\HttpFoundation\Response;
 class NavigationController extends Controller
 {
     /**
-     * @Route("/chantier-du-futur", name="chantier-du-futur")
+     * @Route("/chantier-du-futur", name="accueil")
      */
-    public function homepageAction()
+    public function accueilAction()
     {
-        $number = mt_rand(0, 100);
-
-        return $this->render('navigation/chantier-du-futur.html.twig', array(
-            'number' => $number,
-        ));
+        return $this->render('navigation/chantier-du-futur.html.twig',
+        );
     }
+
+    /**
+     * @Route("/presentation", name="presentation")
+     */
+    public function presentationAction()
+    {
+        return $this->render('navigation/presentation.html.twig',
+        );
+    }    
 }
 
 ?>

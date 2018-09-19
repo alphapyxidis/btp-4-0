@@ -23,7 +23,7 @@
           <div class="box square charcoal">
              <div class="desktop-only" >
                     <div class="row">
-                        <a class="two thirds align-center" href="{{ url('chantier-du-futur') }}" target="_parent"><img src="img/header-btp-4-0.png" width="800" alt="BTP 4.0"/></a>
+                        <a class="two thirds align-center" href="{{ url('accueil') }}" target="_parent"><img src="img/header-btp-4-0.png" width="800" alt="BTP 4.0"/></a>
                         <div class="one third" title="Partagez cette page avec votre réseau...">
                             <div class="five sixths mobile centered triple-pad-top">
                                 <div class="addthis_inline_share_toolbox"></div>
@@ -33,7 +33,7 @@
              </div>
              <div class="ipad-only">
                     <div class="row">
-                        <a class="three fifths" href="{{ url('chantier-du-futur') }}" target="_parent"><img src="img/header-btp-4-0.png" width="100%" alt="BTP 4.0"/></a>
+                        <a class="three fifths" href="{{ url('accueil') }}" target="_parent"><img src="img/header-btp-4-0.png" width="100%" alt="BTP 4.0"/></a>
                         <div class="two fifths" title="Partagez cette page avec votre réseau...">
                             <div class="nine tenths mobile centered double-pad-top">
                                 <div class="addthis_inline_share_toolbox"></div>
@@ -43,7 +43,7 @@
              </div>
              <div class="small-tablet-only">
                     <div class="row">
-                        <a class="one whole centered" href="{{ url('chantier-du-futur') }}" target="_parent"><img src="img/header-btp-4-0.png" width="100%" alt="BTP 4.0"/></a>
+                        <a class="one whole centered" href="{{ url('accueil') }}" target="_parent"><img src="img/header-btp-4-0.png" width="100%" alt="BTP 4.0"/></a>
                     </div>
                     <div class="row">
                         <div class="one whole half-padded" title="Partagez cette page avec votre réseau...">
@@ -55,7 +55,7 @@
              </div>
              <div class="mobile-only">
                     <div class="row">
-                        <a class="one whole centered" href="{{ url('chantier-du-futur') }}" target="_parent"><img src="img/header-btp-4-0.png" width="200%" alt="BTP 4.0"/></a>
+                        <a class="one whole centered" href="{{ url('accueil') }}" target="_parent"><img src="img/header-btp-4-0.png" width="200%" alt="BTP 4.0"/></a>
                     </div>
                     <div class="row">
                         <div class="one whole half-padded" title="Partagez cette page avec votre réseau...">
@@ -71,7 +71,14 @@
        <div class="container padded">
             {% block navigation %}{% endblock %}   
             <div class="six eigths centered container charcoal">
-                {% block body %}{% endblock %}
+                <nav role="navigation" class="nav nocollapse orange" title="Menu">
+                    <ul role="menubar">
+                        <li><a href="{{ url('accueil') }}"><i class="icon-rocket"></i> Le chantier du futur</a></li>
+                        <li><a href="{{ url('presentation') }}"><i class="icon-lightbulb"></i> Les enjeux de transformation</a></li>
+                        <li><a href="./resultats.html"><i class="icon-dashboard"></i> R�sultats de l'enqu�te</a></li>
+                        <li><a class="noicon" href="./BTP 4.0 - le chantier du futur.pdf"><i class="icon-file-text"></i> Rapport complet</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
 
