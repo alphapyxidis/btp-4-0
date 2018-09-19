@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 class NavigationController extends Controller
 {
     /**
-     * @Route("/chantier-du-futur", name="BTP 4.0 - le chantier du futur")
+     * @Route("/chantier-du-futur", name="chantier-du-futur")
      */
     public function homepageAction()
     {
