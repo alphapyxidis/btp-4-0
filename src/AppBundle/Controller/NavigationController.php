@@ -37,7 +37,7 @@ class NavigationController extends Controller
     }    
 
     /**
-     * @Route("/rapport", name="rapport")
+     * @Route("/BTP 4.0 - le chantier du futur.pdf", name="rapport")
      */
     public function rapportAction()
     {

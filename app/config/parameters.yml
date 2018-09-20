@@ -7,6 +7,6 @@ parameters:
     database_password: null
     mailer_transport: smtp
     mailer_host: smtp.alpha-pyxidis.com
-    mailer_user: no_reply@btp-4-0.fr
+    mailer_user: contact@alpha-pyxidis.com
     mailer_password: 4lph4P7x1d1s
     secret: 988791FE65B3B357DB30219F1EB34A6D5FEF70C5F3D473481C0F42E603024C96
