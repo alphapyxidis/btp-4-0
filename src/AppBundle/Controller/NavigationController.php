@@ -41,7 +41,7 @@ class NavigationController extends Controller
      */
     public function rapportAction()
     {
-// i.e Sending a file from the resources folder in /web
+        // i.e Sending a file from the resources folder in /web
         // in this example, the TextFile.txt needs to exist in the server
         $publicResourcesFolderPath = $this->get('kernel')->getRootDir() . '/../web/ressources/';
         $filename = "BTP 4.0 - le chantier du futur.pdf";
@@ -49,6 +49,14 @@ class NavigationController extends Controller
         // This should return the file located in /mySymfonyProject/web/public-resources/TextFile.txt
         // to being viewed in the Browser
         return new BinaryFileResponse($publicResourcesFolderPath.$filename);        
+    }
+
+    /**
+     * @Route("/lab", name="lab")
+     */
+    public function labAction()
+    {
+        return $this->render('navigation/chantier-du-futur.html.twig');     
     }
 }
 
