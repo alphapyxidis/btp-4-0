@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 // Import the BinaryFileResponse
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
+use AppBundle\Entity\Chantier;
+
 class NavigationController extends Controller
 {
     /**
@@ -56,7 +58,13 @@ class NavigationController extends Controller
      */
     public function labAction()
     {
-        return $this->render('navigation/carto.html.twig');     
+        $repository = $this->getDoctrine()->getRepository(Chantier::class);
+
+        $chantiers = $repository->FindAll();
+
+        return $this->render('navigation/carto.html.twig', [
+            'chantiers' => $chantiers,
+        ]);     
     }
 }
 

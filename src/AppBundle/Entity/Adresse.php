@@ -34,12 +34,12 @@ class Adresse
     protected $ville;
 
     /**
-     * @ORM\Column(type="decimal")
+     * @ORM\Column(type="float")
      */
     protected $lat;
     
     /**
-     * @ORM\Column(type="decimal")
+     * @ORM\Column(type="float")
      */
     protected $lon;
     
@@ -50,4 +50,134 @@ class Adresse
     }
 
     //https://services.gisgraphy.com/geocoding/geocode?country=FR&address=
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set rue
+     *
+     * @param string $rue
+     *
+     * @return Adresse
+     */
+    public function setRue($rue)
+    {
+        $this->rue = $rue;
+
+        return $this;
+    }
+
+    /**
+     * Get rue
+     *
+     * @return string
+     */
+    public function getRue()
+    {
+        return $this->rue;
+    }
+
+    /**
+     * Set codePostal
+     *
+     * @param string $codePostal
+     *
+     * @return Adresse
+     */
+    public function setCodePostal($codePostal)
+    {
+        $this->codePostal = $codePostal;
+
+        return $this;
+    }
+
+    /**
+     * Get codePostal
+     *
+     * @return string
+     */
+    public function getCodePostal()
+    {
+        return $this->codePostal;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return Adresse
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set lat
+     *
+     * @param string $lat
+     *
+     * @return Adresse
+     */
+    public function setLat($lat)
+    {
+        $this->lat = $lat;
+
+        return $this;
+    }
+
+    /**
+     * Get lat
+     *
+     * @return string
+     */
+    public function getLat()
+    {
+        return $this->lat;
+    }
+
+    /**
+     * Set lon
+     *
+     * @param string $lon
+     *
+     * @return Adresse
+     */
+    public function setLon($lon)
+    {
+        $this->lon = $lon;
+
+        return $this;
+    }
+
+    /**
+     * Get lon
+     *
+     * @return string
+     */
+    public function getLon()
+    {
+        return $this->lon;
+    }
 }
