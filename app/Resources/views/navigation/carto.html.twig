@@ -19,8 +19,8 @@
 
                         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={{ mapbox_token }}', {
                         attribution: 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery Â© <a href="http://mapbox.com">Mapbox</a>',
-                        maxZoom: 16,
-                        id: 'mapbox.streets',
+                        maxZoom: 17,
+                        id: 'mapbox.outdoors', // 'mapbox.streets' 'mapbox.outdoors' 'mapbox.light'
                         accessToken: '{{ mapbox_token }}'
                         }).addTo(maCarte);
 
