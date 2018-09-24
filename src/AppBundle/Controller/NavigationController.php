@@ -56,7 +56,7 @@ class NavigationController extends Controller
      */
     public function labAction()
     {
-        return $this->render('navigation/chantier-du-futur.html.twig');     
+        return $this->render('navigation/carto.html.twig');     
     }
 }
 

@@ -1,0 +1,32 @@
+{# app/Resources/views/navigation/presentation.html.twig #}
+
+{% extends './base.html.twig' %}
+
+{% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('libs/leaflet/leaflet.css') }}" />
+{% endblock %}
+{% block headerscripts %}
+            <script src="{{ asset('libs/leaflet/leaflet.js') }}"></script>
+{% endblock %}
+
+
+{% block body %}
+            <div class="row padded">
+            
+            <div id="maCarte" style="width: 100%; height: 600px"></div>
+            
+            <script>
+                var maCarte = L.map('maCarte').setView([43.933719, 4.833193], 17);
+                
+                L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYWxwaGEtcHl4aWRpcyIsImEiOiJjam1ldW5xengxbXV3M2tsaGtyYzh3aGVsIn0.IFkFEVTD2adNiSFlgHUeAg', {
+                attribution: 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                maxZoom: 20,
+                id: 'mapbox.streets',
+                accessToken: 'pk.eyJ1IjoiYWxwaGEtcHl4aWRpcyIsImEiOiJjam1ldW5xengxbXV3M2tsaGtyYzh3aGVsIn0.IFkFEVTD2adNiSFlgHUeAg'
+                }).addTo(maCarte);
+
+                
+            </script>
+            </div>
+{% endblock  %}
+
