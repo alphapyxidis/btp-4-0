@@ -3,6 +3,7 @@
 
 namespace AppBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +23,12 @@ class Chantier
      * @ORM\Column(type="text")
      */
     protected $nom;
+    
+    /**
+     * @Gedmo\Slug(fields={"nom"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
 
     /**
      * @ORM\OneToOne(targetEntity="Adresse")
@@ -31,7 +38,7 @@ class Chantier
     
     public function __construct()
     {
-        parent::__construct();
+        //parent::__construct();
         // your own logic
     }
 
@@ -92,5 +99,29 @@ class Chantier
     public function getAdresse()
     {
         return $this->adresse;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Chantier
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

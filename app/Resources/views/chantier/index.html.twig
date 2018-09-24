@@ -1,0 +1,41 @@
+{% extends './base.html.twig' %}
+
+{% block body %}
+<div class="one whole">
+    <h1>Chantiers list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chantier in chantiers %}
+            <tr>
+                <td><a href="{{ path('chantier_show', { 'slug': chantier.slug }) }}">{{ chantier.slug }}</a></td>
+                <td>{{ chantier.nom }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('chantier_show', { 'slug': chantier.slug }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('chantier_edit', { 'slug': chantier.slug }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('chantier_new') }}">Create a new chantier</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
