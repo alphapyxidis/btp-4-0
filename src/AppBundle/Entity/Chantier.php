@@ -19,7 +19,6 @@ class Chantier
     protected $id;
 
     /**
-     * @ORM\nomChantier
      * @ORM\Column(type="text")
      */
     protected $nom;

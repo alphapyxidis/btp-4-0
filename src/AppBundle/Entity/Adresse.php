@@ -12,38 +12,33 @@ use Doctrine\ORM\Mapping as ORM;
 class Adresse
 {
     /**
-     * @ORM\id
+     * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
-     * @ORM\rue
      * @ORM\Column(type="text")
      */
     protected $rue;
 
     /**
-     * @ORM\codePostal
      * @ORM\Column(type="text")
      */
     protected $codePostal;
 
     /**
-     * @ORM\ville
      * @ORM\Column(type="text")
      */
     protected $ville;
 
     /**
-     * @ORM\lat
      * @ORM\Column(type="decimal")
      */
     protected $lat;
     
     /**
-     * @ORM\lon
      * @ORM\Column(type="decimal")
      */
     protected $lon;

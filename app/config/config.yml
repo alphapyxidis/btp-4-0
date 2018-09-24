@@ -36,6 +36,10 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+        mapbox_token: '%mapbox_token%'
+        ga_tracking_id: '%ga_tracking_id%'
+        addthis_pubid: '%addthis_pubid%'
 
 # Doctrine Configuration
 doctrine:
@@ -65,6 +69,8 @@ swiftmailer:
     host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
+    port: '%mailer_port%'
+    encryption: '%mailer_encryption%'
     spool: { type: memory }
 
 # FOS user configuration
