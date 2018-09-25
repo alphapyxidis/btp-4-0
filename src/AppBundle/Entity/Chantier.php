@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -20,9 +21,15 @@ class Chantier
     protected $id;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=128)
+     * @Assert\NotBlank()
      */
     protected $nom;
+    
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $description;
     
     /**
      * @Gedmo\Slug(fields={"nom"})
@@ -31,7 +38,9 @@ class Chantier
     private $slug;
 
     /**
-     * @ORM\OneToOne(targetEntity="Adresse")
+     * @Assert\Type(type="AppBundle\Entity\Adresse")
+     * @Assert\Valid()
+     * @ORM\OneToOne(targetEntity="Adresse",cascade={"persist"})
      * @ORM\JoinColumn(name="idAdresse", referencedColumnName="id")
      */
     private $adresse;
@@ -41,7 +50,6 @@ class Chantier
         //parent::__construct();
         // your own logic
     }
-
 
     /**
      * Get id
@@ -77,6 +85,42 @@ class Chantier
         return $this->nom;
     }
 
+
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Chantier
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
     /**
      * Set adresse
      *
@@ -99,29 +143,5 @@ class Chantier
     public function getAdresse()
     {
         return $this->adresse;
-    }
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     *
-     * @return Chantier
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
     }
 }

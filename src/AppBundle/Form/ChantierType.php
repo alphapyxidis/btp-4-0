@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use AppBundle\Form\AdresseType;
 
 class ChantierType extends AbstractType
 {
@@ -13,7 +14,7 @@ class ChantierType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('adresse');
+        $builder->add('nom')->add('description')->add('adresse', AdresseType::class);
     }/**
      * {@inheritdoc}
      */

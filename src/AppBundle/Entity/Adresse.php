@@ -24,12 +24,12 @@ class Adresse
     protected $rue;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=8)
      */
     protected $codePostal;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=128)
      */
     protected $ville;
 

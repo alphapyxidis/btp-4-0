@@ -7,12 +7,20 @@
     <table>
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>#</th>
                 <td>{{ chantier.id }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
                 <td>{{ chantier.nom }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ chantier.adresse.rue }}<br>{{ chantier.adresse.codePostal }}&nbsp;{{ chantier.adresse.ville }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ chantier.description }}</td>
             </tr>
         </tbody>
     </table>

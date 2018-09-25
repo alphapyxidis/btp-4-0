@@ -7,16 +7,20 @@
     <table>
         <thead>
             <tr>
-                <th>Id</th>
+                <th>#</th>
                 <th>Nom</th>
+                <th>Description</th>
+                <th>Adresse</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for chantier in chantiers %}
             <tr>
-                <td><a href="{{ path('chantier_show', { 'slug': chantier.slug }) }}">{{ chantier.slug }}</a></td>
+                <td><a href="{{ path('chantier_show', { 'slug': chantier.slug }) }}">{{ chantier.id }}</a></td>
                 <td>{{ chantier.nom }}</td>
+                <td>{{ chantier.description }}</td>
+                <td>{{ chantier.adresse.rue }}<br>{{ chantier.adresse.codePostal }}&nbsp;{{ chantier.adresse.ville }}</td>
                 <td>
                     <ul>
                         <li>
