@@ -125,3 +125,25 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
+
+# FlySystem Configuration (file system abstraction)
+oneup_flysystem:
+    adapters:
+        chantier_adapter:
+            local:
+                directory: '%kernel.project_dir%/public/chantier/fichiers'
+
+    filesystems:
+        chantier_fs:
+            adapter: chantier_adapter
+            mount: chantier_fs
+
+# File uploader Configuration
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+    storage: flysystem
+
+    mappings:
+        product_image:
+            uri_prefix: /chantier/fichiers
+            upload_destination: chantier_fs    

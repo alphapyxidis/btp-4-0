@@ -14,6 +14,13 @@ parameters:
     mailer_host: 127.0.0.1
     mailer_user: ~
     mailer_password: ~
+    mailer_port: ~
+    mailer_encryption: ~
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+
+    # tokens for uses external modules
+    ga_tracking_id: UA-xxxxxxxx-x
+    addthis_pubid: ra-xxxxxxxxxxxxxxxx
+    mapbox_token: pk.xxxxxxxxxx.xxxxxxxxxx
