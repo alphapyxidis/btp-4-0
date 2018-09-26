@@ -32,7 +32,7 @@ class Chantier
     protected $description;
     
     /**
-     * @Gedmo\Slug(fields={"nom"})
+     * @Gedmo\Slug(fields={"nom"}, updatable=true, unique=true)
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
@@ -95,6 +95,20 @@ class Chantier
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Chantier
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 
     /**

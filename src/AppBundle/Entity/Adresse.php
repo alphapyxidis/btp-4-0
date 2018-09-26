@@ -180,4 +180,9 @@ class Adresse
     {
         return $this->lon;
     }
+
+    public function __toString()
+    {
+        return $this->getRue().' '.$this->getCodePostal().' '.$this->getVille();
+    }    
 }

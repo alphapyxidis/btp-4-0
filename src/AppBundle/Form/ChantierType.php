@@ -14,7 +14,7 @@ class ChantierType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('description')->add('adresse', AdresseType::class);
+        $builder->add('nom')->add('slug')->add('description')->add('adresse', AdresseType::class);
     }/**
      * {@inheritdoc}
      */

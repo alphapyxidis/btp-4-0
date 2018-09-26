@@ -104,7 +104,7 @@ stof_doctrine_extensions:
     #     default_file_info_class: Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo
     orm:
         tree: true
-        slugable: true
+        sluggable: true
         timestampable: true
         blameable: true
 
@@ -133,7 +133,7 @@ oneup_flysystem:
     adapters:
         chantier_adapter:
             local:
-                directory: '%kernel.project_dir%/public/chantier/fichiers'
+                directory: '%kernel.root_dir%/public/chantier/fichiers' 
 
     filesystems:
         chantier_fs:
