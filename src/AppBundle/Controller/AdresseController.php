@@ -5,7 +5,10 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Adresse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 
 /**
  * Adresse controller.
@@ -14,10 +17,65 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  */
 class AdresseController extends Controller
 {
+
+    /**
+     * pour autocompletion du formulaire : construction de la liste de valeurs pour recherche Select2 
+     *
+     * @Route("/liste-villes", name="search_ville")
+     * @Method("GET")
+     */
+    public function searchVille(Request $request)
+    {
+
+        // get the value typed to search for postal codes
+        $q = $request->query->get('q'); // use "term" instead of "q" for jquery-ui
+        $q = str_replace("+"," ",$q); 
+
+        $api_user = $this->container->getParameter('geonames_user');
+
+        $service_url = 'http://api.geonames.org/postalCodeSearchJSON?placename_startsWith='.$q.'&maxRows=10&country=FR&style=short&username='.$api_user;
+        
+        $curl = curl_init($service_url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $curl_response = curl_exec($curl);
+        if ($curl_response === false) {
+            $info = curl_getinfo($curl);
+            curl_close($curl);
+            die('error occured during curl exec. Additioanl info: ' . var_export($info));
+        }
+        curl_close($curl);
+        $decoded = json_decode($curl_response);
+        if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
+            die('error occured: ' . $decoded->response->errormessage);
+        }
+
+        $curl_response = json_decode($curl_response);
+
+        if (isset($curl_response->postalCodes)){
+            $results = $curl_response->postalCodes;
+        } else {
+            $results = $curl_response;
+        }
+
+        return $this->render('adresse/ville-autocompletion.json.twig', array('results' => $results,));
+    }
+
+    /**
+     * pour autocompletion du formulaire : sélection de la valeur à partir de l'id pour remplir le champ de saisie Select2  
+     *
+     * @Route("/ville/{id}", name="get_ville")
+     * @Method("GET")
+     */
+    public function getVille($id = null)
+    {
+        // le webservice qui a été appelé renvoie comme id la valeur de la ville
+        return $this->json(strtoupper($id));
+    }
+
     /**
      * Lists all adresse entities.
      *
-     * @Route("/", name="adresse_index")
+     * @Route("s/", name="adresse_index")
      * @Method("GET")
      */
     public function indexAction()

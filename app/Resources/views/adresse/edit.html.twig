@@ -21,3 +21,20 @@
     </ul>
 </div>
 {% endblock %}
+
+{% block javascripts %}
+<script>
+    var options = {
+        url_list: '{{ path('search_ville') }}',
+        url_get: '{{ path('get_ville') }}',
+        otherOptions: {
+            minimumInputLength: 3,
+            formatNoMatches: 'Aucune ville trouvée.',
+            formatSearching: 'Recherche...',
+            formatInputTooShort: 'Taper au moins 3 caractères...'
+        }
+    };
+    $('#adresse_ville').width('100%');
+    $('#adresse_ville').autocompleter(options);    
+</script>
+{% endblock %}

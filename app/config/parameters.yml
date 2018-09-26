@@ -14,4 +14,5 @@ parameters:
     ga_tracking_id: UA-26011999-3
     addthis_pubid: ra-58dcc3638126aa77
     mapbox_token: pk.eyJ1IjoiYWxwaGEtcHl4aWRpcyIsImEiOiJjam1ldW5xengxbXV3M2tsaGtyYzh3aGVsIn0.IFkFEVTD2adNiSFlgHUeAg
+    geonames_user: alphapyxidis
     secret: 988791FE65B3B357DB30219F1EB34A6D5FEF70C5F3D473481C0F42E603024C96

@@ -24,3 +24,4 @@ parameters:
     ga_tracking_id: UA-xxxxxxxx-x
     addthis_pubid: ra-xxxxxxxxxxxxxxxx
     mapbox_token: pk.xxxxxxxxxx.xxxxxxxxxx
+    geonames_user: xxxxxxxxxx

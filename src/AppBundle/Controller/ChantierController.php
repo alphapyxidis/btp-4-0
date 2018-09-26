@@ -17,7 +17,7 @@ class ChantierController extends Controller
     /**
      * Lists all chantier entities.
      *
-     * @Route("/", name="chantier_index")
+     * @Route("s/", name="chantier_index")
      * @Method("GET")
      */
     public function indexAction()

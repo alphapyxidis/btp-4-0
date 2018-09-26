@@ -36,7 +36,8 @@
         "symfony/templating": "^3.4",
         "twig/twig": "^1.0||^2.0",
         "vich/uploader-bundle": "^1.0",
-        "oneup/flysystem-bundle" :"^1.0"
+        "oneup/flysystem-bundle" :"^1.0",
+        "pugx/autocompleter-bundle" : "^1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

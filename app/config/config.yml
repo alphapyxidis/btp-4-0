@@ -40,6 +40,7 @@ twig:
         mapbox_token: '%mapbox_token%'
         ga_tracking_id: '%ga_tracking_id%'
         addthis_pubid: '%addthis_pubid%'
+        geonames_user: '%geonames_user%'
 
 # Doctrine Configuration
 doctrine:

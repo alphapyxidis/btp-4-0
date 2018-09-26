@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
 
 class AdresseType extends AbstractType
 {
@@ -13,7 +14,7 @@ class AdresseType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('rue')->add('codePostal')->add('ville')->add('lat')->add('lon');
+        $builder->add('rue')->add('codePostal')->add('ville', AutocompleteType::class, ['class' => 'AppBundle:Adresse'])->add('lat')->add('lon');
     }/**
      * {@inheritdoc}
      */
@@ -29,8 +30,9 @@ class AdresseType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_adresse';
+        return 'adresse';
     }
 
+    /*  http://api.geonames.org/postalCodeSearchJSON?postalcode=9011&maxRows=10&username=alphapyxidis */
 
 }

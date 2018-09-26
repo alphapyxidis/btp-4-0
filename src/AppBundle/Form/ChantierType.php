@@ -30,7 +30,7 @@ class ChantierType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_chantier';
+        return 'chantier';
     }
 
 
