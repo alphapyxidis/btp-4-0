@@ -4,25 +4,28 @@
 
 {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('libs/leaflet/leaflet.css') }}" />
+            <link rel="stylesheet" href="{{ asset('libs/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css') }}" />
+            <link rel="stylesheet" href="{{ asset('libs/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css') }}" />
 {% endblock %}
 {% block headerscripts %}
             <script src="{{ asset('libs/leaflet/leaflet.js') }}"></script>
+            <script src="{{ asset('libs/Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js') }}"></script>
 {% endblock %}
 
 
 {% block body %}
                 <div class="two thirds padded">
-                    <div class="noicon" id="maCarte" style="width: 100%; height: 600px"></div>
+                    <div class="noicon" id="map" style="width: 100%; height: 600px"></div>
                     <script>
-                        var maCarte = L.map('maCarte').setView([43.98, 4.85], 12);
-                        var markers = [];
+                        var map = L.map('map');
+                        var markers = L.markerClusterGroup();   
 
                         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={{ mapbox_token }}', {
-                        attribution: 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery Â© <a href="http://mapbox.com">Mapbox</a>',
-                        maxZoom: 17,
+                        attribution: 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                        maxZoom: 18,
                         id: 'mapbox.outdoors', // 'mapbox.streets' 'mapbox.outdoors' 'mapbox.light'
                         accessToken: '{{ mapbox_token }}'
-                        }).addTo(maCarte);
+                        }).addTo(map);
 
                         var craneIcon = L.icon({
                             iconUrl: "{{ asset('img/marker.png') }}",
@@ -35,19 +38,43 @@
                             popupAnchor:  [-8, -32] // point from which the popup should open relative to the iconAnchor
                         });
 
+                        function onLocationFound(e) {
+                            var radius = e.accuracy / 2;
+
+                            // L.marker(e.latlng).addTo(map).bindPopup("Vous êtes localisé à " + radius + "mètres de ce point.").openPopup();
+                            // L.circle(e.latlng, radius).addTo(map);
+                            map.setZoom(14);
+                        }
+
+                        function onLocationError(e) {
+                            alert(e.message);
+                            map.setView([43.98, 4.85], 14);  // position par défaut
+                        }
+
+                        map.on('locationfound', onLocationFound);
+                        map.on('locationerror', onLocationError);
+
+                        map.locate({setView: true, maxZoom: 18}); // localise automatiquement l'utilisateur
+    
                     </script>
                 </div>
                 <div class="one third padded">
-                    <h3>Chantiers</h3>
+                    <h3>Les chantiers autour de ma position</h3>
                     <ul>
                         {% for chantier in chantiers %}
                             <li><b>{{ chantier.nom|e }}</b> situé {{ chantier.adresse.rue|e }} à {{ chantier.adresse.ville|e }} ({{ chantier.adresse.lat|number_format(4, '.', '') }}, {{ chantier.adresse.lon|number_format(4, '.', '') }})</li>
                             <script>
-                                L.marker([{{ chantier.adresse.lat }}, {{ chantier.adresse.lon }}], {icon: craneIcon}).addTo(maCarte)
-                                    .bindPopup('<b>{{ chantier.nom|replace({"\n":'', "\r":''})|e }}</b><br> situé {{ chantier.adresse.rue|replace({"\n":'', "\r":''})|e }} à {{ chantier.adresse.ville|replace({"\n":'', "\r":''})|e }}');
+                                markers.addLayer(L.marker([{{ chantier.adresse.lat }}, {{ chantier.adresse.lon }}], {icon: craneIcon}).addTo(map)
+                                    .bindPopup('<b>{{ chantier.nom|replace({"\n":'', "\r":''})|e }}</b><br> situé {{ chantier.adresse.rue|replace({"\n":'', "\r":''})|e }} à {{ chantier.adresse.ville|replace({"\n":'', "\r":''})|e }}'));
                             </script>
                         {% endfor %}
                     </ul>
+                    <script>
+                        map.addLayer(markers);
+                        map.on('moveend', function() { 
+                            console.log(map.getBounds());
+                        });                        
+                    </script>
                 </div>
 {% endblock  %}
 
