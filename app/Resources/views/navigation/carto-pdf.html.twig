@@ -17,64 +17,55 @@
                 <div class="two thirds padded">
                     <div class="noicon" id="map" style="width: 100%; height: 600px"></div>
                     <script>
-                        var map = L.map('map');
+                        var mapboxUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={{ mapbox_token }}';
+                        var mapboxAttribution = 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
+                        
                         var markers = L.markerClusterGroup();   
 
-                        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={{ mapbox_token }}', {
-                        attribution: 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-                        maxZoom: 18,
-                        id: 'mapbox.outdoors', // 'mapbox.streets' 'mapbox.outdoors' 'mapbox.light'
-                        accessToken: '{{ mapbox_token }}'
-                        }).addTo(map);
+                        var outdoor = L.tileLayer(mapboxUrl, {id: 'mapbox.outdoors', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
+                            grayscale = L.tileLayer(mapboxUrl, {id: 'mapbox.light', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
+                            satellite = L.tileLayer(mapboxUrl, {id: 'mapbox.satellite', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
+                            streets   = L.tileLayer(mapboxUrl, {id: 'mapbox.streets', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19});
 
-                        var craneIcon = L.icon({
-                            iconUrl: "{{ asset('img/marker.png') }}",
-                            shadowUrl: "{{ asset('img/shadow_marker.png') }}",
+                        var baseMaps = {
+                            "courbes de niveau": outdoor,
+                            "plan": streets,
+                            "échelle de gris": grayscale,
+                            "vue satellite": satellite
+                        };
 
-                            iconSize:     [32, 32], // size of the icon
-                            shadowSize:   [32, 32], // size of the shadow
-                            iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
-                            shadowAnchor: [16, 32],  // the same for the shadow
-                            popupAnchor:  [-8, -32] // point from which the popup should open relative to the iconAnchor
-                        });
+                        // dimensions of the image
+                        var bounds1 = new L.LatLngBounds([48.702966, 1.36736], [48.712021, 1.380027]),
+                            bounds2 = new L.LatLngBounds([48.707221, 1.371706], [48.709628, 1.376914]);
 
-                        function onLocationFound(e) {
-                            var radius = e.accuracy / 2;
+                        // add the image overlay, so that it covers the entire map
+                        var pic = L.imageOverlay("{{ asset('ressources/vernouillet.png') }}", bounds1),
+                            planmasse = L.imageOverlay("{{ asset('ressources/plan-de-masse.png') }}", bounds2);
 
-                            L.marker(e.latlng).addTo(map).bindPopup("Vous êtes localisé à " + radius + "mètres de ce point.").openPopup();
-                            L.circle(e.latlng, radius).addTo(map);
-                            map.setZoom(14);
+                        var overlayMaps = {
+                            "Plan Implantation Chantier": pic,
+                            "Plan de Masse": planmasse
+                        };
+                       
+                        var map = L.map('map', {center: [48.709111, 1.375194], zoom: 15, layers: [outdoor, pic]});
+                        
+                        L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+                        var popup = L.popup();
+
+                        function onMapClick(e) {
+                            popup
+                                .setLatLng(e.latlng)
+                                .setContent("You clicked the map at " + e.latlng.toString())
+                                .openOn(map);
                         }
 
-                        function onLocationError(e) {
-                            alert(e.message);
-                            map.setView([43.98, 4.85], 14);  // position par défaut
-                        }
+                        map.on('click', onMapClick);
 
-                        map.on('locationfound', onLocationFound);
-                        map.on('locationerror', onLocationError);
-
-                        map.locate({setView: true, maxZoom: 18}); // localise automatiquement l'utilisateur
-    
                     </script>
                 </div>
                 <div class="one third padded">
-                    <h3>Les chantiers autour de ma position</h3>
-                    <ul>
-                        {% for chantier in chantiers %}
-                            <li><b>{{ chantier.nom|e }}</b> situé {{ chantier.adresse.rue|e }} à {{ chantier.adresse.ville|e }} ({{ chantier.adresse.lat|number_format(4, '.', '') }}, {{ chantier.adresse.lon|number_format(4, '.', '') }})</li>
-                            <script>
-                                markers.addLayer(L.marker([{{ chantier.adresse.lat }}, {{ chantier.adresse.lon }}], {icon: craneIcon}).addTo(map)
-                                    .bindPopup('<b>{{ chantier.nom|replace({"\n":'', "\r":''})|e }}</b><br> situé {{ chantier.adresse.rue|replace({"\n":'', "\r":''})|e }} à {{ chantier.adresse.ville|replace({"\n":'', "\r":''})|e }}'));
-                            </script>
-                        {% endfor %}
-                    </ul>
-                    <script>
-                        map.addLayer(markers);
-                        map.on('moveend', function() { 
-                            console.log(map.getBounds());
-                        });                        
-                    </script>
+                    <h3>test PDF layer</h3>
                 </div>
 {% endblock  %}
 

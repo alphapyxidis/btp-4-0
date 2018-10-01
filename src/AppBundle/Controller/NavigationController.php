@@ -66,6 +66,13 @@ class NavigationController extends Controller
             'chantiers' => $chantiers,
         ]);     
     }
-}
+
+    /**
+     * @Route("/lab/plan-implantation-chantier", name="pic")
+     */
+    public function picAction()
+    {
+        return $this->render('navigation/carto-pdf.html.twig'); 
+    }}
 
 ?>
