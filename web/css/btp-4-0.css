@@ -1,0 +1,12 @@
+#map{height: 100vh;}
+
+/* customize look of leaflet zoom controls */
+.leaflet-control-zoom-in{
+  padding: 0px;
+}
+.leaflet-control-zoom-out{
+  padding: 0px;
+}
+.leaflet-popup-close-button::after{
+  display: none;
+}
