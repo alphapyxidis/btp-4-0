@@ -5,6 +5,7 @@
 {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('libs/leaflet/leaflet.css') }}" />
             <link rel="stylesheet" href="{{ asset('libs/leaflet.draw/leaflet.draw.css') }}" />
+            <link rel="stylesheet" href="{{ asset('libs/leaflet.styleEditor/css/Leaflet.StyleEditor.min.css') }}" />
 {% endblock %}
 
 {% block headerscripts %}
@@ -45,6 +46,8 @@
             <script src="{{ asset('libs/leaflet.draw/edit/handler/Edit.Circle.js') }}"></script>
             <script src="{{ asset('libs/leaflet.draw/edit/handler/Edit.Rectangle.js') }}"></script>
 
+            <script src="{{ asset('libs/leaflet.styleEditor/js/Leaflet.StyleEditor.min.js') }}"></script>
+
 {% endblock %}
 
 
@@ -76,7 +79,8 @@
                             planmasse = L.imageOverlay("{{ asset('ressources/plan-de-masse.png') }}", bounds2);
 
                         // calque d'édition du PIC
-                        var planinstallation = L.featureGroup();                       
+                        geojsonFeature = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"options":{"stroke":true,"color":"#fe57a1","weight":4,"opacity":0.5,"fill":true,"fillColor":"#fe57a1","fillOpacity":0.1,"clickable":true,"original":{"stroke":true,"color":"#fe57a1","weight":4,"opacity":0.5,"fill":true,"fillColor":null,"fillOpacity":0.2,"clickable":true,"smoothFactor":1,"noClip":false,"lineCap":"round","lineJoin":"round","dashArray":null,"dashOffset":null,"fillRule":"evenodd","interactive":true,"bubblingMouseEvents":true,"pane":"overlayPane","attribution":null},"editing":{"dashArray":"10, 10","fill":true,"fillColor":"#fe57a1","fillOpacity":0.1,"maintainColor":false},"dashArray":"10, 10","maintainColor":false}},"geometry":{"type":"Polygon","coordinates":[[[1.372911,48.707321],[1.372353,48.708709],[1.37519,48.709109],[1.375168,48.709463],[1.37592,48.709583],[1.376045,48.709247],[1.376478,48.707976],[1.372911,48.707321]]]}}]};               
+                        var planinstallation = L.geoJSON(geojsonFeature); // L.featureGroup();        
 
                         var overlayMaps = {
                             "Plan de Situation": plansituation,
@@ -91,14 +95,17 @@
                         var drawControl = new L.Control.Draw({
                             edit: {
                                 featureGroup: planinstallation,
-                                poly: {
-                                    allowIntersection: false
-                                }
-                            },
+                                polygon: {
+                                    allowIntersection: false,
+                                    showArea: true
+                                }                            },
                             draw: {
                                 rectangle: false,
                                 circlemarker: false,
                                 marker: false,
+                                polyline: {
+                                    metric: true
+                                },
                                 polygon: {
                                     allowIntersection: false,
                                     showArea: true
@@ -107,11 +114,46 @@
                         });
                         map.addControl(drawControl);
 
-                        map.on('draw:created', function(e) {
-                            var layer = e.layer;
-                            planinstallation.addLayer(layer);
+                        var styleEditor = new L.control.styleEditor({
+                            position: 'topleft',
+                            openOnLeafletDraw: false,
+                            useGrouping: false
                         });
-                      
+                        map.addControl(styleEditor);
+
+                        map.on('draw:created', function(e) {
+                            var layer = e.layer,
+                                type = e.layerType,
+                                feature = layer.feature = layer.feature || {}, // Intialize layer.feature
+                                options = layer.options; 
+
+                            feature.type = feature.type || "Feature"; // Intialize feature.type
+                            feature.properties = feature.properties || {}; // Intialize feature.properties
+
+                            feature.properties["options"] = options;
+                            if (type === "circle") {
+                                var radius = layer.getRadius();
+                                feature.properties["radius"] = radius;
+                            }
+    
+                            planinstallation.addLayer(layer);
+
+                            data = planinstallation.toGeoJSON();
+                            console.log ('AJOUT :');
+                            console.log(JSON.stringify(data));
+                        });
+
+                        map.on('draw:edited', function(e) {
+                            var layers = e.layers;
+                            layers.eachLayer(function (layer) {
+                                //do whatever you want; most likely save back to db
+                            });
+
+                            data = planinstallation.toGeoJSON();
+                            console.log ('MODIFICATION :');
+                            console.log(JSON.stringify(data));
+                        });                      
+
                     </script>
                 </div>
                 <div class="one third padded">
