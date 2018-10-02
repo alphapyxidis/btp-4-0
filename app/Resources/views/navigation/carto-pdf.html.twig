@@ -1,15 +1,50 @@
-{# app/Resources/views/navigation/presentation.html.twig #}
+{# app/Resources/views/navigation/carto-pdf.html.twig #}
 
 {% extends './base.html.twig' %}
 
 {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('libs/leaflet/leaflet.css') }}" />
-            <link rel="stylesheet" href="{{ asset('libs/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css') }}" />
-            <link rel="stylesheet" href="{{ asset('libs/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css') }}" />
+            <link rel="stylesheet" href="{{ asset('libs/leaflet.draw/leaflet.draw.css') }}" />
 {% endblock %}
+
 {% block headerscripts %}
             <script src="{{ asset('libs/leaflet/leaflet.js') }}"></script>
-            <script src="{{ asset('libs/Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js') }}"></script>
+
+            <script src="{{ asset('libs/leaflet.draw/leaflet.draw.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/Leaflet.Draw.Event.js') }}"></script>
+
+            <script src="{{ asset('libs/leaflet.draw/Toolbar.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/Tooltip.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/Control.Draw.js') }}"></script>
+
+            <script src="{{ asset('libs/leaflet.draw/ext/GeometryUtil.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/ext/LatLngUtil.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/ext/LineUtil.Intersect.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/ext/Polygon.Intersect.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/ext/Polyline.Intersect.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/ext/TouchEvents.js') }}"></script>
+
+            <script src="{{ asset('libs/leaflet.draw/draw/DrawToolbar.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.Feature.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.SimpleShape.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.Polyline.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.Marker.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.CircleMarker.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.Circle.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.Polygon.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.Rectangle.js') }}"></script>
+
+            <script src="{{ asset('libs/leaflet.draw/edit/EditToolbar.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/EditToolbar.Edit.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/EditToolbar.Delete.js') }}"></script>
+
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/Edit.Poly.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/Edit.SimpleShape.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/Edit.Marker.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/Edit.CircleMarker.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/Edit.Circle.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/Edit.Rectangle.js') }}"></script>
+
 {% endblock %}
 
 
@@ -20,8 +55,6 @@
                         var mapboxUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={{ mapbox_token }}';
                         var mapboxAttribution = 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
                         
-                        var markers = L.markerClusterGroup();   
-
                         var outdoor = L.tileLayer(mapboxUrl, {id: 'mapbox.outdoors', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
                             grayscale = L.tileLayer(mapboxUrl, {id: 'mapbox.light', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
                             satellite = L.tileLayer(mapboxUrl, {id: 'mapbox.satellite', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
@@ -39,33 +72,50 @@
                             bounds2 = new L.LatLngBounds([48.707221, 1.371706], [48.709628, 1.376914]);
 
                         // add the image overlay, so that it covers the entire map
-                        var pic = L.imageOverlay("{{ asset('ressources/vernouillet.png') }}", bounds1),
+                        var plansituation = L.imageOverlay("{{ asset('ressources/vernouillet.png') }}", bounds1),
                             planmasse = L.imageOverlay("{{ asset('ressources/plan-de-masse.png') }}", bounds2);
 
+                        // calque d'édition du PIC
+                        var planinstallation = L.featureGroup();                       
+
                         var overlayMaps = {
-                            "Plan Implantation Chantier": pic,
-                            "Plan de Masse": planmasse
+                            "Plan de Situation": plansituation,
+                            "Plan de Masse": planmasse,
+                            "Plan d'Installation Chantier": planinstallation 
                         };
-                       
-                        var map = L.map('map', {center: [48.709111, 1.375194], zoom: 15, layers: [outdoor, pic]});
+
+                        var map = L.map('map', {center: [48.709111, 1.375194], zoom: 15, layers: [outdoor, plansituation]});
                         
                         L.control.layers(baseMaps, overlayMaps).addTo(map);
 
-                        var popup = L.popup();
+                        var drawControl = new L.Control.Draw({
+                            edit: {
+                                featureGroup: planinstallation,
+                                poly: {
+                                    allowIntersection: false
+                                }
+                            },
+                            draw: {
+                                rectangle: false,
+                                circlemarker: false,
+                                marker: false,
+                                polygon: {
+                                    allowIntersection: false,
+                                    showArea: true
+                                }
+                            }
+                        });
+                        map.addControl(drawControl);
 
-                        function onMapClick(e) {
-                            popup
-                                .setLatLng(e.latlng)
-                                .setContent("You clicked the map at " + e.latlng.toString())
-                                .openOn(map);
-                        }
-
-                        map.on('click', onMapClick);
-
+                        map.on('draw:created', function(e) {
+                            var layer = e.layer;
+                            planinstallation.addLayer(layer);
+                        });
+                      
                     </script>
                 </div>
                 <div class="one third padded">
-                    <h3>test PDF layer</h3>
+                    <h3>Plan d'installation du chantier (PIC)</h3>
                 </div>
 {% endblock  %}
 

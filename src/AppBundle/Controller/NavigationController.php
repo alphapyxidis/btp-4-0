@@ -68,7 +68,7 @@ class NavigationController extends Controller
     }
 
     /**
-     * @Route("/lab/plan-implantation-chantier", name="pic")
+     * @Route("/lab/plan-installation-chantier", name="pic")
      */
     public function picAction()
     {
