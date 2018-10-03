@@ -4,23 +4,36 @@
 <div class="one whole">
     <h1>Chantiers list</h1>
 
+    {# total items count #}
+    <div class="count">
+        {{ pagination.getTotalItemCount }}
+    </div>
+
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
     <table>
         <thead>
             <tr>
-                <th>#</th>
-                <th>Nom</th>
-                <th>Description</th>
+            {# sorting of properties based on query components #}
+                <th>{{ knp_pagination_sortable(pagination, '#', 'c.id') }}</th>
+                <th{% if pagination.isSorted('c.Nom') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nom', 'c.nom') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Description', ['c.description']) }}</th>
                 <th>Adresse</th>
                 <th>Actions</th>
             </tr>
         </thead>
+
         <tbody>
-        {% for chantier in chantiers %}
-            <tr>
+            {# table body #}
+            {% for chantier in pagination %}
+            <tr {% if loop.index is odd %}class="color"{% endif %}>
                 <td><a href="{{ path('chantier_show', { 'slug': chantier.slug }) }}">{{ chantier.id }}</a></td>
                 <td>{{ chantier.nom }}</td>
                 <td>{{ chantier.description }}</td>
-                <td>{{ chantier.adresse.rue }}<br>{{ chantier.adresse.codePostal }}&nbsp;{{ chantier.adresse.ville }}</td>
+                <td>{{ chantier.adresse.rue }}<br>{{ chantier.adresse.codePostal }}&nbsp;{{ chantier.adresse.ville }}</td> 
                 <td>
                     <ul>
                         <li>
@@ -32,9 +45,17 @@
                     </ul>
                 </td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
     </table>
+
+
+
+
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 
     <ul>
         <li>

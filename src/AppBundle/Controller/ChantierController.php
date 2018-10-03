@@ -20,15 +20,22 @@ class ChantierController extends Controller
      * @Route("s/", name="chantier_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
 
-        $chantiers = $em->getRepository('AppBundle:Chantier')->findAll();
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = "SELECT c FROM AppBundle:Chantier c";
+        $query = $em->createQuery($dql);
+    
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
 
-        return $this->render('chantier/index.html.twig', array(
-            'chantiers' => $chantiers,
-        ));
+        return $this->render('chantier/index.html.twig', array('pagination' => $pagination));
+    
     }
 
     /**

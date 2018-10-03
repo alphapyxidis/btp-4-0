@@ -1,42 +1,50 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="one whole">
-    <h1>Chantier</h1>
+    <div class="row">
+        <div class="one whole double-padded" style="height:150px;text-align:center;background-image: url('{{ asset('img/banniere-chantier.png') }}');background-size:cover;">
+        <h2><b>{{ chantier.nom }}</b></h2>
+        <h4>{{ chantier.adresse }}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="one whole">
+            <h1>Chantier</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>#</th>
-                <td>{{ chantier.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ chantier.nom }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ chantier.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ chantier.description }}</td>
-            </tr>
-        </tbody>
-    </table>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>#</th>
+                        <td>{{ chantier.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ chantier.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Adresse</th>
+                        <td>{{ chantier.adresse }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ chantier.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('chantier_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('chantier_edit', { 'slug': chantier.slug }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-</div>
+            <ul>
+                <li>
+                    <a href="{{ path('chantier_index') }}">Back to the list</a>
+                </li>
+                <li>
+                    <a href="{{ path('chantier_edit', { 'slug': chantier.slug }) }}">Edit</a>
+                </li>
+                <li>
+                    {{ form_start(delete_form) }}
+                        <input type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}
