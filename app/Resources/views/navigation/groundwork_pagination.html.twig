@@ -1,0 +1,74 @@
+{# app/Resources/views/navigation/groundwork_pagination.html.twig #}
+
+{% if pageCount > 1 %}
+<div class="row half pad-top pad-bottom">
+    <ul class="button-group">
+
+    {% if previous is defined %}
+        <li>
+            <a class="button" href="{{ path(route, query|merge({(pageParameterName): previous})) }}" title="{{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}"><i class="icon-chevron-left"></i></a>
+        </li>
+    {% else %}
+        <li>
+            <button disabled="disabled" aria-disabled="true" title="{{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}"><i class="icon-chevron-left"></i></button>
+        </li>
+    {% endif %}
+
+    {% if startPage > 1 %}
+        <li>
+            <a class="button" href="{{ path(route, query|merge({(pageParameterName): 1})) }}">1</a>
+        </li>
+        {% if startPage == 3 %}
+            <li>
+                <a class="button" href="{{ path(route, query|merge({(pageParameterName): 2})) }}">2</a>
+            </li>
+        {% elseif startPage != 2 %}
+        <li>
+            <button>&hellip;</button>
+        </li>
+        {% endif %}
+    {% endif %}
+
+    {% for page in pagesInRange %}
+        {% if page != current %}
+            <li>
+                <a class="button" href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+            </li>
+        {% else %}
+            <li>
+                <button class="active info">{{ page }}</button>
+            </li>
+        {% endif %}
+
+    {% endfor %}
+
+    {% if pageCount > endPage %}
+        {% if pageCount > (endPage + 1) %}
+            {% if pageCount > (endPage + 2) %}
+                <li>
+                    <button>&hellip;</button>
+                </li>
+            {% else %}
+                <li>
+                    <a class="button" href="{{ path(route, query|merge({(pageParameterName): (pageCount - 1)})) }}">{{ pageCount -1 }}</a>
+                </li>
+            {% endif %}
+        {% endif %}
+        <li>
+            <a class="button" href="{{ path(route, query|merge({(pageParameterName): pageCount})) }}">{{ pageCount }}</a>
+        </li>
+    {% endif %}
+
+    {% if next is defined %}
+        <li>
+            <a class="button" href="{{ path(route, query|merge({(pageParameterName): next})) }}" title="{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}"><i class="icon-chevron-right"></i></a>
+        </li>
+    {% else %}
+        <li>
+            <button disabled="disabled" aria-disabled="true" title="{{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}"><i class="icon-chevron-right"></i></button>
+        </li>
+    {% endif %}
+    </ul>
+</div>
+{% endif %}
+
