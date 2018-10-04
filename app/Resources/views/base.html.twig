@@ -82,9 +82,10 @@
           </div>
         </header>
 
-        {% block navigation %}{% endblock %}        
-        
         <div class="six eigths centered container charcoal">
+            <div class="row padded">
+                {% block navigation %}{% endblock %}        
+            </div>
             <div class="row padded">
                 <div class="one whole gap-top">
                     {% for message in app.session.flashbag.get('error') %}

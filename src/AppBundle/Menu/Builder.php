@@ -26,12 +26,13 @@ class Builder implements ContainerAwareInterface
         // you can also add sub levels to your menus as follows
         $menu['Chantiers']->addChild('Tous', ['route' => 'chantier_index']);
         $menu['Chantiers']->addChild('Ajouter', ['route' => 'chantier_new']);
-        $menu['Chantiers']->addChild('Autour de moi', ['route' => 'demo']);
-        $menu['Chantiers']->addChild('exemple chantier', [
+        $submenu = $menu['Chantiers']->addChild('Exemples');
+        $submenu->addChild('exemple chantier', [
             'route' => 'chantier_show',
             'routeParameters' => ['slug' => $chantier->getSlug()]
         ]);
-        $menu['Chantiers']->addChild('exemple PIC', ['route' => 'pic']);
+        $submenu->addChild('exemple PIC', ['route' => 'pic']);
+        $menu['Chantiers']->addChild('Autour de moi', ['route' => 'demo']);
 
         $menu->addChild('Adresses', ['route' => 'adresse_index']);
 

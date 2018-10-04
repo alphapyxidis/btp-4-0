@@ -58,11 +58,13 @@
           </div>
         </header>
 
-        {% block navigation %}
-            {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
-        {% endblock %}        
-        
         <div class="six eigths centered container charcoal">
+            <div class="row padded">
+                <nav class="orange nav">
+                    {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
+                </nav>            
+                {% block navigation %}{% endblock %}        
+            </div>
             <div class="row padded">
                 <div class="one whole gap-top">
                     {% for message in app.session.flashbag.get('error') %}
