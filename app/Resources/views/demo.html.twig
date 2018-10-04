@@ -38,51 +38,29 @@
              <div class="desktop-only" >
                     <div class="row">
                         <a class="two thirds align-center" href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-btp-4-0.png') }}" width="800" alt="BTP 4.0"/></a>
-                        <div class="one third" title="Partagez cette page avec votre réseau...">
-                            <div class="five sixths mobile centered triple-pad-top">
-                                <div class="addthis_inline_share_toolbox"></div>
-                            </div>
-                        </div>
                     </div>
              </div>
              <div class="ipad-only">
                     <div class="row">
                         <a class="three fifths" href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-btp-4-0.png') }}" width="100%" alt="BTP 4.0"/></a>
-                        <div class="two fifths" title="Partagez cette page avec votre réseau...">
-                            <div class="nine tenths mobile centered double-pad-top">
-                                <div class="addthis_inline_share_toolbox"></div>
-                            </div>
-                        </div>
                     </div>
              </div>
              <div class="small-tablet-only">
                     <div class="row">
                         <a class="one whole centered" href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-btp-4-0.png') }}" width="100%" alt="BTP 4.0"/></a>
                     </div>
-                    <div class="row">
-                        <div class="one whole half-padded" title="Partagez cette page avec votre réseau...">
-                            <div class="nine tenths mobile centered pad-top">
-                                <div class="addthis_inline_share_toolbox"></div>
-                            </div>
-                        </div>
-                    </div>
              </div>
              <div class="mobile-only">
                     <div class="row">
                         <a class="one whole centered" href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-btp-4-0.png') }}" width="200%" alt="BTP 4.0"/></a>
                     </div>
-                    <div class="row">
-                        <div class="one whole half-padded" title="Partagez cette page avec votre réseau...">
-                            <div class="nine tenths mobile centered pad-top">
-                                <div class="addthis_inline_share_toolbox"></div>
-                            </div>
-                        </div>
-                    </div>
              </div>
           </div>
         </header>
 
-        {% block navigation %}{% endblock %}        
+        {% block navigation %}
+            {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
+        {% endblock %}        
         
         <div class="six eigths centered container charcoal">
             <div class="row padded">
@@ -139,8 +117,6 @@
         </footer>
 
         <!-- scripts-->
-        <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid={{ addthis_pubid }}"></script>
         <script type="text/javascript" src="{{ asset('/js/groundwork.all.js') }}"></script>
             <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

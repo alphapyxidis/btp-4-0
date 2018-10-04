@@ -54,25 +54,25 @@ class NavigationController extends Controller
     }
 
     /**
-     * @Route("/lab", name="lab")
+     * @Route("/demo", name="demo")
      */
-    public function labAction()
+    public function demoAction()
     {
         $repository = $this->getDoctrine()->getRepository(Chantier::class);
 
         $chantiers = $repository->FindAll();
 
-        return $this->render('navigation/carto.html.twig', [
+        return $this->render('chantier/carto.html.twig', [
             'chantiers' => $chantiers,
         ]);     
     }
 
     /**
-     * @Route("/lab/plan-installation-chantier", name="pic")
+     * @Route("/demo/plan-installation-chantier", name="pic")
      */
     public function picAction()
     {
-        return $this->render('navigation/carto-pdf.html.twig'); 
+        return $this->render('chantier/exemple-pic.html.twig'); 
     }}
 
 ?>

@@ -1,5 +1,21 @@
 {% extends 'base.html.twig' %}
 
+{% block navigation %}
+        <div class="container padded">
+                <div class="six eigths centered container charcoal">
+                    <nav role="navigation" class="nav nocollapse orange" title="Menu">
+                        <ul role="menubar">
+                            <li><a href="{{ url('accueil') }}"><i class="icon-rocket"></i> Le chantier du futur</a></li>
+                            <li><a href="{{ url('presentation') }}"><i class="icon-lightbulb"></i> Les enjeux de transformation</a></li>
+                            <li><a href="{{ url('resultats') }}"><i class="icon-dashboard"></i> Résultats de l'enquête</a></li>
+                            <li><a class="noicon" href="{{ url('rapport') }}"><i class="icon-file-text"></i> Rapport complet</a></li>
+                            <li><a href="{{ url('demo') }}"><i class="icon-beaker"></i> Démonstrateur</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+{% endblock  %}
+
 {% block body %}
     <div id="wrapper">
         <div id="container">

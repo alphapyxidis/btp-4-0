@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Chantier controller.
  *
- * @Route("lab/chantier")
+ * @Route("demo/chantier")
  */
 class ChantierController extends Controller
 {
@@ -31,7 +31,7 @@ class ChantierController extends Controller
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            10/*limit per page*/
+            8/*limit per page*/
         );
 
         return $this->render('chantier/index.html.twig', array('pagination' => $pagination));

@@ -38,7 +38,8 @@
         "vich/uploader-bundle": "^1.0",
         "oneup/flysystem-bundle" :"^1.0",
         "pugx/autocompleter-bundle" : "^1.0",
-        "knplabs/knp-paginator-bundle" : "^2.0"
+        "knplabs/knp-paginator-bundle" : "^2.0",
+        "knplabs/knp-menu-bundle" : "^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

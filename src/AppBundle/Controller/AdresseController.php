@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Adresse controller.
  *
- * @Route("lab/adresse")
+ * @Route("demo/adresse")
  */
 class AdresseController extends Controller
 {
