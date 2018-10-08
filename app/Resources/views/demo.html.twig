@@ -60,9 +60,7 @@
 
         <div class="six eigths centered container charcoal">
             <div class="row padded">
-                <nav class="orange nav">
-                    {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
-                </nav>            
+                {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
                 {% block navigation %}{% endblock %}        
             </div>
             <div class="row padded">

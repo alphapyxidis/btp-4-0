@@ -1,4 +1,7 @@
-#map{height: 100vh;}
+#map{
+  height: 100vh;
+  z-index: 0;
+}
 
 /* customize look of leaflet zoom controls */
 .leaflet-control-zoom-in{
@@ -9,4 +12,7 @@
 }
 .leaflet-popup-close-button::after{
   display: none;
+}
+li[role=menu] {
+  white-space: nowrap;
 }
