@@ -19,7 +19,7 @@ class Builder implements ContainerAwareInterface
         // access services from the container!
         $em = $this->container->get('doctrine')->getManager();
         // findMostRecent and Blog are just imaginary examples
-        $chantier = $em->getRepository('AppBundle:Chantier')->findOneById(2);
+        $chantier = $em->getRepository('AppBundle:Chantier')->findOneBySlug('unite-production-premurs');
 
         // create another menu item
         $menu->addChild('Chantiers', ['route' => 'chantier_index']);

@@ -20,6 +20,7 @@
                 <h4>Description</h4>
                 <p>{{ chantier.description }}</p>
             </div>
+            <a href="{{ vich_uploader_asset(chantier, 'AttachedFile') }}" title="{{ chantier.fileName }}" >{{ chantier.fileName }}</a>
         </div>
         <div "one third">
             <div id="map" style="height:400px;"></div>

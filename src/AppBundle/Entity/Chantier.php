@@ -51,17 +51,12 @@ class Chantier
      * 
      * @Vich\UploadableField(mapping="chantier_file", fileNameProperty="fileName", size="fileSize")
      * 
-     * @var File
      */
     private $AttachedFile;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @var string
-     *
-     * @Assert\NotBlank(message="Téléchargez le plan de situation au format PDF.")
-     * @Assert\File(mimeTypes={ "application/pdf" })
      */
     private $fileName;
 
@@ -199,6 +194,7 @@ class Chantier
      * during Doctrine hydration.
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
+
      */
     public function setAttachedFile($file = null)
     {
@@ -209,6 +205,16 @@ class Chantier
             // otherwise the event listeners won't be called and the file is lost
             $this->fileUpdatedAt = new \DateTimeImmutable();
         }
+    }
+
+    /**
+     * Get AttachedFile
+     *
+     * @return File
+     */
+    public function getAttachedFile()
+    {
+        return $this->AttachedFile;
     }
 
     /**

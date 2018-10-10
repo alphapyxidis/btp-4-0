@@ -156,11 +156,13 @@ oneup_flysystem:
     adapters:
         chantier_adapter:
             local:
-                directory: '%kernel.root_dir%/public/chantier/fichiers' 
+                directory: '%kernel.root_dir%/private/files' 
 
     filesystems:
         chantier_fs:
             adapter: chantier_adapter
+            visibility: public
+            alias: chantier_fs
             mount: chantier_fs
 
 # File uploader Configuration
@@ -169,6 +171,11 @@ vich_uploader:
     storage: flysystem
 
     mappings:
-        chantier_files:
-            uri_prefix: /chantier/fichiers
-            upload_destination: chantier_fs    
+        chantier_file:
+            uri_prefix: /chantier/fichier
+            upload_destination: chantier_fs
+            namer: 
+                service: vich_uploader.namer_uniqid      
+
+
+                        
