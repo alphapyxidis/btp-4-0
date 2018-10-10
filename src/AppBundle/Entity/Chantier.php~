@@ -5,10 +5,13 @@ namespace AppBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="btp_chantier")
+ * @Vich\Uploadable
  */
 class Chantier
 {
@@ -21,6 +24,7 @@ class Chantier
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Assert\NotBlank()
      */
     protected $nom;
     
@@ -30,17 +34,68 @@ class Chantier
     protected $description;
     
     /**
-     * @Gedmo\Slug(fields={"nom"})
+     * @Gedmo\Slug(fields={"nom"}, updatable=true, unique=true)
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
 
     /**
-     * @ORM\OneToOne(targetEntity="Adresse")
+     * @Assert\Type(type="AppBundle\Entity\Adresse")
+     * @Assert\Valid()
+     * @ORM\OneToOne(targetEntity="Adresse",cascade={"persist"})
      * @ORM\JoinColumn(name="idAdresse", referencedColumnName="id")
      */
-    private $idAdresse;
-    
+    private $adresse;
+
+    /**
+     * 
+     * @Vich\UploadableField(mapping="chantier_file", fileNameProperty="fileName", size="fileSize")
+     * 
+     * @var File
+     */
+    private $AttachedFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $fileName;
+
+    /**
+     * @ORM\Column(type="integer")
+     *
+     * @var integer
+     */
+    private $fileSize;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $fileUpdatedAt;
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
+     */
+    public function setAttachedFile($file = null)
+    {
+        $this->AttachedFile = $file;
+
+        if (null !== $file) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->fileUpdatedAt = new \DateTimeImmutable();
+        }
+    }
+
     public function __construct()
     {
         //parent::__construct();
@@ -82,6 +137,16 @@ class Chantier
     }
 
     /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
      * Set slug
      *
      * @param string $slug
@@ -96,12 +161,50 @@ class Chantier
     }
 
     /**
-     * Get slug
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Chantier
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
      *
      * @return string
      */
-    public function getSlug()
+    public function getDescription()
     {
-        return $this->slug;
+        return $this->description;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param \AppBundle\Entity\Adresse $adresse
+     *
+     * @return Chantier
+     */
+    public function setAdresse(\AppBundle\Entity\Adresse $adresse = null)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return \AppBundle\Entity\Adresse
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
     }
 }

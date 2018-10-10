@@ -6,10 +6,12 @@ namespace AppBundle\Entity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="btp_chantier")
+ * @Vich\Uploadable
  */
 class Chantier
 {
@@ -44,7 +46,39 @@ class Chantier
      * @ORM\JoinColumn(name="idAdresse", referencedColumnName="id")
      */
     private $adresse;
-    
+
+    /**
+     * 
+     * @Vich\UploadableField(mapping="chantier_file", fileNameProperty="fileName", size="fileSize")
+     * 
+     * @var File
+     */
+    private $AttachedFile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     *
+     * @Assert\NotBlank(message="Téléchargez le plan de situation au format PDF.")
+     * @Assert\File(mimeTypes={ "application/pdf" })
+     */
+    private $fileName;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     * @var integer
+     */
+    private $fileSize;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @var \DateTime
+     */
+    private $fileUpdatedAt;
+
     public function __construct()
     {
         //parent::__construct();
@@ -84,8 +118,6 @@ class Chantier
     {
         return $this->nom;
     }
-
-
 
     /**
      * Get slug
@@ -157,5 +189,97 @@ class Chantier
     public function getAdresse()
     {
         return $this->adresse;
+    }
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
+     */
+    public function setAttachedFile($file = null)
+    {
+        $this->AttachedFile = $file;
+
+        if (null !== $file) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->fileUpdatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    /**
+     * Set fileName
+     *
+     * @param string $fileName
+     *
+     * @return Chantier
+     */
+    public function setFileName($fileName)
+    {
+        $this->fileName = $fileName;
+
+        return $this;
+    }
+
+    /**
+     * Get fileName
+     *
+     * @return string
+     */
+    public function getFileName()
+    {
+        return $this->fileName;
+    }
+
+    /**
+     * Set fileSize
+     *
+     * @param integer $fileSize
+     *
+     * @return Chantier
+     */
+    public function setFileSize($fileSize)
+    {
+        $this->fileSize = $fileSize;
+
+        return $this;
+    }
+
+    /**
+     * Get fileSize
+     *
+     * @return integer
+     */
+    public function getFileSize()
+    {
+        return $this->fileSize;
+    }
+
+    /**
+     * Set fileUpdatedAt
+     *
+     * @param \DateTime $fileUpdatedAt
+     *
+     * @return Chantier
+     */
+    public function setFileUpdatedAt($fileUpdatedAt)
+    {
+        $this->fileUpdatedAt = $fileUpdatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get fileUpdatedAt
+     *
+     * @return \DateTime
+     */
+    public function getFileUpdatedAt()
+    {
+        return $this->fileUpdatedAt;
     }
 }

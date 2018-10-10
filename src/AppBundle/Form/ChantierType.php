@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use AppBundle\Form\AdresseType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ChantierType extends AbstractType
 {
@@ -14,7 +15,12 @@ class ChantierType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('slug')->add('description')->add('adresse', AdresseType::class);
+        $builder
+            ->add('nom')
+            ->add('slug')
+            ->add('description')
+            ->add('filename', FileType::class, array('label' => 'Plan de situation (fihier PDF)'))
+            ->add('adresse', AdresseType::class);
     }/**
      * {@inheritdoc}
      */

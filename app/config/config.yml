@@ -169,6 +169,6 @@ vich_uploader:
     storage: flysystem
 
     mappings:
-        product_image:
+        chantier_files:
             uri_prefix: /chantier/fichiers
             upload_destination: chantier_fs    
