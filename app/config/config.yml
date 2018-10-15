@@ -159,23 +159,31 @@ oneup_flysystem:
                 directory: '%kernel.root_dir%/../web/ressources/uploaded' 
 
     filesystems:
-        chantier_fs:
+        chantier_filesystem:
             adapter: chantier_adapter
             visibility: private
-            alias: chantier_fs
-            mount: chantier_fs
+            alias: chantier_filesystem
+            mount: chantier_filesystem
 
 # File uploader Configuration
-vich_uploader:
-    db_driver: orm # or mongodb or propel or phpcr
-    storage: flysystem
-
+oneup_uploader:
     mappings:
         chantier_file:
-            uri_prefix: /ressources/uploaded
-            upload_destination: chantier_fs
-            namer: 
-                service: vich_uploader.namer_uniqid      
+            frontend: dropzone # or any uploader you use in the frontend
+            storage:
+                type: flysystem
+                filesystem: chantier_filesystem
+
+vich_uploader:
+     db_driver: orm # or mongodb or propel or phpcr
+     storage: flysystem
+
+     mappings:
+         chantier_file:
+             uri_prefix: /ressources/uploaded
+             upload_destination: chantier_filesystem
+             namer: 
+                 service: vich_uploader.namer_uniqid      
 
 
                         
