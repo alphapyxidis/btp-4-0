@@ -156,12 +156,12 @@ oneup_flysystem:
     adapters:
         chantier_adapter:
             local:
-                directory: '%kernel.root_dir%/private/files' 
+                directory: '%kernel.root_dir%/../web/ressources/uploaded' 
 
     filesystems:
         chantier_fs:
             adapter: chantier_adapter
-            visibility: public
+            visibility: private
             alias: chantier_fs
             mount: chantier_fs
 
@@ -172,7 +172,7 @@ vich_uploader:
 
     mappings:
         chantier_file:
-            uri_prefix: /chantier/fichier
+            uri_prefix: /ressources/uploaded
             upload_destination: chantier_fs
             namer: 
                 service: vich_uploader.namer_uniqid      
