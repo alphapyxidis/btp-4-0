@@ -156,20 +156,20 @@ oneup_flysystem:
     adapters:
         chantier_adapter:
             local:
-                directory: '%kernel.root_dir%/../web/ressources/uploaded' 
+                directory: '%kernel.root_dir%/../web/data/uploaded' 
 
     filesystems:
         chantier_filesystem:
             adapter: chantier_adapter
             visibility: private
             alias: chantier_filesystem
-            mount: chantier_filesystem
 
 # File uploader Configuration
 oneup_uploader:
     mappings:
         chantier_file:
             frontend: dropzone # or any uploader you use in the frontend
+            disallowed_mimetypes:  ["application/pdf"]
             storage:
                 type: flysystem
                 filesystem: chantier_filesystem
@@ -180,7 +180,7 @@ vich_uploader:
 
      mappings:
          chantier_file:
-             uri_prefix: /ressources/uploaded
+             uri_prefix: /data/uploaded
              upload_destination: chantier_filesystem
              namer: 
                  service: vich_uploader.namer_uniqid      
