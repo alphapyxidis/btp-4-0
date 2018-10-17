@@ -32,6 +32,7 @@ class Builder implements ContainerAwareInterface
             'routeParameters' => ['slug' => $chantier->getSlug()]
         ]);
         $submenu->addChild('exemple PIC', ['route' => 'pic']);
+        $submenu->addChild('Planning', ['route' => 'gantt']);
         $menu['Chantiers']->addChild('Autour de moi', ['route' => 'demo']);
 
         $menu->addChild('Adresses', ['route' => 'adresse_index']);
