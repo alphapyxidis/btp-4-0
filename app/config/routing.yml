@@ -10,7 +10,7 @@ gantt:
     path: /demo/planning
     controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
     defaults:
-        path: /libs/robicch-jQueryGantt/gantt.html
+        path: /libs/jquery.gantt/gantt.html
         permanent: true
 
 oneup_uploader:

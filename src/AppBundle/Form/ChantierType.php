@@ -6,7 +6,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use AppBundle\Form\AdresseType;
-use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ChantierType extends AbstractType
 {
@@ -17,12 +16,7 @@ class ChantierType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('slug')
             ->add('description')
-            ->add('AttachedFile', VichFileType::class, [
-                'required' => false,
-                'allow_delete' => true
-            ])
             ->add('adresse', AdresseType::class);
     }/**
      * {@inheritdoc}

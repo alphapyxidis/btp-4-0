@@ -15,6 +15,29 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class ChantierController extends Controller
 {
     /**
+     * rebuild slugs for all chantier entities.
+     *
+     * @Route("s/rebuild-slug", name="chantier_reslug")
+     * @Method("GET")
+     */
+    public function reslugAction(Request $request)
+    {
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $repository = $this->getDoctrine()->getRepository(Chantier::class);
+
+        $chantiers = $repository->FindAll();
+
+        foreach($chantiers as $chantier){
+            $newName = rtrim($chantier->getNom());
+            $chantier->setNom($newName);
+            $em->persist($chantier);
+            $em->flush();
+         }
+
+        return $this->redirectToRoute('chantier_index', array('page' => 1));
+    }
+    
+     /**
      * Lists all chantier entities.
      *
      * @Route("s/", name="chantier_index")
@@ -83,7 +106,7 @@ class ChantierController extends Controller
     /**
      * Displays a form to edit an existing chantier entity.
      *
-     * @Route("/{slug}/modifier", name="chantier_edit")
+     * @Route("/modifier/{slug}", name="chantier_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Chantier $chantier)
@@ -108,7 +131,7 @@ class ChantierController extends Controller
     /**
      * Deletes a chantier entity.
      *
-     * @Route("/{slug}/supprimer", name="chantier_delete")
+     * @Route("/supprimer/{slug}", name="chantier_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Chantier $chantier)
