@@ -104,10 +104,11 @@ stof_doctrine_extensions:
     #     # Default file info class implementing FileInfoInterface: Optional. By default we provide a class which is prepared to receive an UploadedFile instance.
     #     default_file_info_class: Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo
     orm:
-        tree: true
-        sluggable: true
-        timestampable: true
-        blameable: true
+        default:
+            tree: true
+            sluggable: true
+            timestampable: true
+            blameable: true
 
 knp_paginator:
     page_range: 3                       # number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)
@@ -156,26 +157,23 @@ oneup_flysystem:
     adapters:
         chantier_adapter:
             local:
-                directory: '%kernel.root_dir%/../web/ressources/uploaded' 
+                directory: '%kernel.root_dir%/../web/data/uploaded' 
 
     filesystems:
-        chantier_fs:
+        chantier_filesystem:
             adapter: chantier_adapter
             visibility: private
-            alias: chantier_fs
-            mount: chantier_fs
+            alias: chantier_filesystem
 
 # File uploader Configuration
-vich_uploader:
-    db_driver: orm # or mongodb or propel or phpcr
-    storage: flysystem
-
+oneup_uploader:
     mappings:
         chantier_file:
-            uri_prefix: /ressources/uploaded
-            upload_destination: chantier_fs
-            namer: 
-                service: vich_uploader.namer_uniqid      
+            frontend: dropzone # or any uploader you use in the frontend
+            storage:
+                type: flysystem
+                filesystem: chantier_filesystem
+   
 
 
                         

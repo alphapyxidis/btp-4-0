@@ -1,5 +1,14 @@
 {% extends 'demo.html.twig' %}
 
+
+{% block stylesheets %}
+    <link href="{{ asset('/css/dropzone.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block headerscripts %}
+    <script type="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
+{% endblock %}
+
 {% block body %}
 <div class="one whole">
     <h1>Chantier creation</h1>
@@ -14,6 +23,12 @@
             <a href="{{ path('chantier_index') }}">Back to the list</a>
         </li>
     </ul>
+</div>
+<div class="row">
+    <div class="two thirds centered" >
+        <form action="{{ oneup_uploader_endpoint('chantier_file') }}" class="dropzone" style="border:4px dashed dodgerblue; width:100%; height:200px;">
+        </form>
+    </div>
 </div>
 {% endblock %}
 {% block javascripts %}

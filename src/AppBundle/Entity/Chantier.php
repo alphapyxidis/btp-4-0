@@ -3,15 +3,13 @@
 
 namespace AppBundle\Entity;
 
-use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="btp_chantier")
- * @Vich\Uploadable
  */
 class Chantier
 {
@@ -29,13 +27,23 @@ class Chantier
     protected $nom;
     
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
     
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $gantt;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $pic;
+
+    /**
      * @Gedmo\Slug(fields={"nom"}, updatable=true, unique=true)
-     * @ORM\Column(length=128, unique=true)
+     * @ORM\Column(type="string", length=128, unique=true)
      */
     private $slug;
 
@@ -46,33 +54,6 @@ class Chantier
      * @ORM\JoinColumn(name="idAdresse", referencedColumnName="id")
      */
     private $adresse;
-
-    /**
-     * 
-     * @Vich\UploadableField(mapping="chantier_file", fileNameProperty="fileName", size="fileSize")
-     * 
-     */
-    private $AttachedFile;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
-     */
-    private $fileName;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     *
-     * @var integer
-     */
-    private $fileSize;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     *
-     * @var \DateTime
-     */
-    private $fileUpdatedAt;
 
     public function __construct()
     {
@@ -125,20 +106,6 @@ class Chantier
     }
 
     /**
-     * Set slug
-     *
-     * @param string $slug
-     *
-     * @return Chantier
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
      * Set description
      *
      * @param string $description
@@ -186,106 +153,66 @@ class Chantier
         return $this->adresse;
     }
 
-    /**
-     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-     * of 'UploadedFile' is injected into this setter to trigger the update. If this
-     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-     * must be able to accept an instance of 'File' as the bundle will inject one here
-     * during Doctrine hydration.
-     *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
-
-     */
-    public function setAttachedFile($file = null)
-    {
-        $this->AttachedFile = $file;
-
-        if (null !== $file) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->fileUpdatedAt = new \DateTimeImmutable();
-        }
-    }
 
     /**
-     * Get AttachedFile
+     * Set gantt
      *
-     * @return File
-     */
-    public function getAttachedFile()
-    {
-        return $this->AttachedFile;
-    }
-
-    /**
-     * Set fileName
-     *
-     * @param string $fileName
+     * @param string $gantt
      *
      * @return Chantier
      */
-    public function setFileName($fileName)
+    public function setGantt($gantt)
     {
-        $this->fileName = $fileName;
+        $this->gantt = $gantt;
 
         return $this;
     }
 
     /**
-     * Get fileName
+     * Get gantt
      *
      * @return string
      */
-    public function getFileName()
+    public function getGantt()
     {
-        return $this->fileName;
+        return $this->gantt;
     }
 
     /**
-     * Set fileSize
+     * Set pic
      *
-     * @param integer $fileSize
+     * @param string $pic
      *
      * @return Chantier
      */
-    public function setFileSize($fileSize)
+    public function setPic($pic)
     {
-        $this->fileSize = $fileSize;
+        $this->pic = $pic;
 
         return $this;
     }
 
     /**
-     * Get fileSize
+     * Get pic
      *
-     * @return integer
+     * @return string
      */
-    public function getFileSize()
+    public function getPic()
     {
-        return $this->fileSize;
+        return $this->pic;
     }
 
     /**
-     * Set fileUpdatedAt
+     * Set slug
      *
-     * @param \DateTime $fileUpdatedAt
+     * @param string $slug
      *
      * @return Chantier
      */
-    public function setFileUpdatedAt($fileUpdatedAt)
+    public function setSlug($slug)
     {
-        $this->fileUpdatedAt = $fileUpdatedAt;
+        $this->slug = $slug;
 
         return $this;
-    }
-
-    /**
-     * Get fileUpdatedAt
-     *
-     * @return \DateTime
-     */
-    public function getFileUpdatedAt()
-    {
-        return $this->fileUpdatedAt;
     }
 }

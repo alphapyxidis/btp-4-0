@@ -5,3 +5,14 @@ app:
 # app/config/routing.yml
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+gantt:
+    path: /demo/planning
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /libs/jquery.gantt/gantt.html
+        permanent: true
+
+oneup_uploader:
+    resource: .
+    type: uploader

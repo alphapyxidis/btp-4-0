@@ -19,7 +19,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new FOS\UserBundle\FOSUserBundle(), 
-            new Vich\UploaderBundle\VichUploaderBundle(),
+            new Oneup\UploaderBundle\OneupUploaderBundle(),
             new Oneup\FlysystemBundle\OneupFlysystemBundle(),
             new PUGX\AutocompleterBundle\PUGXAutocompleterBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
