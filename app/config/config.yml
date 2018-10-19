@@ -167,9 +167,13 @@ oneup_flysystem:
 
 # File uploader Configuration
 oneup_uploader:
+    orphanage:
+        maxage: 86400
+        directory: %kernel.cache_dir%/uploader/orphanage
     mappings:
         chantier_file:
             frontend: dropzone # or any uploader you use in the frontend
+            use_orphanage: true
             storage:
                 type: flysystem
                 filesystem: chantier_filesystem

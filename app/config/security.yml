@@ -25,8 +25,12 @@ security:
                  csrf_token_generator: security.csrf.token_manager
 
             logout:       true
-            anonymous:    ~
-
+            anonymous:    true
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+                
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }

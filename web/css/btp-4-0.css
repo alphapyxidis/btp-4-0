@@ -15,6 +15,11 @@
   display: none;
 }
 
+/* pour les ascensurs en automatique dans la dropzone */
+.dropzone {
+  overflow: auto;
+}
+
 /* pour éviter saut de ligne dans menu CSS groundwork */
 li[role=menu] {
   white-space: nowrap;
