@@ -28,6 +28,7 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-menu-bundle": "^2.0",
         "knplabs/knp-paginator-bundle": "^2.0",
+        "nelmio/cors-bundle": "^1.5",
         "oneup/flysystem-bundle": "^1.4",
         "oneup/uploader-bundle": "^1.5",
         "pugx/autocompleter-bundle": "^1.0",

@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Chantier;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Chantier controller.
@@ -37,6 +38,7 @@ class ChantierController extends Controller
         return $this->redirectToRoute('chantier_index', array('page' => 1));
     }
     
+    
      /**
      * Lists all chantier entities.
      *
@@ -45,7 +47,6 @@ class ChantierController extends Controller
      */
     public function indexAction(Request $request)
     {
-
         $em    = $this->get('doctrine.orm.entity_manager');
         $dql   = "SELECT c FROM AppBundle:Chantier c";
         $query = $em->createQuery($dql);
