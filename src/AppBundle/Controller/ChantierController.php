@@ -38,7 +38,51 @@ class ChantierController extends Controller
         return $this->redirectToRoute('chantier_index', array('page' => 1));
     }
     
+     /**
+     * Lists all chantier in a given area.
+     *
+     * @Route("/autour-de-moi", name="chantier_neighborhood")
+     */
+    public function neighborhoodAction(Request $request)
+    {
+
+        $south = $request->query->get('south', '48.815458');
+        $west = $request->query->get('west', '2.2279671');
+
+        $north = $request->query->get('north', '48.911599');
+        $east = $request->query->get('east', '2.429292');
+
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = "SELECT c FROM AppBundle:Chantier c JOIN c.adresse a WHERE a.lat between " .$south . " and ". $north ." and a.lon between " . $west . " and " . $east;
+        $query = $em->createQuery($dql);
+        $chantiers= $query->getResult();
+
+        return $this->render('chantier/neighborhood.json.twig', array('chantiers'=>$chantiers)); 
+
+        // if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {  
+        //     $jsonData = array();  
+        //     $idx = 0;  
+        //     foreach($chantiers as $chantier) {  
+        //        $temp = array(
+        //             'nom' => $chantier->getNom(),  
+        //             'slug' => $chantier->getSlug(),  
+        //             'rue' => $chantier->getAdresse()->getRue(),  
+        //             'ville' => $chantier->getAdresse()->getVille(),  
+        //             'lat' => $chantier->getAdresse()->getLat(),  
+        //             'lon' => $chantier->getAdresse()->getLon(),  
+        //        );   
+        //        $jsonData[$idx++] = $temp;  
+        //     } 
+
+        //     $response = new JsonResponse($jsonData);
+
+        //     return $response; 
+        //  } else { 
+        //     return $this->render('chantier/carto.html.twig', array('chantiers'=>$chantiers)); 
+        //  }         
     
+    }
+
      /**
      * Lists all chantier entities.
      *

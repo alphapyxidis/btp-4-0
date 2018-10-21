@@ -1,0 +1,4 @@
+[{% for chantier in chantiers -%}
+    {{ {nom: chantier.nom|e, slug: chantier.slug|e, ville:  chantier.adresse.ville|e, rue: chantier.adresse.rue|e, lat:  chantier.adresse.lat|e, lon:  chantier.adresse.lon|e}|json_encode|raw }}
+    {%- if not loop.last %},{% endif -%}
+{% endfor %}]

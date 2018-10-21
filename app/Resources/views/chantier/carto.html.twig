@@ -14,96 +14,82 @@
 
 
 {% block body %}
-                <div class="two thirds padded">
+                <div class="one whole padded">
                     <h3>Les chantiers autour de ma position</h3>
                     <div class="noicon" id="map" style="height:640px;"></div>
-<script>
-console.log('init map');
-        var map = L.map('map');
-        var markers = L.markerClusterGroup();   
+                    <script>
 
-        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={{ mapbox_token }}', {
-        attribution: 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.outdoors', // 'mapbox.streets' 'mapbox.outdoors' 'mapbox.light'
-        accessToken: '{{ mapbox_token }}'
-        }).addTo(map);
+                            var map = L.map('map');
+                            var markers = L.markerClusterGroup();   
 
-        var craneIcon = L.icon({
-            iconUrl: "{{ asset('img/marker.png') }}",
-            shadowUrl: "{{ asset('img/shadow_marker.png') }}",
+                            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={{ mapbox_token }}', {
+                            attribution: 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                            maxZoom: 18,
+                            id: 'mapbox.outdoors', // 'mapbox.streets' 'mapbox.outdoors' 'mapbox.light'
+                            accessToken: '{{ mapbox_token }}'
+                            }).addTo(map);
 
-            iconSize:     [32, 32], // size of the icon
-            shadowSize:   [32, 32], // size of the shadow
-            iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
-            shadowAnchor: [16, 32],  // the same for the shadow
-            popupAnchor:  [-8, -32] // point from which the popup should open relative to the iconAnchor
-        });
+                            var craneIcon = L.icon({
+                                iconUrl: "{{ asset('img/marker.png') }}",
+                                shadowUrl: "{{ asset('img/shadow_marker.png') }}",
 
-        function onLocationFound(e) {
-            var radius = e.accuracy / 2;
+                                iconSize:     [32, 32], // size of the icon
+                                shadowSize:   [32, 32], // size of the shadow
+                                iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+                                shadowAnchor: [16, 32],  // the same for the shadow
+                                popupAnchor:  [-8, -32] // point from which the popup should open relative to the iconAnchor
+                            });
 
-            L.marker(e.latlng).addTo(map).bindPopup("Vous êtes localisé à " + radius + "mètres de ce point.").openPopup();
-            L.circle(e.latlng, radius).addTo(map);
-            map.setZoom(14);
-        }
+                            function onLocationFound(e) {
+                                var radius = e.accuracy / 2;
 
-        function onLocationError(e) {
-            alert(e.message);
-            map.setView([43.98, 4.85], 14);  // position par défaut
-        }
+                                //L.marker(e.latlng).addTo(map).bindPopup("Vous êtes localisé à " + radius + "mètres de ce point.").openPopup();
+                                //L.circle(e.latlng, radius).addTo(map);
+                                map.setZoom(14);
+                            }
 
-        function mapmoved() {
-            var east = map.getBounds().getEast();
-            var west = map.getBounds().getWest();
-            var north = map.getBounds().getNorth();
-            var south = map.getBounds().getSouth();  
-            var url = '{{ path('chantier_neighborhood') }}?east=' + east + '&west=' + west + '&south=' + south + '&north=' + north;
-            
-            console.log('ajax call : '+ url );
+                            function onLocationError(e) {
+                                alert(e.message);
+                                map.setView([43.98, 4.85], 14);  // position par défaut
+                            }
 
-            $.ajax({  
+                            function mapmoved() {
+                                var east = map.getBounds().getEast();
+                                var west = map.getBounds().getWest();
+                                var north = map.getBounds().getNorth();
+                                var south = map.getBounds().getSouth();  
+                                var url = '{{ path('chantier_neighborhood') }}?east=' + east + '&west=' + west + '&south=' + south + '&north=' + north;
 
-                url:        url ,  
-                type:       'POST',   
-                dataType:   'json',  
-                async:      true,  
-                
-                success: function(data, status) {  
-                    
-                    for(i = 0; i < data.length; i++) {  
-                        chantier = data[i];
-console.log(chantier);
-                        markers.addLayer(L.marker([ chantier['lat'], chantier['lon']], {icon: craneIcon}).addTo(map)
-                                        .bindPopup('<a href="#"><b>' + chantier['nom'] + '</b></a><br> situé ' + chantier['rue'] + ' à ' + chantier['ville']));
-                    }  
-                    map.addLayer(markers);
-                },  
-                error : function(xhr, textStatus, errorThrown) {  
-                    console.log('erreur Ajax :' + textStatus);  
-                }  
-            });  
+                                $.ajax({  
 
-        }
+                                    url:        url ,  
+                                    type:       'POST',   
+                                    dataType:   'json',  
+                                    async:      true,  
+                                    
+                                    success: function(data, status) {  
+                                        markers.clearLayers();
+                                        for(i = 0; i < data.length; i++) {  
+                                            chantier = data[i];
 
-        map.on('locationfound', onLocationFound);
-        map.on('locationerror', onLocationError);
+                                            markers.addLayer(L.marker([ chantier['lat'], chantier['lon']], {icon: craneIcon}).addTo(map)
+                                                            .bindPopup('<a href="demo/chantier/' + chantier['slug'] + '"><b>' + chantier['nom'] + '</b></a><br> situé ' + chantier['rue'] + ' à ' + chantier['ville']));
+                                        }  
+                                        map.addLayer(markers);
+                                    },  
+                                    error : function(xhr, textStatus, errorThrown) {  
+                                        console.log('erreur Ajax :' + textStatus);  
+                                    }  
+                                });  
 
-        map.locate({setView: true, maxZoom: 17}); 
+                            }
 
-        map.on('moveend', mapmoved);
-</script>
-                </div>
-                <div class="one third">
-                    <table>
-                        {% for chantier in chantiers %}
-                        <tr {% if loop.index is odd %}class="color"{% endif %}>
-                            <td><a href="{{ path('chantier_show', { 'slug': chantier.slug }) }}">{{ chantier.id }}</a></td>
-                            <td>{{ chantier.nom }}</td>
-                            <td>{{ chantier.description }}</td>
-                            <td>{{ chantier.adresse.rue }}<br>{{ chantier.adresse.codePostal }}&nbsp;{{ chantier.adresse.ville }}</td> 
-                        </tr>
-                        {% endfor %}
-                    </table>
+                            map.on('locationfound', onLocationFound);
+                            map.on('locationerror', onLocationError);
+
+                            map.locate({setView: true, maxZoom: 17}); 
+
+                            map.on('moveend', mapmoved);
+                    </script>
                 </div>
 {% endblock  %}

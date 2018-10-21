@@ -24,7 +24,6 @@ class AppKernel extends Kernel
             new PUGX\AutocompleterBundle\PUGXAutocompleterBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new Nelmio\CorsBundle\NelmioCorsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
