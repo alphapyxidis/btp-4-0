@@ -67,25 +67,25 @@ doctrine:
             gedmo_translatable:
                 type: annotation
                 prefix: Gedmo\Translatable\Entity
-                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+                dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
                 alias: GedmoTranslatable # (optional) it will default to the name set for the mapping
                 is_bundle: false
             gedmo_translator:
                 type: annotation
                 prefix: Gedmo\Translator\Entity
-                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Entity"
+                dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Entity"
                 alias: GedmoTranslator # (optional) it will default to the name set for the mapping
                 is_bundle: false
             gedmo_loggable:
                 type: annotation
                 prefix: Gedmo\Loggable\Entity
-                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
+                dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
                 alias: GedmoLoggable # (optional) it will default to the name set for the mapping
                 is_bundle: false
             gedmo_tree:
                 type: annotation
                 prefix: Gedmo\Tree\Entity
-                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
                 alias: GedmoTree # (optional) it will default to the name set for the mapping
                 is_bundle: false
 
@@ -96,7 +96,7 @@ stof_doctrine_extensions:
     # Only used if you activated the Uploadable extension
     # uploadable:
     #     # Default file path: This is one of the three ways you can configure the path for the Uploadable extension
-    #     default_file_path:       "%kernel.root_dir%/../web/uploads"
+    #     default_file_path:       "%kernel.project_dir%/web/uploads"
 
     #     # Mime type guesser class: Optional. By default, we provide an adapter for the one present in the HttpFoundation component of Symfony
     #     mime_type_guesser_class: Stof\DoctrineExtensionsBundle\Uploadable\MimeTypeGuesserAdapter
@@ -157,7 +157,7 @@ oneup_flysystem:
     adapters:
         chantier_adapter:
             local:
-                directory: '%kernel.root_dir%/../web/data/uploaded' 
+                directory: '%kernel.project_dir%/web/data/uploaded' 
 
     filesystems:
         chantier_filesystem:
@@ -169,7 +169,7 @@ oneup_flysystem:
 oneup_uploader:
     orphanage:
         maxage: 86400
-        directory: %kernel.cache_dir%/uploader/orphanage
+        directory: '%kernel.cache_dir%/uploader/orphanage'
     mappings:
         chantier_file:
             frontend: dropzone # or any uploader you use in the frontend
@@ -178,6 +178,24 @@ oneup_uploader:
                 type: flysystem
                 filesystem: chantier_filesystem
 
-
+hwi_oauth:
+    firewall_names: [main]
+    fosub:
+        username_iterations: 30
+        # Define in which columns of the fos_user table will be stored
+        # the access token of every resource_owner
+        properties:
+            auth0: auth0_id
+    resource_owners:
+        auth0:
+            type:                auth0
+            #class:               'AppBundle\Auth0ResourceOwner'
+            base_url:            '%auth0_base_url%'
+            client_id:           '%auth0_client_id%'
+            client_secret:       '%auth0_client_secret%'
+            #redirect_uri:        http://localhost:8000/auth0/callback
+            scope: "openid profile"
+            options:
+                csrf: true
 
                         

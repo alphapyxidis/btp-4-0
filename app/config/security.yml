@@ -20,12 +20,29 @@ security:
 
         main:
             pattern: ^/
-            form_login:
-                 provider: fos_userbundle
-                 csrf_token_generator: security.csrf.token_manager
 
-            logout:       true
+            # form_login:
+            #     provider: fos_userbundle
+            #     csrf_token_generator: security.csrf.token_manager
+            #     login_path: /login
+            #     check_path: /login_check
+
             anonymous:    true
+
+            oauth:
+                resource_owners:
+                    auth0: "/auth0/callback"
+                login_path:        /login
+                use_forward:       false
+                failure_path:      /login
+
+                oauth_user_provider:
+                    service: btp40.user_provider.service
+                #    service: hwi_oauth.user.provider
+            logout:
+                path:   /auth0/logout
+                target: /
+
             remember_me:
                 secret:   '%kernel.secret%'
                 lifetime: 604800 # 1 week in seconds

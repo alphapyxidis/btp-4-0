@@ -19,6 +19,15 @@ class User extends BaseUser
      */
     protected $id;
 
+    /** @ORM\Column(name="auth0_id", type="string", length=255, nullable=true) */
+    protected $auth0_id;
+
+    /** @ORM\Column(name="auth0_access_token", type="string", length=255, nullable=true) */
+    protected $auth0_access_token;
+
+    /** @ORM\Column(name="picture", type="string", length=512, nullable=true) */
+    protected $picture;
+
     public function __construct()
     {
         parent::__construct();

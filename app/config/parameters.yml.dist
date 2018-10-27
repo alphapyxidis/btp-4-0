@@ -25,3 +25,6 @@ parameters:
     addthis_pubid: ra-xxxxxxxxxxxxxxxx
     mapbox_token: pk.xxxxxxxxxx.xxxxxxxxxx
     geonames_user: xxxxxxxxxx
+    auth0_base_url: xxxxxxxxxxxxxxxx
+    auth0_client_id: xxxxxxxx
+    auth0_client_secret: xxxxxxxxxx
