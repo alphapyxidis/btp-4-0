@@ -37,7 +37,8 @@ security:
                 failure_path:      /login
 
                 oauth_user_provider:
-                    service: btp40.user_provider.service
+                    service: hwi_oauth.user.provider.fosub_bridge
+                #    service: btp40.user_provider.service
                 #    service: hwi_oauth.user.provider
             logout:
                 path:   /auth0/logout

@@ -149,8 +149,8 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\User
     from_email:
-        address: "%mailer_user%"
-        sender_name: "%mailer_user%"
+        address: "%mailer_from%"
+        sender_name: "%mailer_from%"
 
 # FlySystem Configuration (file system abstraction)
 oneup_flysystem:
@@ -189,11 +189,10 @@ hwi_oauth:
     resource_owners:
         auth0:
             type:                auth0
-            #class:               'AppBundle\Auth0ResourceOwner'
             base_url:            '%auth0_base_url%'
             client_id:           '%auth0_client_id%'
             client_secret:       '%auth0_client_secret%'
-            #redirect_uri:        http://localhost:8000/auth0/callback
+            redirect_uri:        http://localhost:8000/auth0/callback
             scope: "openid profile"
             options:
                 csrf: true
