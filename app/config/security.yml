@@ -23,9 +23,9 @@ security:
 
             # form_login:
             #     provider: fos_userbundle
-            #     csrf_token_generator: security.csrf.token_manager
             #     login_path: /login
             #     check_path: /login_check
+            #     csrf_token_generator: security.csrf.token_manager
 
             anonymous:    true
 
@@ -37,11 +37,10 @@ security:
                 failure_path:      /login
 
                 oauth_user_provider:
-                    service: hwi_oauth.user.provider.fosub_bridge
-                #    service: btp40.user_provider.service
+                    service: btp40.user_provider.service
                 #    service: hwi_oauth.user.provider
             logout:
-                path:   /auth0/logout
+                path:   /logout/auth0
                 target: /
 
             remember_me:

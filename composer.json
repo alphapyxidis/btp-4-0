@@ -31,7 +31,7 @@
         "knplabs/knp-paginator-bundle": "^2.0",
         "oneup/flysystem-bundle": "^1.4",
         "oneup/uploader-bundle": "^1.5",
-        "php-http/guzzle6-adapter": "^1.1",
+        "php-http/guzzle6-adapter": "^1.4",
         "php-http/httplug-bundle": "^1.12",
         "pugx/autocompleter-bundle": "^1.0",
         "sensio/distribution-bundle": "^5.0.19",

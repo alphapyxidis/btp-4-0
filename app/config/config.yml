@@ -192,7 +192,6 @@ hwi_oauth:
             base_url:            '%auth0_base_url%'
             client_id:           '%auth0_client_id%'
             client_secret:       '%auth0_client_secret%'
-            redirect_uri:        http://localhost:8000/auth0/callback
             scope: "openid profile"
             options:
                 csrf: true
