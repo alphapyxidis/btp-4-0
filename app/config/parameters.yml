@@ -17,6 +17,6 @@ parameters:
     mapbox_token: pk.eyJ1IjoiYWxwaGEtcHl4aWRpcyIsImEiOiJjam1ldW5xengxbXV3M2tsaGtyYzh3aGVsIn0.IFkFEVTD2adNiSFlgHUeAg
     geonames_user: alphapyxidis
     secret: 988791FE65B3B357DB30219F1EB34A6D5FEF70C5F3D473481C0F42E603024C96
-    auth0_base_url: https//alphapyxidis.eu.auth0.com
+    auth0_base_url: 'https://alphapyxidis.eu.auth0.com'
     auth0_client_id: 5vUvZdci7p7b6X1g3LY8eDdo0sWLWGal
     auth0_client_secret: 6rSlAfIZU53RR4njQ9EzMCfWPGKWQ6Fcng4VXVYV3coFWs-TQOZ_UCBBZOLn9Gh6

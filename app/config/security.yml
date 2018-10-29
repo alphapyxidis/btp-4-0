@@ -32,20 +32,19 @@ security:
             oauth:
                 resource_owners:
                     auth0: "/auth0/callback"
-                login_path:        /login
+                login_path:        /login/auth0
                 use_forward:       false
                 failure_path:      /login
 
                 oauth_user_provider:
                     service: btp40.user_provider.service
-                #    service: hwi_oauth.user.provider
             logout:
                 path:   /logout/auth0
                 target: /
 
             remember_me:
                 secret:   '%kernel.secret%'
-                lifetime: 604800 # 1 week in seconds
+                lifetime: 30 # 30 seconds  # 1 week in seconds = 604800
                 path:     /
                 
     access_control:

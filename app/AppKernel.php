@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Http\HttplugBundle\HttplugBundle(), 
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new Yectep\PhpSpreadsheetBundle\PhpSpreadsheetBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
