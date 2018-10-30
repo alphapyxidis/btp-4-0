@@ -188,7 +188,8 @@ hwi_oauth:
             auth0: auth0_id
     resource_owners:
         auth0:
-            type:                auth0
+            type:                oauth2
+            class:               'AppBundle\Security\OAuth\ResourceOwner\Auth0ResourceOwner'
             base_url:            '%auth0_base_url%'
             client_id:           '%auth0_client_id%'
             client_secret:       '%auth0_client_secret%'

@@ -42,10 +42,10 @@ security:
                 path:   /logout/auth0
                 target: /
 
-            remember_me:
-                secret:   '%kernel.secret%'
-                lifetime: 30 # 30 seconds  # 1 week in seconds = 604800
-                path:     /
+            # remember_me:
+            #     secret:   '%kernel.secret%'
+            #     lifetime: 30 # 30 seconds  # 1 week in seconds = 604800
+            #     path:     /
                 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }

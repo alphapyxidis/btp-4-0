@@ -17,8 +17,10 @@ auth0_login:
 auth0_logout:
     path: /logout/auth0
 
-# fos_user:
+fos_user:
 #     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
 
 gantt:
     path: /demo/planning

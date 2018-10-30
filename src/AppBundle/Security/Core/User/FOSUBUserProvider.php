@@ -36,6 +36,7 @@ class FOSUBUserProvider extends BaseClass
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
         $username = $response->getRealname();
+        $user_id = $response->getPath('userid');
         $picture = $response->getProfilePicture();
         $email = $response->getEmail();
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
@@ -47,7 +48,7 @@ class FOSUBUserProvider extends BaseClass
             $setter_token = $setter.'AccessToken';
             // create new user here
             $user = $this->userManager->createUser();
-            $user->$setter_id($username);
+            $user->$setter_id($user_id);
             $user->$setter_token($response->getAccessToken());
             //I have set all requested data with the user's username
             //modify here with relevant data
