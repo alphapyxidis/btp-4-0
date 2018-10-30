@@ -25,6 +25,12 @@ class User extends BaseUser
     /** @ORM\Column(name="auth0_access_token", type="string", length=255, nullable=true) */
     protected $auth0_access_token;
 
+    /** @ORM\Column(name="nickname", type="string", length=512, nullable=true) */
+    protected $nickname;
+
+    /** @ORM\Column(name="realname", type="string", length=512, nullable=true) */
+    protected $realname;    
+
     /** @ORM\Column(name="picture", type="string", length=512, nullable=true) */
     protected $picture;
 
@@ -104,5 +110,53 @@ class User extends BaseUser
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    /**
+     * Set nickname
+     *
+     * @param string $nickname
+     *
+     * @return User
+     */
+    public function setNickname($nickname)
+    {
+        $this->nickname = $nickname;
+
+        return $this;
+    }
+
+    /**
+     * Get nickname
+     *
+     * @return string
+     */
+    public function getNickname()
+    {
+        return $this->nickname;
+    }
+
+    /**
+     * Set realname
+     *
+     * @param string $realname
+     *
+     * @return User
+     */
+    public function setRealname($realname)
+    {
+        $this->realname = $realname;
+
+        return $this;
+    }
+
+    /**
+     * Get realname
+     *
+     * @return string
+     */
+    public function getRealname()
+    {
+        return $this->realname;
     }
 }

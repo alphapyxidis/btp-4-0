@@ -12,13 +12,13 @@ hwi_oauth_redirect:
     prefix:   /login
 
 auth0_login:
-    path:    /auth0/callback
+    path: /auth0/callback
 
 auth0_logout:
     path: /logout/auth0
 
 fos_user:
-#     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    # resource: "@FOSUserBundle/Resources/config/routing/all.xml"
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
     prefix: /profile
 

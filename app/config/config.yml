@@ -177,8 +177,21 @@ oneup_uploader:
             storage:
                 type: flysystem
                 filesystem: chantier_filesystem
+httplug:
+    clients:
+        default:
+            factory: 'httplug.factory.curl'
+        hwi_special:
+            factory: 'httplug.factory.guzzle6'
+            config: # You pass here the Guzzle configuration, exactly like before.
+                timeout: 10
+                verify: false
+                max_redirects: 1
+                ignore_errors: false
 
 hwi_oauth:
+    http:
+        client: httplug.client.hwi_special # Then you specify the special service to use.
     firewall_names: [main]
     fosub:
         username_iterations: 30
@@ -189,7 +202,7 @@ hwi_oauth:
     resource_owners:
         auth0:
             type:                oauth2
-            class:               'AppBundle\Security\OAuth\ResourceOwner\Auth0ResourceOwner'
+            class:               'AppBundle\Security\OAuth\Auth0ResourceOwner'
             base_url:            '%auth0_base_url%'
             client_id:           '%auth0_client_id%'
             client_secret:       '%auth0_client_secret%'

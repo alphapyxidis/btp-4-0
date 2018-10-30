@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Security\OAuth\ResourceOwner;
+namespace AppBundle\Security\OAuth;
 
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,8 +16,7 @@ class Auth0ResourceOwner extends GenericOAuth2ResourceOwner
      * {@inheritdoc}
      */
     protected $paths = array(
-        'identifier' => 'user_id',
-        'userid' => 'user_id',
+        'identifier' => 'sub',
         'nickname' => 'nickname',
         'realname' => 'name',
         'email' => 'email',
