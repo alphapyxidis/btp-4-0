@@ -38,6 +38,27 @@
              <div class="desktop-only" >
                     <div class="row">
                         <a class="two thirds align-center" href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-btp-4-0.png') }}" width="800" alt="BTP 4.0"/></a>
+              <div class="dropdown double-gap-top ">
+                <button class="round info ten twelves centered"><img src="{{ app.user.picture }}" style = "position: relative; top:2px; left:-5px; width:30px; height: 30px; border-radius: 50%;"/>{{ app.user.nickname }}</button>
+                <ul>
+                  <li>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <button><i class="icon-signout"></i><a href="{{ path('auth0_logout') }}"> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></button>
+                    {% else %}
+                        <button><i class="icon-signin"></i><a href="{{ path('auth0_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></button>
+                    {% endif %}
+                  </li>
+                  <li>
+                    <button><i class="icon-envelope-alt"></i> Example Menu Item 2</button>
+                  </li>
+                  <li>
+                    <hr>
+                  </li>
+                  <li>
+                    <button><i class="icon-heart"></i> Seperated Menu Item</button>
+                  </li>
+                </ul>
+              </div>
                     </div>
              </div>
              <div class="ipad-only">
