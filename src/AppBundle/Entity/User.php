@@ -5,10 +5,22 @@ namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-/**
+ /**
  * @ORM\Entity
  * @ORM\Table(name="btp_user")
+ * @UniqueEntity(fields="usernameCanonical", errorPath="username", message="fos_user.username.already_used")
+ * @ORM\AttributeOverrides({
+ *      @ORM\AttributeOverride(name="emailCanonical",
+ *          column=@ORM\Column(
+ *              name     = "email_canonical",
+ *              type     = "string",
+ *              length   = 180,
+ *              unique  = false
+ *          )
+ *      )
+ * })
  */
 class User extends BaseUser
 {
@@ -33,6 +45,9 @@ class User extends BaseUser
 
     /** @ORM\Column(name="picture", type="string", length=512, nullable=true) */
     protected $picture;
+
+    /** @ORM\Column(name="identity_provider", type="string", length=32, nullable=false) */
+    protected $identity_provider="BTP 4.0";
 
     public function __construct()
     {
@@ -158,5 +173,29 @@ class User extends BaseUser
     public function getRealname()
     {
         return $this->realname;
+    }
+
+    /**
+     * Set identityProvider
+     *
+     * @param string $identityProvider
+     *
+     * @return User
+     */
+    public function setIdentityProvider($identityProvider)
+    {
+        $this->identity_provider = $identityProvider;
+
+        return $this;
+    }
+
+    /**
+     * Get identityProvider
+     *
+     * @return string
+     */
+    public function getIdentityProvider()
+    {
+        return $this->identity_provider;
     }
 }

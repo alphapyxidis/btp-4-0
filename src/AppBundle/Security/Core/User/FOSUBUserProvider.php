@@ -35,7 +35,9 @@ class FOSUBUserProvider extends BaseClass
      */
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
+        $identity_providers = array("google-oauth2" => "Google","windowslive" => "Windows", "linkedin" => "LinkedIn", "auth0" => "BTP 4.0");
         $username = $response->getUsername();
+        $provider = substr($username, 0, strpos($username,'|'));
         $nickname = $response->getNickname();
         $realname = $response->getRealname();
         $picture = $response->getProfilePicture();
@@ -55,7 +57,8 @@ class FOSUBUserProvider extends BaseClass
             //modify here with relevant data
             $user->setUsername($username);
             $user->setNickname($nickname);
-            $user->setRealname($realname);            
+            $user->setRealname($realname);
+            $user->setIdentityProvider($identity_providers[$provider]);            
             $user->setEmail($email);
             $user->setPassword('OAuth');
             $user->setEnabled(true);
@@ -69,6 +72,13 @@ class FOSUBUserProvider extends BaseClass
         $setter = 'set' . ucfirst($serviceName) . 'AccessToken';
         //update access token
         $user->$setter($response->getAccessToken());
+        // update properties
+        $user->setNickname($nickname);
+        $user->setRealname($realname);
+        $user->setIdentityProvider($identity_providers[$provider]);            
+        $user->setEmail($email);
+        $user->setPicture($picture);        
+        $this->userManager->updateUser($user);
         return $user;
     }
 }

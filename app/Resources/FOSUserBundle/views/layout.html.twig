@@ -3,17 +3,6 @@
 {% extends './demo.html.twig' %}
 
 {% block body %}
-        <div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                <a href="{{ path('auth0_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-            {% else %}
-                <a href="{{ path('auth0_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-            {% endif %}
-        </div>
-
         {% if app.request.hasPreviousSession %}
             {% for message in app.session.flashbag.get('error') %}
                 <div class="eleven twelfths dismissible error round message centered align-left gap-bottom">{{ message|trans({}, 'FOSUserBundle') }}</div>
@@ -32,8 +21,19 @@
             {% endfor %}
         {% endif %}
 
-        <div>
-            {% block fos_user_content %}
-            {% endblock fos_user_content %}
+        <div class="two thirds centered white box bordered double-padded">
+            <h4 class="asphalt box">
+                <img src="{{ user.picture }}" style="float:left; margin-right: 8px; width:64px; height:64px; border-radius: 50%;"/>
+                {{ user.realname}}
+            </h4>
+            <br>
+            <p><b>Nom complet:</b> {{ user.realname }}</p>
+            <p><b>Pseudo:</b> {{ user.nickname }}</p>
+            <p><b>Email:</b> {{ user.email }}</p>
+            <br>
+            {% if user.identityprovider == 'BTP 4.0' %}
+                <a class="three tenths success round button" href="{{ url('fos_user_profile_edit') }}"><i class="icon-pencil" title="modifier" style="float:left; margin-left:4px;"></i>Modifier</a>
+            {% endif %}
+            <p class="align-right right-pad">vous êtes connecté avec votre compte {{ user.identityprovider }}<img src="{{ asset('img/logos/') }}{{ user.identityprovider }}.png" style="position: relative; top: 4px; margin-left:5px; margin-right:5px; width:20px; height:20px;"/></p>
         </div>
 {% endblock body %}

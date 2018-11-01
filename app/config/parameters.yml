@@ -20,3 +20,4 @@ parameters:
     auth0_base_url: 'https://alphapyxidis.eu.auth0.com'
     auth0_client_id: 5vUvZdci7p7b6X1g3LY8eDdo0sWLWGal
     auth0_client_secret: 6rSlAfIZU53RR4njQ9EzMCfWPGKWQ6Fcng4VXVYV3coFWs-TQOZ_UCBBZOLn9Gh6
+    auth0_api_grant_id: cgr_2XdYO1ZMwrLNa4Ef

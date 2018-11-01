@@ -29,3 +29,4 @@ parameters:
     auth0_base_url: xxxxxxxxxxxxxxxx
     auth0_client_id: xxxxxxxx
     auth0_client_secret: xxxxxxxxxx
+    auth0_api_grant_id: xxxxxxxx
