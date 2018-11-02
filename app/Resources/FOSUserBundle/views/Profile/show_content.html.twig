@@ -10,7 +10,35 @@
             <p><b>Nom complet:</b> {{ user.realname }}</p>
             <p><b>Pseudo:</b> {{ user.nickname }}</p>
             <p><b>Email:</b> {{ user.email }}</p>
-            <br>
+            <div class="tabs double-padded">
+                <ul role="tablist">
+                    <li role="tab" aria-controls="#tab1"><i class="icon-building icon-2x blue"></i>&nbsp;&nbsp;Entreprise</li>
+                    <li role="tab" aria-controls="#tab2"><i class="icon-link icon-2x orange"></i>&nbsp;&nbsp;Comptes associés</li>
+                    <li role="tab" aria-controls="#tab3"><i class="icon-credit-card icon-2x purple"></i>&nbsp;&nbsp;Formule d'abonnement</li>
+                </ul>
+                <div id="tab1" role="tabpanel">
+                    <h1 class="blue">Entreprise</h1>
+                    <div class="pull-right pull-none-small-tablet gap-left no-gap-small-tablet align-center"><img src="http://placehold.it/240x80/3498db/ffffff"></div>
+                    <div class="gap-top-small-tablet placeholderText redacted-script" 
+                        data-placeholder-type="words" 
+                        data-placeholder-amount="100">
+                    </div>
+                </div>
+                <div id="tab2" role="tabpanel">
+                    <h1 class="orange">Comptes associés</h1>
+                    <div class="gap-top-small-tablet placeholderText redacted-script" 
+                        data-placeholder-type="words" 
+                        data-placeholder-amount="100">
+                    </div>
+                </div>
+                <div id="tab3" role="tabpanel">
+                    <h1 class="purple">Formule d'abonnement</h1>
+                    <div class="gap-top-small-tablet placeholderText redacted-script" 
+                        data-placeholder-type="words" 
+                        data-placeholder-amount="100">
+                    </div>
+                </div>                
+            </div>
             {% if user.identityprovider == 'BTP 4.0' %}
                 <a class="three tenths success round button" href="{{ url('fos_user_profile_edit') }}"><i class="icon-pencil" title="modifier" style="float:left; margin-left:4px;"></i>Modifier</a>
             {% endif %}
