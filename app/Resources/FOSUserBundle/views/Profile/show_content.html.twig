@@ -1,0 +1,19 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="fos_user_user_show">
+        <div class="two thirds centered white box bordered double-padded">
+            <h4 class="asphalt box">
+                <img src="{{ user.picture }}" style="float:left; margin-right: 8px; width:64px; height:64px; border-radius: 50%;"/>
+                {{ user.realname}}
+            </h4>
+            <br>
+            <p><b>Nom complet:</b> {{ user.realname }}</p>
+            <p><b>Pseudo:</b> {{ user.nickname }}</p>
+            <p><b>Email:</b> {{ user.email }}</p>
+            <br>
+            {% if user.identityprovider == 'BTP 4.0' %}
+                <a class="three tenths success round button" href="{{ url('fos_user_profile_edit') }}"><i class="icon-pencil" title="modifier" style="float:left; margin-left:4px;"></i>Modifier</a>
+            {% endif %}
+            <p class="align-right right-pad">vous êtes connecté via votre compte {{ user.identityprovider }}<img src="{{ asset('img/logos/') }}{{ user.identityprovider }}.png" style="position: relative; top: 4px; margin-left:5px; margin-right:5px; width:20px; height:20px;"/></p>
+        </div>
+</div>
