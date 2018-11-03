@@ -42,7 +42,7 @@ class Chantier
     protected $pic;
 
     /**
-     * @Gedmo\Slug(fields={"nom", "id"}, updatable=true, unique=true)
+     * @Gedmo\Slug(fields={"nom"}, updatable=true, unique=true)
      * @ORM\Column(type="string", length=128, unique=true)
      */
     private $slug;
@@ -54,6 +54,12 @@ class Chantier
      * @ORM\JoinColumn(name="idAdresse", referencedColumnName="id")
      */
     private $adresse;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User",cascade={"persist"})
+     * @ORM\JoinColumn(name="idUser", referencedColumnName="id", nullable=true)
+     */
+    private $user;
 
     public function __construct()
     {
@@ -200,5 +206,19 @@ class Chantier
     public function getPic()
     {
         return $this->pic;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Chantier
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }

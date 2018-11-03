@@ -20,6 +20,10 @@
                 <h4>Description</h4>
                 <p>{{ chantier.description }}</p>
             </div>
+            <div class="bordered half-padded half-gap-top white-bg one whole one whole" style="height:200px;">
+                <a class="round button purple" href="{{ path('planning_chantier', { 'slug': chantier.slug }) }}"><i class="icon-tasks"></i>&nbsp;&nbsp;Planning</a>
+                <img src="{{ chantier.user.picture }}" title="{{ chantier.user.nickname }}" style="float: right; width:30px; height: 30px; border-radius: 50%;" />
+            </div>
         </div>
         <div "one third">
             <div id="map" style="height:400px;"></div>

@@ -55,6 +55,12 @@ class Chantier
      */
     private $adresse;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="User",cascade={"persist"})
+     * @ORM\JoinColumn(name="idUser", referencedColumnName="id", nullable=true)
+     */
+    private $user;
+
     public function __construct()
     {
         //parent::__construct();
@@ -214,5 +220,29 @@ class Chantier
         $this->slug = $slug;
 
         return $this;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Chantier
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

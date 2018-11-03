@@ -149,6 +149,19 @@ class ChantierController extends Controller
     }
 
     /**
+     * Finds and displays a planning for a chantier entity.
+     *
+     * @Route("/{slug}/planning", name="planning_chantier")
+     * @Method("GET")
+     */
+    public function planningAction(Chantier $chantier)
+    {
+        return $this->render('chantier/planning.html.twig', array(
+            'chantier' => $chantier,
+        ));
+    }
+
+    /**
      * Displays a form to edit an existing chantier entity.
      *
      * @Route("/modifier/{slug}", name="chantier_edit")
