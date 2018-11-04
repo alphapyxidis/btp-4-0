@@ -198,9 +198,9 @@
           </div>
         </header>
 
-        <div class="row"> 
-            <div class="row padded">
-                <div class="one whole gap-top">
+        <div class="row no-pad"> 
+            <div class="row half-padded">
+                <div class="one whole half-gap-top">
                     {% for message in app.session.flashbag.get('error') %}
                         <div class="eleven twelfths dismissible error round message centered align-left gap-bottom">{{ message }}</div>
                     {% endfor %}
@@ -218,7 +218,6 @@
                     {% endfor %}
                     
                     {% block body %}{% endblock %}
-
                 </div>
            </div>
         </div>
