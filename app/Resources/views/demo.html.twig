@@ -32,69 +32,173 @@
 
         {% block headerscripts %}{% endblock %}
     </head>
-    <body class="alert-bg">
-        <header class="gap-bottom">
-          <div class="box square charcoal">
+    <body class="white-bg">
+        <header class="half-gap-bottom">
+          <div class="charcoal-bg half-pad-left half-pad-top hal-pad-right">
              <div class="desktop-only" >
-                    <div class="row">
-                        <div class="two fifths skip-one">
-                            <a class="align-center" href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-btp-4-0.png') }}" width="800" alt="BTP 4.0"/></a>
-                        </div>
-                        <div class="one fifth double-gap-top ">
-                            <div class="round white box six tenths skip-four half-padded">
-                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                    <img src="{{ app.user.picture }}"  style = "float: left; margin-right:6px; width:30px; height: 30px; border-radius: 50%;"/>
-                                    <div class="dropdown left-pad">
-                                        <button class="white" title="compte {{app.user.identityprovider }}">
-                                        {% if app.user.nickname|e|length > 15 %}
-                                            {{app.user.nickname|e|slice(0, 12)}}...
-                                        {% else %}
-                                            {{app.user.nickname|e}}
-                                            {% if app.user.nickname|e|length < 12 %}
-                                                {% for i in 1..(12 - app.user.nickname|e|length) %}
-                                                    &nbsp;
-                                                {% endfor %}
-                                            {% endif %}
-                                        {% endif %} 
-                                        </button>
-                                        <ul>
-                                            <li>
-                                                <a href="{{ url('fos_user_profile_show') }}"><i class="icon-user"></i>&nbsp;&nbsp;Mon compte</a>
-                                            </li>
-                                            <li><hr></li>
-                                            <li>
-                                                <a href="{{ path('auth0_logout') }}"><i class="icon-signout"></i>&nbsp;&nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                {% endif %}
-                            </div>
+                <div class="row">
+                    <div class="five twelfths no-pad">
+                        <a href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-desktop-btp-4-0.png') }}" style="height:60px; width: 720px;" alt="BTP 4.0"/></a>
+                    </div>
+                    <div class="four twelfths gap-top double-pad-left">
+                        <div class="round orange box half-pad-top half-pad-bottom">
+                                {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
                         </div>
                     </div>
+                    <div class="two twelfths gap-top pad-right">
+                        <div class="round white box half-padded absolute right" style="width:240px;">
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <img src="{{ app.user.picture }}"  style = "float: left; margin-right:6px; width:30px; height: 30px; border-radius: 50%;"/>
+                                <div class="dropdown left-pad">
+                                    <button class="white" title="compte {{app.user.identityprovider }}">
+                                    {% if app.user.nickname|e|length > 18 %}
+                                        {{app.user.nickname|e|slice(0, 15)}}...
+                                    {% else %}
+                                        {{app.user.nickname|e}}
+                                        {% if app.user.nickname|e|length < 15 %}
+                                            {% for i in 1..(15 - app.user.nickname|e|length) %}
+                                                &nbsp;
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endif %} 
+                                    </button>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ url('fos_user_profile_show') }}"><i class="icon-user"></i>&nbsp;&nbsp;Mon compte</a>
+                                        </li>
+                                        <li><hr></li>
+                                        <li>
+                                            <a href="{{ path('auth0_logout') }}"><i class="icon-signout"></i>&nbsp;&nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
              </div>
              <div class="ipad-only">
-                    <div class="row">
-                        <a class="three fifths" href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-btp-4-0.png') }}" width="100%" alt="BTP 4.0"/></a>
+                <div class="row">
+                    <div class="five twelfths no-pad">
+                        <a href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-ipad-btp-4-0.png') }}" style="height:60px; width: 565px;" alt="BTP 4.0"/></a>
                     </div>
+                    <div class="four twelfths gap-top double-pad-left">
+                        <div class="round orange box half-pad-top half-pad-bottom">
+                                {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
+                        </div>
+                    </div>
+                    <div class="two twelfths gap-top pad-right">
+                        <div class="round white box half-padded absolute right" style="width:240px;">
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <img src="{{ app.user.picture }}"  style = "float: left; margin-right:6px; width:30px; height: 30px; border-radius: 50%;"/>
+                                <div class="dropdown left-pad">
+                                    <button class="white" title="compte {{app.user.identityprovider }}">
+                                    {% if app.user.nickname|e|length > 18 %}
+                                        {{app.user.nickname|e|slice(0, 15)}}...
+                                    {% else %}
+                                        {{app.user.nickname|e}}
+                                        {% if app.user.nickname|e|length < 15 %}
+                                            {% for i in 1..(15 - app.user.nickname|e|length) %}
+                                                &nbsp;
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endif %} 
+                                    </button>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ url('fos_user_profile_show') }}"><i class="icon-user"></i>&nbsp;&nbsp;Mon compte</a>
+                                        </li>
+                                        <li><hr></li>
+                                        <li>
+                                            <a href="{{ path('auth0_logout') }}"><i class="icon-signout"></i>&nbsp;&nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
              </div>
              <div class="small-tablet-only">
-                    <div class="row">
-                        <a class="one whole centered" href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-btp-4-0.png') }}" width="100%" alt="BTP 4.0"/></a>
+                <div class="row">
+                    <div class="five twelfths no-pad">
+                        <a href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-small-tablet-btp-4-0.png') }}" style="height:60px; width: 508px;" alt="BTP 4.0"/></a>
                     </div>
+                    <div class="four twelfths gap-top double-pad-left">
+                        <div class="round orange box half-pad-top half-pad-bottom">
+                                {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
+                        </div>
+                    </div>
+                    <div class="two twelfths gap-top pad-right">
+                        <div class="round white box half-padded absolute right" style="width:240px;">
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <img src="{{ app.user.picture }}"  style = "float: left; margin-right:6px; width:30px; height: 30px; border-radius: 50%;"/>
+                                <div class="dropdown left-pad">
+                                    <button class="white" title="compte {{app.user.identityprovider }}">
+                                    {% if app.user.nickname|e|length > 18 %}
+                                        {{app.user.nickname|e|slice(0, 15)}}...
+                                    {% else %}
+                                        {{app.user.nickname|e}}
+                                        {% if app.user.nickname|e|length < 15 %}
+                                            {% for i in 1..(15 - app.user.nickname|e|length) %}
+                                                &nbsp;
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endif %} 
+                                    </button>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ url('fos_user_profile_show') }}"><i class="icon-user"></i>&nbsp;&nbsp;Mon compte</a>
+                                        </li>
+                                        <li><hr></li>
+                                        <li>
+                                            <a href="{{ path('auth0_logout') }}"><i class="icon-signout"></i>&nbsp;&nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
              </div>
              <div class="mobile-only">
-                    <div class="row">
-                        <a class="one whole centered" href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-btp-4-0.png') }}" width="200%" alt="BTP 4.0"/></a>
-                    </div>
+                <div class="row">
+                    <a class="one whole centered" href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-small-tablet-btp-4-0.png') }}" width="200%" alt="BTP 4.0"/></a>
+                </div>
+                <div class="row">
+                    <div class="round white box half-padded absolute right" style="width:240px;">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <img src="{{ app.user.picture }}"  style = "float: left; margin-right:6px; width:30px; height: 30px; border-radius: 50%;"/>
+                        <div class="dropdown left-pad">
+                            <button class="white" title="compte {{app.user.identityprovider }}">
+                            {% if app.user.nickname|e|length > 18 %}
+                                {{app.user.nickname|e|slice(0, 15)}}...
+                            {% else %}
+                                {{app.user.nickname|e}}
+                                {% if app.user.nickname|e|length < 15 %}
+                                    {% for i in 1..(15 - app.user.nickname|e|length) %}
+                                        &nbsp;
+                                    {% endfor %}
+                                {% endif %}
+                            {% endif %} 
+                            </button>
+                            <ul>
+                                <li>
+                                    <a href="{{ url('fos_user_profile_show') }}"><i class="icon-user"></i>&nbsp;&nbsp;Mon compte</a>
+                                </li>
+                                <li><hr></li>
+                                <li>
+                                    <a href="{{ path('auth0_logout') }}"><i class="icon-signout"></i>&nbsp;&nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
              </div>
           </div>
         </header>
 
-        <div class="container charcoal">
-            <div class="row padded">
-                {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
-                {% block navigation %}{% endblock %}        
-            </div>
+        <div class="row"> 
             <div class="row padded">
                 <div class="one whole gap-top">
                     {% for message in app.session.flashbag.get('error') %}
@@ -121,22 +225,10 @@
 
         {% block popup %}{% endblock %}
                 
-        <footer class="gap-top">
-            <div class="box square charcoal">
-                <div class="container">
-                    <div class="equalize row align-center">
-                        <div class="two small-tablet sevenths half-padded" title="Suivez nous sur les rÃƒÂ©seaux sociaux !">
-                            <a class="icon-2x" href="https://www.linkedin.com/in/vincent-vermorel/" target="_blank" title="Vincent VERMOREL sur LinkedIn" style="text-decoration:none;"  class="inline"></a>
-                            <a class="icon-2x" href="http://twitter.com/alphapyxidis" target="_blank" title="@alphapyxidis" style="text-decoration:none;" class=" inline"></a>
-                        </div>
-                        <div class="three small-tablet sevenths half-padded">
-                            <small class="one whole half-padded">
-                                <a href="{{ url('presentation') }}" title="Quels enjeux pour le chantier du futur ?">Quels enjeux pour le chantier du futur ?</a><br>
-                            </small>
-                        </div>
-                        <div class="two small-tablet sevenths half-padded" title="Restez en contact avec nous...">
-                            <a class="icon-2x" href="mailto:vincent.vermorel@grenoble-em.com" title="vincent.vermorel@grenoble-em.com" style="text-decoration:none;" class=" inline"></a>
-                        </div>
+        <footer class="half-gap-top">
+            <div class="box charcoal square">
+                <div class="container half-padded">
+                    <div class="row">
                     </div>
                 </div>
             </div>
