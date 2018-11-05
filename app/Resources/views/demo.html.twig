@@ -198,7 +198,7 @@
           </div>
         </header>
 
-        <div class="row no-pad"> 
+        <workspace class="row no-pad"> 
             <div class="row half-padded">
                 <div class="one whole half-gap-top">
                     {% for message in app.session.flashbag.get('error') %}
@@ -220,10 +220,10 @@
                     {% block body %}{% endblock %}
                 </div>
            </div>
-        </div>
+        </workspace>
 
         {% block popup %}{% endblock %}
-                
+
         <footer class="half-gap-top">
             <div class="box charcoal square">
                 <div class="container half-padded">

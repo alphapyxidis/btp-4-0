@@ -25,6 +25,23 @@ li[role=menu] {
   white-space: nowrap;
 }
 
+body {
+  min-height:100%;
+  position: relative;
+}
+
+footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+workspace {
+  min-height: 100%;
+  overflow: auto;
+}
+
+
 /* pour aperçu avant impression édition format A4 */
 .page {
   width: 21cm;
