@@ -1,0 +1,1926 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projet xmlns="xml2ifc.fbs.com" nomProjet="3180297-AHTRDC"><defs>
+		<def id="supportPKwatt-120">
+			<representationBalayageCercle diametre="0.008">
+				<profile3d>
+					<pt x="0.130" y="0.0" z="0.004"/>
+					<pt x="0.11579" y="0.430" z="0.004"/>
+					<pt x="0.11554" y="0.43765" z="0.00552"/>
+					<pt x="0.11532" y="0.44414" z="0.00986"/>
+					<pt x="0.11518" y="0.44848" z="0.01635"/>
+					<pt x="0.11513" y="0.450" z="0.024"/>
+					<pt x="0.11513" y="0.450" z="0.09594"/>
+					<pt x="0.11348" y="0.450" z="0.1036"/>
+					<pt x="0.10914" y="0.450" z="0.11009"/>
+					<pt x="0.10265" y="0.450" z="0.11442"/>
+					<pt x="0.095" y="0.450" z="0.11594"/>
+					<pt x="-0.095" y="0.450" z="0.11594"/>
+					<pt x="-0.10265" y="0.450" z="0.11442"/>
+					<pt x="-0.10914" y="0.450" z="0.11009"/>
+					<pt x="-0.11348" y="0.450" z="0.1036"/>
+					<pt x="-0.11513" y="0.450" z="0.09594"/>
+					<pt x="-0.11513" y="0.450" z="0.024"/>
+					<pt x="-0.11518" y="0.44848" z="0.01635"/>
+					<pt x="-0.11532" y="0.44414" z="0.00986"/>
+					<pt x="-0.11554" y="0.43765" z="0.00552"/>
+					<pt x="-0.11579" y="0.430" z="0.003"/>
+					<pt x="-0.130" y="0.0" z="0.004"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="supportPKwatt-140">
+			<representationBalayageCercle diametre="0.008">
+				<profile3d>
+					<pt x="0.130" y="0.0" z="0.004"/>
+					<pt x="0.11579" y="0.430" z="0.004"/>
+					<pt x="0.11554" y="0.43765" z="0.00552"/>
+					<pt x="0.11532" y="0.44414" z="0.00986"/>
+					<pt x="0.11518" y="0.44848" z="0.01635"/>
+					<pt x="0.11513" y="0.450" z="0.024"/>
+					<pt x="0.11513" y="0.450" z="0.11594"/>
+					<pt x="0.11348" y="0.450" z="0.1236"/>
+					<pt x="0.10914" y="0.450" z="0.13009"/>
+					<pt x="0.10265" y="0.450" z="0.13442"/>
+					<pt x="0.095" y="0.450" z="0.136"/>
+					<pt x="-0.095" y="0.450" z="0.136"/>
+					<pt x="-0.10265" y="0.450" z="0.13442"/>
+					<pt x="-0.10914" y="0.450" z="0.13009"/>
+					<pt x="-0.11348" y="0.450" z="0.1236"/>
+					<pt x="-0.11513" y="0.450" z="0.11594"/>
+					<pt x="-0.11513" y="0.450" z="0.024"/>
+					<pt x="-0.11518" y="0.44848" z="0.01635"/>
+					<pt x="-0.11532" y="0.44414" z="0.00986"/>
+					<pt x="-0.11554" y="0.43765" z="0.00552"/>
+					<pt x="-0.11579" y="0.430" z="0.003"/>
+					<pt x="-0.130" y="0.0" z="0.004"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="supportPKwatt-170">
+			<representationBalayageCercle diametre="0.008">
+				<profile3d>
+					<pt x="0.130" y="0.0" z="0.004"/>
+					<pt x="0.11579" y="0.430" z="0.004"/>
+					<pt x="0.11554" y="0.43765" z="0.00552"/>
+					<pt x="0.11532" y="0.44414" z="0.00986"/>
+					<pt x="0.11518" y="0.44848" z="0.01635"/>
+					<pt x="0.11513" y="0.450" z="0.024"/>
+					<pt x="0.11513" y="0.450" z="0.14594"/>
+					<pt x="0.11348" y="0.450" z="0.1536"/>
+					<pt x="0.10914" y="0.450" z="0.16009"/>
+					<pt x="0.10265" y="0.450" z="0.16442"/>
+					<pt x="0.095" y="0.450" z="0.166"/>
+					<pt x="-0.095" y="0.450" z="0.166"/>
+					<pt x="-0.10265" y="0.450" z="0.16442"/>
+					<pt x="-0.10914" y="0.450" z="0.16009"/>
+					<pt x="-0.11348" y="0.450" z="0.1536"/>
+					<pt x="-0.11513" y="0.450" z="0.14594"/>
+					<pt x="-0.11513" y="0.450" z="0.024"/>
+					<pt x="-0.11518" y="0.44848" z="0.01635"/>
+					<pt x="-0.11532" y="0.44414" z="0.00986"/>
+					<pt x="-0.11554" y="0.43765" z="0.00552"/>
+					<pt x="-0.11579" y="0.430" z="0.003"/>
+					<pt x="-0.130" y="0.0" z="0.004"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="supportPKwatt-2">
+			<representationBalayageCercle diametre="0.008">
+				<profile3d>
+					<pt x="0.12339" y="0.20" z="0.008"/>
+					<pt x="0.12339" y="0.20" z="0.069"/>
+					<pt x="0.12187" y="0.20" z="0.07665"/>
+					<pt x="0.11753" y="0.20" z="0.08314"/>
+					<pt x="0.11104" y="0.20" z="0.08748"/>
+					<pt x="0.10339" y="0.20" z="0.089"/>
+					<pt x="-0.10339" y="0.20" z="0.089"/>
+					<pt x="-0.11104" y="0.20" z="0.08748"/>
+					<pt x="-0.11753" y="0.20" z="0.08414"/>
+					<pt x="-0.12187" y="0.20" z="0.07665"/>
+					<pt x="-0.12339" y="0.20" z="0.069"/>
+					<pt x="-0.12339" y="0.20" z="0.008"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="barre1-supportPKwatt">
+			<representationBalayageCercle diametre="0.008">
+				<profile3d>
+					<pt x="0.127" y="0.208" z=".060"/>
+					<pt x="-0.127" y="0.208" z=".060"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="barre2-supportPKwatt">
+			<representationBalayageCercle diametre="0.008">
+				<profile3d>
+					<pt x="0.1194" y="0.442" z=".060"/>
+					<pt x="-0.1194" y="0.442" z=".060"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="arma1-supportPKwatt">
+			<representationBalayageCercle diametre="0.006">
+				<profile3d>
+					<pt x="0.250" y="0.080" z=".011"/>
+					<pt x="-0.250" y="0.080" z=".011"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="arma2-supportPKwatt">
+			<representationBalayageCercle diametre="0.006">
+				<profile3d>
+					<pt x="0.250" y="0.430" z=".011"/>
+					<pt x="-0.250" y="0.430" z=".011"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="arma3-supportPKwatt">
+			<representationBalayageCercle diametre="0.006">
+				<profile3d>
+					<pt x="0.100" y="0.47951" z="0.0"/>
+					<pt x="-0.100" y="0.47951" z="0.0"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="U60-PKwatt">
+			<representationBalayageCercle diametre="0.01">
+				<profile3d>
+					<pt x="0.0" y="0.57" z="0.069"/>
+					<pt x="0.0" y="-0.1501" z="0.069"/>
+					<pt x="0.0" y="-0.15963" z="0.0709"/>
+					<pt x="0.0" y="-0.16771" z="0.07629"/>
+					<pt x="0.0" y="-0.1731" z="0.08437"/>
+					<pt x="0.0" y="-0.175" z="0.0939"/>
+					<pt x="0.0" y="-0.1731" z="0.10357"/>
+					<pt x="0.0" y="-0.16771" z="0.11168"/>
+					<pt x="0.0" y="-0.15963" z="0.1171"/>
+					<pt x="0.0" y="-0.1501" z="0.119"/>
+					<pt x="0.0" y="0.02406" z="0.119"/>
+					<pt x="0.0" y="0.57" z="0.10405"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="U80-PKwatt">
+			<representationBalayageCercle diametre="0.01">
+				<profile3d>
+					<pt x="0.0" y="0.57" z="0.069"/>
+					<pt x="0.0" y="-0.1501" z="0.069"/>
+					<pt x="0.0" y="-0.15963" z="0.0709"/>
+					<pt x="0.0" y="-0.16771" z="0.07629"/>
+					<pt x="0.0" y="-0.1731" z="0.08437"/>
+					<pt x="0.0" y="-0.175" z="0.0939"/>
+					<pt x="0.0" y="-0.175" z="0.1139"/>
+					<pt x="0.0" y="-0.1731" z="0.12357"/>
+					<pt x="0.0" y="-0.16771" z="0.13168"/>
+					<pt x="0.0" y="-0.15963" z="0.1371"/>
+					<pt x="0.0" y="-0.1501" z="0.139"/>
+					<pt x="0.0" y="0.02406" z="0.139"/>
+					<pt x="0.0" y="0.57" z="0.12405"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="U110-PKwatt">
+			<representationBalayageCercle diametre="0.01">
+				<profile3d>
+					<pt x="0.0" y="0.57" z="0.069"/>
+					<pt x="0.0" y="-0.1501" z="0.069"/>
+					<pt x="0.0" y="-0.15963" z="0.0709"/>
+					<pt x="0.0" y="-0.16771" z="0.07629"/>
+					<pt x="0.0" y="-0.1731" z="0.08437"/>
+					<pt x="0.0" y="-0.175" z="0.0939"/>
+					<pt x="0.0" y="-0.175" z="0.1439"/>
+					<pt x="0.0" y="-0.1731" z="0.15357"/>
+					<pt x="0.0" y="-0.16771" z="0.16168"/>
+					<pt x="0.0" y="-0.15963" z="0.1671"/>
+					<pt x="0.0" y="-0.1501" z="0.169"/>
+					<pt x="0.0" y="0.02406" z="0.169"/>
+					<pt x="0.0" y="0.57" z="0.15405"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="Cadre60-PKwatt">
+			<representationBalayageCercle diametre="0.006">
+				<profile3d>
+					<pt x="-0.0487" y="0.0" z="0.09999"/>
+					<pt x="-0.092" y="0.0" z="0.12499"/>
+					<pt x="-0.09754" y="0.0" z="0.12689"/>
+					<pt x="-0.10338" y="0.0" z="0.126489"/>
+					<pt x="-0.108631" y="0.0" z="0.1239"/>
+					<pt x="-0.11249" y="0.0" z="0.1195"/>
+					<pt x="-0.11437" y="0.0" z="0.11396"/>
+					<pt x="-0.1145" y="0.0" z="0.112"/>
+					<pt x="-0.1145" y="0.0" z="0.072"/>
+					<pt x="-0.11336" y="0.0" z="0.06626"/>
+					<pt x="-0.11011" y="0.0" z="0.06139"/>
+					<pt x="-0.10524" y="0.0" z="0.05814"/>
+					<pt x="-0.0995" y="0.0" z="0.057"/>
+					<pt x="0.0995" y="0.0" z="0.057"/>
+					<pt x="0.10524" y="0.0" z="0.05814"/>
+					<pt x="0.11011" y="0.0" z="0.06139"/>
+					<pt x="0.11336" y="0.0" z="0.06626"/>
+					<pt x="0.1145" y="0.0" z="0.072"/>
+					<pt x="0.1145" y="0.0" z="0.112"/>
+					<pt x="0.11336" y="0.0" z="0.11774"/>
+					<pt x="0.11011" y="0.0" z="0.12261"/>
+					<pt x="0.10524" y="0.0" z="0.12586"/>
+					<pt x="0.0995" y="0.0" z="0.127"/>
+					<pt x="-0.0995" y="0.006" z="0.127"/>
+					<pt x="-0.10338" y="0.006" z="0.126489"/>
+					<pt x="-0.10863" y="0.006" z="0.1239"/>
+					<pt x="-0.11249" y="0.006" z="0.1195"/>
+					<pt x="-0.11399" y="0.006" z="0.10812"/>
+					<pt x="-0.1114" y="0.006" z="0.102869"/>
+					<pt x="-0.107" y="0.006" z="0.099010"/>
+					<pt x="-0.0637" y="0.006" z="0.07410"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="Cadre80-PKwatt">
+			<representationBalayageCercle diametre="0.006">
+				<profile3d>
+					<pt x="-0.0487" y="0.0" z="0.11999"/>
+					<pt x="-0.092" y="0.0" z="0.14499"/>
+					<pt x="-0.09754" y="0.0" z="0.14689"/>
+					<pt x="-0.10338" y="0.0" z="0.146489"/>
+					<pt x="-0.108631" y="0.0" z="0.1439"/>
+					<pt x="-0.11249" y="0.0" z="0.1395"/>
+					<pt x="-0.11437" y="0.0" z="0.13396"/>
+					<pt x="-0.1145" y="0.0" z="0.132"/>
+					<pt x="-0.1145" y="0.0" z="0.072"/>
+					<pt x="-0.11336" y="0.0" z="0.06626"/>
+					<pt x="-0.11011" y="0.0" z="0.06139"/>
+					<pt x="-0.10524" y="0.0" z="0.05814"/>
+					<pt x="-0.0995" y="0.0" z="0.057"/>
+					<pt x="0.0995" y="0.0" z="0.057"/>
+					<pt x="0.10524" y="0.0" z="0.05814"/>
+					<pt x="0.11011" y="0.0" z="0.06139"/>
+					<pt x="0.11336" y="0.0" z="0.06626"/>
+					<pt x="0.1145" y="0.0" z="0.072"/>
+					<pt x="0.1145" y="0.0" z="0.132"/>
+					<pt x="0.11336" y="0.0" z="0.13774"/>
+					<pt x="0.11011" y="0.0" z="0.14261"/>
+					<pt x="0.10524" y="0.0" z="0.14586"/>
+					<pt x="0.0995" y="0.0" z="0.147"/>
+					<pt x="-0.0995" y="0.006" z="0.147"/>
+					<pt x="-0.10338" y="0.006" z="0.146489"/>
+					<pt x="-0.10863" y="0.006" z="0.1439"/>
+					<pt x="-0.11249" y="0.006" z="0.1395"/>
+					<pt x="-0.11399" y="0.006" z="0.12812"/>
+					<pt x="-0.1114" y="0.006" z="0.122869"/>
+					<pt x="-0.107" y="0.006" z="0.119010"/>
+					<pt x="-0.0637" y="0.006" z="0.09410"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="Cadre110-PKwatt">
+			<representationBalayageCercle diametre="0.006">
+				<profile3d>
+					<pt x="-0.0487" y="0.0" z="0.14999"/>
+					<pt x="-0.092" y="0.0" z="0.17499"/>
+					<pt x="-0.09754" y="0.0" z="0.17689"/>
+					<pt x="-0.10338" y="0.0" z="0.176489"/>
+					<pt x="-0.108631" y="0.0" z="0.1739"/>
+					<pt x="-0.11249" y="0.0" z="0.1695"/>
+					<pt x="-0.11437" y="0.0" z="0.16396"/>
+					<pt x="-0.1145" y="0.0" z="0.162"/>
+					<pt x="-0.1145" y="0.0" z="0.072"/>
+					<pt x="-0.11336" y="0.0" z="0.06626"/>
+					<pt x="-0.11011" y="0.0" z="0.06139"/>
+					<pt x="-0.10524" y="0.0" z="0.05814"/>
+					<pt x="-0.0995" y="0.0" z="0.057"/>
+					<pt x="0.0995" y="0.0" z="0.057"/>
+					<pt x="0.10524" y="0.0" z="0.05814"/>
+					<pt x="0.11011" y="0.0" z="0.06139"/>
+					<pt x="0.11336" y="0.0" z="0.06626"/>
+					<pt x="0.1145" y="0.0" z="0.072"/>
+					<pt x="0.1145" y="0.0" z="0.162"/>
+					<pt x="0.11336" y="0.0" z="0.16774"/>
+					<pt x="0.11011" y="0.0" z="0.17261"/>
+					<pt x="0.10524" y="0.0" z="0.17586"/>
+					<pt x="0.0995" y="0.0" z="0.177"/>
+					<pt x="-0.0995" y="0.006" z="0.177"/>
+					<pt x="-0.10338" y="0.006" z="0.176489"/>
+					<pt x="-0.10863" y="0.006" z="0.1739"/>
+					<pt x="-0.11249" y="0.006" z="0.1695"/>
+					<pt x="-0.11399" y="0.006" z="0.15812"/>
+					<pt x="-0.1114" y="0.006" z="0.152869"/>
+					<pt x="-0.107" y="0.006" z="0.149010"/>
+					<pt x="-0.0637" y="0.006" z="0.12410"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="cadreM-pc12">
+			<representationBalayageCercle diametre="0.006">
+				<profile3d>
+					<pt x="-0.140" y="0.0" z="0.003"/>
+					<pt x="0.0420" y="0.0" z="0.003"/>
+					<pt x="0.04774" y="0.0" z="0.004142"/>
+					<pt x="0.052607" y="0.0" z="0.007393"/>
+					<pt x="0.055858" y="0.0" z="0.01226"/>
+					<pt x="0.057" y="0.0" z="0.018"/>
+					<pt x="0.057" y="0.0" z="0.102"/>
+					<pt x="0.055858" y="0.0" z="0.10774"/>
+					<pt x="0.052607" y="0.0" z="0.112607"/>
+					<pt x="0.04774" y="0.0" z="0.115858"/>
+					<pt x="0.0420" y="0.0" z="0.117"/>
+					<pt x="-0.0420" y="0.0" z="0.117"/>
+					<pt x="-0.04774" y="0.0" z="0.115858"/>
+					<pt x="-0.052607" y="0.0" z="0.112607"/>
+					<pt x="-0.055858" y="0.0" z="0.10774"/>
+					<pt x="-0.057" y="0.0" z="0.102"/>
+					<pt x="-0.057" y="0.006" z="0.018"/>
+					<pt x="-0.055858" y="0.006" z="0.01226"/>
+					<pt x="-0.052607" y="0.006" z="0.007393"/>
+					<pt x="-0.04774" y="0.006" z="0.004142"/>
+					<pt x="-0.0420" y="0.006" z="0.003"/>
+					<pt x="0.140" y="0.006" z="0.003"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="cadre-pc12">
+			<representationBalayageCercle diametre="0.006">
+				<profile3d>
+					<pt x="-0.017251" y="0.0" z="0.063962"/>
+					<pt x="-0.052607" y="0.0" z="0.028607"/>
+					<pt x="-0.056266" y="0.0" z="0.022635"/>
+					<pt x="-0.057" y="0.0" z="0.015653"/>
+					<pt x="-0.054135" y="0.0" z="0.009183"/>
+					<pt x="-0.048810" y="0.0" z="0.004635"/>
+					<pt x="-0.0420" y="0.0" z="0.003"/>
+					<pt x="0.0420" y="0.0" z="0.003"/>
+					<pt x="0.04881" y="0.0" z="0.004635"/>
+					<pt x="0.054135" y="0.0" z="0.009183"/>
+					<pt x="0.057" y="0.0" z="0.015653"/>
+					<pt x="0.057" y="0.0" z="0.102"/>
+					<pt x="0.055858" y="0.0" z="0.10774"/>
+					<pt x="0.052607" y="0.0" z="0.112607"/>
+					<pt x="0.04774" y="0.0" z="0.115858"/>
+					<pt x="0.0420" y="0.0" z="0.117"/>
+					<pt x="-0.0420" y="0.0" z="0.117"/>
+					<pt x="-0.04774" y="0.0" z="0.115858"/>
+					<pt x="-0.052607" y="0.0" z="0.112607"/>
+					<pt x="-0.055858" y="0.0" z="0.10774"/>
+					<pt x="-0.057" y="0.0" z="0.102"/>
+					<pt x="-0.057" y="0.006" z="0.015653"/>
+					<pt x="-0.054135" y="0.006" z="0.009183"/>
+					<pt x="-0.04881" y="0.006" z="0.004635"/>
+					<pt x="-0.0420" y="0.006" z="0.003"/>
+					<pt x="0.0420" y="0.006" z="0.003"/>
+					<pt x="0.04881" y="0.006" z="0.004635"/>
+					<pt x="0.054135" y="0.006" z="0.009183"/>
+					<pt x="0.057" y="0.006" z="0.015653"/>
+					<pt x="0.056266" y="0.006" z="0.022635"/>
+					<pt x="0.052607" y="0.006" z="0.028607"/>
+					<pt x="0.017251" y="0.006" z="0.063962"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="u1-pc12">
+			<representationBalayageCercle diametre="0.01">
+				<profile3d>
+					<pt x="0.0" y=".65" z=".109"/>
+					<pt x="0.0" y="-0.075" z=".109"/>
+					<pt x="0.0" y="-0.084567" z=".107097"/>
+					<pt x="0.0" y="-0.092678" z=".101678"/>
+					<pt x="0.0" y="-0.098097" z=".093567"/>
+					<pt x="0.0" y="-0.10" z=".084"/>
+					<pt x="0.0" y="-0.098097" z=".074433"/>
+					<pt x="0.0" y="-0.092678" z=".066322"/>
+					<pt x="0.0" y="-0.084567" z=".060903"/>
+					<pt x="0.0" y="-0.075" z=".059"/>
+					<pt x="0.0" y="0.65" z=".059"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="barre1-pc12">
+			<representationBalayageCercle diametre="0.01">
+				<profile3d>
+					<pt x="0.00" y="0.0" z=".011"/>
+					<pt x="0.00" y="1.0" z=".011"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="cadreM-pc14">
+			<representationBalayageCercle diametre="0.006">
+				<profile3d>
+					<pt x="-0.150" y="0.0" z="0.003"/>
+					<pt x="0.0520" y="0.0" z="0.003"/>
+					<pt x="0.05774" y="0.0" z="0.004142"/>
+					<pt x="0.062607" y="0.0" z="0.007393"/>
+					<pt x="0.065858" y="0.0" z="0.01226"/>
+					<pt x="0.067" y="0.0" z="0.018"/>
+					<pt x="0.067" y="0.0" z="0.122"/>
+					<pt x="0.065858" y="0.0" z="0.12774"/>
+					<pt x="0.062607" y="0.0" z="0.132607"/>
+					<pt x="0.05774" y="0.0" z="0.135858"/>
+					<pt x="0.0520" y="0.0" z="0.137"/>
+					<pt x="-0.0520" y="0.0" z="0.137"/>
+					<pt x="-0.05774" y="0.0" z="0.135858"/>
+					<pt x="-0.062607" y="0.0" z="0.132607"/>
+					<pt x="-0.065858" y="0.0" z="0.12774"/>
+					<pt x="-0.067" y="0.0" z="0.122"/>
+					<pt x="-0.067" y="0.006" z="0.018"/>
+					<pt x="-0.065858" y="0.006" z="0.01226"/>
+					<pt x="-0.062607" y="0.006" z="0.007393"/>
+					<pt x="-0.05774" y="0.006" z="0.004142"/>
+					<pt x="-0.0520" y="0.006" z="0.003"/>
+					<pt x="0.150" y="0.006" z="0.003"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="cadre-pc14">
+			<representationBalayageCercle diametre="0.006">
+				<profile3d>
+					<pt x="-0.027251" y="0.0" z="0.063962"/>
+					<pt x="-0.062607" y="0.0" z="0.028607"/>
+					<pt x="-0.066266" y="0.0" z="0.022635"/>
+					<pt x="-0.067" y="0.0" z="0.015653"/>
+					<pt x="-0.064135" y="0.0" z="0.009183"/>
+					<pt x="-0.058810" y="0.0" z="0.004635"/>
+					<pt x="-0.0520" y="0.0" z="0.003"/>
+					<pt x="0.0520" y="0.0" z="0.003"/>
+					<pt x="0.05881" y="0.0" z="0.004635"/>
+					<pt x="0.064135" y="0.0" z="0.009183"/>
+					<pt x="0.067" y="0.0" z="0.015653"/>
+					<pt x="0.067" y="0.0" z="0.122"/>
+					<pt x="0.065858" y="0.0" z="0.12774"/>
+					<pt x="0.062607" y="0.0" z="0.132607"/>
+					<pt x="0.05774" y="0.0" z="0.135858"/>
+					<pt x="0.0520" y="0.0" z="0.137"/>
+					<pt x="-0.0520" y="0.0" z="0.137"/>
+					<pt x="-0.05774" y="0.0" z="0.135858"/>
+					<pt x="-0.062607" y="0.0" z="0.132607"/>
+					<pt x="-0.065858" y="0.0" z="0.12774"/>
+					<pt x="-0.067" y="0.0" z="0.122"/>
+					<pt x="-0.067" y="0.006" z="0.015653"/>
+					<pt x="-0.064135" y="0.006" z="0.009183"/>
+					<pt x="-0.05881" y="0.006" z="0.004635"/>
+					<pt x="-0.0520" y="0.006" z="0.003"/>
+					<pt x="0.0520" y="0.006" z="0.003"/>
+					<pt x="0.05881" y="0.006" z="0.004635"/>
+					<pt x="0.064135" y="0.006" z="0.009183"/>
+					<pt x="0.067" y="0.006" z="0.015653"/>
+					<pt x="0.066266" y="0.006" z="0.022635"/>
+					<pt x="0.062607" y="0.006" z="0.028607"/>
+					<pt x="0.027251" y="0.006" z="0.063962"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="u1-pc14">
+			<representationBalayageCercle diametre="0.01">
+				<profile3d>
+					<pt x="0.0" y=".65" z=".129"/>
+					<pt x="0.0" y="-0.075" z=".129"/>
+					<pt x="0.0" y="-0.084567" z=".127097"/>
+					<pt x="0.0" y="-0.092678" z=".121678"/>
+					<pt x="0.0" y="-0.098097" z=".113567"/>
+					<pt x="0.0" y="-0.10" z=".084"/>
+					<pt x="0.0" y="-0.098097" z=".074433"/>
+					<pt x="0.0" y="-0.092678" z=".066322"/>
+					<pt x="0.0" y="-0.084567" z=".060903"/>
+					<pt x="0.0" y="-0.075" z=".059"/>
+					<pt x="0.0" y="0.65" z=".059"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="barre1-pc14">
+			<representationBalayageCercle diametre="0.01">
+				<profile3d>
+					<pt x="0.00" y="0.0" z=".011"/>
+					<pt x="0.00" y="1.0" z=".011"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="cadreM-pc17">
+			<representationBalayageCercle diametre="0.006">
+				<profile3d>
+					<pt x="-0.165" y="0.0" z="0.003"/>
+					<pt x="0.0670" y="0.0" z="0.003"/>
+					<pt x="0.07274" y="0.0" z="0.004142"/>
+					<pt x="0.077607" y="0.0" z="0.007393"/>
+					<pt x="0.080858" y="0.0" z="0.01226"/>
+					<pt x="0.082" y="0.0" z="0.018"/>
+					<pt x="0.082" y="0.0" z="0.152"/>
+					<pt x="0.080858" y="0.0" z="0.15774"/>
+					<pt x="0.077607" y="0.0" z="0.162607"/>
+					<pt x="0.07274" y="0.0" z="0.165858"/>
+					<pt x="0.0670" y="0.0" z="0.167"/>
+					<pt x="-0.0670" y="0.0" z="0.167"/>
+					<pt x="-0.07274" y="0.0" z="0.165858"/>
+					<pt x="-0.077607" y="0.0" z="0.162607"/>
+					<pt x="-0.080858" y="0.0" z="0.15774"/>
+					<pt x="-0.082" y="0.0" z="0.152"/>
+					<pt x="-0.082" y="0.006" z="0.018"/>
+					<pt x="-0.080858" y="0.006" z="0.01226"/>
+					<pt x="-0.077607" y="0.006" z="0.007393"/>
+					<pt x="-0.07274" y="0.006" z="0.004142"/>
+					<pt x="-0.0670" y="0.006" z="0.003"/>
+					<pt x="0.165" y="0.006" z="0.003"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="cadre-pc17">
+			<representationBalayageCercle diametre="0.006">
+				<profile3d>
+					<pt x="-0.042251" y="0.0" z="0.063962"/>
+					<pt x="-0.067607" y="0.0" z="0.028607"/>
+					<pt x="-0.081266" y="0.0" z="0.022635"/>
+					<pt x="-0.082" y="0.0" z="0.015653"/>
+					<pt x="-0.079135" y="0.0" z="0.009183"/>
+					<pt x="-0.073810" y="0.0" z="0.004635"/>
+					<pt x="-0.0670" y="0.0" z="0.003"/>
+					<pt x="0.0670" y="0.0" z="0.003"/>
+					<pt x="0.07381" y="0.0" z="0.004635"/>
+					<pt x="0.079135" y="0.0" z="0.009183"/>
+					<pt x="0.082" y="0.0" z="0.015653"/>
+					<pt x="0.082" y="0.0" z="0.152"/>
+					<pt x="0.080858" y="0.0" z="0.15774"/>
+					<pt x="0.077607" y="0.0" z="0.162607"/>
+					<pt x="0.07274" y="0.0" z="0.165858"/>
+					<pt x="0.0670" y="0.0" z="0.167"/>
+					<pt x="-0.0670" y="0.0" z="0.167"/>
+					<pt x="-0.07274" y="0.0" z="0.165858"/>
+					<pt x="-0.077607" y="0.0" z="0.162607"/>
+					<pt x="-0.080858" y="0.0" z="0.15774"/>
+					<pt x="-0.082" y="0.0" z="0.152"/>
+					<pt x="-0.082" y="0.006" z="0.015653"/>
+					<pt x="-0.079135" y="0.006" z="0.009183"/>
+					<pt x="-0.07381" y="0.006" z="0.004635"/>
+					<pt x="-0.0670" y="0.006" z="0.003"/>
+					<pt x="0.0670" y="0.006" z="0.003"/>
+					<pt x="0.07381" y="0.006" z="0.004635"/>
+					<pt x="0.079135" y="0.006" z="0.009183"/>
+					<pt x="0.082" y="0.006" z="0.015653"/>
+					<pt x="0.081266" y="0.006" z="0.022635"/>
+					<pt x="0.077607" y="0.006" z="0.028607"/>
+					<pt x="0.042251" y="0.006" z="0.063962"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="u1-pc17">
+			<representationBalayageCercle diametre="0.01">
+				<profile3d>
+					<pt x="0.0" y=".65" z=".159"/>
+					<pt x="0.0" y="-0.075" z=".159"/>
+					<pt x="0.0" y="-0.084567" z=".157097"/>
+					<pt x="0.0" y="-0.092678" z=".151678"/>
+					<pt x="0.0" y="-0.098097" z=".143567"/>
+					<pt x="0.0" y="-0.10" z=".134"/>
+					<pt x="0.0" y="-0.098097" z=".074433"/>
+					<pt x="0.0" y="-0.092678" z=".066322"/>
+					<pt x="0.0" y="-0.084567" z=".060903"/>
+					<pt x="0.0" y="-0.075" z=".059"/>
+					<pt x="0.0" y="0.65" z=".059"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+		<def id="barre1-pc17">
+			<representationBalayageCercle diametre="0.01">
+				<profile3d>
+					<pt x="0.00" y="0.0" z=".011"/>
+					<pt x="0.00" y="1.0" z=".011"/>
+				</profile3d>
+				<style colorHex="808080"/>
+			</representationBalayageCercle>
+		</def>
+	</defs>
+	<symboles>
+		<symbole id="IK8-2U">
+			<reinforcingBar tag="s1" nom="Support" description="B500B dia10">
+				<linkDef>supportPKwatt-120</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s2" nom="Support" description="B500B dia10">
+				<linkDef>supportPKwatt-2</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s3" nom="Support" description="B500B dia8">
+				<linkDef>barre1-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s4" nom="Support" description="B500B dia8">
+				<linkDef>barre2-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s5" nom="Support" description="B500B dia6">
+				<linkDef>arma1-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s6" nom="Support" description="B500B dia6">
+				<linkDef>arma2-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s7" nom="Support" description="B500B dia6">
+				<linkDef>arma3-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z=".11417"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u1" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U60-PKwatt</linkDef>
+				<scu>
+					<pO x="0.10" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u2" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U60-PKwatt</linkDef>
+				<scu>
+					<pO x="-0.10" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c1" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre60-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.120" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre60-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.150" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre60-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.180" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+		<symbole id="IK8-3U">
+			<reinforcingBar tag="s1" nom="Support" description="B500B dia10">
+				<linkDef>supportPKwatt-120</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s2" nom="Support" description="B500B dia10">
+				<linkDef>supportPKwatt-2</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s3" nom="Support" description="B500B dia8">
+				<linkDef>barre1-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s4" nom="Support" description="B500B dia8">
+				<linkDef>barre2-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s5" nom="Support" description="B500B dia6">
+				<linkDef>arma1-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s6" nom="Support" description="B500B dia6">
+				<linkDef>arma2-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s7" nom="Support" description="B500B dia6">
+				<linkDef>arma3-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z=".11417"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u1" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U60-PKwatt</linkDef>
+				<scu>
+					<pO x="0.10" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u2" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U60-PKwatt</linkDef>
+				<scu>
+					<pO x="-0.10" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u3" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U60-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c1" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre60-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.120" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre60-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.150" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre60-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.180" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+		<symbole id="IK10-2U">
+			<reinforcingBar tag="s1" nom="Support" description="B500B dia10">
+				<linkDef>supportPKwatt-140</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s2" nom="Support" description="B500B dia10">
+				<linkDef>supportPKwatt-2</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s3" nom="Support" description="B500B dia8">
+				<linkDef>barre1-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s4" nom="Support" description="B500B dia8">
+				<linkDef>barre2-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s5" nom="Support" description="B500B dia6">
+				<linkDef>arma1-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s6" nom="Support" description="B500B dia6">
+				<linkDef>arma2-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s7" nom="Support" description="B500B dia6">
+				<linkDef>arma3-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z=".13417"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u1" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U80-PKwatt</linkDef>
+				<scu>
+					<pO x="0.10" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u2" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U80-PKwatt</linkDef>
+				<scu>
+					<pO x="-0.10" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c1" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre80-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.120" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre80-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.150" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre80-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.180" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+		<symbole id="IK10-3U">
+			<reinforcingBar tag="s1" nom="Support" description="B500B dia10">
+				<linkDef>supportPKwatt-140</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s2" nom="Support" description="B500B dia10">
+				<linkDef>supportPKwatt-2</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s3" nom="Support" description="B500B dia8">
+				<linkDef>barre1-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s4" nom="Support" description="B500B dia8">
+				<linkDef>barre2-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s5" nom="Support" description="B500B dia6">
+				<linkDef>arma1-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s6" nom="Support" description="B500B dia6">
+				<linkDef>arma2-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s7" nom="Support" description="B500B dia6">
+				<linkDef>arma3-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z=".13417"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u1" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U80-PKwatt</linkDef>
+				<scu>
+					<pO x="0.10" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u2" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U80-PKwatt</linkDef>
+				<scu>
+					<pO x="-0.10" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u3" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U80-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c1" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre80-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.120" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre80-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.150" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre80-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.180" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+		<symbole id="IK13-2U">
+			<reinforcingBar tag="s1" nom="Support" description="B500B dia10">
+				<linkDef>supportPKwatt-170</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s2" nom="Support" description="B500B dia10">
+				<linkDef>supportPKwatt-2</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s3" nom="Support" description="B500B dia8">
+				<linkDef>barre1-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s4" nom="Support" description="B500B dia8">
+				<linkDef>barre2-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s5" nom="Support" description="B500B dia6">
+				<linkDef>arma1-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s6" nom="Support" description="B500B dia6">
+				<linkDef>arma2-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s7" nom="Support" description="B500B dia6">
+				<linkDef>arma3-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z=".16417"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u1" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U110-PKwatt</linkDef>
+				<scu>
+					<pO x="0.10" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u2" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U110-PKwatt</linkDef>
+				<scu>
+					<pO x="-0.10" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c1" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre110-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.120" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre110-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.150" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre110-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.180" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+		<symbole id="IK13-3U">
+			<reinforcingBar tag="s1" nom="Support" description="B500B dia10">
+				<linkDef>supportPKwatt-170</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s2" nom="Support" description="B500B dia10">
+				<linkDef>supportPKwatt-2</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s3" nom="Support" description="B500B dia8">
+				<linkDef>barre1-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s4" nom="Support" description="B500B dia8">
+				<linkDef>barre2-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s5" nom="Support" description="B500B dia6">
+				<linkDef>arma1-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s6" nom="Support" description="B500B dia6">
+				<linkDef>arma2-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="s7" nom="Support" description="B500B dia6">
+				<linkDef>arma3-supportPKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z=".16417"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u1" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U110-PKwatt</linkDef>
+				<scu>
+					<pO x="0.10" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u2" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U110-PKwatt</linkDef>
+				<scu>
+					<pO x="-0.10" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u3" nom="U préKwatt" description="B500B dia6">
+				<linkDef>U110-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c1" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre110-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.120" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre110-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.150" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre préKwatt" description="B500B dia6">
+				<linkDef>Cadre110-PKwatt</linkDef>
+				<scu>
+					<pO x="0.0" y="0.180" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+		<symbole id="PC12-0U">
+			<reinforcingBar tag="c1" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.16" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.22" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.31" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c4" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.40" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c5" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.04" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c6" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.07" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c7" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.10" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c8" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.13" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b1" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc12</linkDef>
+				<scu>
+					<pO x="-0.042" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b2" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc12</linkDef>
+				<scu>
+					<pO x="0.042" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+		<symbole id="PC12-2U">
+			<reinforcingBar tag="c1" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.16" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.22" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.31" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c4" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.40" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c5" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.04" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c6" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.07" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c7" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.10" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c8" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.13" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u1-pc12" nom="U" description="B500B dia10">
+				<linkDef>u1-pc12</linkDef>
+				<scu>
+					<pO x="-0.042" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u2" nom="U" description="B500B dia10">
+				<linkDef>u1-pc12</linkDef>
+				<scu>
+					<pO x="0.042" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b1" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc12</linkDef>
+				<scu>
+					<pO x="-0.042" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b2" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc12</linkDef>
+				<scu>
+					<pO x="0.042" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+		<symbole id="PC12-3U">
+			<reinforcingBar tag="c1" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.16" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.22" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.31" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c4" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.40" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c5" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.04" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c6" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.07" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c7" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.10" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c8" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.13" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u1-pc12" nom="U" description="B500B dia10">
+				<linkDef>u1-pc12</linkDef>
+				<scu>
+					<pO x="-0.042" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u2" nom="U" description="B500B dia10">
+				<linkDef>u1-pc12</linkDef>
+				<scu>
+					<pO x="0.042" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u3" nom="U" description="B500B dia10">
+				<linkDef>u1-pc12</linkDef>
+				<scu>
+					<pO x="-0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b1" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc12</linkDef>
+				<scu>
+					<pO x="-0.042" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b2" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc12</linkDef>
+				<scu>
+					<pO x="0.042" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b3" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc12</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+		<symbole id="PC14-0U">
+			<reinforcingBar tag="c1" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.16" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.22" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.31" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c4" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.40" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c5" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.04" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c6" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.07" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c7" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.10" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c8" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.13" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b1" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc14</linkDef>
+				<scu>
+					<pO x="-0.042" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b2" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc14</linkDef>
+				<scu>
+					<pO x="0.042" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+		<symbole id="PC14-2U">
+			<reinforcingBar tag="c1" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.16" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.22" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.31" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c4" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.40" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c5" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.04" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c6" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.07" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c7" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.10" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c8" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.13" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u1-pc12" nom="U" description="B500B dia10">
+				<linkDef>u1-pc14</linkDef>
+				<scu>
+					<pO x="-0.052" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u2" nom="U" description="B500B dia10">
+				<linkDef>u1-pc14</linkDef>
+				<scu>
+					<pO x="0.052" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b1" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc14</linkDef>
+				<scu>
+					<pO x="-0.052" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b2" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc14</linkDef>
+				<scu>
+					<pO x="0.052" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+		<symbole id="PC14-3U">
+			<reinforcingBar tag="c1" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.16" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.22" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.31" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c4" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.40" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c5" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.04" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c6" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.07" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c7" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.10" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c8" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.13" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u1-pc12" nom="U" description="B500B dia10">
+				<linkDef>u1-pc14</linkDef>
+				<scu>
+					<pO x="-0.052" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u2" nom="U" description="B500B dia10">
+				<linkDef>u1-pc14</linkDef>
+				<scu>
+					<pO x="0.052" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u3" nom="U" description="B500B dia10">
+				<linkDef>u1-pc14</linkDef>
+				<scu>
+					<pO x="-0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b1" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc14</linkDef>
+				<scu>
+					<pO x="-0.052" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b2" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc14</linkDef>
+				<scu>
+					<pO x="0.052" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b3" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc14</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+		<symbole id="PC17-0U">
+			<reinforcingBar tag="c1" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.16" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.22" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.31" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c4" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.40" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c5" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.04" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c6" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.07" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c7" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.10" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c8" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.13" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b1" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc17</linkDef>
+				<scu>
+					<pO x="-0.067" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b2" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc17</linkDef>
+				<scu>
+					<pO x="0.067" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+		<symbole id="PC17-2U">
+			<reinforcingBar tag="c1" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.16" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.22" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.31" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c4" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.40" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c5" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.04" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c6" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.07" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c7" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.10" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c8" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.13" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u1-pc12" nom="U" description="B500B dia10">
+				<linkDef>u1-pc17</linkDef>
+				<scu>
+					<pO x="-0.067" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u2" nom="U" description="B500B dia10">
+				<linkDef>u1-pc17</linkDef>
+				<scu>
+					<pO x="0.067" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b1" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc17</linkDef>
+				<scu>
+					<pO x="-0.067" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b2" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc17</linkDef>
+				<scu>
+					<pO x="0.067" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+		<symbole id="PC17-3U">
+			<reinforcingBar tag="c1" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.16" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c2" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.22" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c3" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.31" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c4" nom="Cadre" description="B500B dia6">
+				<linkDef>cadreM-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.40" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c5" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.04" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c6" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.07" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c7" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.10" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="c8" nom="Cadre" description="B500B dia6">
+				<linkDef>cadre-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.13" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u1-pc12" nom="U" description="B500B dia10">
+				<linkDef>u1-pc17</linkDef>
+				<scu>
+					<pO x="-0.067" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u2" nom="U" description="B500B dia10">
+				<linkDef>u1-pc17</linkDef>
+				<scu>
+					<pO x="0.067" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="u3" nom="U" description="B500B dia10">
+				<linkDef>u1-pc17</linkDef>
+				<scu>
+					<pO x="-0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b1" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc17</linkDef>
+				<scu>
+					<pO x="-0.067" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b2" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc17</linkDef>
+				<scu>
+					<pO x="0.067" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+			<reinforcingBar tag="b3" nom="Barre" description="B500B dia10">
+				<linkDef>barre1-pc17</linkDef>
+				<scu>
+					<pO x="0.0" y="0.0" z="0.0"/>
+				</scu>
+				<typeSurface>Lisse</typeSurface>
+			</reinforcingBar>
+		</symbole>
+	</symboles>
+	<sites><site><scu><pO x="0.0" y="0.0" z="0.0"/></scu><buildings><building nom="A1/A2/A3"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><buildingStoreys><buildingStorey nom="HTRDC" elevation="0.0"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><components><slabs><slab nom="KTQ7"><scu><pO x="8.266518" y="11.368763" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.070009" y="0.0"/><pt x="4.070009" y="1.228"/><pt x="0.0" y="1.228"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="3.920009" y="0.156607"/><pt x="4.070009" y="0.156607"/><pt x="4.070009" y="0.456607"/><pt x="3.920009" y="0.456607"/><pt x="3.920009" y="0.156607"/></poly></forme></extrusion></representation></opening></openings></slab><slab nom="KTQ8"><scu><pO x="8.266518" y="12.601763" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.070009" y="0.0"/><pt x="4.070009" y="1.4403"/><pt x="0.0" y="1.4403"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.151907" y="0.852834"/><pt x="1.371907" y="0.852834"/><pt x="1.371907" y="1.072834"/><pt x="1.151907" y="1.072834"/><pt x="1.151907" y="0.852834"/></poly></forme></extrusion></representation></opening><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.46385" y="1.2203"/><pt x="1.68385" y="1.2203"/><pt x="1.68385" y="1.4403"/><pt x="1.46385" y="1.4403"/><pt x="1.46385" y="1.2203"/></poly></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.478272" y="0.09" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="2.863791" y="0.287143" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="8.266518" y="12.601763" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.478272" y="0.09"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="8.266518" y="12.601763" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.863791" y="0.287143"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ9"><scu><pO x="8.266518" y="14.047063" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.070009" y="0.0"/><pt x="4.070009" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.660725" y="0.073014"/><pt x="2.110725" y="0.073014"/><pt x="2.110725" y="0.373014"/><pt x="1.660725" y="0.373014"/><pt x="1.660725" y="0.073014"/></poly></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="2.734539" y="1.327937" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.75766" y="1.722451" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.712618" y="0.39567" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="8.266518" y="14.047063" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.734539" y="1.327937"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="8.266518" y="14.047063" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.75766" y="1.722451"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="8.266518" y="14.047063" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.712618" y="0.39567"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ10"><scu><pO x="8.266518" y="16.562063" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.070009" y="0.0"/><pt x="4.070009" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="1.71396" y="1.190026" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="8.266518" y="16.562063" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="1.71396" y="1.190026"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ13"><scu><pO x="12.466528" y="13.04223" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.570059" y="0.0"/><pt x="4.570059" y="0.9963"/><pt x="0.0" y="0.9963"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="2.288956" y="0.814858" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="12.466528" y="13.04223" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.288956" y="0.814858"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ14"><scu><pO x="12.466528" y="14.04353" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.570059" y="0.0"/><pt x="4.570059" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/></slab><slab nom="KTQ15"><scu><pO x="12.466528" y="16.55853" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.570059" y="0.0"/><pt x="4.570059" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="2.288956" y="1.083558" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="12.466528" y="16.55853" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.288956" y="1.083558"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ16"><scu><pO x="17.166588" y="11.368734" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.099964" y="0.0"/><pt x="4.099964" y="1.228"/><pt x="0.0" y="1.228"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="3.889391" y="0.156636"/><pt x="4.039391" y="0.156636"/><pt x="4.039391" y="0.456636"/><pt x="3.889391" y="0.456636"/><pt x="3.889391" y="0.156636"/></poly></forme></extrusion></representation></opening></openings></slab><slab nom="KTQ17"><scu><pO x="17.166588" y="12.601734" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.099964" y="0.0"/><pt x="4.099964" y="1.4403"/><pt x="0.0" y="1.4403"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.403554" y="1.2203"/><pt x="1.623554" y="1.2203"/><pt x="1.623554" y="1.4403"/><pt x="1.403554" y="1.4403"/><pt x="1.403554" y="1.2203"/></poly></forme></extrusion></representation></opening><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.164995" y="0.846365"/><pt x="1.384995" y="0.846365"/><pt x="1.384995" y="1.066365"/><pt x="1.164995" y="1.066365"/><pt x="1.164995" y="0.846365"/></poly></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.478208" y="0.09" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="2.863727" y="0.287172" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="17.166588" y="12.601734" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.478208" y="0.09"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="17.166588" y="12.601734" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.863727" y="0.287172"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ18"><scu><pO x="17.166588" y="14.047034" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.099964" y="0.0"/><pt x="4.099964" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.660654" y="0.0"/><pt x="2.100654" y="0.0"/><pt x="2.100654" y="0.44"/><pt x="1.660654" y="0.44"/><pt x="1.660654" y="0.0"/></poly></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="2.734475" y="1.327966" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.757597" y="1.72248" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.712555" y="0.395699" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="17.166588" y="14.047034" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.734475" y="1.327966"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="17.166588" y="14.047034" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.757597" y="1.72248"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="17.166588" y="14.047034" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.712555" y="0.395699"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ19"><scu><pO x="17.166588" y="16.562034" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.099964" y="0.0"/><pt x="4.099964" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="1.713896" y="1.190055" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="17.166588" y="16.562034" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="1.713896" y="1.190055"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ20"><scu><pO x="21.576453" y="13.04223" z="39.82"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.600148" y="0.0"/><pt x="4.600148" y="0.9963"/><pt x="0.0" y="0.9963"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="2.319019" y="0.814858" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="21.576453" y="13.04223" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.319019" y="0.814858"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ21"><scu><pO x="21.576453" y="14.04353" z="39.82"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.600148" y="0.0"/><pt x="4.600148" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/></slab><slab nom="KTQ22"><scu><pO x="21.576453" y="16.55853" z="39.82"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.600148" y="0.0"/><pt x="4.600148" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="2.319019" y="1.083558" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="21.576453" y="16.55853" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.319019" y="1.083558"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ26"><scu><pO x="26.306602" y="11.36873" z="39.82"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.069925" y="0.0"/><pt x="4.069925" y="1.228"/><pt x="0.0" y="1.228"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="3.919925" y="0.15664"/><pt x="4.069925" y="0.15664"/><pt x="4.069925" y="0.45664"/><pt x="3.919925" y="0.45664"/><pt x="3.919925" y="0.15664"/></poly></forme></extrusion></representation></opening></openings></slab><slab nom="KTQ27"><scu><pO x="26.306602" y="12.60173" z="39.82"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.069925" y="0.0"/><pt x="4.069925" y="1.4403"/><pt x="0.0" y="1.4403"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.47668" y="1.2203"/><pt x="1.69668" y="1.2203"/><pt x="1.69668" y="1.4403"/><pt x="1.47668" y="1.4403"/><pt x="1.47668" y="1.2203"/></poly></forme></extrusion></representation></opening><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.162058" y="0.849899"/><pt x="1.382058" y="0.849899"/><pt x="1.382058" y="1.069899"/><pt x="1.162058" y="1.069899"/><pt x="1.162058" y="0.849899"/></poly></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.478181" y="0.09" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="2.8637" y="0.287176" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="26.306602" y="12.60173" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.478181" y="0.09"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="26.306602" y="12.60173" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.8637" y="0.287176"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ28"><scu><pO x="26.306602" y="14.04703" z="39.82"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.069925" y="0.0"/><pt x="4.069925" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.660689" y="0.0"/><pt x="2.100689" y="0.0"/><pt x="2.100689" y="0.44"/><pt x="1.660689" y="0.44"/><pt x="1.660689" y="0.0"/></poly></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="2.734449" y="1.32797" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="2.7632" y="1.299219" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.75757" y="1.722484" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.712528" y="0.395703" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="26.306602" y="14.04703" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.734449" y="1.32797"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="26.306602" y="14.04703" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.7632" y="1.299219"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="26.306602" y="14.04703" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.75757" y="1.722484"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="26.306602" y="14.04703" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.712528" y="0.395703"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ29"><scu><pO x="26.306602" y="16.56203" z="39.82"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.069925" y="0.0"/><pt x="4.069925" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="1.71387" y="1.190059" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="26.306602" y="16.56203" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="1.71387" y="1.190059"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ32"><scu><pO x="30.506527" y="13.04223" z="39.82"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.570026" y="0.0"/><pt x="4.570026" y="0.9963"/><pt x="0.0" y="0.9963"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="2.28895" y="0.814858" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="30.506527" y="13.04223" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.28895" y="0.814858"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ33"><scu><pO x="30.506527" y="14.04353" z="39.82"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.570026" y="0.0"/><pt x="4.570026" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/></slab><slab nom="KTQ34"><scu><pO x="30.506527" y="16.55853" z="39.82"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.570026" y="0.0"/><pt x="4.570026" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="2.28895" y="1.083558" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="30.506527" y="16.55853" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.28895" y="1.083558"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ35"><scu><pO x="35.206554" y="11.36873" z="39.82"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.100001" y="0.0"/><pt x="4.100001" y="1.228"/><pt x="0.0" y="1.228"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="3.889425" y="0.15664"/><pt x="4.039425" y="0.15664"/><pt x="4.039425" y="0.45664"/><pt x="3.889425" y="0.45664"/><pt x="3.889425" y="0.15664"/></poly></forme></extrusion></representation></opening></openings></slab><slab nom="KTQ36"><scu><pO x="35.206554" y="12.60173" z="39.82"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.100001" y="0.0"/><pt x="4.100001" y="1.4403"/><pt x="0.0" y="1.4403"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.421024" y="1.2203"/><pt x="1.641024" y="1.2203"/><pt x="1.641024" y="1.4403"/><pt x="1.421024" y="1.4403"/><pt x="1.421024" y="1.2203"/></poly></forme></extrusion></representation></opening><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.168165" y="0.85264"/><pt x="1.388165" y="0.85264"/><pt x="1.388165" y="1.07264"/><pt x="1.168165" y="1.07264"/><pt x="1.168165" y="0.85264"/></poly></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.478236" y="0.09" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="2.863755" y="0.287176" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="35.206554" y="12.60173" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.478236" y="0.09"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="35.206554" y="12.60173" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.863755" y="0.287176"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ37"><scu><pO x="35.206554" y="14.04703" z="39.82"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.100001" y="0.0"/><pt x="4.100001" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.660689" y="0.0"/><pt x="2.100689" y="0.0"/><pt x="2.100689" y="0.44"/><pt x="1.660689" y="0.44"/><pt x="1.660689" y="0.0"/></poly></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="2.734503" y="1.32797" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.757624" y="1.722484" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.712582" y="0.395703" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="35.206554" y="14.04703" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.734503" y="1.32797"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="35.206554" y="14.04703" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.757624" y="1.722484"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="35.206554" y="14.04703" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.712582" y="0.395703"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ38"><scu><pO x="35.206554" y="16.56203" z="39.82"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.100001" y="0.0"/><pt x="4.100001" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="1.713923" y="1.190059" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="35.206554" y="16.56203" z="39.81985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="1.713923" y="1.190059"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ63"><scu><pO x="8.064749" y="3.953216" z="0.0"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="1.400308" y="0.0"/><pt x="1.400308" y="2.37455"/><pt x="0.0" y="2.37455"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="0.646934" y="1.215892" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="8.064749" y="3.953216" z="-0.00015"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.646934" y="1.215892"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ62"><scu><pO x="13.884701" y="3.953216" z="0.0"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="1.4" y="0.0"/><pt x="1.4" y="2.37455"/><pt x="0.0" y="2.37455"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="0.743187" y="1.215892" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="13.884701" y="3.953216" z="-0.00015"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.743187" y="1.215892"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ61"><scu><pO x="26.105652" y="3.953139" z="0.0"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="1.4" y="0.0"/><pt x="1.4" y="2.37455"/><pt x="0.0" y="2.37455"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="0.62798" y="1.229168" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="26.105652" y="3.953139" z="-0.00015"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.62798" y="1.229168"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ60"><scu><pO x="31.92545" y="3.953216" z="0.0"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="1.4" y="0.0"/><pt x="1.4" y="2.37455"/><pt x="0.0" y="2.37455"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="0.724387" y="1.229091" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="31.92545" y="3.953216" z="-0.00015"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.724387" y="1.229091"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ59"><scu><pO x="44.144899" y="3.953139" z="0.0"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="1.4" y="0.0"/><pt x="1.4" y="2.37455"/><pt x="0.0" y="2.37455"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="0.57338" y="1.242367" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="44.144899" y="3.953139" z="-0.00015"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.57338" y="1.242367"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ58"><scu><pO x="49.964697" y="3.953216" z="0.0"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="1.4" y="0.0"/><pt x="1.4" y="2.37455"/><pt x="0.0" y="2.37455"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="0.66486" y="1.229091" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="49.964697" y="3.953216" z="-0.00015"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.66486" y="1.229091"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ78"><scu><pO x="39.616453" y="14.04353" z="39.92"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.600099" y="0.0"/><pt x="4.600099" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/></slab><slab nom="KTQ79"><scu><pO x="39.616453" y="16.55853" z="39.92"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.600099" y="0.0"/><pt x="4.600099" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="2.319023" y="1.083558" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="39.616453" y="16.55853" z="39.91985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.319023" y="1.083558"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ73"><scu><pO x="44.346552" y="11.368729" z="39.92"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.07" y="0.0"/><pt x="4.07" y="1.228"/><pt x="0.0" y="1.228"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="3.92" y="0.156641"/><pt x="4.07" y="0.156641"/><pt x="4.07" y="0.456641"/><pt x="3.92" y="0.456641"/><pt x="3.92" y="0.156641"/></poly></forme></extrusion></representation></opening></openings></slab><slab nom="KTQ74"><scu><pO x="44.346552" y="12.601729" z="39.92"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.07" y="0.0"/><pt x="4.07" y="1.4403"/><pt x="0.0" y="1.4403"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.485154" y="1.2203"/><pt x="1.705154" y="1.2203"/><pt x="1.705154" y="1.4403"/><pt x="1.485154" y="1.4403"/><pt x="1.485154" y="1.2203"/></poly></forme></extrusion></representation></opening><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.172591" y="0.850651"/><pt x="1.392591" y="0.850651"/><pt x="1.392591" y="1.070651"/><pt x="1.172591" y="1.070651"/><pt x="1.172591" y="0.850651"/></poly></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.478237" y="0.09" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="2.863758" y="0.287177" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="44.346552" y="12.601729" z="39.91985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.478237" y="0.09"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="44.346552" y="12.601729" z="39.91985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.863758" y="0.287177"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ75"><scu><pO x="44.346552" y="14.047029" z="39.92"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.07" y="0.0"/><pt x="4.07" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.660695" y="0.0"/><pt x="2.100695" y="0.0"/><pt x="2.100695" y="0.44"/><pt x="1.660695" y="0.44"/><pt x="1.660695" y="0.0"/></poly></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.757625" y="1.722485" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="2.734505" y="1.327971" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="0.712585" y="0.395704" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="44.346552" y="14.047029" z="39.91985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.757625" y="1.722485"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="44.346552" y="14.047029" z="39.91985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.734505" y="1.327971"/></circle></forme></extrusion></representation></accessory><accessory nom="CAPRI Orange 856574"><scu><pO x="44.346552" y="14.047029" z="39.91985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.712585" y="0.395704"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ76"><scu><pO x="44.346552" y="16.562029" z="39.92"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.07" y="0.0"/><pt x="4.07" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="1.713924" y="1.19006" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="44.346552" y="16.562029" z="39.91985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="1.713924" y="1.19006"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ69"><scu><pO x="48.546552" y="14.043618" z="39.92"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.570047" y="0.0"/><pt x="4.570047" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/></slab><slab nom="KTQ70"><scu><pO x="48.546552" y="16.558618" z="39.92"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.570047" y="0.0"/><pt x="4.570047" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="2.236233" y="0.680933" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="48.546552" y="16.558618" z="39.91985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.236233" y="0.680933"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ66"><scu><pO x="53.246558" y="14.216623" z="39.92"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.220043" y="0.0"/><pt x="4.220043" y="2.33755"/><pt x="0.0" y="2.33755"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.569816" y="0.0"/><pt x="2.019816" y="0.0"/><pt x="2.019816" y="0.3"/><pt x="1.569816" y="0.3"/><pt x="1.569816" y="0.0"/></poly></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="2.602317" y="0.871001" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="53.246558" y="14.216623" z="39.91985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.602317" y="0.871001"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ67"><scu><pO x="53.246558" y="16.559173" z="39.92"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.220043" y="0.0"/><pt x="4.220043" y="2.51"/><pt x="0.0" y="2.51"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="1.986251" y="1.095416" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="53.246558" y="16.559173" z="39.91985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="1.986251" y="1.095416"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ64"><scu><pO x="53.246601" y="11.370855" z="39.92"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.22" y="0.0"/><pt x="4.22" y="1.228"/><pt x="0.0" y="1.228"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="3.869987" y="0.154515"/><pt x="4.019987" y="0.154515"/><pt x="4.019987" y="0.454515"/><pt x="3.869987" y="0.454515"/><pt x="3.869987" y="0.154515"/></poly></forme></extrusion></representation></opening></openings></slab><slab nom="KTQ65"><scu><pO x="53.246601" y="12.603855" z="39.92"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.22" y="0.0"/><pt x="4.22" y="1.43105"/><pt x="0.0" y="1.43105"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.405643" y="1.21105"/><pt x="1.625643" y="1.21105"/><pt x="1.625643" y="1.43105"/><pt x="1.405643" y="1.43105"/><pt x="1.405643" y="1.21105"/></poly></forme></extrusion></representation></opening><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="1.763712" y="1.28105"/><pt x="2.063712" y="1.28105"/><pt x="2.063712" y="1.43105"/><pt x="1.763712" y="1.43105"/><pt x="1.763712" y="1.28105"/></poly></forme></extrusion></representation></opening><opening nom="CAPRI Orange 856574"><scu><pO x="1.999056" y="0.190776" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="53.246601" y="12.603855" z="39.91985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="1.999056" y="0.190776"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ77"><scu><pO x="39.616453" y="13.04223" z="39.92"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.600099" y="0.0"/><pt x="4.600099" y="0.9963"/><pt x="0.0" y="0.9963"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="2.319023" y="0.814858" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="39.616453" y="13.04223" z="39.91985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.319023" y="0.814858"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ71"><scu degAxeZ="90.0"><pO x="53.091352" y="11.345379" z="39.71"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.000001" y="0.0"/><pt x="1.520001" y="0.0"/><pt x="1.52" y="2.00455"/><pt x="0.0" y="2.00455"/><pt x="0.000001" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="Reserv. RECTANGULAIRE(s)"><scu><pO x="0.0" y="0.0" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.391515" y="0.0"/><pt x="0.541515" y="0.0"/><pt x="0.541515" y="0.3"/><pt x="0.391515" y="0.3"/><pt x="0.391515" y="0.0"/></poly></forme></extrusion></representation></opening></openings></slab><slab nom="KTQ68"><scu><pO x="48.546552" y="13.042318" z="39.92"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.570047" y="0.0"/><pt x="4.570047" y="0.9963"/><pt x="0.0" y="0.9963"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="2.236233" y="0.876922" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="48.546552" y="13.042318" z="39.91985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.236233" y="0.876922"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ80"><scu><pO x="3.416552" y="13.04223" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.719965" y="0.0"/><pt x="4.719965" y="1.0888"/><pt x="0.0" y="1.0888"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="2.438926" y="0.814858" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="3.416552" y="13.04223" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.438926" y="0.814858"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ81"><scu><pO x="3.416552" y="14.14333" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.719965" y="0.0"/><pt x="4.719965" y="1.22755"/><pt x="0.0" y="1.22755"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/></slab><slab nom="KTQ82"><scu><pO x="3.416552" y="15.37588" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.719965" y="0.0"/><pt x="4.719965" y="1.22755"/><pt x="0.0" y="1.22755"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/></slab><slab nom="KTQ83"><scu><pO x="3.416552" y="16.60843" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.719965" y="0.0"/><pt x="4.719965" y="1.22755"/><pt x="0.0" y="1.22755"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/><openings><opening nom="CAPRI Orange 856574"><scu><pO x="2.438926" y="1.033658" z="0.0"/></scu><type>Traversante</type><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="0.0" y="0.0"/></circle></forme></extrusion></representation></opening></openings><components><accessories><accessory nom="CAPRI Orange 856574"><scu><pO x="3.416552" y="16.60843" z="39.71985"/></scu><style colorHex="0000FF"/><representation><extrusion profondeur="0.0503"><dirExt>EXT_DIRZ</dirExt><forme><circle diametre="0.105"><pCentre x="2.438926" y="1.033658"/></circle></forme></extrusion></representation></accessory></accessories></components></slab><slab nom="KTQ84"><scu><pO x="3.416552" y="17.84098" z="39.72"/></scu><representation><extrusion profondeur="0.05"><dirExt>EXT_DIRZ</dirExt><forme><poly><pt x="0.0" y="0.0"/><pt x="4.719965" y="0.0"/><pt x="4.719965" y="1.22755"/><pt x="0.0" y="1.22755"/><pt x="0.0" y="0.0"/></poly></forme></extrusion></representation><material nom="Concrete"/><style colorHex="C3C3C3"/></slab></slabs></components></buildingStorey></buildingStoreys></building></buildings></site></sites></projet>
