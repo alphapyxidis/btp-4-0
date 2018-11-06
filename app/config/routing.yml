@@ -1,8 +1,24 @@
 # app/config/routing.yml
 app:
-    resource: '@AppBundle/Controller/'
+    resource: '@AppBundle/Controller/DefaultController.php'
     type: annotation
-    
+
+blog:
+    resource: '@AppBundle/Controller/BlogController.php'
+    type: annotation
+
+chantier:
+    resource: '@AppBundle/Controller/ChantierController.php'
+    type: annotation
+
+adresse:
+    resource: '@AppBundle/Controller/AdresseController.php'
+    type: annotation
+
+api:
+    resource: '@AppBundle/Controller/ApiController.php'
+    type: rest
+
 hwi_oauth_login:
     resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
     prefix:   /login

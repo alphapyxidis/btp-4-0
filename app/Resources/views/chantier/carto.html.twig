@@ -58,12 +58,12 @@
                                 var west = map.getBounds().getWest();
                                 var north = map.getBounds().getNorth();
                                 var south = map.getBounds().getSouth();  
-                                var url = '{{ path('chantier_neighborhood') }}?east=' + east + '&west=' + west + '&south=' + south + '&north=' + north;
+                                var url = '{{ path('get_neighborhood') }}?east=' + east + '&west=' + west + '&south=' + south + '&north=' + north;
 
                                 $.ajax({  
 
                                     url:        url ,  
-                                    type:       'POST',   
+                                    type:       'GET',   
                                     dataType:   'json',  
                                     async:      true,  
                                     

@@ -1,6 +1,6 @@
 <?php
 
-// src/AppBundle/Controller/NavigationController.php
+// src/AppBundle/Controller/BlogController.php
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 use AppBundle\Entity\Chantier;
 
-class NavigationController extends Controller
+class BlogController extends Controller
 {
     /**
      * @Route("/chantier-du-futur", name="accueil")
