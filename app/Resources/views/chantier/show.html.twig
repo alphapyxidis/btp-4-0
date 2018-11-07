@@ -8,60 +8,62 @@
  {% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="one whole double-padded" style="height:150px;text-align:center;background-image: url('{{ asset('img/banniere-chantier.png') }}');background-size:cover;">
-        <h2><b>{{ chantier.nom }}</b></h2>
-        <h4>{{ chantier.adresse }}</h4>
-        </div>
-    </div>
-    <div class="equalize row padded">
-        <div class="two thirds pad-right">
-            <div class="bordered half-padded white-bg one whole" style="height:200px;">
-                <h4>Description</h4>
-                <p>{{ chantier.description }}</p>
-            </div>
-            <div class="bordered half-padded half-gap-top white-bg one whole one whole" style="height:200px;">
-                <a class="round button purple" href="{{ path('planning_chantier', { 'slug': chantier.slug }) }}"><i class="icon-tasks"></i>&nbsp;&nbsp;Planning</a>
-                <img src="{{ chantier.user.picture }}" title="{{ chantier.user.nickname }}" style="float: right; width:30px; height: 30px; border-radius: 50%;" />
+    <div class="container centered">
+        <div class="row">
+            <div class="one whole double-padded" style="height:150px;text-align:center;background-image: url('{{ asset('img/banniere-chantier.png') }}');background-size:cover;">
+            <h2><b>{{ chantier.nom }}</b></h2>
+            <h4>{{ chantier.adresse }}</h4>
             </div>
         </div>
-        <div "one third">
-            <div id="map" style="height:400px;"></div>
-            <script>
-                var mapboxUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={{ mapbox_token }}';
-                var mapboxAttribution = 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
-                
-                var outdoor = L.tileLayer(mapboxUrl, {id: 'mapbox.outdoors', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
-                    grayscale = L.tileLayer(mapboxUrl, {id: 'mapbox.light', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
-                    satellite = L.tileLayer(mapboxUrl, {id: 'mapbox.satellite', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
-                    streets   = L.tileLayer(mapboxUrl, {id: 'mapbox.streets', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19});
+        <div class="equalize row padded">
+            <div class="two thirds pad-right">
+                <div class="bordered half-padded white-bg one whole" style="height:200px;">
+                    <h4>Description</h4>
+                    <p>{{ chantier.description }}</p>
+                </div>
+                <div class="bordered half-padded half-gap-top white-bg one whole one whole" style="height:200px;">
+                    <a class="round button purple" href="{{ path('planning_chantier', { 'slug': chantier.slug }) }}"><i class="icon-tasks"></i>&nbsp;&nbsp;Planning</a>
+                    <img src="{{ chantier.user.picture }}" title="{{ chantier.user.nickname }}" style="float: right; width:30px; height: 30px; border-radius: 50%;" />
+                </div>
+            </div>
+            <div "one third">
+                <div id="map" style="height:400px;"></div>
+                <script>
+                    var mapboxUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={{ mapbox_token }}';
+                    var mapboxAttribution = 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
+                    
+                    var outdoor = L.tileLayer(mapboxUrl, {id: 'mapbox.outdoors', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
+                        grayscale = L.tileLayer(mapboxUrl, {id: 'mapbox.light', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
+                        satellite = L.tileLayer(mapboxUrl, {id: 'mapbox.satellite', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
+                        streets   = L.tileLayer(mapboxUrl, {id: 'mapbox.streets', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19});
 
-                var baseMaps = {
-                    "courbes de niveau": outdoor,
-                    "plan": streets,
-                    "échelle de gris": grayscale,
-                    "vue satellite": satellite
-                };
+                    var baseMaps = {
+                        "courbes de niveau": outdoor,
+                        "plan": streets,
+                        "échelle de gris": grayscale,
+                        "vue satellite": satellite
+                    };
 
-                var craneIcon = L.icon({
-                    iconUrl: "{{ asset('img/marker.png') }}",
-                    shadowUrl: "{{ asset('img/shadow_marker.png') }}",
+                    var craneIcon = L.icon({
+                        iconUrl: "{{ asset('img/marker.png') }}",
+                        shadowUrl: "{{ asset('img/shadow_marker.png') }}",
 
-                    iconSize:     [32, 32], // size of the icon
-                    shadowSize:   [32, 32], // size of the shadow
-                    iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
-                    shadowAnchor: [16, 32],  // the same for the shadow
-                    popupAnchor:  [-8, -32] // point from which the popup should open relative to the iconAnchor
-                });
+                        iconSize:     [32, 32], // size of the icon
+                        shadowSize:   [32, 32], // size of the shadow
+                        iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+                        shadowAnchor: [16, 32],  // the same for the shadow
+                        popupAnchor:  [-8, -32] // point from which the popup should open relative to the iconAnchor
+                    });
 
-                var map = L.map('map', {center: [{{ chantier.adresse.lat}}, {{ chantier.adresse.lon}}], zoom: 18, layers: [outdoor]});
-                
-                L.control.layers(baseMaps).addTo(map);
+                    var map = L.map('map', {center: [{{ chantier.adresse.lat}}, {{ chantier.adresse.lon}}], zoom: 18, layers: [outdoor]});
+                    
+                    L.control.layers(baseMaps).addTo(map);
 
-                L.marker([{{ chantier.adresse.lat }}, {{ chantier.adresse.lon }}], {icon: craneIcon}).addTo(map);
+                    L.marker([{{ chantier.adresse.lat }}, {{ chantier.adresse.lon }}], {icon: craneIcon}).addTo(map);
 
-            </script>
+                </script>
 
+            </div>
         </div>
     </div>
 {% endblock %}

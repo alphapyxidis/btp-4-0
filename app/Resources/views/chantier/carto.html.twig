@@ -14,7 +14,7 @@
 
 
 {% block body %}
-                <div class="one whole padded">
+                <div class="one whole padded container centered">
                     <h3>Les chantiers autour de ma position</h3>
                     <div class="noicon" id="map" style="height:640px;"></div>
                     <script>
@@ -71,9 +71,9 @@
                                         markers.clearLayers();
                                         for(i = 0; i < data.length; i++) {  
                                             chantier = data[i];
-
-                                            markers.addLayer(L.marker([ chantier['lat'], chantier['lon']], {icon: craneIcon}).addTo(map)
-                                                            .bindPopup('<a href="demo/chantier/' + chantier['slug'] + '"><b>' + chantier['nom'] + '</b></a><br> situé ' + chantier['rue'] + ' à ' + chantier['ville']));
+                                            adresse = chantier['adresse'];
+                                            markers.addLayer(L.marker([ adresse['lat'], adresse['lon']], {icon: craneIcon}).addTo(map)
+                                                            .bindPopup('<a href="demo/chantier/' + chantier['slug'] + '"><b>' + chantier['nom'] + '</b></a><br> situé ' + adresse['rue'] + ' à ' + adresse['ville']));
                                         }  
                                         map.addLayer(markers);
                                     },  
