@@ -20,7 +20,7 @@ class ApiController extends Controller
      /**
      * Lists all chantier in a given area.
      * @Rest\View()
-     * @Rest\Get("/api/autour-de-moi")
+     * @Rest\Get("/api/localise-chantiers")
      */
     public function getNeighborhoodAction(Request $request)
     {
@@ -43,4 +43,34 @@ class ApiController extends Controller
         return $chantiers;
     }
 
+     /**
+     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\Patch("/api/update-chantier/{slug}")
+     */
+    public function patchPlanningAction($slug, Request $request)
+    {
+        $em = $this->get('doctrine.orm.entity_manager');
+        $repository = $this->getDoctrine()->getRepository(Chantier::class);
+        $chantier = $repository->findOneBySlug($slug); 
+
+        if (empty($chantier)) {
+            return new JsonResponse(['message' => 'Aucun chantier trouvé'], Response::HTTP_NOT_FOUND);
+        }
+
+        $form = $this->createForm('AppBundle\Form\ApiChantierType', $chantier);
+
+        // Le paramètre false dit à Symfony de garder les valeurs dans notre 
+        // entité si l'utilisateur n'en fournit pas une dans sa requête
+        $form->submit($request->request->all(), false);
+
+
+        if ($form->isValid()) {
+            $em->merge($chantier);
+            $em->flush();
+            return $chantier;
+        } else {
+            return $form;
+        }
+    }
+   
 }

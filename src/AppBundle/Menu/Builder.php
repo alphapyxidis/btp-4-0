@@ -30,8 +30,6 @@ class Builder implements ContainerAwareInterface
         $submenu->addChild('Planning', ['route' => 'gantt']);
         $menu['Chantiers']->addChild('Autour de moi', ['route' => 'demo']);
 
-        $menu->addChild('Adresses', ['route' => 'adresse_index']);
-
         return $menu;
     }
 }

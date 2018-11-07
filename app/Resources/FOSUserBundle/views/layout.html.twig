@@ -3,6 +3,7 @@
 {% extends './demo.html.twig' %}
 
 {% block body %}
+    <div class="row container centered">
         {% if app.request.hasPreviousSession %}
             {% for message in app.session.flashbag.get('error') %}
                 <div class="eleven twelfths dismissible error round message centered align-left gap-bottom">{{ message|trans({}, 'FOSUserBundle') }}</div>
@@ -23,5 +24,6 @@
 
         {% block fos_user_content %}
         {% endblock fos_user_content %}
+    </div>
 
 {% endblock body %}

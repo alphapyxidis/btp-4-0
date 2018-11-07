@@ -1,8 +1,7 @@
 {% extends 'demo.html.twig' %}
 
 {% block body %}
-<div class="row no-pad no-gap">
-  <iframe src="{{ url('gantt') }}" frameborder="0" style="width:100%; min-height:800px;">
+  <i class="fixed middle center icon-4x icon-spinner icon-spin alert"></i>
+  <iframe src="{{ url('gantt') }}" frameborder="0">
   </iframe> 
-</div>
 {% endblock %}

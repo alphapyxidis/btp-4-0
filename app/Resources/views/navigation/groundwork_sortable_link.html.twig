@@ -1,0 +1,15 @@
+
+<a {% for attr, value  in options %} {{ attr }}="{{ value }}"{% endfor %} style="color:white;">
+    <span class="pull-right">
+        {% if app.request.get('sort') == key %}
+            {% if app.request.get('direction') == 'desc' %}
+                <i class="icon-sort-by-attributes-alt asphalt"></i>
+            {% else %}
+                <i class="icon-sort-by-attributes asphalt"></i>
+            {% endif %}
+        {% else %}
+            <i class="icon-sort asphalt"></i>
+        {% endif %}
+    </span>
+    {{ title }}
+</a>

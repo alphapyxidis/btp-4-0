@@ -2,19 +2,17 @@
 
 {% block body %}
 <div class="one whole container centered">
-    <h3>Liste de tous les chantiers</h3>
-
     {# display navigation #}
     <div class="navigation">
         {{ knp_pagination_render(pagination) }}
     </div>
 
-    <table>
+    <table class="blue">
         <thead>
             <tr>
             {# sorting of properties based on query components #}
                 <th>{{ knp_pagination_sortable(pagination, '#', 'c.id') }}</th>
-                <th{% if pagination.isSorted('c.Nom') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nom', 'c.nom') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Nom', 'c.nom') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Description', ['c.description']) }}</th>
                 <th>Adresse</th>
                 <th>Actions</th>
@@ -24,7 +22,7 @@
         <tbody>
             {# table body #}
             {% for chantier in pagination %}
-            <tr {% if loop.index is odd %}class="color"{% endif %}>
+            <tr>
                 <td><a href="{{ path('chantier_show', { 'slug': chantier.slug }) }}">{{ chantier.id }}</a></td>
                 <td>{{ chantier.nom }}</td>
                 <td>{{ chantier.description }}</td>
@@ -44,18 +42,9 @@
         </tbody>
     </table>
 
-
-
-
     {# display navigation #}
     <div class="navigation">
         {{ knp_pagination_render(pagination) }}
     </div>
-
-    <ul>
-        <li>
-            <a href="{{ path('chantier_new') }}">Create a new chantier</a>
-        </li>
-    </ul>
 </div>
 {% endblock %}

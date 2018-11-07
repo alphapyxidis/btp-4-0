@@ -121,8 +121,8 @@ knp_paginator:
         filter_value_name: filterValue  # filter value query parameter name
     template:                                        
         pagination: 'navigation/groundwork_pagination.html.twig'                                         
-        sortable: '@KnpPaginator/Pagination/sortable_link.html.twig' # sort link template                                
-        filtration: '@KnpPaginator/Pagination/filtration.html.twig'  # filters template
+        sortable: 'navigation/groundwork_sortable_link.html.twig' # sort link template                                
+        filtration: 'navigation/groundwork_filtration.html.twig'  # filters template
 
 knp_menu:
     # use "twig: false" to disable the Twig extension and the TwigRenderer

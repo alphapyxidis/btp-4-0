@@ -32,8 +32,8 @@
 
         {% block headerscripts %}{% endblock %}
     </head>
-    <body class="white-bg">
-        <header class="half-gap-bottom">
+    <body class="alert-bg">
+        <header class="header half-gap-bottom">
           <div class="charcoal-bg half-pad-left half-pad-top hal-pad-right">
              <div class="desktop-only" >
                 <div class="row">
@@ -87,18 +87,18 @@
                                 {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
                         </div>
                     </div>
-                    <div class="two twelfths gap-top pad-right">
-                        <div class="round white box half-padded absolute right" style="width:240px;">
+                    <div class="three twelfths gap-top pad-right">
+                        <div class="round white box half-padded absolute right" style="width:190px;">
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 <img src="{{ app.user.picture }}"  style = "float: left; margin-right:6px; width:30px; height: 30px; border-radius: 50%;"/>
                                 <div class="dropdown left-pad">
                                     <button class="white" title="compte {{app.user.identityprovider }}">
-                                    {% if app.user.nickname|e|length > 18 %}
-                                        {{app.user.nickname|e|slice(0, 15)}}...
+                                    {% if app.user.nickname|e|length > 15 %}
+                                        {{app.user.nickname|e|slice(0, 12)}}...
                                     {% else %}
                                         {{app.user.nickname|e}}
-                                        {% if app.user.nickname|e|length < 15 %}
-                                            {% for i in 1..(15 - app.user.nickname|e|length) %}
+                                        {% if app.user.nickname|e|length < 12 %}
+                                            {% for i in 1..(12 - app.user.nickname|e|length) %}
                                                 &nbsp;
                                             {% endfor %}
                                         {% endif %}
@@ -121,26 +121,21 @@
              </div>
              <div class="small-tablet-only">
                 <div class="row">
-                    <div class="five twelfths no-pad">
-                        <a href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-small-tablet-btp-4-0.png') }}" style="height:60px; width: 508px;" alt="BTP 4.0"/></a>
+                    <div class="two twelfths no-pad">
+                        <a href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/logo.png') }}" style="height:60px; width: 60px;" alt="BTP 4.0"/></a>
                     </div>
-                    <div class="four twelfths gap-top double-pad-left">
-                        <div class="round orange box half-pad-top half-pad-bottom">
-                                {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
-                        </div>
-                    </div>
-                    <div class="two twelfths gap-top pad-right">
-                        <div class="round white box half-padded absolute right" style="width:240px;">
+                    <div class="eleven twelfths gap-top double-gap-right">
+                        <div class="round white box half-padded absolute right" style="width:200px;">
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 <img src="{{ app.user.picture }}"  style = "float: left; margin-right:6px; width:30px; height: 30px; border-radius: 50%;"/>
                                 <div class="dropdown left-pad">
                                     <button class="white" title="compte {{app.user.identityprovider }}">
-                                    {% if app.user.nickname|e|length > 18 %}
-                                        {{app.user.nickname|e|slice(0, 15)}}...
+                                    {% if app.user.nickname|e|length > 15 %}
+                                        {{app.user.nickname|e|slice(0, 12)}}...
                                     {% else %}
                                         {{app.user.nickname|e}}
-                                        {% if app.user.nickname|e|length < 15 %}
-                                            {% for i in 1..(15 - app.user.nickname|e|length) %}
+                                        {% if app.user.nickname|e|length < 12 %}
+                                            {% for i in 1..(12 - app.user.nickname|e|length) %}
                                                 &nbsp;
                                             {% endfor %}
                                         {% endif %}
@@ -163,25 +158,12 @@
              </div>
              <div class="mobile-only">
                 <div class="row">
-                    <a class="one whole centered" href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/header-small-tablet-btp-4-0.png') }}" width="200%" alt="BTP 4.0"/></a>
-                </div>
-                <div class="row">
-                    <div class="round white box half-padded absolute right" style="width:240px;">
+                    <a href="{{ url('accueil') }}" target="_parent"><img src="{{ asset('img/logo.png') }}" style="height:60px; width: 60px; float:left;" alt="BTP 4.0"/></a>
+                    <div class="round white box half-padded absolute middle right gap-right" style="width:40px;">
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <img src="{{ app.user.picture }}"  style = "float: left; margin-right:6px; width:30px; height: 30px; border-radius: 50%;"/>
                         <div class="dropdown left-pad">
-                            <button class="white" title="compte {{app.user.identityprovider }}">
-                            {% if app.user.nickname|e|length > 18 %}
-                                {{app.user.nickname|e|slice(0, 15)}}...
-                            {% else %}
-                                {{app.user.nickname|e}}
-                                {% if app.user.nickname|e|length < 15 %}
-                                    {% for i in 1..(15 - app.user.nickname|e|length) %}
-                                        &nbsp;
-                                    {% endfor %}
-                                {% endif %}
-                            {% endif %} 
-                            </button>
+                            <button class="white" title="compte {{app.user.identityprovider }}"></button>
                             <ul>
                                 <li>
                                     <a href="{{ url('fos_user_profile_show') }}"><i class="icon-user"></i>&nbsp;&nbsp;Mon compte</a>
@@ -194,11 +176,11 @@
                         </div>
                     {% endif %}
                 </div>
-             </div>
+
           </div>
         </header>
 
-        <workspace class="row no-pad"> 
+        <div class="workspace charcoal row no-pad"> 
             <div class="row half-padded">
                 <div class="one whole half-gap-top">
                     {% for message in app.session.flashbag.get('error') %}
@@ -220,12 +202,12 @@
                     {% block body %}{% endblock %}
                 </div>
            </div>
-        </workspace>
+        </div>
 
         {% block popup %}{% endblock %}
 
-        <footer class="half-gap-top">
-            <div class="box charcoal square">
+        <footer class="footer half-gap-top">
+            <div class="box charcoal square" style="height:100p%; overflow: hidden;">
                 <div class="container half-padded">
                     <div class="row">
                     </div>
