@@ -47,8 +47,10 @@ class ApiController extends Controller
      * @Rest\View(statusCode=Response::HTTP_CREATED)
      * @Rest\Patch("/api/update-chantier/{slug}")
      */
-    public function patchPlanningAction($slug, Request $request)
+    public function patchPlanningAction(Request $request, $slug)
     {
+        
+       
         $em = $this->get('doctrine.orm.entity_manager');
         $repository = $this->getDoctrine()->getRepository(Chantier::class);
         $chantier = $repository->findOneBySlug($slug); 
@@ -61,7 +63,7 @@ class ApiController extends Controller
 
         // Le paramètre false dit à Symfony de garder les valeurs dans notre 
         // entité si l'utilisateur n'en fournit pas une dans sa requête
-        $form->submit($request->request->all(), false);
+        $form->submit($request->request->all(),false);
 
 
         if ($form->isValid()) {

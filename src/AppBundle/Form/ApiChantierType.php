@@ -15,8 +15,8 @@ class ApiChantierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('description')
+            ->add('pic')
+            ->add('adresse', AdresseType::class)
             ->add('gantt');
     
     }

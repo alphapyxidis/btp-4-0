@@ -22,7 +22,10 @@
                     <p>{{ chantier.description }}</p>
                 </div>
                 <div class="bordered half-padded half-gap-top white-bg one whole one whole" style="height:200px;">
-                    <a class="round button purple" href="{{ path('planning_chantier', { 'slug': chantier.slug }) }}"><i class="icon-tasks"></i>&nbsp;&nbsp;Planning</a>
+                    <a class="round button purple noicon half-gap-right" href="{{ path('planning_chantier', { 'slug': chantier.slug }) }}"><i class="icon-tasks"></i>&nbsp;&nbsp;Planning</a>
+                    {% if chantier.webcam|length > 0 %}
+                        <a class="round button turquoise noicon half-gap-right" href="{{ chantier.webcam }}" title="webcam chantier" target="_blank"><i class="icon-facetime-video"></i>&nbsp;&nbsp;Webcam</a>
+                    {% endif %}
                     <img src="{{ chantier.user.picture }}" title="{{ chantier.user.nickname }}" style="float: right; width:30px; height: 30px; border-radius: 50%;" />
                 </div>
             </div>
@@ -44,6 +47,7 @@
                         "vue satellite": satellite
                     };
 
+
                     var craneIcon = L.icon({
                         iconUrl: "{{ asset('img/marker.png') }}",
                         shadowUrl: "{{ asset('img/shadow_marker.png') }}",
@@ -54,12 +58,25 @@
                         shadowAnchor: [16, 32],  // the same for the shadow
                         popupAnchor:  [-8, -32] // point from which the popup should open relative to the iconAnchor
                     });
-
-                    var map = L.map('map', {center: [{{ chantier.adresse.lat}}, {{ chantier.adresse.lon}}], zoom: 18, layers: [outdoor]});
                     
-                    L.control.layers(baseMaps).addTo(map);
+                    {% if chantier.pic|length > 0 %}
+                    console.log('{{ chantier.pic|raw }}');
+                        var planinstallation = L.geoJSON(JSON.parse('{{ chantier.pic|raw }}')); // L.featureGroup();        
 
-                    L.marker([{{ chantier.adresse.lat }}, {{ chantier.adresse.lon }}], {icon: craneIcon}).addTo(map);
+                        var overlayMaps = {
+                            "Plan d'Installation Chantier": planinstallation 
+                        };
+
+                        var map = L.map('map', {center: [{{ chantier.adresse.lat}}, {{ chantier.adresse.lon}}], zoom: 16, layers: [outdoor, planinstallation]});
+
+                        L.control.layers(baseMaps, overlayMaps).addTo(map);
+                    {% else %}
+                        var map = L.map('map', {center: [{{ chantier.adresse.lat}}, {{ chantier.adresse.lon}}], zoom: 17, layers: [outdoor]});
+                        
+                        L.control.layers(baseMaps).addTo(map);
+
+                        L.marker([{{ chantier.adresse.lat }}, {{ chantier.adresse.lon }}], {icon: craneIcon}).addTo(map);
+                    {% endif %}
 
                 </script>
 

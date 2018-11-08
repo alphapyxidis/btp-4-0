@@ -6,9 +6,11 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
+ * @UniqueEntity("nom")
  * @ORM\Table(name="btp_chantier")
  */
 class Chantier
@@ -41,6 +43,12 @@ class Chantier
      */
     protected $pic;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @Assert\Url()
+     */
+    protected $webcam;
+    
     /**
      * @Gedmo\Slug(fields={"nom"}, updatable=true, unique=true)
      * @ORM\Column(type="string", length=128, unique=true)
@@ -220,5 +228,29 @@ class Chantier
         $this->slug = $slug;
 
         return $this;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Chantier
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

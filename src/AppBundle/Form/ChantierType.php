@@ -18,8 +18,8 @@ class ChantierType extends AbstractType
             ->add('nom')
             ->add('description')
             ->add('adresse', AdresseType::class)
-            ->add('user')
-            ->add('gantt');
+            ->add('webcam')
+            ->add('user');
     }
     
     /**

@@ -44,6 +44,12 @@ class Chantier
     protected $pic;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     * @Assert\Url()
+     */
+    protected $webcam;
+    
+    /**
      * @Gedmo\Slug(fields={"nom"}, updatable=true, unique=true)
      * @ORM\Column(type="string", length=128, unique=true)
      */
@@ -246,5 +252,29 @@ class Chantier
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set webcam
+     *
+     * @param string $webcam
+     *
+     * @return Chantier
+     */
+    public function setWebcam($webcam)
+    {
+        $this->webcam = $webcam;
+
+        return $this;
+    }
+
+    /**
+     * Get webcam
+     *
+     * @return string
+     */
+    public function getWebcam()
+    {
+        return $this->webcam;
     }
 }
