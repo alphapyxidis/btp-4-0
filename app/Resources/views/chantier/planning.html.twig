@@ -2,6 +2,6 @@
 
 {% block body %}
   <i class="fixed middle center icon-4x icon-spinner icon-spin alert"></i>
-  <iframe src="{{ url('gantt') }}" frameborder="0">
+  <iframe src="{{ url('gantt', { 'slug': chantier.slug }) }}" frameborder="0">
   </iframe> 
 {% endblock %}

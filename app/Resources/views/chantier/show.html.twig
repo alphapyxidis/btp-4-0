@@ -78,22 +78,18 @@
                         var marker = L.marker([{{ chantier.adresse.lat }}, {{ chantier.adresse.lon }}], {icon: craneIcon, draggable: true}).addTo(map);
 
                         marker.on('dragend', function (e) {
-  $.ajax("{{ url('patch_planning', { 'slug': chantier.slug }) }}", {
-    dataType : 'json',
-    data: {adresse:{lat: marker.getLatLng().lat, lon: marker.getLatLng().lng }},
-    type:"PATCH",
+                            $.ajax("{{ url('patch_chantier', { 'slug': chantier.slug }) }}", {
+                                dataType : 'json',
+                                data: {adresse:{lat: marker.getLatLng().lat, lon: marker.getLatLng().lng }},
+                                type:"PATCH",
 
-    success: function(response) {
-        map.panTo(new L.LatLng(response.adresse.lat, response.adresse.lon));
-    },
-    error: function (response) {
-        var errMsg="Erreurs de mise à jour de la position\n";
-        if (response.message) {
-          errMsg=errMsg+response.message+"\n";
-        }
-        alert(errMsg);
-    }
-  });                            
+                                success: function(response) {
+                                    map.panTo(new L.LatLng(response.adresse.lat, response.adresse.lon));
+                                },
+                                error: function (response) {
+                                    alert('Erreurs de mise à jour de la position');
+                                }
+                            });                            
                         });
 
                     {% endif %}

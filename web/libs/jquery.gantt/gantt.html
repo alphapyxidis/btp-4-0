@@ -77,10 +77,14 @@
 <form id="gimmeBack" style="display:none;" action="../gimmeBack.jsp" method="post" target="_blank"><input type="hidden" name="prj" id="gimBaPrj"></form>
 
 <script type="text/javascript">
+var slug;
 
 var ge;
 $(function() {
   var canWrite=true; //this is the default for test purposes
+
+  var url = new URL(window.location.href);
+  slug = url.searchParams.get("slug");
 
   // here starts gantt initialization
   ge = new GanttMaster();
@@ -94,13 +98,15 @@ $(function() {
   //in order to force compute the best-fitting zoom level
   delete ge.gantt.zoom;
 
-  var project=loadFromLocalStorage();
+  loadGanttFromServer();
+
+  //ge.loadProject(getDemoProject());
+
+  var project=ge.saveProject();
 
   if (!project.canWrite)
     $(".ganttButtonBar button.requireWrite").attr("disabled","true");
 
-  ge.loadProject(project);
-  ge.checkpoint(); //empty the undo stack
 });
 
 
@@ -128,7 +134,7 @@ ret= {"tasks":    [
       {"id": "tmp_2", "name": "Worker"},
       {"id": "tmp_3", "name": "Stakeholder"},
       {"id": "tmp_4", "name": "Customer"}
-    ], "canWrite":    true, "canDelete":true, "canWriteOnParent": true, canAdd:true}
+    ], "canWrite":    true, "canDelete":true, "canWriteOnParent": true, "canAdd":true}
 
 
     //actualize data
@@ -140,11 +146,32 @@ ret= {"tasks":    [
 }
 
 
-
 function loadGanttFromServer(taskId, callback) {
 
-  //this is a simulation: load data from the local storage if you have already played with the demo or a textarea with starting demo data
-  var ret=loadFromLocalStorage();
+  var api_url = window.location.protocol+'//'+window.location.hostname+":"+window.location.port+"/api/get-chantier/"+slug;
+
+  $.ajax(api_url, {
+    dataType:"json",
+    data: {},
+    type:"GET",
+    success: function(response) {
+        if (response.gantt) {
+          var prj = JSON.parse(response.gantt);
+          prj.canAdd = true;
+          ge.loadProject(prj); //must reload as "tmp_" ids are now the good ones
+        } else {
+          ge.reset();
+        }
+        ge.checkpoint(); 
+      },
+    error: function(response) {
+        var msg='Erreur lors de la sauvegarde du projet';
+        if (response) {
+          msg = msg + ' : \n' + response;
+        }
+        alert(msg);
+      }
+  });
 
   //this is the real implementation
   /*
@@ -169,14 +196,40 @@ function loadGanttFromServer(taskId, callback) {
   });
   */
 
-  return ret;
 }
 
 
 function saveGanttOnServer() {
 
-  //this is a simulation: save data to the local storage or to the textarea
-  saveInLocalStorage();
+  var api_url = window.location.protocol+'//'+window.location.hostname+":"+window.location.port+"/api/update-chantier/"+slug;
+
+  var prj = ge.saveProject();
+
+if (ge.deletedTaskIds.length>0) {
+  if (!confirm("TASK_THAT_WILL_BE_REMOVED\n"+ge.deletedTaskIds.length)) {
+    return;
+  }
+}
+
+$.ajax(api_url, {
+  dataType:"json",
+  data: {gantt:JSON.stringify(prj)},
+  type:"PATCH",
+  success: function(response) {
+        if (response.gantt) {
+          ge.loadProject(JSON.parse(response.gantt)); //must reload as "tmp_" ids are now the good ones
+        } else {
+          ge.reset();
+        }
+      },
+    error: function(response) {
+        var msg='Erreur lors de la sauvegarde du projet';
+        if (response) {
+          msg = msg + ' : \n' + response;
+        }
+        alert(msg);
+      }
+  });
 
   /*
   var prj = ge.saveProject();

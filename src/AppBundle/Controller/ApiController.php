@@ -44,10 +44,28 @@ class ApiController extends Controller
     }
 
      /**
+     * @Rest\View()
+     * @Rest\Get("/api/get-chantier/{slug}")
+     */
+    public function getChantierAction(Request $request, $slug)
+    {
+       
+        $em = $this->get('doctrine.orm.entity_manager');
+        $repository = $this->getDoctrine()->getRepository(Chantier::class);
+        $chantier = $repository->findOneBySlug($slug); 
+
+        if (empty($chantier)) {
+            return new JsonResponse(['message' => 'Aucun chantier trouvé'], Response::HTTP_NOT_FOUND);
+        }
+
+        return $chantier;
+    }
+
+     /**
      * @Rest\View(statusCode=Response::HTTP_CREATED)
      * @Rest\Patch("/api/update-chantier/{slug}")
      */
-    public function patchPlanningAction(Request $request, $slug)
+    public function patchChantierAction(Request $request, $slug)
     {
         
        
