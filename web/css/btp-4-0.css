@@ -61,6 +61,19 @@ body {
   height: calc(100vh - 140px);
 }
 
+/* overwrite leaflet Tooltip styling */
+.leaflet-tooltip {
+  background-color: transparent;
+  border-style: none;
+  box-shadow: none;
+  display: inline-block;
+  font: 14px/1"Helvetica Neue", Arial, Helvetica, sans-serif;
+  padding: 6px;
+  position: relative;
+  whitespace: no-wrap;
+  color: #222;
+	}
+
 /* pour aperçu avant impression édition format A4 */
 .page {
   width: 21cm;

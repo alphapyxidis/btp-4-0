@@ -120,7 +120,7 @@
 
                         var styleEditor = new L.control.styleEditor({
                             position: 'topleft',
-                            openOnLeafletDraw: false,
+                            openOnLeafletDraw: true,
                             useGrouping: false
                         });
                         map.addControl(styleEditor);
@@ -158,6 +158,12 @@
 
                             data = planinstallation.toGeoJSON();
                             console.log ('MODIFICATION :');
+                            console.log(JSON.stringify(data));
+                        });
+
+                        map.on('styleeditor:changed', function(element){
+                            data = planinstallation.toGeoJSON();
+                            console.log ('RESTYLING :');
                             console.log(JSON.stringify(data));
                         });                      
 
