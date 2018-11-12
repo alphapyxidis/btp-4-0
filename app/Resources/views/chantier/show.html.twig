@@ -15,8 +15,8 @@
             <h4>{{ chantier.adresse }}</h4>
             </div>
         </div>
-        <div class="equalize row">
-            <div class="two thirds pad-right">
+        <div class="equalize row half-pad-top">
+            <div class="three fifths pad-right">
                 <div class="padded one whole">
                     <a class="round button error noicon half-gap-right" href="{{ path('pic_chantier', { 'slug': chantier.slug }) }}"><i class="icon-map-marker"></i>&nbsp;&nbsp;Plan Installation</a>
                     <a class="round button purple noicon half-gap-right" href="{{ path('planning_chantier', { 'slug': chantier.slug }) }}"><i class="icon-tasks"></i>&nbsp;&nbsp;Planning</a>
@@ -25,14 +25,43 @@
                     {% endif %}
                     <button class="round asphalt noicon half-gap-right" onclick="document.getElementById('popup').style.display = 'block'"><i class="icon-cloud"></i>&nbsp;&nbsp;Météo</button>
                     <img src="{{ chantier.user.picture }}" title="{{ chantier.user.nickname }}" style="float: right; width:30px; height: 30px; border-radius: 50%;" />
+                    <a class="round button active white bordered noicon half-gap-right" href="#" style="float: right;" title="Paramétres"><i class="icon-cogs"></i></a>
                 </div>
-                <div class="bordered half-padded white-bg" style="height:280px;">
+                <div class="bordered half-padded white-bg">
                     <h4>Description</h4>
                     <p>{{ chantier.description }}</p>
                 </div>
+                <div class="bordered half-padded half-gap-top white-bg">
+                    <div class="tabs double-padded">
+                        <ul role="tablist">
+                            <li role="tab" aria-controls="#tab1"><i class="icon-building icon-2x red"></i>&nbsp;&nbsp;Structure Découpage Projet (SDP)</li>
+                            <li role="tab" aria-controls="#tab2"><i class="icon-folder-open icon-2x warning"></i>&nbsp;&nbsp;Espace documentaire</li>
+                            <li role="tab" aria-controls="#tab3"><i class="icon-wrench icon-2x yellow"></i>&nbsp;&nbsp;Ressources</li>
+                        </ul>
+                        <div id="tab1" role="tabpanel">
+                            <div class="pull-right pull-none-small-tablet gap-left no-gap-small-tablet align-center"><img src="http://placehold.it/240x80/3498db/ffffff"></div>
+                            <div class="gap-top-small-tablet placeholderText redacted-script" 
+                                data-placeholder-type="words" 
+                                data-placeholder-amount="100">
+                            </div>
+                        </div>
+                        <div id="tab2" role="tabpanel">
+                            <div class="gap-top-small-tablet placeholderText redacted-script" 
+                                data-placeholder-type="words" 
+                                data-placeholder-amount="100">
+                            </div>
+                        </div>
+                        <div id="tab3" role="tabpanel">
+                            <div class="gap-top-small-tablet placeholderText redacted-script" 
+                                data-placeholder-type="words" 
+                                data-placeholder-amount="100">
+                            </div>
+                        </div>                
+                    </div>
+                </div>
             </div>
-            <div "one third">
-                <div id="map" style="height:400px;"></div>
+            <div "two fifths">
+                <div id="map" style="height:500px;"></div>
                 <script>
                     var mapboxUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={{ mapbox_token }}';
                     var mapboxAttribution = 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
@@ -102,7 +131,6 @@
                         });                            
                     });
 
-
                     L.control.scale().addTo(map);
 
                 </script>
@@ -113,7 +141,7 @@
 {% endblock %}
 
 {% block popup %}
-            <div class="popup charcoal box fixed quarter padded" id="popup">
+            <div class="popup charcoal box fixed padded" style="width:450px;" id="popup">
                 <div = "row padded">
                     <h4 id="titre_popup">Prévisions météorologiques</h4>
                     <div>
