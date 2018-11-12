@@ -1,0 +1,224 @@
+{# app/Resources/views/chantier/plan-installation-chantier.html.twig #}
+
+{% extends 'demo.html.twig' %}
+
+{% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('libs/leaflet/leaflet.css') }}" />
+            <link rel="stylesheet" href="{{ asset('libs/leaflet.draw/leaflet.draw.css') }}" />
+            <link rel="stylesheet" href="{{ asset('libs/leaflet.styleEditor/css/Leaflet.StyleEditor.min.css') }}" />
+{% endblock %}
+
+{% block headerscripts %}
+            <script src="{{ asset('libs/leaflet/leaflet.js') }}"></script>
+
+            <script src="{{ asset('libs/leaflet.draw/leaflet.draw.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/Leaflet.Draw.Event.js') }}"></script>
+
+            <script src="{{ asset('libs/leaflet.draw/Toolbar.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/Tooltip.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/Control.Draw.js') }}"></script>
+
+            <script src="{{ asset('libs/leaflet.draw/ext/GeometryUtil.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/ext/LatLngUtil.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/ext/LineUtil.Intersect.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/ext/Polygon.Intersect.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/ext/Polyline.Intersect.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/ext/TouchEvents.js') }}"></script>
+
+            <script src="{{ asset('libs/leaflet.draw/draw/DrawToolbar.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.Feature.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.SimpleShape.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.Polyline.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.Marker.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.CircleMarker.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.Circle.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.Polygon.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/draw/handler/Draw.Rectangle.js') }}"></script>
+
+            <script src="{{ asset('libs/leaflet.draw/edit/EditToolbar.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/EditToolbar.Edit.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/EditToolbar.Delete.js') }}"></script>
+
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/Edit.Poly.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/Edit.SimpleShape.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/Edit.Marker.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/Edit.CircleMarker.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/Edit.Circle.js') }}"></script>
+            <script src="{{ asset('libs/leaflet.draw/edit/handler/Edit.Rectangle.js') }}"></script>
+
+            <script src="{{ asset('libs/leaflet.styleEditor/js/Leaflet.StyleEditor.min.js') }}"></script>
+
+{% endblock %}
+
+
+{% block body %}
+            <div class="one whole centered">
+                <div class="seven tenths no-pad">
+                    <div class="noicon bordered one whole" id="map" style="height:750px;"></div>
+                    <script>
+                        var mapboxUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={{ mapbox_token }}';
+                        var mapboxAttribution = 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
+                        
+                        var outdoor = L.tileLayer(mapboxUrl, {id: 'mapbox.outdoors', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
+                            grayscale = L.tileLayer(mapboxUrl, {id: 'mapbox.light', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
+                            satellite = L.tileLayer(mapboxUrl, {id: 'mapbox.satellite', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
+                            streets   = L.tileLayer(mapboxUrl, {id: 'mapbox.streets', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19});
+
+                        var baseMaps = {
+                            "courbes de niveau": outdoor,
+                            "plan": streets,
+                            "échelle de gris": grayscale,
+                            "vue satellite": satellite
+                        };
+
+                        var btp40editicon = new L.DivIcon({
+                                    iconSize: new L.point(10,10),
+                                    className: 'leaflet-div-icon leaflet-editing-icon'
+                                });
+
+                        // calque d'édition du PIC
+                        {% if chantier.pic|length > 0 %}
+                            data = JSON.parse('{{ chantier.pic|raw }}');
+                            if (data.features.length>0) {
+                                var planinstallation = L.geoJSON(data); 
+                            } else {
+                                var planinstallation = L.featureGroup();
+                            }
+                            var planinstallation = L.geoJSON(data);         
+                        {% else %}
+                            var planinstallation = L.featureGroup();        
+                        {% endif %}
+
+                        var overlayMaps = {
+                            "Plan d'Installation Chantier": planinstallation 
+                        };
+
+                        var map = L.map('map', {center: [{{ chantier.adresse.lat}}, {{ chantier.adresse.lon}}], zoom: 17, layers: [streets, planinstallation]});
+
+                        if (data.features.length>0) {
+                            map.fitBounds(planinstallation.getBounds());
+                        }
+
+                        L.control.scale().addTo(map);
+
+                        L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+                        L.Edit.Poly = L.Edit.Poly.extend({
+                            options : {
+                                icon: btp40editicon 
+                            }
+                        });
+
+                        var drawControl = new L.Control.Draw({
+                            edit: {
+                                featureGroup: planinstallation,
+                                polygon: {
+                                    allowIntersection: false,
+                                    showArea: true
+                                },
+                                polyline: {
+                                    metric: true
+                                }
+                            },                            
+                            draw: {
+                                featureGroup: planinstallation,
+                                rectangle: true,
+                                circlemarker: false,
+                                circle: true,
+                                marker: true,
+                                polyline: {
+                                    icon: btp40editicon,
+                                    metric: true
+                                },
+                                polygon: {
+                                    icon: btp40editicon,
+                                    allowIntersection: false,
+                                    showArea: true
+                                }
+                            }
+                        });
+                        map.addControl(drawControl);
+
+                        var styleEditor = new L.control.styleEditor({
+                            position: 'topleft',
+                            openOnLeafletDraw: true,
+                            useGrouping: false
+                        });
+                        map.addControl(styleEditor);
+
+                        function savePic(picData) {
+                            $.ajax('{{ url('patch_chantier', { 'slug': chantier.slug }) }}', {
+                                dataType:"json",
+                                data: {pic:JSON.stringify(picData)},
+                                type:"PATCH",
+                                success: function(response) {
+                                        map.fitBounds(planinstallation.getBounds());
+                                    },
+                                    error: function(response) {
+                                        var msg='Erreur lors de la sauvegarde du plan';
+                                        if (response) {
+                                        msg = msg + ' : \n' + response;
+                                        }
+                                        alert(msg);
+                                    }
+                                });
+                        }
+
+                        map.on('draw:created', function(e) {
+                            var layer = e.layer,
+                                type = e.layerType,
+                                feature = layer.feature = layer.feature || {}, // Intialize layer.feature
+                                options = layer.options; 
+
+                            feature.type = feature.type || "Feature"; // Intialize feature.type
+                            feature.properties = feature.properties || {}; // Intialize feature.properties
+
+                            feature.properties["options"] = options;
+                            if (type === "circle") {
+                                var radius = layer.getRadius();
+                                feature.properties["radius"] = radius;
+                                layer.bindTooltip('rayon ' + Math.round(radius,1)+ ' m',   {direction:"center"}).openTooltip();    
+                            }
+                            
+                            planinstallation.addLayer(layer);
+
+                            data = planinstallation.toGeoJSON();
+                            savePic(data);
+                            console.log ('AJOUT :');
+                            console.log(JSON.stringify(data));
+                        });
+
+                        map.on('draw:edited', function(e) {
+                            var layers = e.layers;
+                            layers.eachLayer(function (layer) {
+                                //do whatever you want; most likely save back to db
+                            });
+
+                            data = planinstallation.toGeoJSON();
+                            savePic(data);
+                            console.log ('MODIFICATION :');
+                            console.log(JSON.stringify(data));
+                        });
+
+                        map.on('draw:deleted', function(e) {
+                            data = planinstallation.toGeoJSON();
+                            savePic(data);
+                            console.log ('SUPPRESSION :');
+                            console.log(JSON.stringify(data));
+                        });
+
+                        map.on('styleeditor:changed', function(element){
+                            data = planinstallation.toGeoJSON();
+                            savePic(data);
+                            console.log ('RESTYLING :');
+                            console.log(JSON.stringify(data));
+                        });                      
+
+                    </script>
+                </div>
+                <div class="two tenths padded">
+                    <h3>Plan d'installation du chantier (PIC)</h3>
+                    <p>Vous pouvez délimiter sur la carte les différentes zones qui décrivent l'installation de votre chantier.</p>
+                </div>
+            </div>
+{% endblock  %}

@@ -15,18 +15,20 @@
             <h4>{{ chantier.adresse }}</h4>
             </div>
         </div>
-        <div class="equalize row padded">
+        <div class="equalize row">
             <div class="two thirds pad-right">
-                <div class="bordered half-padded white-bg one whole" style="height:200px;">
-                    <h4>Description</h4>
-                    <p>{{ chantier.description }}</p>
-                </div>
-                <div class="bordered half-padded half-gap-top white-bg one whole one whole" style="height:200px;">
+                <div class="padded one whole">
+                    <a class="round button error noicon half-gap-right" href="{{ path('pic_chantier', { 'slug': chantier.slug }) }}"><i class="icon-map-marker"></i>&nbsp;&nbsp;Plan Installation</a>
                     <a class="round button purple noicon half-gap-right" href="{{ path('planning_chantier', { 'slug': chantier.slug }) }}"><i class="icon-tasks"></i>&nbsp;&nbsp;Planning</a>
                     {% if chantier.webcam|length > 0 %}
-                        <a class="round button turquoise noicon half-gap-right" href="{{ chantier.webcam }}" title="webcam chantier" target="_blank"><i class="icon-facetime-video"></i>&nbsp;&nbsp;Webcam</a>
+                        <a class="round button success noicon half-gap-right" href="{{ chantier.webcam }}" title="webcam chantier" target="_blank"><i class="icon-facetime-video"></i>&nbsp;&nbsp;Webcam</a>
                     {% endif %}
+                    <button class="round asphalt noicon half-gap-right" onclick="document.getElementById('popup').style.display = 'block'"><i class="icon-cloud"></i>&nbsp;&nbsp;Météo</button>
                     <img src="{{ chantier.user.picture }}" title="{{ chantier.user.nickname }}" style="float: right; width:30px; height: 30px; border-radius: 50%;" />
+                </div>
+                <div class="bordered half-padded white-bg" style="height:280px;">
+                    <h4>Description</h4>
+                    <p>{{ chantier.description }}</p>
                 </div>
             </div>
             <div "one third">
@@ -58,45 +60,69 @@
                         shadowAnchor: [16, 32],  // the same for the shadow
                         popupAnchor:  [-8, -32] // point from which the popup should open relative to the iconAnchor
                     });
+
+                    var planinstallation = L.featureGroup();
                     
                     {% if chantier.pic|length > 0 %}
-                    console.log('{{ chantier.pic|raw }}');
-                        var planinstallation = L.geoJSON(JSON.parse('{{ chantier.pic|raw }}')); // L.featureGroup();        
-
-                        var overlayMaps = {
-                            "Plan d'Installation Chantier": planinstallation 
-                        };
-
-                        var map = L.map('map', {center: [{{ chantier.adresse.lat}}, {{ chantier.adresse.lon}}], zoom: 16, layers: [outdoor, planinstallation]});
-
-                        L.control.layers(baseMaps, overlayMaps).addTo(map);
-                    {% else %}
-                        var map = L.map('map', {center: [{{ chantier.adresse.lat}}, {{ chantier.adresse.lon}}], zoom: 17, layers: [outdoor]});
-                        
-                        L.control.layers(baseMaps).addTo(map);
-
-                        var marker = L.marker([{{ chantier.adresse.lat }}, {{ chantier.adresse.lon }}], {icon: craneIcon, draggable: true}).addTo(map);
-
-                        marker.on('dragend', function (e) {
-                            $.ajax("{{ url('patch_chantier', { 'slug': chantier.slug }) }}", {
-                                dataType : 'json',
-                                data: {adresse:{lat: marker.getLatLng().lat, lon: marker.getLatLng().lng }},
-                                type:"PATCH",
-
-                                success: function(response) {
-                                    map.panTo(new L.LatLng(response.adresse.lat, response.adresse.lon));
-                                },
-                                error: function (response) {
-                                    alert('Erreurs de mise à jour de la position');
-                                }
-                            });                            
-                        });
-
+                        data = JSON.parse('{{ chantier.pic|raw }}');
+                        if (data.features.length>0) {
+                            planinstallation = L.geoJSON(data); // L.featureGroup();
+                        }
                     {% endif %}
+
+                    var overlayMaps = {
+                        "Plan d'Installation Chantier": planinstallation 
+                    };
+
+                    var map = L.map('map', {center: [{{ chantier.adresse.lat}}, {{ chantier.adresse.lon}}], zoom: 16, layers: [streets, planinstallation]});
+
+                    L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+                    var marker = L.marker([{{ chantier.adresse.lat }}, {{ chantier.adresse.lon }}], {icon: craneIcon, draggable: true}).addTo(map);
+
+                    {% if chantier.pic|length > 0 %}
+                        data = JSON.parse('{{ chantier.pic|raw }}');
+                        if (data.features.length>0) {
+                            map.fitBounds(planinstallation.getBounds());
+                        }
+                    {% endif %}
+
+                    marker.on('dragend', function (e) {
+                        $.ajax("{{ url('patch_chantier', { 'slug': chantier.slug }) }}", {
+                            dataType : 'json',
+                            data: {adresse:{lat: marker.getLatLng().lat, lon: marker.getLatLng().lng }},
+                            type:"PATCH",
+
+                            success: function(response) {
+                                map.panTo(new L.LatLng(response.adresse.lat, response.adresse.lon));
+                            },
+                            error: function (response) {
+                                alert('Erreur de mise à jour de la position');
+                            }
+                        });                            
+                    });
+
+
+                    L.control.scale().addTo(map);
 
                 </script>
 
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block popup %}
+            <div class="popup charcoal box fixed quarter padded" id="popup">
+                <div = "row padded">
+                    <h4 id="titre_popup">Prévisions météorologiques</h4>
+                    <div>
+                        <iframe src="http://www.vigimeteo.com/widget_vigi_dep_s.html?a=284040&b=" style="width:425px; height:265px;" frameborder="0">
+                            <p>Votre navigateur est incompatible avec les iframes.</p>
+                        </iframe>
+                    </div>
+                </div>
+                <i class="icon-2x icon-remove absolute top right padded" onclick="document.getElementById('popup').style.display = 'none'"></i>
+            </div>
+        </div>
 {% endblock %}

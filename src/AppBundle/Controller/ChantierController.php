@@ -115,6 +115,20 @@ class ChantierController extends Controller
         ));
     }
 
+
+    /**
+     * Edit PIC for a chantier entity.
+     *
+     * @Route("/{slug}/plan-installation-chantier", name="pic_chantier")
+     * @Method("GET")
+     */
+    public function planinstallationAction(Chantier $chantier)
+    {
+        return $this->render('chantier/plan-installation-chantier.html.twig', array(
+            'chantier' => $chantier,
+        ));
+    }
+
     /**
      * Displays a form to edit an existing chantier entity.
      *

@@ -4,6 +4,40 @@
   z-index: 0;
 }
 
+@media (min-width:1025px){
+  .popup {
+      display: none;
+      left: 33%;
+      width: 33%;
+      top:200px;
+      opacity:0.9;
+      filter: Alpha(opacity=90);
+      z-index: 1;
+  }
+}
+@media (min-width:768px) and (max-width:1024px) {
+  .popup {
+      display: none;
+      left: 20%;
+      width: 60%;
+      top:200px;
+      opacity:0.9;
+      filter: Alpha(opacity=90);
+      z-index: 1;
+  }
+}
+@media (min-width:80px) and (max-width:767px) {
+  .popup {
+      display: none;
+      left: 10%;
+      width: 80%;
+      top:200px;
+      opacity:0.9;
+      filter: Alpha(opacity=90);
+      z-index: 1;
+  }
+}
+
 /* customize look of leaflet zoom controls */
 .leaflet-control-zoom-in{
   padding: 0px;
@@ -73,6 +107,15 @@ body {
   whitespace: no-wrap;
   color: #222;
 	}
+
+
+.leaflet-div-icon,
+.leaflet-editing-icon
+  {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
 
 /* pour aperçu avant impression édition format A4 */
 .page {
