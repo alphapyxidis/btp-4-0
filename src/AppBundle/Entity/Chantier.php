@@ -36,12 +36,12 @@ class Chantier
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $gantt;
+    protected $gantt='{"tasks":[],"deletedTaskIds":[],"resources":[],"roles":[],"canWrite":true,"canAdd":true,"canWriteOnParent":true,"zoom":"1M"}';
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $pic;
+    protected $pic='{"type":"FeatureCollection","features":[]}';
 
     /**
      * @ORM\Column(type="text", nullable=true)

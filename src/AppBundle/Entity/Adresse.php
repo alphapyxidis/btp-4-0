@@ -34,6 +34,11 @@ class Adresse
     protected $ville;
 
     /**
+     * @ORM\Column(type="string", length=8, nullable=true)
+     */
+    protected $codeInsee;
+    
+    /**
      * @ORM\Column(type="float", nullable=true)
      */
     protected $lat;
@@ -185,4 +190,28 @@ class Adresse
     {
         return $this->getRue().' '.$this->getCodePostal().' '.$this->getVille();
     }    
+
+    /**
+     * Set codeInsee
+     *
+     * @param string $codeInsee
+     *
+     * @return Adresse
+     */
+    public function setCodeInsee($codeInsee)
+    {
+        $this->codeInsee = $codeInsee;
+
+        return $this;
+    }
+
+    /**
+     * Get codeInsee
+     *
+     * @return string
+     */
+    public function getCodeInsee()
+    {
+        return $this->codeInsee;
+    }
 }

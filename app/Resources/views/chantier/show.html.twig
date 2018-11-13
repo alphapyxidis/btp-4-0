@@ -23,7 +23,9 @@
                     {% if chantier.webcam|length > 0 %}
                         <a class="round button success noicon half-gap-right" href="{{ chantier.webcam }}" title="webcam chantier" target="_blank"><i class="icon-facetime-video"></i>&nbsp;&nbsp;Webcam</a>
                     {% endif %}
-                    <button class="round asphalt noicon half-gap-right" onclick="document.getElementById('popup').style.display = 'block'"><i class="icon-cloud"></i>&nbsp;&nbsp;Météo</button>
+                    {% if chantier.adresse.codeinsee|length > 0 %}
+                        <button class="round asphalt noicon half-gap-right" onclick="document.getElementById('popup').style.display = 'block'"><i class="icon-cloud"></i>&nbsp;&nbsp;Météo</button>
+                    {% endif %}
                     <img src="{{ chantier.user.picture }}" title="{{ chantier.user.nickname }}" style="float: right; width:30px; height: 30px; border-radius: 50%;" />
                     <a class="round button active white bordered noicon half-gap-right" href="#" style="float: right;" title="Paramétres"><i class="icon-cogs"></i></a>
                 </div>
@@ -145,7 +147,11 @@
                 <div = "row padded">
                     <h4 id="titre_popup">Prévisions météorologiques</h4>
                     <div>
-                        <iframe src="http://www.vigimeteo.com/widget_vigi_dep_s.html?a=284040&b=" style="width:425px; height:265px;" frameborder="0">
+                    {% if chantier.adresse.codeinsee|length > 0 %}
+                        <iframe src="http://www.vigimeteo.com/widget_vigi_dep_s.html?a={{ chantier.adresse.codeinsee }}0&b=" style="width:425px; height:265px;" frameborder="0">
+                    {% else %}
+                        <iframe src="http://www.vigimeteo.com/widget_vigi_dep_s.html?a=840070&b=" style="width:425px; height:265px;" frameborder="0">
+                    {% endif %}
                             <p>Votre navigateur est incompatible avec les iframes.</p>
                         </iframe>
                     </div>
