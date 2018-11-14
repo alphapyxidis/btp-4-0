@@ -37,8 +37,8 @@
                     <div class="tabs double-padded">
                         <ul role="tablist">
                             <li role="tab" aria-controls="#tab1"><i class="icon-building icon-2x red"></i>&nbsp;&nbsp;Structure Découpage Projet (SDP)</li>
-                            <li role="tab" aria-controls="#tab2"><i class="icon-folder-open icon-2x warning"></i>&nbsp;&nbsp;Espace documentaire</li>
-                            <li role="tab" aria-controls="#tab3"><i class="icon-wrench icon-2x yellow"></i>&nbsp;&nbsp;Ressources</li>
+                            <li role="tab" aria-controls="#tab2"><i class="icon-folder-open icon-2x orange"></i>&nbsp;&nbsp;Espace documentaire</li>
+                            <li role="tab" aria-controls="#tab3"><i class="icon-comments icon-2x warning"></i>&nbsp;&nbsp;Discussion</li>
                         </ul>
                         <div id="tab1" role="tabpanel">
                             <div class="pull-right pull-none-small-tablet gap-left no-gap-small-tablet align-center"><img src="http://placehold.it/240x80/3498db/ffffff"></div>
@@ -54,9 +54,8 @@
                             </div>
                         </div>
                         <div id="tab3" role="tabpanel">
-                            <div class="gap-top-small-tablet placeholderText redacted-script" 
-                                data-placeholder-type="words" 
-                                data-placeholder-amount="100">
+                            <div class="gap-top-small-tablet">
+                                {% include '@FOSComment/Thread/async.html.twig' with {'id': chantier.slug } %}
                             </div>
                         </div>                
                     </div>
@@ -105,7 +104,7 @@
                         "Plan d'Installation Chantier": planinstallation 
                     };
 
-                    var map = L.map('map', {center: [{{ chantier.adresse.lat}}, {{ chantier.adresse.lon}}], zoom: 16, layers: [streets, planinstallation]});
+                    var map = L.map('map', {center: [{{ chantier.adresse.lat}}, {{ chantier.adresse.lon}}], zoom: 16, layers: [streets]});
 
                     L.control.layers(baseMaps, overlayMaps).addTo(map);
 

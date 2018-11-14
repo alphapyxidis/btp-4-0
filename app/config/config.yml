@@ -218,3 +218,13 @@ fos_rest:
         rules:
             - { path: '^/api/', priorities: ['json'], fallback_format: 'json' }
             - { path: '^/', priorities: ['html'], fallback_format: 'html' }                        
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: AppBundle\Entity\Comment
+            thread: AppBundle\Entity\Thread
+
+assetic:
+    bundles: [ "FOSCommentBundle" ]

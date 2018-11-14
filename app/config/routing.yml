@@ -38,7 +38,13 @@ fos_user:
     prefix: /profile
     
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /resetting 
+    prefix: /resetting
+
+fos_comment_api:
+    type: rest
+    resource: "@FOSCommentBundle/Resources/config/routing.yml"
+    prefix: /api
+    defaults: { _format: html } 
 
 gantt:
     path: /demo/planning
