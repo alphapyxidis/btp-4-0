@@ -38,4 +38,9 @@ services:
         #class: HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider
         class: AppBundle\Security\Core\User\FOSUBUserProvider
         arguments:  ['@fos_user.user_manager',{auth0: auth0_id}]
+
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
         

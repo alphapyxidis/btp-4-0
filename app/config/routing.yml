@@ -43,7 +43,7 @@ fos_user:
 fos_comment_api:
     type: rest
     resource: "@FOSCommentBundle/Resources/config/routing.yml"
-    prefix: /api
+    prefix: /
     defaults: { _format: html } 
 
 gantt:

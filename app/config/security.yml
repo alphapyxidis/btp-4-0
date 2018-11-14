@@ -51,3 +51,4 @@ security:
         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/demo, role: ROLE_USER }
         - { path: ^/admin, role: ROLE_ADMIN }  
+
