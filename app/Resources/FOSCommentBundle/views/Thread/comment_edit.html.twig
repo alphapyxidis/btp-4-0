@@ -20,9 +20,9 @@
         {% endblock %}
 
         <div class="fos_comment_submit">
-            <button type="button" class="fos_comment_comment_edit_cancel">{% trans from 'FOSCommentBundle' %}fos_comment_comment_edit_cancel{% endtrans %}</button>
+            <button type="button" class="round error fos_comment_comment_edit_cancel" title="{% trans from 'FOSCommentBundle' %}fos_comment_comment_edit_cancel{% endtrans %}"><i class="icon-cancel"></i></button>
             {% block fos_comment_form_submit %}
-                <input type="submit" value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_edit_submit{% endtrans %}" />
+                <button type="submit" class="round success" title="{% trans from 'FOSCommentBundle' %}fos_comment_comment_edit_submit{% endtrans %}"><i class="icon-comment-alt"></i></button>
             {% endblock %}
         </div>
 

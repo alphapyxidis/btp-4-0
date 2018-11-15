@@ -20,11 +20,11 @@
     <div class="fos_comment_comment_form_holder">
         {% block fos_comment_form_title %}
             {% if first %}
-                <h3>{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_headline_first{% endtrans %}</h3>
+                <h5>{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_headline_first{% endtrans %}</h5>
             {% elseif parent is not null %}
-                <h3>{% trans with {"%name%": parent.authorName } from 'FOSCommentBundle' %}fos_comment_comment_reply_reply_to{% endtrans %}</h3>
+                <h5>{% trans with {"%name%": parent.authorName } from 'FOSCommentBundle' %}fos_comment_comment_reply_reply_to{% endtrans %}</h5>
             {% else %}
-                <h3>{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_headline{% endtrans %}</h3>
+                <h5>{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_headline{% endtrans %}</h5>
             {% endif %}
         {% endblock %}
 
@@ -41,12 +41,14 @@
                     {{ form_rest(form) }}
                 {% endblock %}
 
-                <div class="fos_comment_submit">
+                <div class="fos_comment_submit half-padded">
                     {% block fos_comment_form_submit %}
                         {% if parent is not null %}
-                            <input type="button" value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_reply_cancel{% endtrans %}" class="fos_comment_comment_reply_cancel" />
+                            <button class="round error fos_comment_comment_reply_cancel" title="{% trans from 'FOSCommentBundle' %}fos_comment_comment_reply_cancel{% endtrans %}"><i class="icon-remove"></i></button>
+                            <button class="round success" type="submit" title="{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_submit{% endtrans %}"><i class="icon-ok"></i></button>
+                        {% else %}
+                            <button class="round asphalt" type="submit" title="{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_submit{% endtrans %}"><i class="icon-comment-alt"></i></button>
                         {% endif %}
-                        <input type="submit" value="{% trans from 'FOSCommentBundle' %}fos_comment_comment_new_submit{% endtrans %}" />
                     {% endblock %}
                 </div>
 

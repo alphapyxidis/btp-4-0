@@ -36,7 +36,7 @@
 
             {% block fos_comment_comment_metas_edit %}
                 {% if fos_comment_can_edit_comment(comment) %}
-                <button data-container="#fos_comment_comment_body_{{ comment.id }}" data-url="{{ url("fos_comment_edit_thread_comment", {"id": comment.thread.id, "commentId": comment.id}) }}" class="fos_comment_comment_edit_show_form">{% trans from 'FOSCommentBundle' %}fos_comment_comment_edit{% endtrans %}</button>
+                <button data-container="#fos_comment_comment_body_{{ comment.id }}" data-url="{{ url("fos_comment_edit_thread_comment", {"id": comment.thread.id, "commentId": comment.id}) }}" class="fos_comment_comment_edit_show_form round white active round" title="{% trans from 'FOSCommentBundle' %}fos_comment_comment_edit{% endtrans %}"><i class="icon-pencil"></i></button>
                 {% endif %}
             {% endblock fos_comment_comment_metas_edit %}
 
@@ -69,11 +69,13 @@
             {% if comment is fos_comment_in_state(constant('FOS\\CommentBundle\\Model\\CommentInterface::STATE_DELETED')) %}
                 {% trans from 'FOSCommentBundle' %}fos_comment_comment_deleted{% endtrans %}
             {% else %}
+                <div class="triple-pad-left info">
                 {% if comment is fos_comment_raw %}
                     {{ comment.rawBody | raw }}
                 {% else %}
                     {{ comment.body | nl2br }}
                 {% endif %}
+                </div>
             {% endif %}
         {% endblock fos_comment_comment_body %}
     </div>
@@ -81,22 +83,26 @@
     {% block fos_comment_comment_children %}
         {% if view is not same as('flat') %}
             {% if fos_comment_can_comment(comment) %}
-                <div class="fos_comment_comment_reply">
+                <div class="fos_comment_comment_reply half-padded">
                     {% block fos_comment_comment_reply %}
-                        <button data-url="{{ url('fos_comment_new_thread_comments', {"id": comment.thread.id}) }}" data-name="{{ comment.authorName }}" data-parent-id="{{ comment.id }}" class="fos_comment_comment_reply_show_form">{% trans from 'FOSCommentBundle' %}fos_comment_comment_show_reply{% endtrans %}</button>
+                        <button data-url="{{ url('fos_comment_new_thread_comments', {"id": comment.thread.id}) }}" data-name="{{ comment.authorName }}" data-parent-id="{{ comment.id }}" class="round info active fos_comment_comment_reply_show_form" title="{% trans from 'FOSCommentBundle' %}fos_comment_comment_show_reply{% endtrans %}"><i class="icon-comments-alt"></i></button>
                     {% endblock fos_comment_comment_reply %}
                 </div>
             {% endif %}
 
             <div class="fos_comment_comment_replies">
 
-                {% if children is defined %}
+                {% if children is defined %} 
+                    <div class="triple-pad-left">
                     {% include '@FOSComment/Thread/comments.html.twig' with { "comments": children, "depth": depth + 1, "parent": comment, "view": view } %}
+                    </div>
                 {% endif %}
 
             </div>
         {% elseif view is same as('flat') and children is defined %}
+            <div class="half-padded">
             {% include '@FOSComment/Thread/comments.html.twig' with { "comments": children, "depth": depth + 1, "parent": comment, "view": view } %}
+            </div>
         {% endif %}
     {% endblock fos_comment_comment_children %}
 
