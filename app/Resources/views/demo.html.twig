@@ -45,8 +45,11 @@
                                 {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
                         </div>
                     </div>
-                    <div class="two twelfths gap-top pad-right">
-                        <div class="round white box half-padded absolute right" style="width:240px;">
+                    <div class="one twelfth gap-top double-pad-left double-pad-right">
+                        <a href="#" title="Messages"><i class="white icon-envelope icon-2x flash animated badge red" data-badge="3 "></i></a>
+                    </div>                    
+                    <div class="two twelfths gap-top double-pad-right">
+                        <div class="round white box half-padded half-gap-left" style="width:240px;">
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 <img src="{{ app.user.picture }}"  style = "float: left; margin-right:6px; width:30px; height: 30px; border-radius: 50%;"/>
                                 <div class="dropdown left-pad">
