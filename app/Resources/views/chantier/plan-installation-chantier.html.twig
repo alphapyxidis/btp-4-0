@@ -71,11 +71,21 @@
                             "vue satellite": satellite
                         };
 
+                        var craneIcon = L.icon({
+                            iconUrl: "{{ asset('img/marker.png') }}",
+                            shadowUrl: "{{ asset('img/shadow_marker.png') }}",
+
+                            iconSize:     [32, 32], // size of the icon
+                            shadowSize:   [32, 32], // size of the shadow
+                            iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+                            shadowAnchor: [16, 32],  // the same for the shadow
+                            popupAnchor:  [-8, -32] // point from which the popup should open relative to the iconAnchor
+                        });
+
                         var btp40editicon = new L.DivIcon({
                                     iconSize: new L.point(10,10),
                                     className: 'leaflet-div-icon leaflet-editing-icon'
                                 });
-
                         // calque d'édition du PIC
                         {% if chantier.pic|length > 0 %}
                             data = JSON.parse('{{ chantier.pic|raw }}');
@@ -95,6 +105,26 @@
 
                         var map = L.map('map', {center: [{{ chantier.adresse.lat}}, {{ chantier.adresse.lon}}], zoom: 17, layers: [streets, planinstallation]});
 
+                    
+                        var marker = L.marker([{{ chantier.adresse.lat }}, {{ chantier.adresse.lon }}], {icon: craneIcon, draggable: true}).addTo(map);
+
+                        // mise à jour des coordonnées de l'adresse sur drag drop de l'icone sur la carte
+                        marker.on('dragend', function (e) {
+                            $.ajax("{{ url('patch_chantier', { 'slug': chantier.slug }) }}", {
+                                dataType : 'json',
+                                data: {adresse:{lat: marker.getLatLng().lat, lon: marker.getLatLng().lng }},
+                                type:"PATCH",
+
+                                success: function(response) {
+                                    map.panTo(new L.LatLng(response.adresse.lat, response.adresse.lon));
+                                },
+                                error: function (response) {
+                                    alert('Erreur de mise à jour de la position');
+                                }
+                            });                            
+                        });
+
+                        // alignement de la carte par rapport au contenu du calque PIC
                         if (data.features.length>0) {
                             map.fitBounds(planinstallation.getBounds());
                         }
@@ -219,6 +249,10 @@
                 <div class="two tenths padded">
                     <h3>Plan d'installation du chantier (PIC)</h3>
                     <p>Vous pouvez délimiter sur la carte les différentes zones qui décrivent l'installation de votre chantier.</p>
+                    <br>
+                    <p>En déplaçant l'icône sur la carte, vous mettez également à jour les coordonnées géographiques du chantier.</p>
+                    <br>
+                    <a class="round button info" href="{{ path('chantier_show', { 'slug': chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply"></i>&nbsp;&nbsp;Retour</a>
                 </div>
             </div>
 {% endblock  %}
