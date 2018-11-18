@@ -28,14 +28,13 @@
                         <button class="round asphalt noicon half-gap-right" onclick="document.getElementById('popup').style.display = 'block'"><i class="icon-cloud"></i>&nbsp;&nbsp;Météo</button>
                     {% endif %}
                     <a class="round button active white bordered noicon half-gap-right" href="#" style="float: right;" title="Paramétres"><i class="icon-cog"></i></a>
-                    <a class="round button active white bordered noicon half-gap-right badge blue" data-badge="2&nbsp;"  href="#" style="float: right;" title="Notifications"><i class="icon-bell"></i></a>
                     <a class="round button active white bordered noicon half-gap-right" href="#" style="float: right;" title="Documents"><i class="icon-paperclip"></i></a>
                 </div>
                 <div class="bordered half-padded white-bg">
                     <h4>Description</h4>
                     <p>{{ chantier.description }}</p>
                 </div>
-                <div class="bordered half-padded half-gap-top white-bg">
+                <div class="half-padded half-gap-top bordered white-bg">
                     {% include '@FOSComment/Thread/async.html.twig' with {'id': chantier.slug } %}
                 </div>
             </div>

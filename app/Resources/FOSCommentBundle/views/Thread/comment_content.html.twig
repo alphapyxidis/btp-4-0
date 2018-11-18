@@ -12,7 +12,11 @@
 {% block fos_comment_comment %}
 <div id="fos_comment_{{ comment.id }}" class="fos_comment_comment_show fos_comment_comment_depth_{{ depth }}" {% if parent is defined and parent is not null %}data-parent="{{ parent.id }}"{% endif %}>
 
+{% if depth is defined and depth > 0 %}
+    <div class="fos_comment_comment_metas child">
+{% else %}
     <div class="fos_comment_comment_metas">
+{% endif %}
         {% block fos_comment_comment_metas %}
             {% block fos_comment_comment_metas_authorline %}
                 <div class="small">
@@ -64,12 +68,16 @@
         {% endblock fos_comment_comment_metas %}
     </div>
 
+{% if depth is defined and depth > 0 %}
+    <div id="fos_comment_comment_body_{{ comment.id }}" class="fos_comment_comment_body child">
+{% else %}
     <div id="fos_comment_comment_body_{{ comment.id }}" class="fos_comment_comment_body">
+{% endif %}
         {% block fos_comment_comment_body %}
             {% if comment is fos_comment_in_state(constant('FOS\\CommentBundle\\Model\\CommentInterface::STATE_DELETED')) %}
                 {% trans from 'FOSCommentBundle' %}fos_comment_comment_deleted{% endtrans %}
             {% else %}
-                <div class="triple-pad-left info">
+                <div class="triple-pad-left charcoal">
                 {% if comment is fos_comment_raw %}
                     {{ comment.rawBody | raw }}
                 {% else %}
