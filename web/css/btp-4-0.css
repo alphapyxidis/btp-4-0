@@ -10,8 +10,6 @@
       left: 33%;
       width: 33%;
       top:200px;
-      opacity:0.9;
-      filter: Alpha(opacity=90);
       z-index: 1;
   }
 }
@@ -21,8 +19,6 @@
       left: 20%;
       width: 60%;
       top:200px;
-      opacity:0.9;
-      filter: Alpha(opacity=90);
       z-index: 1;
   }
 }
@@ -32,8 +28,6 @@
       left: 10%;
       width: 80%;
       top:200px;
-      opacity:0.9;
-      filter: Alpha(opacity=90);
       z-index: 1;
   }
 }

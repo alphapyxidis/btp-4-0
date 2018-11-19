@@ -3,6 +3,7 @@
 {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/btp-4-0-comments.css') }}" />
             <link rel="stylesheet" href="{{ asset('libs/jstree/themes/default/style.min.css') }}" />
+            <link href="{{ asset('/css/dropzone.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block headerscripts %}
@@ -14,11 +15,11 @@
     <div class="container centered">
         <div class="row">
             <div class="one whole double-padded" style="height:150px;text-align:center;background-image: url('{{ asset('img/banniere-chantier.png') }}');background-size:cover;" title="{{ chantier.description }}">
-            <div class="four sixths skip-one">
-            <a class="round button bordered white" href="{{ path('chantier_edit', { 'slug': chantier.slug }) }}" style="float: right; opacity:0.3;" title="Modifier"><i class="icon-pencil"></i></a>
-            <h2><b>{{ chantier.nom }}</b></h2>
-            <h4>{{ chantier.adresse }}</h4>
-            </div>
+                <div class="four sixths skip-one">
+                    <button class="round info pull-right" href="{{ path('chantier_edit', { 'slug': chantier.slug }) }}" title="Modifier"><i class="icon-pencil"></i></button>
+                    <h2><b>{{ chantier.nom }}</b></h2>
+                    <h4>{{ chantier.adresse }}</h4>
+                </div>
             </div>
         </div>
         <div class="row half-pad-top">
@@ -37,27 +38,30 @@
                 </div>
                 <div class="equalize row half-gap-top half-gap-right">
                     <div class="one half padded">
+                        <h4 class="charcoal"><i class="icon-chevron-right"></i>&nbsp;&nbsp;Fil de discussion</h4>
                         {% include '@FOSComment/Thread/async.html.twig' with {'id': chantier.slug } %}
                     </div>
                     <div class="one half padded">
                         <h4 class="info"><i class="icon-chevron-right"></i>&nbsp;&nbsp;Documents du projet</h4>
-                        <div class="ten twelfths centered half-gapped" >
-                            <form action="{{ oneup_uploader_endpoint('chantier_file') }}" class="dropzone one whole info align-center double-padded" style="border:3px dashed dodgerblue; ">
-                            </form>
+                        <div class="ten twelfths centered">
+                            <div class="one whole no-pad" Title="Glissez / déplacez ou cliquez pour télécharger des documents...">
+                                <form action="{{ oneup_uploader_endpoint('chantier_file') }}" class="dropzone one whole info align-center double-padded" style="border:3px dashed; ">
+                                </form>
+                            </div>
                         </div>     
                         <div id="jstree" class="ten twelfths skip-one half-gapped half-padded bordered white-bg active">
                         </div>
                     </div>
-                <div>
+                </div>
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block popup %}
-            <div class="popup charcoal box fixed padded" style="width:450px;" id="popup">
+            <div class="popup asphalt box fixed padded" style="width:450px;" id="popup">
                 <div = "row padded">
-                    <h4 id="titre_popup">Prévisions météorologiques</h4>
+                    <h3 id="titre_popup">Prévisions météorologiques</h3>
                     <div>
                     {% if chantier.adresse.codeinsee|length > 0 %}
                         <iframe src="http://www.vigimeteo.com/widget_vigi_dep_s.html?a={{ chantier.adresse.codeinsee }}0&b=" style="width:425px; height:265px;" frameborder="0">
@@ -70,30 +74,93 @@
                 </div>
                 <i class="icon-2x icon-remove absolute top right padded" onclick="document.getElementById('popup').style.display = 'none'"></i>
             </div>
-        </div>
 {% endblock %}
 
 {% block javascripts %}
     <script>
         $(function () { 
-            $.jstree.defaults.core.themes.variant = "large";   
-            $.jstree.defaults.core.themes.responsive = true;   
+            $.jstree.defaults.core.themes.variant = "large";
             $('#jstree').jstree(
-                { 'core' : {
-                    'data' : [
-                        'Simple root node',
-                        {
-                            'text' : 'Root node 2',
-                            'state' : {
-                            'opened' : true,
-                            'selected' : true
+                { 
+                    'plugins' : [ "contextmenu", "dnd", "state", "types"],
+                    "types" : {
+                        "default" : {
+                            "type" : "folder",
                         },
-                        'children' : [
-                            { 'text' : 'Child 1' },
-                            'Child 2'
-                        ]
+                        "folder" : {
+                            "valid_children" : ["folder", "file"],
+                            "icon" : "jstree-folder"
+                        },
+                        "file" : {
+                            "valid_children" : [],
+                            "icon" : "jstree-file"
                         }
-                    ]
+                    },
+                    'core' : {
+                        // so that create works
+                        'check_callback' : true,
+                        "themes" : {
+                            "stripes" : true
+                        },
+                        'data' : [
+                            {
+                                'text' : 'Bâtiment A',
+                                'type' : 'folder'
+                            },
+                            {
+                                'text' : 'Bâtiment B',                                
+                                'type' : 'folder',
+                                'state' : {
+                                    'opened' : true,
+                                    'selected' : false
+                                },
+                                'children' : [
+                                    { 
+                                        'text' : 'Plan de coffrage',
+                                        'type' : 'file',
+                                        'state' : {
+                                            'selected' : true
+                                        },                                
+                                    },
+                                    { 
+                                        'text' : 'Lotissement prédalles préfabriquées',
+                                        'type' : 'file'
+                                    }
+                                ]
+                            },
+                            {
+                                'text' : 'Bâtiments C D E',
+                                'type' : 'folder',
+                                'state' : {
+                                    'opened' : false,
+                                    'selected' : false
+                                },
+                                'children' : [
+                                    { 
+                                        'text' : 'Notes de calcul',
+                                        'type' : 'folder',
+                                        'children' : [
+                                            { 
+                                                'text' : 'Archives',
+                                                'type' : 'folder'                                
+                                            },
+                                            { 
+                                                'text' : 'Cas de charges',
+                                                'type' : 'file'                                
+                                            },
+                                            { 
+                                                'text' : 'Ferraillage poteaux',
+                                                'type' : 'file'
+                                            }
+                                        ]
+                                    },
+                                    { 
+                                        'text' : 'Nomenclature accessoires chantier',
+                                        'type' : 'file'
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 }
             );
