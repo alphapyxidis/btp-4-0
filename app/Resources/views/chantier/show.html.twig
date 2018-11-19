@@ -1,21 +1,29 @@
 {% extends 'demo.html.twig' %}
 
 {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('libs/leaflet/leaflet.css') }}" />
             <link rel="stylesheet" href="{{ asset('css/btp-4-0-comments.css') }}" />
+            <link rel="stylesheet" href="{{ asset('libs/jstree/themes/default/style.min.css') }}" />
+{% endblock %}
+
+{% block headerscripts %}
+    <script type="text/javascript" src="{{ asset('libs/jstree/jstree.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
 {% endblock %}
 
 {% block body %}
     <div class="container centered">
         <div class="row">
-            <div class="one whole double-padded" style="height:150px;text-align:center;background-image: url('{{ asset('img/banniere-chantier.png') }}');background-size:cover;">
+            <div class="one whole double-padded" style="height:150px;text-align:center;background-image: url('{{ asset('img/banniere-chantier.png') }}');background-size:cover;" title="{{ chantier.description }}">
+            <div class="four sixths skip-one">
+            <a class="round button bordered white" href="{{ path('chantier_edit', { 'slug': chantier.slug }) }}" style="float: right; opacity:0.3;" title="Modifier"><i class="icon-pencil"></i></a>
             <h2><b>{{ chantier.nom }}</b></h2>
             <h4>{{ chantier.adresse }}</h4>
             </div>
+            </div>
         </div>
-        <div class="equalize row half-pad-top">
-            <div class="one whole">
-                <div class="padded one whole">
+        <div class="row half-pad-top">
+            <div class="one whole bordered white-bg">
+                <div class="one whole padded">
                     <a class="round button error noicon half-gap-right" href="{{ path('pic_chantier', { 'slug': chantier.slug }) }}"><i class="icon-map-marker"></i>&nbsp;&nbsp;Plan Installation</a>
                     <a class="round button purple noicon half-gap-right" href="{{ path('planning_chantier', { 'slug': chantier.slug }) }}"><i class="icon-tasks"></i>&nbsp;&nbsp;Planning</a>
                     {% if chantier.webcam|length > 0 %}
@@ -25,15 +33,22 @@
                         <button class="round asphalt noicon half-gap-right" onclick="document.getElementById('popup').style.display = 'block'"><i class="icon-cloud"></i>&nbsp;&nbsp;Météo</button>
                     {% endif %}
                     <a class="round button active white bordered noicon half-gap-right" href="#" style="float: right;" title="Paramétres"><i class="icon-cog"></i></a>
-                    <a class="round button active white bordered noicon half-gap-right" href="#" style="float: right;" title="Documents"><i class="icon-paperclip"></i></a>
+                    <a class="round button active white bordered noicon half-gap-right" href="#" style="float: right;" title="Documents non classés"><i class="icon-inbox"></i></a>
                 </div>
-                <div class="bordered half-padded white-bg">
-                    <h4>Description</h4>
-                    <p>{{ chantier.description }}</p>
-                </div>
-                <div class="half-padded half-gap-top bordered white-bg">
-                    {% include '@FOSComment/Thread/async.html.twig' with {'id': chantier.slug } %}
-                </div>
+                <div class="equalize row half-gap-top half-gap-right">
+                    <div class="one half padded">
+                        {% include '@FOSComment/Thread/async.html.twig' with {'id': chantier.slug } %}
+                    </div>
+                    <div class="one half padded">
+                        <h4 class="info"><i class="icon-chevron-right"></i>&nbsp;&nbsp;Documents du projet</h4>
+                        <div class="ten twelfths centered half-gapped" >
+                            <form action="{{ oneup_uploader_endpoint('chantier_file') }}" class="dropzone one whole info align-center double-padded" style="border:3px dashed dodgerblue; ">
+                            </form>
+                        </div>     
+                        <div id="jstree" class="ten twelfths skip-one half-gapped half-padded bordered white-bg active">
+                        </div>
+                    </div>
+                <div>
             </div>
         </div>
     </div>
@@ -56,4 +71,32 @@
                 <i class="icon-2x icon-remove absolute top right padded" onclick="document.getElementById('popup').style.display = 'none'"></i>
             </div>
         </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function () { 
+            $.jstree.defaults.core.themes.variant = "large";   
+            $.jstree.defaults.core.themes.responsive = true;   
+            $('#jstree').jstree(
+                { 'core' : {
+                    'data' : [
+                        'Simple root node',
+                        {
+                            'text' : 'Root node 2',
+                            'state' : {
+                            'opened' : true,
+                            'selected' : true
+                        },
+                        'children' : [
+                            { 'text' : 'Child 1' },
+                            'Child 2'
+                        ]
+                        }
+                    ]
+                    }
+                }
+            );
+        });
+    </script>
 {% endblock %}
