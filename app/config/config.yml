@@ -173,7 +173,7 @@ oneup_uploader:
     mappings:
         chantier_file:
             frontend: dropzone # or any uploader you use in the frontend
-            use_orphanage: true
+            use_orphanage: false
             storage:
                 type: flysystem
                 filesystem: chantier_filesystem

@@ -1,0 +1,44 @@
+{% extends 'demo.html.twig' %}
+
+{% block body %}
+    <h1>Document</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ document.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ document.nom }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ document.commentaire }}</td>
+            </tr>
+            <tr>
+                <th>Fichier</th>
+                <td>{{ document.fichier }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ document.slug }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('document_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('document_edit', { 'id': document.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

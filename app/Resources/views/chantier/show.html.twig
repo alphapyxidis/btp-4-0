@@ -16,7 +16,7 @@
         <div class="row">
             <div class="one whole double-padded" style="height:150px;text-align:center;background-image: url('{{ asset('img/banniere-chantier.png') }}');background-size:cover;" title="{{ chantier.description }}">
                 <div class="four sixths skip-one">
-                    <button class="round info pull-right" href="{{ path('chantier_edit', { 'slug': chantier.slug }) }}" title="Modifier"><i class="icon-pencil"></i></button>
+                    <a class="round button info pull-right" href="{{ path('chantier_edit', { 'slug': chantier.slug }) }}" title="Modifier"><i class="icon-pencil"></i></a>
                     <h2><b>{{ chantier.nom }}</b></h2>
                     <h4>{{ chantier.adresse }}</h4>
                 </div>
@@ -99,9 +99,6 @@
                     'core' : {
                         // so that create works
                         'check_callback' : true,
-                        "themes" : {
-                            "stripes" : true
-                        },
                         'data' : [
                             {
                                 'text' : 'Bâtiment A',

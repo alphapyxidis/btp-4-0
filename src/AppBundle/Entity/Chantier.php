@@ -75,6 +75,10 @@ class Chantier
         // your own logic
     }
 
+    public function __toString() {
+        return $this->slug;
+    }
+
     /**
      * Get id
      *
