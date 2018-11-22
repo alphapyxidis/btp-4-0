@@ -20,7 +20,6 @@ class UploadListener
     public function onUpload(PostPersistEvent $event)
     {
         //...
-        throw new UploadException('Nope, I don\'t do files.');
 
         //if everything went fine
         $response = $event->getResponse();

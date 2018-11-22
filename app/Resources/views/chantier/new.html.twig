@@ -5,10 +5,6 @@
     <link href="{{ asset('/css/dropzone.css') }}" rel="stylesheet" />
 {% endblock %}
 
-{% block headerscripts %}
-    <script type="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
-{% endblock %}
-
 {% block body %}
 <div class="one whole container centered">
     <div class="row">
@@ -24,12 +20,6 @@
                 <a href="{{ path('chantier_index') }}">Back to the list</a>
             </li>
         </ul>
-    </div>
-    <div class="row">
-        <div class="two thirds centered half-gapped" >
-            <form action="{{ oneup_uploader_endpoint('chantier_file') }}" class="dropzone one whole info align-center double-padded" style="border:3px dashed;">
-            </form>
-        </div>
     </div>
 </div>
 

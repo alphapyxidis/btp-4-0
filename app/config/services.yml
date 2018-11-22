@@ -34,20 +34,29 @@ services:
     #     arguments:
     #         $someArgument: 'some_value'
 
-    btp40.user_provider.service:
-        #class: HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider
-        class: AppBundle\Security\Core\User\FOSUBUserProvider
-        arguments:  ['@fos_user.user_manager',{auth0: auth0_id}]
-
     twig.extension.intl:
         class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
 
-    app.upload_listener:
+    btp40.user_provider.service:
+        #class: HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider
+        class: AppBundle\Security\Core\User\FOSUBUserProvider
+        arguments:  ['@fos_user.user_manager',{auth0: auth0_id}]
+
+    btp40.upload_listener:
         class: AppBundle\EventListener\UploadListener
         arguments: ["@doctrine.orm.entity_manager"]
         tags:
             - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: onUpload }
 
+    btp40.upload_validation_listener:
+        class: AppBundle\EventListener\UploadValidationListener
+        tags:
+            - { name: kernel.event_listener, event: oneup_uploader.validation, method: onValidate }
+
+    btp40.upload_file_namer:
+        public: true
+        class: AppBundle\Uploader\Naming\DirectoryNamer
+        arguments: ["@security.token_storage"]
         

@@ -45,7 +45,7 @@
                         <h4 class="info"><i class="icon-chevron-right"></i>&nbsp;&nbsp;Documents du projet</h4>
                         <div class="ten twelfths centered">
                             <div class="one whole no-pad" Title="Glissez / déplacez ou cliquez pour télécharger des documents...">
-                                <form action="{{ oneup_uploader_endpoint('chantier_file') }}" class="dropzone one whole info align-center double-padded" style="border:3px dashed; ">
+                                <form id="btp40-dropzone" action="{{ oneup_uploader_endpoint('documents_chantier') }}" class="dropzone one whole info align-center double-padded" style="border:3px dashed; ">
                                 </form>
                             </div>
                         </div>     
@@ -79,6 +79,15 @@
 {% block javascripts %}
     <script>
         $(function () { 
+
+            // "myAwesomeDropzone" is the camelized version of the HTML element's ID
+            Dropzone.options.btp40Dropzone = {
+                maxFilesize: 5, // MB
+                resizeHeight: 1280,
+                acceptedFiles: 'image/jpeg, image/png, image/bmp, image/gif, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf, application/x-pdf, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/x-7z-compressed, application/zip, application/x-zip-compressed, multipart/x-zip, audio/x-wav, audio/mpeg'
+            };
+
+            // init jsTree
             $.jstree.defaults.core.themes.variant = "large";
             $('#jstree').jstree(
                 { 

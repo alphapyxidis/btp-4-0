@@ -157,7 +157,7 @@ oneup_flysystem:
     adapters:
         chantier_adapter:
             local:
-                directory: '%kernel.project_dir%/web/data/uploaded' 
+                directory: '%kernel.project_dir%/web/data' 
 
     filesystems:
         chantier_filesystem:
@@ -168,12 +168,13 @@ oneup_flysystem:
 # File uploader Configuration
 oneup_uploader:
     orphanage:
-        maxage: 86400
+        maxage: 86400  # 24h in seconds
         directory: '%kernel.cache_dir%/uploader/orphanage'
     mappings:
-        chantier_file:
+        documents_chantier:
             frontend: dropzone # or any uploader you use in the frontend
             use_orphanage: false
+            namer: btp40.upload_file_namer
             storage:
                 type: flysystem
                 filesystem: chantier_filesystem

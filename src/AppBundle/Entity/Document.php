@@ -37,8 +37,8 @@ class Document
      * @ORM\Column(type="string", length=256)
      * @Assert\NotBlank()
      * @Assert\File(
-     *      maxSize = "2M",
-     *      mimeTypes={ "image/jpeg", "image/png", "image/bmp", "image/gif", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/pdf", "application/x-pdf", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/zip", "application/x-7z-compressed", "audio/x-wav", "audio/mpeg" },
+     *      maxSize = "5M",
+     *      mimeTypes={ "image/jpeg", "image/png", "image/bmp", "image/gif", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/pdf", "application/x-pdf", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/x-7z-compressed", "application/zip", "application/x-zip-compressed", "multipart/x-zip",  "audio/x-wav", "audio/mpeg" },
      *      mimeTypesMessage = "Les types de fichiers autorisés sont : images (JPEG, PNG, BMP, GIF), sons (WAV, MP3), documents (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX) et archives (ZIP, 7Z)",
      *      maxSizeMessage = "La taille du fichier est supérieure au maximun autorisé : {{ limit }} {{ suffix }}."
      * )
