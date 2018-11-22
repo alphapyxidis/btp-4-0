@@ -69,6 +69,11 @@ class Chantier
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Document", mappedBy="chantier")
+     */
+    private $documents;    
+
     public function __construct()
     {
         //parent::__construct();
@@ -280,5 +285,39 @@ class Chantier
     public function getWebcam()
     {
         return $this->webcam;
+    }
+
+    /**
+     * Add document
+     *
+     * @param \AppBundle\Entity\Document $document
+     *
+     * @return Chantier
+     */
+    public function addDocument(\AppBundle\Entity\Document $document)
+    {
+        $this->documents[] = $document;
+
+        return $this;
+    }
+
+    /**
+     * Remove document
+     *
+     * @param \AppBundle\Entity\Document $document
+     */
+    public function removeDocument(\AppBundle\Entity\Document $document)
+    {
+        $this->documents->removeElement($document);
+    }
+
+    /**
+     * Get documents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDocuments()
+    {
+        return $this->documents;
     }
 }

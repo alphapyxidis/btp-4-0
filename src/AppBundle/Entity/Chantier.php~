@@ -36,12 +36,12 @@ class Chantier
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $gantt;
+    protected $gantt='{"tasks":[],"deletedTaskIds":[],"resources":[],"roles":[],"canWrite":true,"canAdd":true,"canWriteOnParent":true,"zoom":"1M"}';
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $pic;
+    protected $pic='{"type":"FeatureCollection","features":[]}';
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -69,10 +69,19 @@ class Chantier
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Document", mappedBy="category")
+     */
+    private $documents;    
+
     public function __construct()
     {
         //parent::__construct();
         // your own logic
+    }
+
+    public function __toString() {
+        return $this->slug;
     }
 
     /**
@@ -252,5 +261,29 @@ class Chantier
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set webcam
+     *
+     * @param string $webcam
+     *
+     * @return Chantier
+     */
+    public function setWebcam($webcam)
+    {
+        $this->webcam = $webcam;
+
+        return $this;
+    }
+
+    /**
+     * Get webcam
+     *
+     * @return string
+     */
+    public function getWebcam()
+    {
+        return $this->webcam;
     }
 }

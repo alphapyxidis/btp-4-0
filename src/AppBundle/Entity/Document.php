@@ -54,7 +54,7 @@ class Document
     /**
      * @Assert\Type(type="AppBundle\Entity\Chantier")
      * @Assert\Valid()
-     * @ORM\OneToOne(targetEntity="Chantier",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Chantier", cascade={"persist"}, inversedBy="documents")
      * @ORM\JoinColumn(name="idChantier", referencedColumnName="id")
      */
     private $chantier;
