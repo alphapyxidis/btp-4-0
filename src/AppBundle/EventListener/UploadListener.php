@@ -29,18 +29,18 @@ class UploadListener
         $em = $this->em;
 
         $request = $event->getRequest();
-        $id = $request->get('chantier');
+        $slug = $request->get('chantier');
 
         $originalName = $request->files->get('file')->getClientOriginalName();
         $pathParts = pathinfo($originalName);
         $originalName = $pathParts['filename'];
 
         $repository = $em->getRepository(Chantier::class);
-        $chantier = $repository->findOneById($id); 
+        $chantier = $repository->findOneBySlug($slug); 
 
         if (empty($chantier)) {
 
-             throw new UploadException('Aucun chantier trouvé : ['.$id.']');
+             throw new UploadException('Aucun chantier trouvé : ['.$slug.']');
         }
 
         $object = new Document();

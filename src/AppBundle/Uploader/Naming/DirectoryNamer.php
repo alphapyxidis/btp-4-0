@@ -2,16 +2,17 @@
 
 namespace AppBundle\Uploader\Naming;
 
+
 use Oneup\UploaderBundle\Uploader\File\FileInterface;
 use Oneup\UploaderBundle\Uploader\Naming\NamerInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class DirectoryNamer implements NamerInterface
 {
-    private $tokenStorage;
+    private $requestStack;
     
-    public function __construct(TokenStorage $tokenStorage){
-        $this->tokenStorage = $tokenStorage;
+    public function __construct(RequestStack $requestStack){
+        $this->requestStack = $requestStack;
     }
     
     /**
@@ -22,10 +23,10 @@ class DirectoryNamer implements NamerInterface
      */
     public function name(FileInterface $file)
     {
-        $userId = $this->tokenStorage->getToken()->getUser()->getId();
+        $slug = $this->requestStack->getCurrentRequest()->get('chantier');
         
         return sprintf('%s/%s.%s',
-            $userId,
+            $slug,
             uniqid(),
             $file->getExtension()
         );

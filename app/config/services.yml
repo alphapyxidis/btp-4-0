@@ -58,5 +58,5 @@ services:
     btp40.upload_file_namer:
         public: true
         class: AppBundle\Uploader\Naming\DirectoryNamer
-        arguments: ["@security.token_storage"]
+        arguments: ["@request_stack"]
         
