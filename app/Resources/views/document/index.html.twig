@@ -1,45 +1,36 @@
 {% extends 'demo.html.twig' %}
 
 {% block body %}
-    <h1>Documents list</h1>
+<div class="one whole container centered">
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 
-    <table>
+    <table class="blue">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
+                <th>{{ knp_pagination_sortable(pagination, '#', 'd.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Nom', 'd.nom') }}</th>
                 <th>Commentaire</th>
                 <th>Fichier</th>
                 <th>Slug</th>
-                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for document in documents %}
+        {% for document in pagination %}
             <tr>
                 <td><a href="{{ path('document_show', { 'id': document.id }) }}">{{ document.id }}</a></td>
                 <td>{{ document.nom }}</td>
                 <td>{{ document.commentaire }}</td>
                 <td>{{ document.fichier }}</td>
                 <td>{{ document.slug }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('document_show', { 'id': document.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('document_edit', { 'id': document.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('document_new') }}">Create a new document</a>
-        </li>
-    </ul>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 {% endblock %}

@@ -155,15 +155,15 @@ fos_user:
 # FlySystem Configuration (file system abstraction)
 oneup_flysystem:
     adapters:
-        chantier_adapter:
+        btp40_adapter:
             local:
                 directory: '%kernel.project_dir%/web/data' 
 
     filesystems:
-        chantier_filesystem:
-            adapter: chantier_adapter
+        btp40_filesystem:
+            adapter: btp40_adapter
             visibility: private
-            alias: chantier_filesystem
+            alias: btp40_filesystem
 
 # File uploader Configuration
 oneup_uploader:
@@ -177,7 +177,7 @@ oneup_uploader:
             namer: btp40.upload_file_namer
             storage:
                 type: flysystem
-                filesystem: chantier_filesystem
+                filesystem: btp40_filesystem
 httplug:
     clients:
         default:

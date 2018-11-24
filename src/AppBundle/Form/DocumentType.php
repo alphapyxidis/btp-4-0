@@ -13,7 +13,7 @@ class DocumentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('commentaire')->add('fichier')->add('chantier');
+        $builder->add('nom')->add('commentaire')->add('chantier');
     }/**
      * {@inheritdoc}
      */
@@ -31,6 +31,5 @@ class DocumentType extends AbstractType
     {
         return 'document';
     }
-
 
 }

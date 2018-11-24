@@ -2,7 +2,7 @@
 namespace AppBundle\EventListener;
 
 use Doctrine\ORM\EntityManager;
-//use Doctrine\Common\Persistence\ObjectManager;
+
 use Oneup\UploaderBundle\Event\PostPersistEvent;
 use Symfony\Component\HttpFoundation\File\Exception\UploadException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -43,9 +43,16 @@ class UploadListener
              throw new UploadException('Aucun chantier trouvé : ['.$slug.']');
         }
 
+        $filedate = \DateTime::createFromFormat('U',$file->getTimestamp());
+        $filesize = $file->getSize();
+        $mimetype = $file->getMimeType();
+        
         $object = new Document();
         $object->setNom($originalName);
         $object->setFichier($file->getPathName());
+        $object->setFileCreatedAt($filedate);
+        $object->setFileSize($filesize);
+        $object->setMimeType($mimetype);
         $object->setChantier($chantier);
 
         $em->persist($object);

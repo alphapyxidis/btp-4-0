@@ -18,18 +18,23 @@ class DocumentController extends Controller
     /**
      * Lists all document entities.
      *
-     * @Route("/", name="document_index")
+     * @Route("s/", name="document_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = "SELECT d FROM AppBundle:Document d";
+        $query = $em->createQuery($dql);
+    
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
 
-        $documents = $em->getRepository('AppBundle:Document')->findAll();
-
-        return $this->render('document/index.html.twig', array(
-            'documents' => $documents,
-        ));
+        return $this->render('document/index.html.twig', array('pagination' => $pagination));
     }
 
     /**

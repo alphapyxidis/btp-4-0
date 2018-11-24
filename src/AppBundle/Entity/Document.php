@@ -59,6 +59,34 @@ class Document
      */
     private $chantier;
 
+    /**
+     * @ORM\Column(type="string", length=64, nullable=true)
+     */
+    protected $mimeType;
+
+    /**
+     * @ORM\Column(type="decimal", nullable=true)
+     */
+    protected $fileSize;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $fileCreatedAt;   
+
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $fileUploadedAt;    
+
+    /**
+     * @Gedmo\Blameable(on="create")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="uploaded_by", referencedColumnName="id", nullable=true)
+     */
+    protected $fileUploadedBy;    
+
     public function __construct()
     {
         //parent::__construct();
@@ -194,5 +222,125 @@ class Document
     public function getChantier()
     {
         return $this->chantier;
+    }
+
+    /**
+     * Set mimeType
+     *
+     * @param string $mimeType
+     *
+     * @return Document
+     */
+    public function setMimeType($mimeType)
+    {
+        $this->mimeType = $mimeType;
+
+        return $this;
+    }
+
+    /**
+     * Get mimeType
+     *
+     * @return string
+     */
+    public function getMimeType()
+    {
+        return $this->mimeType;
+    }
+
+    /**
+     * Set fileSize
+     *
+     * @param string $fileSize
+     *
+     * @return Document
+     */
+    public function setFileSize($fileSize)
+    {
+        $this->fileSize = $fileSize;
+
+        return $this;
+    }
+
+    /**
+     * Get fileSize
+     *
+     * @return string
+     */
+    public function getFileSize()
+    {
+        return $this->fileSize;
+    }
+
+    /**
+     * Set fileCreatedAt
+     *
+     * @param \DateTime $fileCreatedAt
+     *
+     * @return Document
+     */
+    public function setFileCreatedAt($fileCreatedAt)
+    {
+        $this->fileCreatedAt = $fileCreatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get fileCreatedAt
+     *
+     * @return \DateTime
+     */
+    public function getFileCreatedAt()
+    {
+        return $this->fileCreatedAt;
+    }
+
+    /**
+     * Set fileUploadedAt
+     *
+     * @param \DateTime $fileUploadedAt
+     *
+     * @return Document
+     */
+    public function setFileUploadedAt($fileUploadedAt)
+    {
+        $this->fileUploadedAt = $fileUploadedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get fileUploadedAt
+     *
+     * @return \DateTime
+     */
+    public function getFileUploadedAt()
+    {
+        return $this->fileUploadedAt;
+    }
+
+    /**
+     * Set fileUploadedBy
+     *
+     * @param \AppBundle\Entity\User $fileUploadedBy
+     *
+     * @return Document
+     */
+    public function setFileUploadedBy(\AppBundle\Entity\User $fileUploadedBy = null)
+    {
+        $this->fileUploadedBy = $fileUploadedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get fileUploadedBy
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getFileUploadedBy()
+    {
+        return $this->fileUploadedBy;
     }
 }
