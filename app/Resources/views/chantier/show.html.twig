@@ -80,7 +80,6 @@
     <script>
         $(function () { 
 
-            // "myAwesomeDropzone" is the camelized version of the HTML element's ID
             Dropzone.options.btp40Dropzone = {
                 params: {
                     chantier: "{{ chantier.slug }}" 
@@ -89,6 +88,12 @@
                 resizeHeight: 1280,
                 acceptedFiles: 'image/jpeg, image/png, image/bmp, image/gif, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf, application/x-pdf, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/x-7z-compressed, application/zip, application/x-zip-compressed, multipart/x-zip, audio/x-wav, audio/mpeg'
             };
+
+            Dropzone.options.btp40Dropzone.on("sending", function(file, xhr, formData) { 
+
+            // Will sendthe file las modified date along with the file as POST data.
+            formData.append("fileLastModified", file.lastModified);  
+            }
 
             // init jsTree
             $.jstree.defaults.core.themes.variant = "large";
