@@ -82,18 +82,19 @@
 
             Dropzone.options.btp40Dropzone = {
                 params: {
+                    // l'identifiant du chantier auquel est associé le document est passé en paramètre du formulaire
                     chantier: "{{ chantier.slug }}" 
+                }, 
+                init: function() {
+                    this.on("sending", function(file, xhr, formData) {
+                         // on ajoute dans le formulaire la date de modification du fichier original (UNIX epoch time)
+                         formData.append("fileLastModified", file.lastModified);
+                    });
                 },                
                 maxFilesize: 5, // MB
                 resizeHeight: 1280,
                 acceptedFiles: 'image/jpeg, image/png, image/bmp, image/gif, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf, application/x-pdf, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/x-7z-compressed, application/zip, application/x-zip-compressed, multipart/x-zip, audio/x-wav, audio/mpeg'
             };
-
-            Dropzone.options.btp40Dropzone.on("sending", function(file, xhr, formData) { 
-
-            // Will sendthe file las modified date along with the file as POST data.
-            formData.append("fileLastModified", file.lastModified);  
-            }
 
             // init jsTree
             $.jstree.defaults.core.themes.variant = "large";

@@ -32,7 +32,8 @@ class UploadListener
         
         $request = $event->getRequest();
         $slug = $request->get('chantier');
-        $clientOriginalDate = \DateTime::createFromFormat('U',$request->get('fileLastModified'));
+        // convert UNIX epoch time to DateTime
+        $clientOriginalDate = \DateTime::createFromFormat('U',substr($request->get('fileLastModified'), 0, 10));
 
         $originalName = $request->files->get('file')->getClientOriginalName();
         $pathParts = pathinfo($originalName);
