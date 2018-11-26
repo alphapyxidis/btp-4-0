@@ -1,5 +1,7 @@
 {% extends 'demo.html.twig' %}
 
+{% import 'tools.html.twig' as tools %}
+
 {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/btp-4-0-comments.css') }}" />
             <link rel="stylesheet" href="{{ asset('libs/jstree/themes/default/style.min.css') }}" />
@@ -98,6 +100,12 @@
             };
 
             // init jsTree
+            data = [];
+            
+            {% for doc in chantier.documents %}
+               data.push({"id" : "{{ doc.id }}", "parent" : "#", "type": "file", "icon": "{{ asset('img/file-icons/small/') ~ tools.file_icon(doc.mimeType)|trim }}", "text" : "{{ doc.nom }}" });
+            {% endfor %}
+
             $.jstree.defaults.core.themes.variant = "large";
             $('#jstree').jstree(
                 { 
@@ -118,68 +126,11 @@
                     'core' : {
                         // so that create works
                         'check_callback' : true,
-                        'data' : [
-                            {
-                                'text' : 'Bâtiment A',
-                                'type' : 'folder'
-                            },
-                            {
-                                'text' : 'Bâtiment B',                                
-                                'type' : 'folder',
-                                'state' : {
-                                    'opened' : true,
-                                    'selected' : false
-                                },
-                                'children' : [
-                                    { 
-                                        'text' : 'Plan de coffrage',
-                                        'type' : 'file',
-                                        'state' : {
-                                            'selected' : true
-                                        },                                
-                                    },
-                                    { 
-                                        'text' : 'Lotissement prédalles préfabriquées',
-                                        'type' : 'file'
-                                    }
-                                ]
-                            },
-                            {
-                                'text' : 'Bâtiments C D E',
-                                'type' : 'folder',
-                                'state' : {
-                                    'opened' : false,
-                                    'selected' : false
-                                },
-                                'children' : [
-                                    { 
-                                        'text' : 'Notes de calcul',
-                                        'type' : 'folder',
-                                        'children' : [
-                                            { 
-                                                'text' : 'Archives',
-                                                'type' : 'folder'                                
-                                            },
-                                            { 
-                                                'text' : 'Cas de charges',
-                                                'type' : 'file'                                
-                                            },
-                                            { 
-                                                'text' : 'Ferraillage poteaux',
-                                                'type' : 'file'
-                                            }
-                                        ]
-                                    },
-                                    { 
-                                        'text' : 'Nomenclature accessoires chantier',
-                                        'type' : 'file'
-                                    }
-                                ]
-                            }
-                        ]
+                        'data' : data
                     }
                 }
             );
+
         });
     </script>
 {% endblock %}

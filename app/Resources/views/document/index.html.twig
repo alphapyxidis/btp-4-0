@@ -1,5 +1,7 @@
 {% extends 'demo.html.twig' %}
 
+{% import 'tools.html.twig' as tools %}
+
 {% block body %}
 <div class="one whole container centered">
     {# display navigation #}
@@ -18,30 +20,6 @@
             </tr>
         </thead>
         <tbody>
-
-        {% import _self as tools %}
-
-        {% macro file_icon(mime_type) %}
-        {% spaceless %}
-            {% if mime_type in ['application/pdf', 'application/x-pdf'] %}
-                {{ 'pdf.png' }}
-            {% elseif mime_type in ['application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'] %}
-                {{ 'doc.png' }}
-            {% elseif mime_type in ['application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation'] %}
-                {{ 'ppt.png' }}
-            {% elseif mime_type in ['application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'] %}
-                {{ 'xls.png' }}
-            {% elseif mime_type in ['application/x-7z-compressed', 'application/zip', 'application/x-zip-compressed', 'multipart/x-zip'] %}
-                {{ 'archive.png' }}
-            {% elseif 'image/' in mime_type %}
-                {{ 'image.png' }}
-            {% elseif 'audio/' in mime_type %}
-                {{ 'audio.png' }}
-            {% else %}
-                {{ 'default.png' }}
-            {% endif %}
-        {% endspaceless %}
-        {% endmacro %}
 
         {% for document in pagination %}
             <tr>
