@@ -45,7 +45,7 @@
                         <h4 class="info"><i class="icon-chevron-right"></i>&nbsp;&nbsp;Documents du projet</h4>
                         <div class="ten twelfths centered">
                             <div class="one whole no-pad" Title="Glissez / déplacez ou cliquez pour télécharger des documents...">
-                                <form id="btp40-dropzone" action="{{ oneup_uploader_endpoint('documents_chantier') }}" class="dropzone one whole info align-center double-padded" style="border:3px dashed; ">
+                                <form id="btp40-dropzone" action="{{ oneup_uploader_endpoint('documents_chantier') }}" class="dropzone one whole info align-center padded" style="border:3px dashed; ">
                                 </form>
                             </div>
                         </div>     
@@ -89,6 +89,7 @@
                     this.on("sending", function(file, xhr, formData) {
                          // on ajoute dans le formulaire la date de modification du fichier original (UNIX epoch time)
                          formData.append("fileLastModified", file.lastModified);
+                         formData.append("mimeType", file.type);
                     });
                 },                
                 maxFilesize: 5, // MB

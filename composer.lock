@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fca4fe3ac240243daf625d5b52c3c11",
+    "content-hash": "3f3ab673db01ab23611da8d1908a52fb",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -4297,6 +4297,42 @@
             ],
             "description": "A security checker for your composer.lock",
             "time": "2018-10-16T10:30:44+00:00"
+        },
+        {
+            "name": "spe/filesize-extension-bundle",
+            "version": "1.0.0",
+            "target-dir": "SPE/FilesizeExtensionBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/loonkwil/filesize-extension-bundle.git",
+                "reference": "07f5f305112e2d9afd88a9a0e9ee0ff0d2702bfa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/loonkwil/filesize-extension-bundle/zipball/07f5f305112e2d9afd88a9a0e9ee0ff0d2702bfa",
+                "reference": "07f5f305112e2d9afd88a9a0e9ee0ff0d2702bfa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "twig/twig": ">=1.12.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "SPE\\FilesizeExtensionBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Peter Simon",
+                    "email": "simonpepe@gmail.com"
+                }
+            ],
+            "description": "Twig filter for human readable filesize",
+            "homepage": "https://github.com/loonkwil/filesize-extension-bundle",
+            "time": "2015-12-08T09:03:02+00:00"
         },
         {
             "name": "stof/doctrine-extensions-bundle",

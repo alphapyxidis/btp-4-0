@@ -50,7 +50,7 @@ class Document
      * @ORM\Column(type="string", length=256, unique=true)
      */
     private $slug;
-
+        
     /**
      * @Assert\Type(type="AppBundle\Entity\Chantier")
      * @Assert\Valid()
@@ -60,9 +60,14 @@ class Document
     private $chantier;
 
     /**
-     * @ORM\Column(type="string", length=64, nullable=true)
+     * @ORM\Column(type="string", length=256, nullable=true)
      */
-    protected $mimeType;
+    private $mimeType;
+
+    /**
+     * @ORM\Column(type="string", length=256, nullable=true)
+     */
+    private $originalFileName;
 
     /**
      * @ORM\Column(type="decimal", nullable=true)
@@ -85,7 +90,7 @@ class Document
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="uploaded_by", referencedColumnName="id", nullable=true)
      */
-    protected $fileUploadedBy;    
+    protected $fileUploadedBy;   
 
     public function __construct()
     {
@@ -229,7 +234,7 @@ class Document
      *
      * @param string $mimeType
      *
-     * @return Document
+     * @return document
      */
     public function setMimeType($mimeType)
     {
@@ -249,11 +254,35 @@ class Document
     }
 
     /**
+     * Set originalFileName
+     *
+     * @param string $originalFileName
+     *
+     * @return document
+     */
+    public function setOriginalFileName($originalFileName)
+    {
+        $this->originalFileName = $originalFileName;
+
+        return $this;
+    }
+
+    /**
+     * Get originalFileName
+     *
+     * @return string
+     */
+    public function getOriginalFileName()
+    {
+        return $this->originalFileName;
+    }
+
+    /**
      * Set fileSize
      *
      * @param string $fileSize
      *
-     * @return Document
+     * @return document
      */
     public function setFileSize($fileSize)
     {
@@ -277,7 +306,7 @@ class Document
      *
      * @param \DateTime $fileCreatedAt
      *
-     * @return Document
+     * @return document
      */
     public function setFileCreatedAt($fileCreatedAt)
     {
@@ -301,7 +330,7 @@ class Document
      *
      * @param \DateTime $fileUploadedAt
      *
-     * @return Document
+     * @return document
      */
     public function setFileUploadedAt($fileUploadedAt)
     {
@@ -325,7 +354,7 @@ class Document
      *
      * @param \AppBundle\Entity\User $fileUploadedBy
      *
-     * @return Document
+     * @return document
      */
     public function setFileUploadedBy(\AppBundle\Entity\User $fileUploadedBy = null)
     {

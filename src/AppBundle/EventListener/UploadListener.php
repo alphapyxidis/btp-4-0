@@ -34,10 +34,11 @@ class UploadListener
         $slug = $request->get('chantier');
         // convert UNIX epoch time to DateTime
         $clientOriginalDate = \DateTime::createFromFormat('U',substr($request->get('fileLastModified'), 0, 10));
+        $mimetype = $request->get('mimeType');
 
         $originalName = $request->files->get('file')->getClientOriginalName();
         $pathParts = pathinfo($originalName);
-        $originalName = $pathParts['filename'];
+        $documentName = $pathParts['filename']; // nom du fichier original sans l'extension
 
         $repository = $em->getRepository(Chantier::class);
         $chantier = $repository->findOneBySlug($slug); 
@@ -48,12 +49,12 @@ class UploadListener
         }
 
         $filesize = $file->getSize();
-        $mimetype = $file->getMimeType();
         
         $object = new Document();
-        $object->setNom($originalName);
+        $object->setNom($documentName);
         $object->setFichier($file->getPathName());
         $object->setFileCreatedAt($clientOriginalDate);
+        $object->setOriginalFileName($originalName);
         $object->setFileSize($filesize);
         $object->setMimeType($mimetype);
         $object->setChantier($chantier);
