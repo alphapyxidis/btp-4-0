@@ -60,5 +60,7 @@ services:
         class: AppBundle\Uploader\Naming\DirectoryNamer
         arguments: ["@request_stack"]
 
+         
+
 
         

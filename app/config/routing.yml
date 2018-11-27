@@ -7,21 +7,32 @@ blog:
     resource: '@AppBundle/Controller/BlogController.php'
     type: annotation
 
-chantier:
+btp40_chantier:
     resource: '@AppBundle/Controller/ChantierController.php'
     type: annotation
 
-adresse:
+btp40_chantier_api:
+    resource: '@AppBundle/Controller/ApiChantierController.php'
+    type: rest
+    prefix: /api/chantier
+
+btp40_adresse:
     resource: '@AppBundle/Controller/AdresseController.php'
     type: annotation
 
-document:
+btp40_document:
     resource: '@AppBundle/Controller/DocumentController.php'
     type: annotation
 
-api:
-    resource: '@AppBundle/Controller/ApiController.php'
+btp40_document_api:
+    resource: '@AppBundle/Controller/ApiDocumentController.php'
     type: rest
+    prefix: /api/document
+    
+btp40_message_api:
+    resource: '@AppBundle/Controller/ApiMessageController.php'
+    type: rest
+    prefix: /api/message
 
 hwi_oauth_login:
     resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
@@ -47,7 +58,7 @@ fos_user:
 fos_comment_api:
     type: rest
     resource: "@FOSCommentBundle/Resources/config/routing.yml"
-    prefix: /
+    prefix: /comment
     defaults: { _format: html } 
 
 fos_message:

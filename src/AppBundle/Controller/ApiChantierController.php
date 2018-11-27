@@ -14,13 +14,13 @@ use FOS\RestBundle\View\View; // Utilisation de la vue de FOSRestBundle
 /**
  * Chantier controller.
  */
-class ApiController extends Controller
+class ApiChantierController extends Controller
 {
     
      /**
      * Lists all chantier in a given area.
      * @Rest\View()
-     * @Rest\Get("/api/localise-chantiers")
+     * @Rest\Get("/localise-chantiers")
      */
     public function getNeighborhoodAction(Request $request)
     {
@@ -45,7 +45,7 @@ class ApiController extends Controller
 
      /**
      * @Rest\View()
-     * @Rest\Get("/api/get-chantier/{slug}")
+     * @Rest\Get("/get-chantier/{slug}")
      */
     public function getChantierAction(Request $request, $slug)
     {
@@ -63,11 +63,10 @@ class ApiController extends Controller
 
      /**
      * @Rest\View(statusCode=Response::HTTP_CREATED)
-     * @Rest\Patch("/api/update-chantier/{slug}")
+     * @Rest\Patch("/update-chantier/{slug}")
      */
     public function patchChantierAction(Request $request, $slug)
     {
-        
        
         $em = $this->get('doctrine.orm.entity_manager');
         $repository = $this->getDoctrine()->getRepository(Chantier::class);

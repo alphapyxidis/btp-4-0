@@ -46,15 +46,8 @@
                         </div>
                     </div>
                     <div class="one twelfth gap-top pad-left pad-right">
-                        <div class="one half double-pad-left">
-                        {% set nb_messages = fos_message_nb_unread() %}
-                        {% if nb_messages > 9 %}
-                            <a href="{{ url('fos_message_inbox') }}" title="Vous avez {{ nb_messages }} nouveaux messages"><i class="white icon-envelope icon-2x gap-right flash animated badge red" data-badge="9+"></i></a>
-                        {% elseif nb_messages > 0 %}
-                            <a href="{{ url('fos_message_inbox') }}" title="Vous avez {{ nb_messages }} nouveau(x) message(s)"><i class="white icon-envelope icon-2x gap-right flash animated badge red" data-badge="{{ nb_messages }} "></i></a>
-                        {% else %}
+                        <div id="inbox" class="one half double-pad-left">
                             <a href="{{ url('fos_message_inbox') }}" title="Boîte de réception"><i class="white icon-envelope-alt icon-2x gap-right"></i></a>
-                        {% endif %}
                         </div>
                         <div class="one half double-pad-left">
                             <a href="#" title="Notifications"><i class="white icon-bell icon-2x gap-right "></i></a>
@@ -197,7 +190,7 @@
 
         <div class="workspace charcoal row no-pad"> 
             <div class="row half-padded">
-                <div class="one whole half-gap-top">
+                <div id="flash" class="one whole half-gap-top">
                     {% for message in app.session.flashbag.get('error') %}
                         <div class="eleven twelfths dismissible error round message centered align-left gap-bottom">{{ message }}</div>
                     {% endfor %}
@@ -238,7 +231,7 @@
 
         <!-- scripts-->
         <script type="text/javascript" src="{{ asset('/js/groundwork.all.js') }}"></script>
-            <script>
+        <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -246,8 +239,57 @@
 
             ga('create', '{{ ga_tracking_id }}', 'auto');
             ga('send', 'pageview');        
+ 
+                        {# {% set nb_messages = fos_message_nb_unread() %}
+                        {% if nb_messages > 9 %}
+                            var msg = '<a href="{{ url('fos_message_inbox') }}" title="Vous avez {{ nb_messages }} nouveaux messages"><i class="white icon-envelope icon-2x gap-right flash animated badge red" data-badge="9+"></i></a>'
+                        {% elseif nb_messages > 0 %}
+                            var msg = '<a href="{{ url('fos_message_inbox') }}" title="Vous avez {{ nb_messages }} nouveau(x) message(s)"><i class="white icon-envelope icon-2x gap-right flash animated badge red" data-badge="{{ nb_messages }} "></i></a>'
+                        {% else %}
+                            var msg = '<a href="{{ url('fos_message_inbox') }}" title="Boîte de réception"><i class="white icon-envelope-alt icon-2x gap-right"></i></a>'
+                        {% endif %} #}
+
+            function setIntervalAndExecute(fn, t) {
+                fn();
+                return(setInterval(fn, t));
+            }
+
+            // toutes les 2 mn on rafraichit le compteur des messages non lus
+            var i = setIntervalAndExecute(function(){
+
+                $.ajax({  
+                    url:        "{{ path('get_nb_unread_messages') }}" ,  
+                    type:       'GET',   
+                    dataType:   'json',  
+                    async:      true,  
+                    
+                    success: function(data, status) {  
+                        console.log('nb messages = ' + data + '     valeur : ' + data.nb_messages.toString());
+                        var msg = data.nb_messages;
+
+                        if (msg > 9) {
+                            msg = '<a href="{{ url('fos_message_inbox') }}" title="Vous avez ' + data.nb_messages.toString() + ' nouveaux messages"><i class="white icon-envelope icon-2x gap-right flash animated badge red" data-badge="9+"></i></a>'
+                        } else if (msg > 0) { 
+                            msg = '<a href="{{ url('fos_message_inbox') }}" title="Vous avez ' + data.nb_messages.toString() + ' nouveau(x) message(s)"><i class="white icon-envelope icon-2x gap-right flash animated badge red" data-badge="' + data.nb_messages.toString() + ' "></i></a>'
+                        } else {
+                            msg = '<a href="{{ url('fos_message_inbox') }}" title="Boîte de réception"><i class="white icon-envelope-alt icon-2x gap-right"></i></a>'
+                        }
+
+                        console.log(msg);
+                        
+                        $( "#inbox" ).html( msg );
+                    },  
+                    error : function(xhr, textStatus, errorThrown) {  
+                        console.log('Erreur Ajax...');
+
+                        $( "#inbox" ).html( '<a href="{{ url('fos_message_inbox') }}" title="Boîte de réception"><i class="white icon-envelope-alt icon-2x gap-right"></i></a>' );
+                    }  
+                });         
+            }, 120000);  
+
         </script>
-        
-        {% block javascripts %}{% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>
