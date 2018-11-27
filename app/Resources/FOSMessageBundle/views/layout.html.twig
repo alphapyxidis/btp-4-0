@@ -1,0 +1,20 @@
+{# app/Resources/FOSMessageBundle/views/layout.html.twig #}
+
+{% extends './demo.html.twig' %}
+
+{% block body %}
+    <div class="row container centered">
+
+        <h1>{% trans from 'FOSMessageBundle' %}messenger{% endtrans %}</h1>
+
+        <ul>
+            <li><a href="{{ url('fos_message_inbox') }}">{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</a></li>
+            <li><a href="{{ url('fos_message_sent') }}">{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</a></li>
+            <li><a href="{{ url('fos_message_deleted') }}">{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}</a></li>
+        </ul>
+
+        {% block fos_message_content %}{% endblock %}
+
+    </div>
+
+{% endblock body %}

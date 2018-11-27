@@ -226,6 +226,15 @@ fos_comment:
         model:
             comment: AppBundle\Entity\Comment
             thread: AppBundle\Entity\Thread
-
+fos_message:
+    db_driver: orm
+    thread_class: AppBundle\Entity\MessageThread
+    message_class: AppBundle\Entity\Message
+    new_thread_form:
+      type:               FOS\MessageBundle\FormType\NewThreadMultipleMessageFormType
+      handler:            fos_message.new_thread_multiple_form.handler
+      model:              FOS\MessageBundle\FormModel\NewThreadMultipleMessage
+      name:               message
+      
 assetic:
     bundles: [ "FOSCommentBundle" ]

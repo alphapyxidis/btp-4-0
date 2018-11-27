@@ -50,6 +50,10 @@ fos_comment_api:
     prefix: /
     defaults: { _format: html } 
 
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /demo/message
+
 oneup_uploader:
     resource: .
     type: uploader

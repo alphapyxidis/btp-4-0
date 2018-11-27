@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new Yectep\PhpSpreadsheetBundle\PhpSpreadsheetBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new FOS\CommentBundle\FOSCommentBundle(),
+            new FOS\MessageBundle\FOSMessageBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),                        
             new SPE\FilesizeExtensionBundle\SPEFilesizeExtensionBundle(),
         ];
