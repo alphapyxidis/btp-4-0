@@ -58,6 +58,14 @@ class Document
      * @ORM\JoinColumn(name="idChantier", referencedColumnName="id")
      */
     private $chantier;
+    
+    /**
+     * @Assert\Type(type="AppBundle\Entity\Dossier")
+     * @Assert\Valid()
+     * @ORM\ManyToOne(targetEntity="Dossier", cascade={"persist"}, inversedBy="documents")
+     * @ORM\JoinColumn(name="idDossierParent", referencedColumnName="id")
+     */
+    private $parent;
 
     /**
      * @ORM\Column(type="string", length=256, nullable=true)
@@ -75,13 +83,13 @@ class Document
     protected $fileSize;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
     private $fileCreatedAt;   
 
     /**
      * @Gedmo\Timestampable(on="create")
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(name="uploaded_at", type="datetime", nullable=true)
      */
     private $fileUploadedAt;    
 
@@ -371,5 +379,29 @@ class Document
     public function getFileUploadedBy()
     {
         return $this->fileUploadedBy;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \AppBundle\Entity\Dossier $parent
+     *
+     * @return Document
+     */
+    public function setParent(\AppBundle\Entity\Dossier $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \AppBundle\Entity\Dossier
+     */
+    public function getParent()
+    {
+        return $this->parent;
     }
 }

@@ -3,14 +3,7 @@
 {% import 'tools.html.twig' as tools %}
 
 {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('css/btp-4-0-comments.css') }}" />
-            <link rel="stylesheet" href="{{ asset('libs/jstree/themes/default/style.min.css') }}" />
-            <link href="{{ asset('/css/dropzone.css') }}" rel="stylesheet" />
-{% endblock %}
-
-{% block headerscripts %}
-    <script type="text/javascript" src="{{ asset('libs/jstree/jstree.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/btp-4-0-comments.css') }}" />
 {% endblock %}
 
 {% block body %}
@@ -45,14 +38,7 @@
                     </div>
                     <div class="one half padded">
                         <h4 class="info"><i class="icon-chevron-right"></i>&nbsp;&nbsp;Documents du projet</h4>
-                        <div class="ten twelfths centered">
-                            <div class="one whole no-pad" Title="Glissez / déplacez ou cliquez pour télécharger des documents...">
-                                <form id="btp40-dropzone" action="{{ oneup_uploader_endpoint('documents_chantier') }}" class="dropzone one whole info align-center padded" style="border:3px dashed; ">
-                                </form>
-                            </div>
-                        </div>     
-                        <div id="jstree" class="ten twelfths skip-one half-gapped half-padded bordered white-bg active">
-                        </div>
+                        {% include 'document/async-tree.html.twig' with {'chantier': chantier } %}
                     </div>
                 </div>
             </div>
@@ -78,59 +64,3 @@
             </div>
 {% endblock %}
 
-{% block javascripts %}
-    <script>
-        $(function () { 
-
-            Dropzone.options.btp40Dropzone = {
-                params: {
-                    // l'identifiant du chantier auquel est associé le document est passé en paramètre du formulaire
-                    chantier: "{{ chantier.slug }}" 
-                }, 
-                init: function() {
-                    this.on("sending", function(file, xhr, formData) {
-                         // on ajoute dans le formulaire la date de modification du fichier original (UNIX epoch time)
-                         formData.append("fileLastModified", file.lastModified);
-                         formData.append("mimeType", file.type);
-                    });
-                },                
-                maxFilesize: 5, // MB
-                resizeHeight: 1280,
-                acceptedFiles: 'image/jpeg, image/png, image/bmp, image/gif, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf, application/x-pdf, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/x-7z-compressed, application/zip, application/x-zip-compressed, multipart/x-zip, audio/x-wav, audio/mpeg'
-            };
-
-            // init jsTree
-            data = [];
-            
-            {% for doc in chantier.documents %}
-               data.push({"id" : "{{ doc.id }}", "parent" : "#", "type": "file", "icon": "{{ asset('img/file-icons/small/') ~ tools.file_icon(doc.mimeType)|trim }}", "text" : "{{ doc.nom }}" });
-            {% endfor %}
-
-            $.jstree.defaults.core.themes.variant = "large";
-            $('#jstree').jstree(
-                { 
-                    'plugins' : [ "contextmenu", "dnd", "state", "types"],
-                    "types" : {
-                        "default" : {
-                            "type" : "folder",
-                        },
-                        "folder" : {
-                            "valid_children" : ["folder", "file"],
-                            "icon" : "jstree-folder"
-                        },
-                        "file" : {
-                            "valid_children" : [],
-                            "icon" : "jstree-file"
-                        }
-                    },
-                    'core' : {
-                        // so that create works
-                        'check_callback' : true,
-                        'data' : data
-                    }
-                }
-            );
-
-        });
-    </script>
-{% endblock %}

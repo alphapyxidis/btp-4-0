@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Document;
+use AppBundle\Entity\Chantier;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,20 +20,23 @@ class ApiDocumentController extends Controller
     
       /**
      * @Rest\View()
-     * @Rest\Get("/get-document/{slug}")
+     * @Rest\Get("/get-documents-chantier/{slug}")
      */
     public function getDocumentAction(Request $request, $slug)
     {
        
         $em = $this->get('doctrine.orm.entity_manager');
-        $repository = $this->getDoctrine()->getRepository(Document::class);
-        $document = $repository->findOneBySlug($slug); 
+        $repository = $this->getDoctrine()->getRepository(Chantier::class);
+        $chantier = $repository->findOneBySlug($slug); 
 
-        if (empty($document)) {
+        if (empty($chantier)) {
             return new JsonResponse(['message' => 'Aucun document trouvé'], Response::HTTP_NOT_FOUND);
         }
 
-        return $document;
+        return $this->render('document/documents-chantier.json.twig', array(
+            'chantier' => $chantier,
+        ));
+
     }
   
 }

@@ -70,6 +70,11 @@ class Chantier
     private $user;
 
     /**
+     * @ORM\OneToMany(targetEntity="Dossier", mappedBy="chantier")
+     */
+    private $dossiers;   
+
+    /**
      * @ORM\OneToMany(targetEntity="Document", mappedBy="chantier")
      */
     private $documents;    
@@ -319,5 +324,39 @@ class Chantier
     public function getDocuments()
     {
         return $this->documents;
+    }
+
+    /**
+     * Add dossier
+     *
+     * @param \AppBundle\Entity\Dossier $dossier
+     *
+     * @return Chantier
+     */
+    public function addDossier(\AppBundle\Entity\Dossier $dossier)
+    {
+        $this->dossiers[] = $dossier;
+
+        return $this;
+    }
+
+    /**
+     * Remove dossier
+     *
+     * @param \AppBundle\Entity\Dossier $dossier
+     */
+    public function removeDossier(\AppBundle\Entity\Dossier $dossier)
+    {
+        $this->dossiers->removeElement($dossier);
+    }
+
+    /**
+     * Get dossiers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDossiers()
+    {
+        return $this->dossiers;
     }
 }
