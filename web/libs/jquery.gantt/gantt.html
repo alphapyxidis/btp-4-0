@@ -148,7 +148,7 @@ ret= {"tasks":    [
 
 function loadGanttFromServer(taskId, callback) {
 
-  var api_url = window.location.protocol+'//'+window.location.hostname+":"+window.location.port+"/api/get-chantier/"+slug;
+  var api_url = window.location.protocol+'//'+window.location.hostname+":"+window.location.port+"/api/chantier/get-chantier/"+slug;
 
   $.ajax(api_url, {
     dataType:"json",
@@ -201,7 +201,7 @@ function loadGanttFromServer(taskId, callback) {
 
 function saveGanttOnServer() {
 
-  var api_url = window.location.protocol+'//'+window.location.hostname+":"+window.location.port+"/api/update-chantier/"+slug;
+  var api_url = window.location.protocol+'//'+window.location.hostname+":"+window.location.port+"/api/chantier/update-chantier/"+slug;
 
   var prj = ge.saveProject();
 
