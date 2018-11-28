@@ -22,7 +22,7 @@ class ApiDocumentController extends Controller
      * @Rest\View()
      * @Rest\Get("/get-documents-chantier/{slug}")
      */
-    public function getDocumentAction(Request $request, $slug)
+    public function getDocumentsChantierAction(Request $request, $slug)
     {
        
         $em = $this->get('doctrine.orm.entity_manager');

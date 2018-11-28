@@ -44,20 +44,9 @@
             };
 
             // init jsTree
-            data = [];
-            
-            {% for folder in chantier.dossiers %}
-               data.push({"id" : "folder-{{ folder.id }}", "parent" : "#", "type": "folder", "text" : "{{ folder.nom }}" });
-            {% endfor %}
-
-            {% for doc in chantier.documents %}
-               data.push({"id" : "file-{{ doc.id }}", "parent" : "#", "type": "file", "icon": "{{ asset('img/file-icons/small/') ~ tools.file_icon(doc.mimeType)|trim }}", "text" : "{{ doc.nom }}" });
-            {% endfor %}
-
             $.jstree.defaults.core.themes.variant = "large";
             $('#btp40-jstree').jstree(
                 { 
-                    'plugins' : [ "contextmenu", "dnd", "state", "types"],
                     "types" : {
                         "default" : {
                             "type" : "folder",
@@ -72,10 +61,17 @@
                         }
                     },
                     'core' : {
-                        // so that create works
-                        'check_callback' : true,
-                        'data' : data
-                    }
+                        'data': {
+                            "url": function (node) {
+                                api_url = "{{ url('get_documents_chantier', {'slug': chantier.slug}) }}";
+                                return api_url;
+                            },
+                            "success": function (new_data) {
+                                return new_data;
+                            }
+                        }
+                    },
+                    'plugins' : [ "dnd", "state", "types"]
                 }
             );
 

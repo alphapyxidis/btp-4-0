@@ -76,7 +76,7 @@
                                         </li>
                                         <li><hr></li>
                                         <li>
-                                            <a href="{{ path('auth0_logout') }}"><i class="icon-signout"></i>&nbsp;&nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                                            <a href="{{ url('auth0_logout') }}"><i class="icon-signout"></i>&nbsp;&nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -118,7 +118,7 @@
                                         </li>
                                         <li><hr></li>
                                         <li>
-                                            <a href="{{ path('auth0_logout') }}"><i class="icon-signout"></i>&nbsp;&nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                                            <a href="{{ url('auth0_logout') }}"><i class="icon-signout"></i>&nbsp;&nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -155,7 +155,7 @@
                                         </li>
                                         <li><hr></li>
                                         <li>
-                                            <a href="{{ path('auth0_logout') }}"><i class="icon-signout"></i>&nbsp;&nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                                            <a href="{{ url('auth0_logout') }}"><i class="icon-signout"></i>&nbsp;&nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -178,7 +178,7 @@
                                 </li>
                                 <li><hr></li>
                                 <li>
-                                    <a href="{{ path('auth0_logout') }}"><i class="icon-signout"></i>&nbsp;&nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                                    <a href="{{ url('auth0_logout') }}"><i class="icon-signout"></i>&nbsp;&nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -258,13 +258,12 @@
             var i = setIntervalAndExecute(function(){
 
                 $.ajax({  
-                    url:        "{{ path('get_nb_unread_messages') }}" ,  
+                    url:        "{{ url('get_nb_unread_messages') }}" ,  
                     type:       'GET',   
                     dataType:   'json',  
                     async:      true,  
                     
                     success: function(data, status) {  
-                        console.log('nb messages = ' + data + '     valeur : ' + data.nb_messages.toString());
                         var msg = data.nb_messages;
 
                         if (msg > 9) {
@@ -275,8 +274,6 @@
                             msg = '<a href="{{ url('fos_message_inbox') }}" title="Boîte de réception"><i class="white icon-envelope-alt icon-2x gap-right"></i></a>'
                         }
 
-                        console.log(msg);
-                        
                         $( "#inbox" ).html( msg );
                     },  
                     error : function(xhr, textStatus, errorThrown) {  
