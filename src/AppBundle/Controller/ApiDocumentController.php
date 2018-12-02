@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Document;
+use AppBundle\Entity\Dossier;
 use AppBundle\Entity\Chantier;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -18,7 +19,7 @@ use FOS\RestBundle\View\View; // Utilisation de la vue de FOSRestBundle
 class ApiDocumentController extends Controller
 {
     
-      /**
+     /**
      * @Rest\View()
      * @Rest\Get("/get-documents-chantier/{slug}")
      */
@@ -38,5 +39,66 @@ class ApiDocumentController extends Controller
         ));
 
     }
-  
+
+     /**
+     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\Patch("/update-document/{id}")
+     */
+    public function patchDocumentAction(Request $request, $id)
+    {
+       
+        $em = $this->get('doctrine.orm.entity_manager');
+        $repository = $this->getDoctrine()->getRepository(Document::class);
+        $document = $repository->findOneById($id); 
+
+        if (empty($document)) {
+            return new JsonResponse(['message' => 'Aucun document trouvé'], Response::HTTP_NOT_FOUND);
+        }
+
+        $form = $this->createForm('AppBundle\Form\ApiDocumentType', $document);
+
+        // Le paramètre false dit à Symfony de garder les valeurs dans notre 
+        // entité si l'utilisateur n'en fournit pas une dans sa requête
+        $form->submit($request->request->all(),false);
+
+
+        if ($form->isValid()) {
+            $em->merge($document);
+            $em->flush();
+            return $document;
+        } else {
+            return $form;
+        }
+    }    
+
+     /**
+     * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\Patch("/update-dossier/{id}")
+     */
+    public function patchDossierAction(Request $request, $id)
+    {
+       
+        $em = $this->get('doctrine.orm.entity_manager');
+        $repository = $this->getDoctrine()->getRepository(Dossier::class);
+        $dossier = $repository->findOneById($id); 
+
+        if (empty($dossier)) {
+            return new JsonResponse(['message' => 'Aucun dossier trouvé'], Response::HTTP_NOT_FOUND);
+        }
+
+        $form = $this->createForm('AppBundle\Form\ApiDossierType', $dossier);
+
+        // Le paramètre false dit à Symfony de garder les valeurs dans notre 
+        // entité si l'utilisateur n'en fournit pas une dans sa requête
+        $form->submit($request->request->all(),false);
+
+
+        if ($form->isValid()) {
+            $em->merge($dossier);
+            $em->flush();
+            return $dossier;
+        } else {
+            return $form;
+        }
+    }   
 }

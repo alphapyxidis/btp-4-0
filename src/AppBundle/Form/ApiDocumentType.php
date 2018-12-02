@@ -5,9 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
- 
 
-class ApiChantierType extends AbstractType
+class ApiDocumentType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -15,19 +14,17 @@ class ApiChantierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pic')
-            ->add('adresse', AdresseType::class)
-            ->add('gantt');
+            ->add('nom')
+            ->add('parent');
     }
-
+    
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Chantier',
-            'csrf_protection' => false
+            'data_class' => 'AppBundle\Entity\Document'
         ));
     }
 
@@ -36,8 +33,7 @@ class ApiChantierType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'chantier';
+        return 'document';
     }
-
 
 }

@@ -44,6 +44,7 @@
                 ref.edit(sel);
             }
         };
+
         function rename_node() {
             var ref = $('#btp40-jstree').jstree(true),
                 sel = ref.get_selected();
@@ -51,13 +52,88 @@
             sel = sel[0];
             ref.edit(sel);
         };
+
+        function delete_children(nod) {
+            var ref = $('#btp40-jstree').jstree(true), children, child, i;
+            console.log('delete children of : ' + nod);
+            children = ref.get_node(nod).children;
+            for (i = 0; i < children.length; i++) {
+                child= children[i];
+                if (ref.get_type(child) == "deleted") {
+                    console.log(' - delete ' + child);
+                    // delete permanently
+                    ref.delete_node(child);
+                } else {
+                    console.log(' - mark ' + child + ' as deleted');
+                    // marked deleted (moved in recycling bin)
+                    ref.set_type(child, "deleted");
+                }
+                delete_children(child);
+            }
+        }
+
         function delete_node() {
             var ref = $('#btp40-jstree').jstree(true),
                 sel = ref.get_selected();
             if(!sel.length) { return false; }
-            //ref.delete_node(sel);
-            trash = ref.get_node("trash");
-            ref.move_node(sel,trash,0);
+            delete_children(sel);
+            if (ref.get_type(sel) == "deleted") {
+                console.log('  -> delete ' + sel);
+                // delete permanently
+                ref.delete_node(sel);
+            } else {
+                console.log('  -> mark ' + sel + ' as deleted');
+                console.log('  -> move ' + sel + ' to recycling bin...')
+                // move to recycling bin
+                trash = ref.get_node("trash");
+                ref.set_type(sel, "deleted");
+                ref.move_node(sel,trash,0);
+            }
+        };
+
+        function restore_children(nod) {
+            var ref = $('#btp40-jstree').jstree(true), children, child, i, typ;
+            console.log ('restore children of ' + nod);
+            children = ref.get_node(nod).children;
+            for (i = 0; i < children.length; i++) {
+                child= children[i];
+                typ = child.toString().split("-");
+                if (typ.length==1) {
+                    typ[0]="folder";
+                }
+                console.log (' - change type of ' + child + ' to ' + typ[0]);
+                ref.set_type(child, typ[0]);
+                restore_children(child);
+            }
+        }
+
+        function restore_node() {
+            var ref = $('#btp40-jstree').jstree(true),
+                sel = ref.get_selected(), children, child, i, typ;
+            if(!sel.length) { return false; }
+            if (ref.get_type(sel) == "deleted" || ref.get_type(sel) == "trash") {
+                restore_children(sel);
+                if (ref.get_type(sel) == "trash") {
+                    console.log('----- restore all recycling bin ------');
+                    children = ref.get_node(sel).children;
+                    for (i = 0; i < children.length; i++) {
+                        child= children[i];
+                        console.log ('  ' + i + ') move ' + child + ' out of recycling bin...');
+                        ref.move_node(child,"#",1);
+                    }
+                } else {
+                    typ = sel.toString().split("-");
+                    if (typ.length==1) {
+                        typ[0]="folder";
+                    }
+                    console.log ('  -> change type of ' + sel + ' to ' + typ[0]);
+                    ref.set_type(sel, typ[0]);
+                    console.log ('  -> move ' + sel + ' out of recycling bin...');
+                    ref.move_node(sel,"#",1);
+                }
+            } else {
+                return false;
+            }
         };
 
         function customMenu(node)
@@ -81,6 +157,12 @@
                         rename_node();
                     }
                 },
+                'restore' : {
+                    'label' : 'Restaurer',
+                    'action' : function() {
+                        restore_node();
+                    }
+                },
                 'delete' : {
                     'label' : 'Supprimer',
                     'action' : function() {
@@ -97,15 +179,23 @@
 
            if (node.type === 'file') {
                 delete menu_items.create_subfolder;
+                delete menu_items.restore;
                 delete menu_items.empty_trash;
             } else if (node.type === 'folder') {
                 delete menu_items.create_folder;
+                delete menu_items.restore;
+                delete menu_items.empty_trash;
+            } else if (node.type === 'deleted') {
+                delete menu_items.create_folder;
+                delete menu_items.create_subfolder;
+                delete menu_items.rename;
                 delete menu_items.empty_trash;
             } else if (node.type === 'trash') {
                 delete menu_items.create_subfolder;
                 delete menu_items.rename;
                 delete menu_items.delete;
                 if (node.children.length == 0) {
+                    menu_items.restore._disabled = true;
                     menu_items.empty_trash._disabled = true;
                 }
             }
@@ -142,7 +232,10 @@
                             "type" : "folder"
                         },
                         "trash" : {                            
-                        },                        
+                        },
+                        "deleted" : {
+                            "valid_children" : []
+                        },
                         "folder" : {
                             "icon" : "jstree-folder"
                         },                        
