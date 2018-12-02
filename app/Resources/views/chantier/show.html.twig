@@ -29,7 +29,6 @@
                         <button class="round asphalt noicon half-gap-right" onclick="document.getElementById('popup').style.display = 'block'"><i class="icon-cloud"></i>&nbsp;&nbsp;Météo</button>
                     {% endif %}
                     <a class="round button active white bordered noicon half-gap-right" href="#" style="float: right;" title="Paramétres"><i class="icon-cog"></i></a>
-                    <a class="round button active white bordered noicon half-gap-right" href="#" style="float: right;" title="Documents non classés"><i class="icon-inbox"></i></a>
                 </div>
                 <div class="equalize row half-gap-top half-gap-right">
                     <div class="one half padded">
@@ -38,7 +37,7 @@
                     </div>
                     <div class="one half padded">
                         <h4 class="info"><i class="icon-chevron-right"></i>&nbsp;&nbsp;Documents du projet</h4>
-                        {% include 'document/async-tree.html.twig' with {'chantier': chantier } %}
+                        {% include 'document/async-tree.html.twig' with {'id': chantier.slug } %}
                     </div>
                 </div>
             </div>

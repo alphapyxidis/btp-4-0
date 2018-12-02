@@ -3,8 +3,8 @@
 {% import 'tools.html.twig' as tools %}
 
 {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('libs/jstree/themes/default/style.min.css') }}" />
-            <link href="{{ asset('/css/dropzone.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('libs/jstree/themes/default/style.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}" />
 {% endblock %}
 
 {% block headerscripts %}
@@ -12,18 +12,107 @@
     <script type="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
 {% endblock %}
 
-<div class="ten twelfths centered">
-    <div class="one whole no-pad" Title="Glissez / déplacez ou cliquez pour télécharger des documents...">
-        <form id="btp40-dropzone" action="{{ oneup_uploader_endpoint('documents_chantier') }}" class="dropzone one whole info align-center padded" style="border:3px dashed; ">
-        </form>
-    </div>
-</div>     
-<div class="ten twelfths skip-one half-gapped half-padded bordered white-bg active" style="overflow:auto;">
-    <div id="btp40-jstree"></div>
-</div>
+                        <div class="ten twelfths centered">
+                            <div class="one whole no-pad" Title="Glissez / déplacez ou cliquez pour télécharger des documents...">
+                                <form id="btp40-dropzone" action="{{ oneup_uploader_endpoint('documents_chantier') }}" class="dropzone one whole info align-center half-padded" style="border:3px dashed; ">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="ten twelfths skip-one half-gapped half-padded bordered white-bg active" style="overflow:auto;">
+                            <div id="btp40-jstree"></div>
+                        </div>
+
 
 {% block javascripts %}
     <script>
+
+        function create_folder() {
+            var ref = $('#btp40-jstree').jstree(true),
+                sel = ref.get_selected();
+            if(!sel.length || ref.get_type(sel)=="trash") { 
+                par = "#";
+            } else {
+                if (ref.get_type(sel)=="file") {
+                    par = ref.get_parent(sel);
+                } else {
+                    par = sel;
+                }
+            }
+            if (par == "#") { pos=1; } else { pos=0; }
+            sel = ref.create_node(par, {"type":"folder"}, pos);
+            if(sel) {
+                ref.edit(sel);
+            }
+        };
+        function rename_node() {
+            var ref = $('#btp40-jstree').jstree(true),
+                sel = ref.get_selected();
+            if(!sel.length) { return false; }
+            sel = sel[0];
+            ref.edit(sel);
+        };
+        function delete_node() {
+            var ref = $('#btp40-jstree').jstree(true),
+                sel = ref.get_selected();
+            if(!sel.length) { return false; }
+            //ref.delete_node(sel);
+            trash = ref.get_node("trash");
+            ref.move_node(sel,trash,0);
+        };
+
+        function customMenu(node)
+        {
+            var menu_items = {
+                'create_folder' : {
+                    'label' : 'Créer dossier',
+                    'action' : function() {
+                        create_folder();
+                    }
+                },
+                'create_subfolder' : {
+                    'label' : 'Créer sous-dossier',
+                    'action' : function() {
+                        create_folder();
+                    }
+                },                
+                'rename' : {
+                    'label' : 'Renommer',
+                    'action' : function() {
+                        rename_node();
+                    }
+                },
+                'delete' : {
+                    'label' : 'Supprimer',
+                    'action' : function() {
+                        delete_node();
+                    }
+                },
+                'empty_trash' : {
+                    'label' : 'Vider la corbeille',
+                    'action' : function() {
+                        /* to be developped */
+                    }
+                }
+            }
+
+           if (node.type === 'file') {
+                delete menu_items.create_subfolder;
+                delete menu_items.empty_trash;
+            } else if (node.type === 'folder') {
+                delete menu_items.create_folder;
+                delete menu_items.empty_trash;
+            } else if (node.type === 'trash') {
+                delete menu_items.create_subfolder;
+                delete menu_items.rename;
+                delete menu_items.delete;
+                if (node.children.length == 0) {
+                    menu_items.empty_trash._disabled = true;
+                }
+            }
+
+            return menu_items;
+        };
+
         $(function () { 
 
             Dropzone.options.btp40Dropzone = {
@@ -45,23 +134,29 @@
 
             // init jsTree
             $.jstree.defaults.core.themes.variant = "large";
+            $.jstree.defaults.dnd.copy = false;
             $('#btp40-jstree').jstree(
                 { 
                     "types" : {
                         "default" : {
-                            "type" : "folder",
+                            "type" : "folder"
                         },
+                        "trash" : {                            
+                        },                        
                         "folder" : {
-                            "valid_children" : ["folder", "file"],
                             "icon" : "jstree-folder"
-                        },
+                        },                        
                         "file" : {
                             "valid_children" : [],
                             "icon" : "jstree-file"
                         }
                     },
-                    'core' : {
-                        'data': {
+                    "core": {
+                        "animation" : 0,
+                        "multiple" : false,
+                        "force_text" : true,
+                        "check_callback" : true,
+                        "data": {
                             "url": function (node) {
                                 api_url = "{{ url('get_documents_chantier', {'slug': chantier.slug}) }}";
                                 return api_url;
@@ -71,7 +166,16 @@
                             }
                         }
                     },
-                    'plugins' : [ "dnd", "state", "types"]
+                    "plugins": [ "dnd", "state", "types", "contextmenu"],
+                    "contextmenu": {items: customMenu},
+                    "dnd" : {
+                        "is_draggable" : function(node) {
+                            if (node[0].type == 'trash') {
+                                return false;
+                            }
+                            return true;
+                        }
+                    }
                 }
             );
 
