@@ -66,6 +66,11 @@ class Dossier
     private $folderCreatedAt;    
 
     /**
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
+     */
+    private $folderDeletedAt;   
+    
+    /**
      * @Gedmo\Blameable(on="create")
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="created_by", referencedColumnName="id", nullable=true)
@@ -161,4 +166,144 @@ class Dossier
         return $this->chantier;
     }
 
+
+    /**
+     * Set folderCreatedAt
+     *
+     * @param \DateTime $folderCreatedAt
+     *
+     * @return Dossier
+     */
+    public function setFolderCreatedAt($folderCreatedAt)
+    {
+        $this->folderCreatedAt = $folderCreatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get folderCreatedAt
+     *
+     * @return \DateTime
+     */
+    public function getFolderCreatedAt()
+    {
+        return $this->folderCreatedAt;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \AppBundle\Entity\Dossier $parent
+     *
+     * @return Dossier
+     */
+    public function setParent(\AppBundle\Entity\Dossier $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \AppBundle\Entity\Dossier
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * Add document
+     *
+     * @param \AppBundle\Entity\Document $document
+     *
+     * @return Dossier
+     */
+    public function addDocument(\AppBundle\Entity\Document $document)
+    {
+        $this->documents[] = $document;
+
+        return $this;
+    }
+
+    /**
+     * Remove document
+     *
+     * @param \AppBundle\Entity\Document $document
+     */
+    public function removeDocument(\AppBundle\Entity\Document $document)
+    {
+        $this->documents->removeElement($document);
+    }
+
+    /**
+     * Get documents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDocuments()
+    {
+        return $this->documents;
+    }
+
+    /**
+     * Add sousDossier
+     *
+     * @param \AppBundle\Entity\Dossier $sousDossier
+     *
+     * @return Dossier
+     */
+    public function addSousDossier(\AppBundle\Entity\Dossier $sousDossier)
+    {
+        $this->sousDossiers[] = $sousDossier;
+
+        return $this;
+    }
+
+    /**
+     * Remove sousDossier
+     *
+     * @param \AppBundle\Entity\Dossier $sousDossier
+     */
+    public function removeSousDossier(\AppBundle\Entity\Dossier $sousDossier)
+    {
+        $this->sousDossiers->removeElement($sousDossier);
+    }
+
+    /**
+     * Get sousDossiers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSousDossiers()
+    {
+        return $this->sousDossiers;
+    }
+
+    /**
+     * Set folderCreatedBy
+     *
+     * @param \AppBundle\Entity\User $folderCreatedBy
+     *
+     * @return Dossier
+     */
+    public function setFolderCreatedBy(\AppBundle\Entity\User $folderCreatedBy = null)
+    {
+        $this->folderCreatedBy = $folderCreatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get folderCreatedBy
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getFolderCreatedBy()
+    {
+        return $this->folderCreatedBy;
+    }
 }

@@ -15,7 +15,9 @@ class ApiDossierType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('parent');
+            ->add('parent')
+            ->add('folderDeletedAt');
+
     }
     
     /**

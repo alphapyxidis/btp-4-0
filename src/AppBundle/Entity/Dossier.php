@@ -66,6 +66,11 @@ class Dossier
     private $folderCreatedAt;    
 
     /**
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
+     */
+    private $folderDeletedAt;   
+    
+    /**
      * @Gedmo\Blameable(on="create")
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="created_by", referencedColumnName="id", nullable=true)
@@ -300,5 +305,29 @@ class Dossier
     public function getFolderCreatedBy()
     {
         return $this->folderCreatedBy;
+    }
+
+    /**
+     * Set folderDeletedAt
+     *
+     * @param \DateTime $folderDeletedAt
+     *
+     * @return Dossier
+     */
+    public function setFolderDeletedAt($folderDeletedAt)
+    {
+        $this->folderDeletedAt = $folderDeletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get folderDeletedAt
+     *
+     * @return \DateTime
+     */
+    public function getFolderDeletedAt()
+    {
+        return $this->folderDeletedAt;
     }
 }

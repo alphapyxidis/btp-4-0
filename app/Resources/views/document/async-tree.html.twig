@@ -14,7 +14,7 @@
 
                         <div class="ten twelfths centered">
                             <div class="one whole no-pad" Title="Glissez / déplacez ou cliquez pour télécharger des documents...">
-                                <form id="btp40-dropzone" action="{{ oneup_uploader_endpoint('documents_chantier') }}" class="dropzone one whole info align-center half-padded" style="border:3px dashed; ">
+                                <form id="btp40-dropzone" action="{{ oneup_uploader_endpoint('documents_chantier') }}" class="dropzone one whole info align-center" style="border:3px dashed; ">
                                 </form>
                             </div>
                         </div>
@@ -48,7 +48,28 @@
             var ref = $('#btp40-jstree').jstree(true);
             if(!node.length) { return false; }
             node = node[0];
-            ref.edit(node);
+            ref.edit(node,"nouveau dossier", function (node, status, is_cancel) {
+                if(!status || is_cancel) { ref.delete_node(node); }
+                else { 
+                    id = node.toString().split("-");
+                    /* sync to DB */
+                    $.ajax('{{ url('patch_dossier', { "id": ' + id[1] + ' }) }}' , {
+                        dataType:"json",
+                        data: {nom: JSON.stringify(node.text) },
+                        type:"PATCH",
+                        success: function(response) {
+                            $('#btp40-jstree').jstree(true).refresh();
+                        },
+                        error: function(response) {
+                            var msg='Erreur lors de la sauvegarde des documents';
+                            if (response) {
+                            msg = msg + ' : \n' + response;
+                            }
+                            alert(msg);
+                        }
+                    }); 
+                }
+            });
         };
 
         function delete_children(node) {
@@ -206,6 +227,11 @@
                          formData.append("fileLastModified", file.lastModified);
                          formData.append("mimeType", file.type);
                     });
+                    this.on("complete", function(file) {
+                        if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+                            $('#btp40-jstree').jstree(true).refresh();
+                        }
+                    });
                 },                
                 maxFilesize: 5, // MB
                 resizeHeight: 1280,
@@ -249,7 +275,7 @@
                             }
                         }
                     },
-                    "plugins": [ "dnd", "state", "types", "contextmenu"],
+                    "plugins": [ "dnd", "types", "contextmenu"],
                     "contextmenu": {items: customMenu},
                     "dnd" : {
                         "is_draggable" : function(node) {

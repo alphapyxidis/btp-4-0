@@ -3,7 +3,17 @@
 [{{ { "id" : "trash", "parent" : "#", "type": "trash", "icon": asset('img/file-icons/small/waste.png'), "text" : "Corbeille" }|json_encode|raw }}
 {% for folder in chantier.dossiers -%}
     {%- if loop.first %},{% endif -%}
-    {% if folder.parent %}
+    {% if folder.folderDeletedAt %}
+        {% if folder.parent %}
+            {% if folder.parent.folderDeletedAt %}
+                {{ { "id" : "folder-" ~ folder.id, "parent" : "folder-" ~ folder.parent.id, "type": "deleted", "text" : folder.nom|e }|json_encode|raw }}
+            {% else %}
+                {{ { "id" : "folder-" ~ folder.id, "parent" : "trash", "type": "deleted", "text" : folder.nom|e }|json_encode|raw }}
+            {% endif %}
+        {% else %}
+            {{ { "id" : "folder-" ~ folder.id, "parent" : "trash", "type": "deleted", "text" : folder.nom|e }|json_encode|raw }}
+        {% endif %}
+    {% elseif folder.parent %}
         {{ { "id" : "folder-" ~ folder.id, "parent" : "folder-" ~ folder.parent.id, "type": "folder", "text" : folder.nom|e }|json_encode|raw }}
     {% else %}
         {{ { "id" : "folder-" ~ folder.id, "parent" : "#", "type": "folder", "text" : folder.nom|e }|json_encode|raw }}
@@ -12,7 +22,17 @@
 {% endfor %}
 {% for doc in chantier.documents -%}
     {%- if loop.first and chantier.dossiers|length > 0 %},{% endif -%}
-    {% if doc.parent %}
+    {% if doc.fileDeletedAt %}
+        {% if doc.parent %}
+            {% if doc.parent.folderDeletedAt %}
+                {{ { "id" : "file-" ~ doc.id, "parent" : "folder-" ~ doc.parent.id, "type": "deleted", "text" : doc.nom|e, "icon": asset('img/file-icons/small/') ~ tools.file_icon(doc.mimeType)|trim }|json_encode|raw }}
+            {% else %}
+                {{ { "id" : "file-" ~ doc.id, "parent" : "trash", "type": "deleted", "text" : doc.nom|e, "icon": asset('img/file-icons/small/') ~ tools.file_icon(doc.mimeType)|trim }|json_encode|raw }}
+            {% endif %}
+        {% else %}
+            {{ { "id" : "file-" ~ doc.id, "parent" : "trash", "type": "deleted", "text" : doc.nom|e, "icon": asset('img/file-icons/small/') ~ tools.file_icon(doc.mimeType)|trim }|json_encode|raw }}
+        {% endif %}
+    {% elseif doc.parent %}
         {{ { "id" : "file-" ~ doc.id, "parent" : "folder-" ~ doc.parent.id, "type": "file", "text" : doc.nom|e, "icon": asset('img/file-icons/small/') ~ tools.file_icon(doc.mimeType)|trim }|json_encode|raw }}
     {% else %}
         {{ { "id" : "file-" ~ doc.id, "parent" : "#", "type": "file", "text" : doc.nom|e, "icon": asset('img/file-icons/small/') ~ tools.file_icon(doc.mimeType)|trim }|json_encode|raw }}

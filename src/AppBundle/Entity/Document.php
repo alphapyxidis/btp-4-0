@@ -88,6 +88,12 @@ class Document
     private $fileCreatedAt;   
 
     /**
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
+     * @Assert\Valid(groups={"api"})     
+     */
+    private $fileDeletedAt;   
+    
+    /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="uploaded_at", type="datetime", nullable=true)
      */
@@ -403,5 +409,29 @@ class Document
     public function getParent()
     {
         return $this->parent;
+    }
+
+    /**
+     * Set fileDeletedAt
+     *
+     * @param \DateTime $fileDeletedAt
+     *
+     * @return Document
+     */
+    public function setFileDeletedAt($fileDeletedAt)
+    {
+        $this->fileDeletedAt = $fileDeletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get fileDeletedAt
+     *
+     * @return \DateTime
+     */
+    public function getFileDeletedAt()
+    {
+        return $this->fileDeletedAt;
     }
 }

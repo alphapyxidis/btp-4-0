@@ -15,7 +15,8 @@ class ApiDocumentType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('parent');
+            ->add('parent')
+            ->add('fileDeletedAt');
     }
     
     /**
