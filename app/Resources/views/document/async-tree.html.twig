@@ -26,110 +26,98 @@
 {% block javascripts %}
     <script>
 
-        function create_folder() {
-            var ref = $('#btp40-jstree').jstree(true),
-                sel = ref.get_selected();
-            if(!sel.length || ref.get_type(sel)=="trash") { 
+        function create_folder(node) {
+            var ref = $('#btp40-jstree').jstree(true);
+            if(!node.length || ref.get_type(node)=="trash") { 
                 par = "#";
             } else {
-                if (ref.get_type(sel)=="file") {
-                    par = ref.get_parent(sel);
+                if (ref.get_type(node)=="file") {
+                    par = ref.get_parent(node);
                 } else {
-                    par = sel;
+                    par = node;
                 }
             }
             if (par == "#") { pos=1; } else { pos=0; }
-            sel = ref.create_node(par, {"type":"folder"}, pos);
-            if(sel) {
-                ref.edit(sel);
+            node = ref.create_node(par, {"type":"folder"}, pos);
+            if(node) {
+                ref.edit(node);
             }
         };
 
-        function rename_node() {
-            var ref = $('#btp40-jstree').jstree(true),
-                sel = ref.get_selected();
-            if(!sel.length) { return false; }
-            sel = sel[0];
-            ref.edit(sel);
+        function rename_node(node) {
+            var ref = $('#btp40-jstree').jstree(true);
+            if(!node.length) { return false; }
+            node = node[0];
+            ref.edit(node);
         };
 
-        function delete_children(nod) {
+        function delete_children(node) {
             var ref = $('#btp40-jstree').jstree(true), children, child, i;
-            console.log('delete children of : ' + nod);
-            children = ref.get_node(nod).children;
-            for (i = 0; i < children.length; i++) {
-                child= children[i];
-                if (ref.get_type(child) == "deleted") {
-                    console.log(' - delete ' + child);
+            children = ref.get_node(node).children;
+            if (ref.get_type(node) == "deleted") {
+                while(children.length>0) {
+                    child=children[0];
+                    delete_children(child);
                     // delete permanently
                     ref.delete_node(child);
-                } else {
-                    console.log(' - mark ' + child + ' as deleted');
+                }
+            } else {
+                for (i=0; i< children.length;i++) {
+                    child= children[i];
+                    delete_children(child);
                     // marked deleted (moved in recycling bin)
                     ref.set_type(child, "deleted");
                 }
-                delete_children(child);
             }
         }
 
-        function delete_node() {
-            var ref = $('#btp40-jstree').jstree(true),
-                sel = ref.get_selected();
-            if(!sel.length) { return false; }
-            delete_children(sel);
-            if (ref.get_type(sel) == "deleted") {
-                console.log('  -> delete ' + sel);
+        function delete_node(node) {
+            var ref = $('#btp40-jstree').jstree(true);
+            if(!node.length) { return false; }
+            delete_children(node);
+            if (ref.get_type(node) == "deleted") {
                 // delete permanently
-                ref.delete_node(sel);
-            } else {
-                console.log('  -> mark ' + sel + ' as deleted');
-                console.log('  -> move ' + sel + ' to recycling bin...')
+                ref.delete_node(node);
+            } else if (ref.get_type(node) != "trash") {
                 // move to recycling bin
                 trash = ref.get_node("trash");
-                ref.set_type(sel, "deleted");
-                ref.move_node(sel,trash,0);
+                ref.set_type(node, "deleted");
+                ref.move_node(node,trash,0);
             }
         };
 
-        function restore_children(nod) {
+        function restore_children(node) {
             var ref = $('#btp40-jstree').jstree(true), children, child, i, typ;
-            console.log ('restore children of ' + nod);
-            children = ref.get_node(nod).children;
+            children = ref.get_node(node).children;
             for (i = 0; i < children.length; i++) {
                 child= children[i];
+                restore_children(child);
                 typ = child.toString().split("-");
                 if (typ.length==1) {
                     typ[0]="folder";
                 }
-                console.log (' - change type of ' + child + ' to ' + typ[0]);
                 ref.set_type(child, typ[0]);
-                restore_children(child);
             }
         }
 
-        function restore_node() {
-            var ref = $('#btp40-jstree').jstree(true),
-                sel = ref.get_selected(), children, child, i, typ;
-            if(!sel.length) { return false; }
-            if (ref.get_type(sel) == "deleted" || ref.get_type(sel) == "trash") {
-                restore_children(sel);
-                if (ref.get_type(sel) == "trash") {
-                    console.log('----- restore all recycling bin ------');
-                    children = ref.get_node(sel).children;
-                    for (i = 0; i < children.length; i++) {
-                        child= children[i];
-                        console.log ('  ' + i + ') move ' + child + ' out of recycling bin...');
+        function restore_node(node) {
+            var ref = $('#btp40-jstree').jstree(true), children, child, i, typ;
+            if(!node.length) { return false; }
+            if (ref.get_type(node) == "deleted" || ref.get_type(node) == "trash") {
+                restore_children(node);
+                if (ref.get_type(node) == "trash") {
+                    children = ref.get_node(node).children;
+                    while (children.length > 0) {
+                        child = children[0];
                         ref.move_node(child,"#",1);
                     }
                 } else {
-                    typ = sel.toString().split("-");
+                    typ = node.toString().split("-");
                     if (typ.length==1) {
                         typ[0]="folder";
                     }
-                    console.log ('  -> change type of ' + sel + ' to ' + typ[0]);
-                    ref.set_type(sel, typ[0]);
-                    console.log ('  -> move ' + sel + ' out of recycling bin...');
-                    ref.move_node(sel,"#",1);
+                    ref.set_type(node, typ[0]);
+                    ref.move_node(node,"#",1);
                 }
             } else {
                 return false;
@@ -138,41 +126,43 @@
 
         function customMenu(node)
         {
-            var menu_items = {
+            var ref = $('#btp40-jstree').jstree(true),
+                sel = ref.get_selected(),
+                menu_items = {
                 'create_folder' : {
                     'label' : 'Créer dossier',
                     'action' : function() {
-                        create_folder();
+                        create_folder(sel);
                     }
                 },
                 'create_subfolder' : {
                     'label' : 'Créer sous-dossier',
                     'action' : function() {
-                        create_folder();
+                        create_folder(sel);
                     }
                 },                
                 'rename' : {
                     'label' : 'Renommer',
                     'action' : function() {
-                        rename_node();
+                        rename_node(sel);
                     }
                 },
                 'restore' : {
                     'label' : 'Restaurer',
                     'action' : function() {
-                        restore_node();
+                        restore_node(sel);
                     }
                 },
                 'delete' : {
                     'label' : 'Supprimer',
                     'action' : function() {
-                        delete_node();
+                        delete_node(sel);
                     }
                 },
                 'empty_trash' : {
                     'label' : 'Vider la corbeille',
                     'action' : function() {
-                        /* to be developped */
+                        delete_node(sel);
                     }
                 }
             }
