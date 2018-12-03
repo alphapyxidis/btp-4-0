@@ -24,7 +24,7 @@ class Document
 
     /**
      * @ORM\Column(type="string", length=256)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"api"})
      */
     protected $nom;
     
@@ -35,6 +35,7 @@ class Document
     
     /**
      * @ORM\Column(type="string", length=256)
+     * @Assert\NotBlank() 
      * @Assert\File(
      *      maxSize = "5M",
      *      mimeTypes={ "image/jpeg", "image/png", "image/bmp", "image/gif", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/pdf", "application/x-pdf", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/x-7z-compressed", "application/zip", "application/x-zip-compressed", "multipart/x-zip",  "audio/x-wav", "audio/mpeg" },
@@ -60,11 +61,11 @@ class Document
     
     /**
      * @Assert\Type(type="AppBundle\Entity\Dossier")
-     * @Assert\Valid()
+     * @Assert\Valid(groups={"api"})     
      * @ORM\ManyToOne(targetEntity="Dossier", cascade={"persist"}, inversedBy="documents")
      * @ORM\JoinColumn(name="idDossierParent", referencedColumnName="id")
      */
-    private $parent;
+    private $parent; // validation group permet de définir quels champs seront contrôlés lors de la soumission d'un formulaire (ie : via API)
 
     /**
      * @ORM\Column(type="string", length=256, nullable=true)
