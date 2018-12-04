@@ -48,29 +48,65 @@
             var ref = $('#btp40-jstree').jstree(true);
             if(!node.length) { return false; }
             node = node[0];
-            ref.edit(node,"nouveau dossier", function (node, status, is_cancel) {
-                if(!status || is_cancel) { ref.delete_node(node); }
-                else { 
-                    id = node.toString().split("-");
-                    /* sync to DB */
-                    $.ajax('{{ url('patch_dossier', { "id": ' + id[1] + ' }) }}' , {
-                        dataType:"json",
-                        data: {nom: JSON.stringify(node.text) },
-                        type:"PATCH",
-                        success: function(response) {
-                            $('#btp40-jstree').jstree(true).refresh();
-                        },
-                        error: function(response) {
-                            var msg='Erreur lors de la sauvegarde des documents';
-                            if (response) {
-                            msg = msg + ' : \n' + response;
-                            }
-                            alert(msg);
-                        }
-                    }); 
+            ref.edit(node,null, function (node, status, is_cancel) {
+                if(status && !is_cancel) { 
+                    save_node(node);
                 }
             });
         };
+
+        function save_node(node) {
+
+            // récupère l'id du noeud parent
+            id = node.id.toString().split("-");
+            if (id=="#") {
+                idParent = null;
+            } else {
+                idParent = id[1];
+            }
+
+            // si node est dans la corbeille, récupère la date actuelle
+            if (node.type == "deleted") {
+                deleted = date.now()
+            } else {
+                deleted = null;
+            }
+
+            // construit l'url de l'API (avec l'id du noeud) et l'objet data en fonction du type de noeud 
+            id = node.id.toString().split("-");
+            if (id.length==1){
+                return false;
+            } else {
+                if (id[0] == 'folder') {
+                    url = '{{ url('patch_dossier') }}/' + id[1];
+                    data = {nom: node.text, parent: idParent, folderDeletedAt : deleted };
+                } else if (id[0] == 'file') {
+                    url = '{{ url('patch_document') }}/' + id[1];
+                    data = {nom: node.text, parent: idParent, fileDeletedAt : deleted  };
+                } else {
+                    return false;
+                }
+            }
+
+console.log ('AJAX url : ' + url);
+console.log ('  data : ' + JSON.stringify(data));
+
+            $.ajax(url , {
+                dataType:"json",
+                data: data,
+                type:"PATCH",
+                success: function(response) {
+                    $('#btp40-jstree').jstree(true).refresh();
+                },
+                error: function(response) {
+                    var msg='Erreur lors de la sauvegarde des documents';
+                    if (response) {
+                    msg = msg + ' : \n' + response;
+                    }
+                    alert(msg);
+                }
+            }); 
+        }
 
         function delete_children(node) {
             var ref = $('#btp40-jstree').jstree(true), children, child, i;

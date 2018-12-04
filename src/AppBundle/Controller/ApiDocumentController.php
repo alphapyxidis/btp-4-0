@@ -42,7 +42,7 @@ class ApiDocumentController extends Controller
 
      /**
      * @Rest\View(statusCode=Response::HTTP_CREATED)
-     * @Rest\Patch("/update-document/{id}")
+     * @Rest\Patch("/update-document/{id}", defaults={"id" = null})
      */
     public function patchDocumentAction(Request $request, $id)
     {
@@ -73,7 +73,7 @@ class ApiDocumentController extends Controller
 
      /**
      * @Rest\View(statusCode=Response::HTTP_CREATED)
-     * @Rest\Patch("/update-dossier/{id}")
+     * @Rest\Patch("/update-dossier/{id}", defaults={"id" = null})
      */
     public function patchDossierAction(Request $request, $id)
     {
