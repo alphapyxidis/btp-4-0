@@ -42,6 +42,27 @@ class ApiDocumentController extends Controller
 
      /**
      * @Rest\View(statusCode=Response::HTTP_CREATED)
+     * @Rest\Put("/add-dossier")
+     */
+    public function putDossierAction(Request $request)
+    {
+        $dossier = new Dossier();
+        $form = $this->createForm('AppBundle\Form\ApiDossierType', $dossier);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($dossier);
+            $em->flush();
+
+            return $dossier;
+        } else {
+            return $form;
+        }
+    }
+
+     /**
+     * @Rest\View(statusCode=Response::HTTP_CREATED)
      * @Rest\Patch("/update-document/{id}", defaults={"id" = null})
      */
     public function patchDocumentAction(Request $request, $id)

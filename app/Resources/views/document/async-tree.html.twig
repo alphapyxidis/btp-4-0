@@ -26,6 +26,118 @@
 {% block javascripts %}
     <script>
 
+        // appel API PATCH pour mettre à jour en base de données
+        function save_node(node) {
+            var ref = $('#btp40-jstree').jstree(true);
+
+            // récupère l'id du noeud parent
+            id = ref.get_parent(node);
+            if (id) {
+                id = id.toString().split("-");
+            } else {
+                id = "#";
+            }
+
+            if (id=="#") {
+                idParent = null;
+            } else {
+                idParent = parseInt(id[1]);
+            }
+
+            // si node est dans la corbeille, récupère la date actuelle
+            if (ref.get_type(node) == "deleted") {
+                var d  = new Date();
+                deleted = { "date": {
+                        "year": d.getFullYear(),
+                        "month": d.getMonth(),
+                        "day": d.getDate()
+                    },
+                    "time": {
+                        "hour": d.getHours(),
+                        "minute": d.getMinutes()
+                    }
+                }
+            } else {
+                deleted = { "date": {
+                        "year": null,
+                        "month": null,
+                        "day": null
+                    },
+                    "time": {
+                        "hour": null,
+                        "minute": null
+                    }
+                }
+            }
+
+            // construit l'url de l'API (avec l'id du noeud) et l'objet data en fonction du type de noeud 
+            id = node.toString().split("-");
+            if (id.length==1){
+                return false;
+            } else {
+                if (id[0] == 'folder') {
+                    url = '{{ url('patch_dossier') }}/' + id[1];
+                    data = {nom: ref.get_text(node), parent: idParent, folderDeletedAt : deleted };
+                } else if (id[0] == 'file') {
+                    url = '{{ url('patch_document') }}/' + id[1];
+                    data = {nom: ref.get_text(node), parent: idParent, fileDeletedAt : deleted  };
+                } else {
+                    return false;
+                }
+            }
+
+            $.ajax(url , {
+                dataType:"json",
+                data: data,
+                type:"PATCH",
+                success: function(response) {
+                    {# $('#btp40-jstree').jstree(true).refresh(); #}
+                }
+            }); 
+        }
+
+        // appel API POST pour créer un nouveau dossier
+        function add_node(node) {
+            var ref = $('#btp40-jstree').jstree(true);
+
+            // récupère l'id du noeud parent
+            id = ref.get_parent(node);
+            if (id) {
+                id = id.toString().split("-");
+            } else {
+                id = "#";
+            }
+
+            if (id=="#") {
+                idParent = null;
+            } else {
+                idParent = parseInt(id[1]);
+            }
+
+            deleted = { "date": {
+                    "year": null,
+                    "month": null,
+                    "day": null
+                },
+                "time": {
+                    "hour": null,
+                    "minute": null
+                }
+            }
+
+            url = '{{ url('put_dossier') }}';
+            data = {nom: ref.get_text(node), parent: idParent, folderDeletedAt : deleted };
+
+            $.ajax(url , {
+                dataType:"json",
+                data: data,
+                type:"POST",
+                success: function(response) {
+                    $('#btp40-jstree').jstree(true).refresh();}
+                }
+            }); 
+        }
+
         function create_folder(node) {
             var ref = $('#btp40-jstree').jstree(true);
             if(!node.length || ref.get_type(node)=="trash") { 
@@ -40,7 +152,11 @@
             if (par == "#") { pos=1; } else { pos=0; }
             node = ref.create_node(par, {"type":"folder"}, pos);
             if(node) {
-                ref.edit(node);
+                ref.edit(node,null, function (node, status, is_cancel) {
+                    if(status && !is_cancel) { 
+                        add_node(node);
+                    }
+                });
             }
         };
 
@@ -53,60 +169,8 @@
                     save_node(node);
                 }
             });
+
         };
-
-        function save_node(node) {
-
-            // récupère l'id du noeud parent
-            id = node.id.toString().split("-");
-            if (id=="#") {
-                idParent = null;
-            } else {
-                idParent = id[1];
-            }
-
-            // si node est dans la corbeille, récupère la date actuelle
-            if (node.type == "deleted") {
-                deleted = date.now()
-            } else {
-                deleted = null;
-            }
-
-            // construit l'url de l'API (avec l'id du noeud) et l'objet data en fonction du type de noeud 
-            id = node.id.toString().split("-");
-            if (id.length==1){
-                return false;
-            } else {
-                if (id[0] == 'folder') {
-                    url = '{{ url('patch_dossier') }}/' + id[1];
-                    data = {nom: node.text, parent: idParent, folderDeletedAt : deleted };
-                } else if (id[0] == 'file') {
-                    url = '{{ url('patch_document') }}/' + id[1];
-                    data = {nom: node.text, parent: idParent, fileDeletedAt : deleted  };
-                } else {
-                    return false;
-                }
-            }
-
-console.log ('AJAX url : ' + url);
-console.log ('  data : ' + JSON.stringify(data));
-
-            $.ajax(url , {
-                dataType:"json",
-                data: data,
-                type:"PATCH",
-                success: function(response) {
-                    $('#btp40-jstree').jstree(true).refresh();
-                },
-                error: function(response) {
-                    var msg='Erreur lors de la sauvegarde des documents';
-                    if (response) {
-                    msg = msg + ' : \n' + response;
-                    }
-                    alert(msg);
-                }
-            }); 
-        }
 
         function delete_children(node) {
             var ref = $('#btp40-jstree').jstree(true), children, child, i;
@@ -124,6 +188,7 @@ console.log ('  data : ' + JSON.stringify(data));
                     delete_children(child);
                     // marked deleted (moved in recycling bin)
                     ref.set_type(child, "deleted");
+                    save_node(child);
                 }
             }
         }
@@ -139,6 +204,7 @@ console.log ('  data : ' + JSON.stringify(data));
                 // move to recycling bin
                 trash = ref.get_node("trash");
                 ref.set_type(node, "deleted");
+                save_node(node);
                 ref.move_node(node,trash,0);
             }
         };
@@ -154,6 +220,7 @@ console.log ('  data : ' + JSON.stringify(data));
                     typ[0]="folder";
                 }
                 ref.set_type(child, typ[0]);
+                save_node(child);
             }
         }
 
@@ -175,6 +242,7 @@ console.log ('  data : ' + JSON.stringify(data));
                     }
                     ref.set_type(node, typ[0]);
                     ref.move_node(node,"#",1);
+                    save_node(node);
                 }
             } else {
                 return false;
@@ -186,6 +254,12 @@ console.log ('  data : ' + JSON.stringify(data));
             var ref = $('#btp40-jstree').jstree(true),
                 sel = ref.get_selected(),
                 menu_items = {
+                'create_root_folder' : {
+                    'label' : 'Créer dossier à la racine',
+                    'action' : function() {
+                        create_folder(sel);
+                    }
+                },
                 'create_folder' : {
                     'label' : 'Créer dossier',
                     'action' : function() {
@@ -226,24 +300,30 @@ console.log ('  data : ' + JSON.stringify(data));
 
            if (node.type === 'file') {
                 delete menu_items.create_subfolder;
+                delete menu_items.create_root_folder;
                 delete menu_items.restore;
                 delete menu_items.empty_trash;
             } else if (node.type === 'folder') {
                 delete menu_items.create_folder;
+                delete menu_items.create_root_folder;
                 delete menu_items.restore;
                 delete menu_items.empty_trash;
             } else if (node.type === 'deleted') {
                 delete menu_items.create_folder;
+                delete menu_items.create_root_folder;
                 delete menu_items.create_subfolder;
                 delete menu_items.rename;
                 delete menu_items.empty_trash;
             } else if (node.type === 'trash') {
+                delete menu_items.create_folder;
                 delete menu_items.create_subfolder;
                 delete menu_items.rename;
                 delete menu_items.delete;
                 if (node.children.length == 0) {
                     menu_items.restore._disabled = true;
                     menu_items.empty_trash._disabled = true;
+                } else {
+                    delete menu_items.create_root_folder;
                 }
             }
 
@@ -284,11 +364,13 @@ console.log ('  data : ' + JSON.stringify(data));
                             "type" : "folder"
                         },
                         "trash" : {                            
+                            "valid_children" : ["deleted"]
                         },
                         "deleted" : {
-                            "valid_children" : []
+                            "valid_children" : ["deleted"]
                         },
                         "folder" : {
+                            "valid_children" : ["folder", "file"],
                             "icon" : "jstree-folder"
                         },                        
                         "file" : {
@@ -315,15 +397,18 @@ console.log ('  data : ' + JSON.stringify(data));
                     "contextmenu": {items: customMenu},
                     "dnd" : {
                         "is_draggable" : function(node) {
-                            if (node[0].type == 'trash') {
+                            if (node[0].type == 'trash' || node[0].type == "deleted") {
                                 return false;
                             }
                             return true;
                         }
                     }
                 }
-            );
-
+            ).bind("move_node.jstree", function (e, data) {
+                // sauvegarde avec la nouvelle position du document/dossier
+                save_node(data.node.id);
+            });
         });
+
     </script>
 {% endblock %}

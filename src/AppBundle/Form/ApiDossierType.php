@@ -14,6 +14,7 @@ class ApiDossierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('chantier')
             ->add('nom')
             ->add('parent')
             ->add('folderDeletedAt');
