@@ -18,13 +18,21 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="ten twelfths skip-one half-gapped half-padded bordered white-bg active" style="overflow:auto;">
-                            <div id="btp40-jstree"></div>
+                        <div id="error" class="ten twelfths skip-one half-gapped"></div>
+                        <div class="ten twelfths skip-one half-padded bordered white-bg active" style="overflow:auto;">
+                            <div class="row">
+                                <div id="btp40-jstree"></div>
+                            </div>
                         </div>
 
 
 {% block javascripts %}
     <script>
+
+        // affiche flash message d'erreur
+        function display_error(msg) {
+            $('#error').append('<div class="eleven twelfths dismissible error round message centered align-left">' + msg + '</div>');
+        }
 
         // appel API PATCH pour mettre à jour en base de données
         function save_node(node) {
@@ -91,7 +99,12 @@
                 data: data,
                 type:"PATCH",
                 success: function(response) {
-                    {# $('#btp40-jstree').jstree(true).refresh(); #}
+                    return true;                
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    var msg = JSON.parse(xhr.responseText);
+                    display_error(msg.message);
+                    return false;
                 }
             }); 
         }
@@ -126,18 +139,59 @@
             }
 
             url = '{{ url('put_dossier') }}';
-            data = {nom: ref.get_text(node), parent: idParent, folderDeletedAt : deleted };
+            data = {chantier: {{ chantier.id }}, nom: ref.get_text(node), parent: idParent, folderDeletedAt : deleted };
 
             $.ajax(url , {
                 dataType:"json",
                 data: data,
-                type:"POST",
+                type:"PUT",
                 success: function(response) {
-                    $('#btp40-jstree').jstree(true).refresh();}
+                    $('#btp40-jstree').jstree(true).refresh();
+                    return true;
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    var msg = JSON.parse(xhr.responseText);
+                    display_error(msg.message);
+                    ref.delete_node(node);
+                    return false;
                 }
             }); 
         }
 
+
+        // appel API DELETE pour effacer définitivement un document
+        function erase_node(node) {
+            var ref = $('#btp40-jstree').jstree(true);
+
+            // construit l'url de l'API (avec l'id du noeud) en fonction du type de noeud 
+            id = node.toString().split("-");
+            if (id.length==1){
+                return false;
+            } else {
+                if (id[0] == 'folder') {
+                    url = '{{ url('delete_dossier') }}/' + id[1];
+                } else if (id[0] == 'file') {
+                    url = '{{ url('delete_document') }}/' + id[1];
+                } else {
+                    return false;
+                }
+            }
+
+            $.ajax(url , {
+                dataType:"json",
+                type:"DELETE",
+                success: function(response) {
+                    $('#btp40-jstree').jstree(true).refresh();
+                    return true;                    
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    var msg = JSON.parse(xhr.responseText);
+                    display_error(msg.message);                    
+                    return false;
+                }
+            }); 
+        }
+        
         function create_folder(node) {
             var ref = $('#btp40-jstree').jstree(true);
             if(!node.length || ref.get_type(node)=="trash") { 
@@ -178,9 +232,16 @@
             if (ref.get_type(node) == "deleted") {
                 while(children.length>0) {
                     child=children[0];
-                    delete_children(child);
-                    // delete permanently
-                    ref.delete_node(child);
+                    if (!delete_children(child)) {
+                        return false;
+                    }
+                    if (erase_node(child)) {
+                        // delete permanently
+                        ref.delete_node(child);
+                        return true;
+                    } else {
+                        return false;
+                    }
                 }
             } else {
                 for (i=0; i< children.length;i++) {
@@ -190,6 +251,7 @@
                     ref.set_type(child, "deleted");
                     save_node(child);
                 }
+                return true;
             }
         }
 
@@ -198,8 +260,10 @@
             if(!node.length) { return false; }
             delete_children(node);
             if (ref.get_type(node) == "deleted") {
-                // delete permanently
-                ref.delete_node(node);
+                if (erase_node(node)) {
+                    // delete permanently
+                    ref.delete_node(node);
+                }
             } else if (ref.get_type(node) != "trash") {
                 // move to recycling bin
                 trash = ref.get_node("trash");

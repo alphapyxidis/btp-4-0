@@ -48,7 +48,7 @@ class ApiDocumentController extends Controller
     {
         $dossier = new Dossier();
         $form = $this->createForm('AppBundle\Form\ApiDossierType', $dossier);
-        $form->handleRequest($request);
+        $form->submit($request->request->all(),true);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -57,8 +57,59 @@ class ApiDocumentController extends Controller
 
             return $dossier;
         } else {
-            return $form;
+            $errors = (string) $form->getErrors(true, false);
+            $errors =  preg_replace('/\r|\n/', '', $errors); // remove CR LF
+            return new JsonResponse(['message' => $errors], Response::HTTP_CONFLICT);
         }
+    }
+
+     /**
+     * @Rest\View(statusCode=Response::HTTP_OK)
+     * @Rest\Delete("/delete-document/{id}", defaults={"id" = null})
+     */
+    public function deleteDocumentAction(Request $request, $id)
+    {
+       
+        $em = $this->get('doctrine.orm.entity_manager');
+        $repository = $this->getDoctrine()->getRepository(Document::class);
+        $document = $repository->findOneById($id); 
+
+        if (empty($document)) {
+            return new JsonResponse(['message' => 'Aucun document trouvé'], Response::HTTP_NOT_FOUND);
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($document);
+        $em->flush();
+
+        return new JsonResponse(['message' => 'Document supprimé'], Response::HTTP_OK);
+    }
+
+     /**
+     * @Rest\View(statusCode=Response::HTTP_OK)
+     * @Rest\Delete("/delete-dossier/{id}", defaults={"id" = null})
+     */
+    public function deleteDossierAction(Request $request, $id)
+    {
+       
+        $em = $this->get('doctrine.orm.entity_manager');
+        $repository = $this->getDoctrine()->getRepository(Dossier::class);
+        $dossier = $repository->findOneById($id); 
+
+        if (empty($dossier)) {
+            return new JsonResponse(['message' => 'Aucun dossier trouvé'], Response::HTTP_NOT_FOUND);
+        } 
+
+        $documents = $dossier->getDocuments();
+        if (count($documents)>0) {
+            return new JsonResponse(["message" => "Le dossier n'est pas vide"], Response::HTTP_CONFLICT);
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($dossier);
+        $em->flush();
+
+        return new JsonResponse(['message' => 'Dossier supprimé'], Response::HTTP_OK);
     }
 
      /**
@@ -83,12 +134,13 @@ class ApiDocumentController extends Controller
         $form->submit($request->request->all(),false);
 
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em->merge($document);
             $em->flush();
             return $document;
         } else {
-            return $form;
+            $errors = (string) $form->getErrors(true, false);
+            return new JsonResponse(['message' => $errors], Response::HTTP_CONFLICT  );
         }
     }    
 
@@ -114,12 +166,13 @@ class ApiDocumentController extends Controller
         $form->submit($request->request->all(),false);
 
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em->merge($dossier);
             $em->flush();
             return $dossier;
         } else {
-            return $form;
+            $errors = (string) $form->getErrors(true, false);
+            return new JsonResponse(['message' => $errors], Response::HTTP_CONFLICT  );
         }
     }   
 }

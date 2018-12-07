@@ -206,10 +206,9 @@
                     {% for message in app.session.flashbag.get('new') %}
                         <div class="eleven twelfths dismissible purple round message centered align-left gap-bottom">{{ message }}</div>
                     {% endfor %}
-                    
-                    {% block body %}{% endblock %}
                 </div>
-           </div>
+                {% block body %}{% endblock %}
+            </div>
         </div>
 
         {% block popup %}{% endblock %}

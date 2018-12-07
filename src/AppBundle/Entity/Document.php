@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
- * @UniqueEntity("nom")
+ * @UniqueEntity({"chantier", "nom"})
  * @ORM\Table(name="btp_document")
  */
 class Document
@@ -46,8 +46,8 @@ class Document
     protected $fichier;
     
     /**
-     * @Gedmo\Slug(fields={"nom"}, updatable=true, unique=true)
-     * @ORM\Column(type="string", length=256, unique=true)
+     * @Gedmo\Slug(fields={"nom"}, updatable=true, unique=false)
+     * @ORM\Column(type="string", length=256, unique=false)
      */
     private $slug;
         
