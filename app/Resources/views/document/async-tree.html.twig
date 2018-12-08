@@ -31,7 +31,7 @@
 
         // affiche flash message d'erreur
         function display_error(msg) {
-            $('#error').append('<div class="eleven twelfths dismissible error round message centered align-left">' + msg + '</div>');
+            $('#error').append('<div class="eleven twelfths dismissible error round message centered align-left half-gapped">' + msg + '</div>');
         }
 
         // appel API PATCH pour mettre à jour en base de données
@@ -46,7 +46,7 @@
                 id = "#";
             }
 
-            if (id=="#") {
+            if ((id=="#") || (id=="trash")) {
                 idParent = null;
             } else {
                 idParent = parseInt(id[1]);
@@ -112,7 +112,7 @@
         // appel API POST pour créer un nouveau dossier
         function add_node(node) {
             var ref = $('#btp40-jstree').jstree(true);
-
+            
             // récupère l'id du noeud parent
             id = ref.get_parent(node);
             if (id) {
@@ -121,7 +121,7 @@
                 id = "#";
             }
 
-            if (id=="#") {
+            if ((id=="#") || (id=="trash")) {
                 idParent = null;
             } else {
                 idParent = parseInt(id[1]);
@@ -162,7 +162,7 @@
         // appel API DELETE pour effacer définitivement un document
         function erase_node(node) {
             var ref = $('#btp40-jstree').jstree(true);
-
+            if(!node.length) { return false; }
             // construit l'url de l'API (avec l'id du noeud) en fonction du type de noeud 
             id = node.toString().split("-");
             if (id.length==1){
@@ -181,7 +181,6 @@
                 dataType:"json",
                 type:"DELETE",
                 success: function(response) {
-                    $('#btp40-jstree').jstree(true).refresh();
                     return true;                    
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
@@ -189,7 +188,9 @@
                     display_error(msg.message);                    
                     return false;
                 }
-            }); 
+            });
+
+            return true;    
         }
         
         function create_folder(node) {
@@ -208,7 +209,7 @@
             if(node) {
                 ref.edit(node,null, function (node, status, is_cancel) {
                     if(status && !is_cancel) { 
-                        add_node(node);
+                        add_node(node.id);
                     }
                 });
             }
@@ -220,7 +221,7 @@
             node = node[0];
             ref.edit(node,null, function (node, status, is_cancel) {
                 if(status && !is_cancel) { 
-                    save_node(node);
+                    save_node(node.id);
                 }
             });
 
@@ -228,17 +229,15 @@
 
         function delete_children(node) {
             var ref = $('#btp40-jstree').jstree(true), children, child, i;
+            if(!node.length) { return false; }
             children = ref.get_node(node).children;
-            if (ref.get_type(node) == "deleted") {
+            if ((ref.get_type(node) == "deleted") || (ref.get_type(node) == "trash")) {
                 while(children.length>0) {
                     child=children[0];
-                    if (!delete_children(child)) {
-                        return false;
-                    }
+                    delete_children(child);
                     if (erase_node(child)) {
                         // delete permanently
                         ref.delete_node(child);
-                        return true;
                     } else {
                         return false;
                     }
@@ -251,8 +250,8 @@
                     ref.set_type(child, "deleted");
                     save_node(child);
                 }
-                return true;
             }
+            return true;
         }
 
         function delete_node(node) {
@@ -263,18 +262,19 @@
                 if (erase_node(node)) {
                     // delete permanently
                     ref.delete_node(node);
+                    $('#btp40-jstree').jstree(true).refresh();
                 }
             } else if (ref.get_type(node) != "trash") {
                 // move to recycling bin
-                trash = ref.get_node("trash");
                 ref.set_type(node, "deleted");
-                save_node(node);
+                trash = ref.get_node("trash");
                 ref.move_node(node,trash,0);
             }
         };
 
         function restore_children(node) {
             var ref = $('#btp40-jstree').jstree(true), children, child, i, typ;
+            if(!node.length) { return false; }
             children = ref.get_node(node).children;
             for (i = 0; i < children.length; i++) {
                 child= children[i];
@@ -306,7 +306,6 @@
                     }
                     ref.set_type(node, typ[0]);
                     ref.move_node(node,"#",1);
-                    save_node(node);
                 }
             } else {
                 return false;
