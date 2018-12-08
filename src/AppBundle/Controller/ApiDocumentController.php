@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations as Rest; // alias pour toutes les annotations
 use FOS\RestBundle\View\ViewHandler;
 use FOS\RestBundle\View\View; // Utilisation de la vue de FOSRestBundle
+use League\Flysystem\Filesystem;
 
 /**
  * Document controller.
@@ -76,6 +77,12 @@ class ApiDocumentController extends Controller
 
         if (empty($document)) {
             return new JsonResponse(['message' => 'Aucun document trouvé'], Response::HTTP_NOT_FOUND);
+        }
+
+        // supprime le fichier
+        $filesystem = $this->get('btp40_filesystem');
+        if ($filesystem->has($document->getFichier())) {
+            $filesystem->delete($document->getFichier());
         }
 
         $em = $this->getDoctrine()->getManager();

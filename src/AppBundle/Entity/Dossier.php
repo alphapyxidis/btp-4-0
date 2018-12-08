@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
- * @UniqueEntity({"chantier", "nom"})
+ * @UniqueEntity({"chantier", "parent", "nom"})
  * @ORM\Table(name="btp_dossier")
  */
 class Dossier

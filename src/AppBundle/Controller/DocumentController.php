@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use League\Flysystem\Filesystem;
 
 /**
  * Document controller.
@@ -116,10 +117,18 @@ class DocumentController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+       
+            // supprime le fichier
+            $filesystem = $this->get('btp40_filesystem');
+            if ($filesystem->has($document->getFichier())) {
+                $filesystem->delete($document->getFichier());
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->remove($document);
             $em->flush();
         }
+
 
         return $this->redirectToRoute('document_index');
     }

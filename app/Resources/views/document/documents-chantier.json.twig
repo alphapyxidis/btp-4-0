@@ -21,7 +21,7 @@
     {%- if not loop.last %},{% endif -%}
 {% endfor %}
 {% for doc in chantier.documents -%}
-    {%- if loop.first and chantier.dossiers|length > 0 %},{% endif -%}
+    {%- if loop.first %},{% endif -%}
     {% if doc.fileDeletedAt %}
         {% if doc.parent %}
             {% if doc.parent.folderDeletedAt %}
