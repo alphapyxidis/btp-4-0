@@ -1,0 +1,35 @@
+{% extends 'demo.html.twig' %}
+
+{% import 'tools.html.twig' as tools %}
+
+{% block body %}
+<div class="one whole container centered">
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+    <table class="blue">
+        <thead>
+            <tr>
+                <th>Chantier</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Nom', 'd.nom') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Date', 'd.folderCreatedAt') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for dossier in pagination %}
+            <tr>
+                <td><a href="{{ path('chantier_show', { 'slug': dossier.chantier.slug }) }}">{{ dossier.chantier.nom }}</a></td>
+                <td><a class="noicon" href="{{ path('dossier_show', { 'id': dossier.id }) }}"><img class="pull-left pad-right" style="height:24px;" src="{{ asset('img/file-icons/folder.png' )}}"/>{{ dossier.nom }}</a></td>
+                <td>{{ dossier.folderCreatedAt|localizeddate('short', 'short', 'fr-FR')  }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}

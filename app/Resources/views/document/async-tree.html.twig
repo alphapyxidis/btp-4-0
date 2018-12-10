@@ -227,6 +227,26 @@
 
         };
 
+
+        function show_node(node) {
+            var ref = $('#btp40-jstree').jstree(true);
+            if(!node.length) { return false; }
+            // construit l'url de l'API (avec l'id du noeud) en fonction du type de noeud 
+            id = node.toString().split("-");
+            if (id.length==1){
+                return false;
+            } else {
+                if (id[0] == 'folder') {
+                    url = '{{ url('dossier_show') }}#' + id[1];
+                } else if (id[0] == 'file') {
+                    url = '{{ url('document_show') }}/' + id[1];
+                } else {
+                    return false;
+                }
+                window.location = url;
+            }
+        };
+        
         function delete_children(node) {
             var ref = $('#btp40-jstree').jstree(true), children, child, i;
             if(!node.length) { return false; }
@@ -335,6 +355,12 @@
                         create_folder(sel);
                     }
                 },                
+                'show_detail' : {
+                    'label' : 'Voir le détail',
+                    'action' : function() {
+                        show_node(sel);
+                    }
+                },
                 'rename' : {
                     'label' : 'Renommer',
                     'action' : function() {
@@ -375,11 +401,13 @@
                 delete menu_items.create_folder;
                 delete menu_items.create_root_folder;
                 delete menu_items.create_subfolder;
+                delete menu_items.show_detail;
                 delete menu_items.rename;
                 delete menu_items.empty_trash;
             } else if (node.type === 'trash') {
                 delete menu_items.create_folder;
                 delete menu_items.create_subfolder;
+                delete menu_items.show_detail;
                 delete menu_items.rename;
                 delete menu_items.delete;
                 if (node.children.length == 0) {

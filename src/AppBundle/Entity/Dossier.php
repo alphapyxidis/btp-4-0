@@ -284,6 +284,20 @@ class Dossier
     }
 
     /**
+     * Get full parents path
+     *
+     * @return string
+     */
+    public function getFullPath()
+    {
+        if (is_null($this->parent)) {
+            return $this->nom;    
+        } else {
+            return $this->parent->getFullPath() . '/'. $this->nom;
+        }
+    }
+
+    /**
      * Set folderCreatedBy
      *
      * @param \AppBundle\Entity\User $folderCreatedBy

@@ -20,6 +20,10 @@ btp40_adresse:
     resource: '@AppBundle/Controller/AdresseController.php'
     type: annotation
 
+btp40_dossier:
+    resource: '@AppBundle/Controller/DossierController.php'
+    type: annotation
+
 btp40_document:
     resource: '@AppBundle/Controller/DocumentController.php'
     type: annotation

@@ -1,32 +1,40 @@
+
+{% import 'tools.html.twig' as tools %}
+
 {% extends 'demo.html.twig' %}
 
 {% block body %}
-    <h1>Document</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ document.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ document.nom }}</td>
-            </tr>
-            <tr>
-                <th>Commentaire</th>
-                <td>{{ document.commentaire }}</td>
-            </tr>
-            <tr>
-                <th>Fichier</th>
-                <td>{{ document.fichier }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ document.slug }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="one whole container centered">
+    <div class="one whole white-bg bordered">
+        <div class="one whole padded">
+            <a class="round button info" href="{{ path('chantier_show', { 'slug': document.chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply"></i>&nbsp;&nbsp;Retour</a>
+            {% if not document.parent is null %}
+                <a class="round button success" href="{{ path('dossier_show', { 'id': document.parent.id }) }}" title="Ouvrir le dossier parent"><i class="icon-folder-open-alt"></i>&nbsp;&nbsp;{{ document.parent.nom }}</a>
+            {% endif %}
+        </div>
+        <div class="one whole padded">
+            <div class="row">
+                <img class="pull-left pad-right" src="{{ asset('img/file-icons/') ~ tools.file_icon(document.mimeType)|trim }}"/>
+                <h4 class="charcoal half-pad-top">{{ document.nom }}</h4>
+            </div>
+            <table class="charcoal">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Commentaire</th>
+                        <th>Fichier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ document.nom }}</td>
+                        <td>{{ document.commentaire }}</td>
+                        <td>{{ document.fichier }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <ul>
         <li>
@@ -41,4 +49,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+</div>
 {% endblock %}

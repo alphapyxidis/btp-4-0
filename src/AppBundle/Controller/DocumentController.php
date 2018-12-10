@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use League\Flysystem\Filesystem;
 
 /**
@@ -67,7 +68,7 @@ class DocumentController extends Controller
     /**
      * Finds and displays a document entity.
      *
-     * @Route("/{id}", name="document_show")
+     * @Route("/{id}", name="document_show", defaults={"id" = null}, requirements={"id"="\d+"})
      * @Method("GET")
      */
     public function showAction(Document $document)
@@ -80,6 +81,19 @@ class DocumentController extends Controller
         ));
     }
 
+    /**
+     * Finds and displays a document entity.
+     *
+     * @Route("/detail/{id}", name="document_detail", defaults={"id" = null}, requirements={"id"="\d+"})
+     * @Method("GET")
+     */
+    public function detailAction(Document $document)
+    {
+        return $this->render('document/detail.html.twig', array(
+            'document' => $document,
+        ));
+    }
+    
     /**
      * Displays a form to edit an existing document entity.
      *

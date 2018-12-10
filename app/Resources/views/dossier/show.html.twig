@@ -1,0 +1,36 @@
+{% extends 'demo.html.twig' %}
+
+{% block body %}
+
+<div class="one whole container centered">
+    <div class="one whole white-bg bordered">
+        <div class="one whole padded">
+            <a class="round button info" href="{{ path('chantier_show', { 'slug': dossier.chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply"></i>&nbsp;&nbsp;Retour</a>
+            {% if not dossier.parent is null %}
+                <a class="round button success" href="{{ path('dossier_show', { 'id': dossier.parent.id }) }}" title="Ouvrir le dossier parent"><i class="icon-folder-open-alt"></i>&nbsp;&nbsp;{{ dossier.parent.nom }}</a>
+            {% endif %}
+        </div>
+        <div class="one whole padded">
+            <div class="row">
+                <img class="pull-left pad-right" src="{{ asset('img/file-icons/folder.png') }}"/>
+                <h4 class="charcoal half-pad-top">{{ dossier.fullpath }}</h4>
+            </div>
+            <table class="charcoal">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Slug</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ dossier.nom }}</td>
+                        <td>{{ dossier.slug }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

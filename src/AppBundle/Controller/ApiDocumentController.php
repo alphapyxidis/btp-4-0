@@ -140,13 +140,13 @@ class ApiDocumentController extends Controller
         // entité si l'utilisateur n'en fournit pas une dans sa requête
         $form->submit($request->request->all(),false);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em->merge($document);
             $em->flush();
             return $document;
         } else {
             $errors = (string) $form->getErrors(true, false);
+            $errors =  preg_replace('/\r|\n/', '', $errors); // remove CR LF
             return new JsonResponse(['message' => $errors], Response::HTTP_CONFLICT  );
         }
     }    
@@ -172,14 +172,15 @@ class ApiDocumentController extends Controller
         // entité si l'utilisateur n'en fournit pas une dans sa requête
         $form->submit($request->request->all(),false);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em->merge($dossier);
             $em->flush();
             return $dossier;
         } else {
             $errors = (string) $form->getErrors(true, false);
+            $errors =  preg_replace('/\r|\n/', '', $errors); // remove CR LF
             return new JsonResponse(['message' => $errors], Response::HTTP_CONFLICT  );
         }
-    }   
+    }
+
 }
