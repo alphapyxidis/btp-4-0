@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{% block title %}BTP 4.0 - Le chantier du futur{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!-- Modernizr -->
+        <script src="{{ asset('/js/modernizr-2.6.2.min.js') }}"></script>
+        <!-- jQuery-->
+        <script type="text/javascript" src="{{ asset('/js/jquery-1.10.2.min.js') }}"></script>
+        {# <script src="//code.jquery.com/jquery-3.3.1.min.js"></script> #}
+        <!-- jQueryUI -->
+        <script src="{{ asset('/libs/jquery-ui-1.12.1/jquery-ui.min.js') }}"></script>
+        <link href="{{ asset('/libs/jquery-ui-1.12.1/jquery-ui.theme.min.css') }}" rel="stylesheet" />
+        <!-- Select2 -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.css" rel="stylesheet" />
+        <!-- framework css --><!--[if gt IE 9]><!-->
+        <link type="text/css" rel="stylesheet" href="{{ asset('/css/groundwork.css') }}"><!--<![endif]--><!--[if lte IE 9]>
+        <link type="text/css" rel="stylesheet" href="{{ asset('/css/groundwork-core.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('/css/groundwork-type.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('/css/groundwork-ui.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('/css/groundwork-anim.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('/css/groundwork-ie.css') }}"><![endif]-->
+        <!-- bundle for autocomplete-->
+        <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-select2.js') }}"></script>
+        {# <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-jqueryui.js') }}"></script> #}
+
+        <link type="text/css" rel="stylesheet" href="{{ asset('/css/btp-4-0.css') }}">
+
+        {% block headerscripts %}{% endblock %}
+    </head>
+    <body class="alert-bg">
+        <div class="one whole centered">
+            {% if 'image' in document.mimetype %}
+                <img class= "one whole centered" src="{{ asset('data/') ~ document.fichier }}"/>
+            {% else %}
+            <div class="one whole white-bg bordered">
+                <div class="row">
+                    <img class="pull-left pad-right" src="{{ asset('img/file-icons/') ~ tools.file_icon(document.mimeType)|trim }}"/>
+                    <h4 class="charcoal half-pad-top">{{ document.nom }}</h4>
+                </div>            
+            </div>
+            {% endif %}
+            <div class="absolute top right gapped">
+                <a class="round button white active half-gap-right" style="z-index:10; opacity: 0.66;" href="{{ path('document_detail', { 'id': document.id }) }}" title="Réduire"><i class="icon-resize-small"></i></a>
+            </div>            
+        </div>
+
+        <!-- scripts-->
+        <script type="text/javascript" src="{{ asset('/js/groundwork.all.js') }}"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', '{{ ga_tracking_id }}', 'auto');
+            ga('send', 'pageview');        
+        </script>
+
+    </body>
+</html>

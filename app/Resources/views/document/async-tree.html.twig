@@ -237,7 +237,7 @@
                 return false;
             } else {
                 if (id[0] == 'folder') {
-                    url = '{{ url('dossier_show') }}#' + id[1];
+                    url = '{{ url('dossier_show') }}/' + id[1];
                 } else if (id[0] == 'file') {
                     url = '{{ url('document_show') }}/' + id[1];
                 } else {

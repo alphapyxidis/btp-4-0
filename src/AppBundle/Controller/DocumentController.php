@@ -93,6 +93,17 @@ class DocumentController extends Controller
             'document' => $document,
         ));
     }
+
+    /**
+     * @Route("/plein-ecran/{id}", name="document_fullscreen", defaults={"id" = null}, requirements={"id"="\d+"})
+     * @Method("GET")
+     */
+    public function fullscreenAction(Document $document)
+    {
+        return $this->render('document/fullscreen.html.twig', array(
+            'document' => $document,
+        ));
+    }
     
     /**
      * Displays a form to edit an existing document entity.

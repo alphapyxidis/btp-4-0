@@ -15,6 +15,9 @@
         </div>            
     </div>
     {% endif %}
-    <a class="round button active white absolute top float-left gapped padded" style="z-index:10; opacity: 0.5;" href="{{ path('chantier_show', { 'slug': document.chantier.slug }) }}" title="fermer"><i class="icon-remove"></i></a>
+    <div class="absolute top right gapped">
+        <a class="round button white active half-gap-right" style="z-index:10; opacity: 0.66;" href="{{ path('document_fullscreen', { 'id': document.id }) }}" title="Plein écran"><i class="icon-fullscreen"></i></a>
+        <a class="round button white active" style="z-index:10; opacity: 0.66;" href="{{ path('document_show', { 'id': document.id }) }}" title="Fermer l'aperçu"><i class="icon-remove"></i></a>
+    </div>
 </div>
 {% endblock %}

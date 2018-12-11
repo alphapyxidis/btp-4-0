@@ -239,15 +239,6 @@
             ga('create', '{{ ga_tracking_id }}', 'auto');
             ga('send', 'pageview');        
  
-                        {# {% set nb_messages = fos_message_nb_unread() %}
-                        {% if nb_messages > 9 %}
-                            var msg = '<a href="{{ url('fos_message_inbox') }}" title="Vous avez {{ nb_messages }} nouveaux messages"><i class="white icon-envelope icon-2x gap-right flash animated badge red" data-badge="9+"></i></a>'
-                        {% elseif nb_messages > 0 %}
-                            var msg = '<a href="{{ url('fos_message_inbox') }}" title="Vous avez {{ nb_messages }} nouveau(x) message(s)"><i class="white icon-envelope icon-2x gap-right flash animated badge red" data-badge="{{ nb_messages }} "></i></a>'
-                        {% else %}
-                            var msg = '<a href="{{ url('fos_message_inbox') }}" title="Boîte de réception"><i class="white icon-envelope-alt icon-2x gap-right"></i></a>'
-                        {% endif %} #}
-
             function setIntervalAndExecute(fn, t) {
                 fn();
                 return(setInterval(fn, t));

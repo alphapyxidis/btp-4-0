@@ -11,6 +11,7 @@
             {% if not document.parent is null %}
                 <a class="round button success" href="{{ path('dossier_show', { 'id': document.parent.id }) }}" title="Ouvrir le dossier parent"><i class="icon-folder-open-alt"></i>&nbsp;&nbsp;{{ document.parent.nom }}</a>
             {% endif %}
+            <a class="round button question" href="{{ path('document_detail', { 'id': document.id }) }}" title="Voir le document"><i class="icon-eye-open"></i>&nbsp;&nbsp;Aperçu</a>
         </div>
         <div class="one whole padded">
             <div class="row">
