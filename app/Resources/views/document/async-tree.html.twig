@@ -227,7 +227,6 @@
 
         };
 
-
         function show_node(node) {
             var ref = $('#btp40-jstree').jstree(true);
             if(!node.length) { return false; }
@@ -240,6 +239,24 @@
                     url = '{{ url('dossier_show') }}/' + id[1];
                 } else if (id[0] == 'file') {
                     url = '{{ url('document_show') }}/' + id[1];
+                } else {
+                    return false;
+                }
+                window.location = url;
+            }
+        };
+
+        function display_node(node) {
+            var ref = $('#btp40-jstree').jstree(true);
+            if(!node.length) { return false; }
+            id = node.toString().split("-");
+            if (id.length==1){
+                return false;
+            } else {
+                if (id[0] == 'folder') {
+                    url = '{{ url('dossier_show') }}/' + id[1];
+                } else if (id[0] == 'file') {
+                    url = '{{ url('document_detail') }}/' + id[1];
                 } else {
                     return false;
                 }
@@ -355,26 +372,35 @@
                         create_folder(sel);
                     }
                 },                
-                'show_detail' : {
-                    'label' : 'Voir le détail',
-                    'action' : function() {
-                        show_node(sel);
-                    }
-                },
                 'rename' : {
                     'label' : 'Renommer',
                     'action' : function() {
                         rename_node(sel);
                     }
                 },
+                'show_detail' : {
+                    'label' : 'Voir le détail',
+                    "separator_before"  : true, 
+                    'action' : function() {
+                        show_node(sel);
+                    }
+                },
+                'display_doc' : {
+                    'label' : 'Aperçu',
+                    'action' : function() {
+                        display_node(sel);
+                    }
+                },
                 'restore' : {
                     'label' : 'Restaurer',
+                    "separator_before"  : true, 
                     'action' : function() {
                         restore_node(sel);
                     }
                 },
                 'delete' : {
                     'label' : 'Supprimer',
+                    "separator_before"  : true, 
                     'action' : function() {
                         delete_node(sel);
                     }
@@ -396,17 +422,20 @@
                 delete menu_items.create_folder;
                 delete menu_items.create_root_folder;
                 delete menu_items.restore;
+                delete menu_items.display_doc;
                 delete menu_items.empty_trash;
             } else if (node.type === 'deleted') {
                 delete menu_items.create_folder;
                 delete menu_items.create_root_folder;
                 delete menu_items.create_subfolder;
+                delete menu_items.display_doc;
                 delete menu_items.show_detail;
                 delete menu_items.rename;
                 delete menu_items.empty_trash;
             } else if (node.type === 'trash') {
                 delete menu_items.create_folder;
                 delete menu_items.create_subfolder;
+                delete menu_items.display_doc;
                 delete menu_items.show_detail;
                 delete menu_items.rename;
                 delete menu_items.delete;
@@ -499,6 +528,10 @@
             ).bind("move_node.jstree", function (e, data) {
                 // sauvegarde avec la nouvelle position du document/dossier
                 save_node(data.node.id);
+            }).bind("dblclick.jstree", function (event) {
+                var tree = $(this).jstree();
+                var node = tree.get_node(event.target);         
+                display_node(node.id);
             });
         });
 

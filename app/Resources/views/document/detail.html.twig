@@ -8,16 +8,19 @@
     {% if 'image' in document.mimetype %}
         <img class= "one whole centered" src="{{ asset('data/') ~ document.fichier }}"/>
     {% else %}
-    <div class="one whole white-bg bordered">
-        <div class="row">
-            <img class="pull-left pad-right" src="{{ asset('img/file-icons/') ~ tools.file_icon(document.mimeType)|trim }}"/>
-            <h4 class="charcoal half-pad-top">{{ document.nom }}</h4>
-        </div>            
-    </div>
+        {% if 'pdf' in document.mimetype %}
+        <iframe src="{{ asset('libs/pdfjs/web/viewer.html') }}?file={{ (asset('data/') ~ document.fichier)|url_encode }}" frameborder="0">
+        </iframe>         
+        {% else %}
+            <div class="row">
+                <img class="pull-left pad-right" src="{{ asset('img/file-icons/') ~ tools.file_icon(document.mimeType)|trim }}"/>
+                <h4 class="charcoal half-pad-top">{{ document.nom }}</h4>
+            </div>            
+        {% endif %}
     {% endif %}
-    <div class="absolute top right gapped">
-        <a class="round button white active half-gap-right" style="z-index:10; opacity: 0.66;" href="{{ path('document_fullscreen', { 'id': document.id }) }}" title="Plein écran"><i class="icon-fullscreen"></i></a>
-        <a class="round button white active" style="z-index:10; opacity: 0.66;" href="{{ path('document_show', { 'id': document.id }) }}" title="Fermer l'aperçu"><i class="icon-remove"></i></a>
-    </div>
+</div>
+<div class="absolute top right gapped">
+    <a class="round button half-gap-right" style="z-index:10; opacity: 0.66;" href="{{ path('document_fullscreen', { 'id': document.id }) }}" title="Plein écran"><i class="icon-resize-full"></i></a>
+    <a class="round button " style="z-index:10; opacity: 0.66;" href="{{ path('chantier_show', { 'slug': document.chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply"></i></a>
 </div>
 {% endblock %}
