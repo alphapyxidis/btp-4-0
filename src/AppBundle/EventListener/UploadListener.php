@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Entity\Document;
 use AppBundle\Entity\Chantier;
+use AppBundle\Entity\Dossier;
 
 class UploadListener
 {
@@ -32,6 +33,7 @@ class UploadListener
         
         $request = $event->getRequest();
         $slug = $request->get('chantier');
+        $parent = $request->get('parent');
         // convert UNIX epoch time to DateTime
         $clientOriginalDate = \DateTime::createFromFormat('U',substr($request->get('fileLastModified'), 0, 10));
         $mimetype = $request->get('mimeType');
@@ -48,6 +50,9 @@ class UploadListener
              throw new UploadException('Aucun chantier trouvé : ['.$slug.']');
         }
 
+        $repository = $em->getRepository(Dossier::class);
+        $parent = $repository->findOneById($parent); 
+
         $filesize = $file->getSize();
         
         $object = new Document();
@@ -58,6 +63,9 @@ class UploadListener
         $object->setFileSize($filesize);
         $object->setMimeType($mimetype);
         $object->setChantier($chantier);
+        if (!empty($parent)) {
+            $object->setParent($parent);
+        }
 
         $em->persist($object);
         $em->flush();

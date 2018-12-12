@@ -421,7 +421,7 @@ class Document
         if (is_null($this->parent)) {
             return $this->nom;    
         } else {
-            return $this->parent->getFullPath() . '/'. $this->nom;
+            return $this->parent->getFullPath() . ' ▶ '. $this->nom;
         }
     }
 

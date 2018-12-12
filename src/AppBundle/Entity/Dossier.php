@@ -59,6 +59,7 @@ class Dossier
      * @ORM\OneToMany(targetEntity="Dossier", mappedBy="parent")
      */
     private $sousDossiers;       
+
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
@@ -293,8 +294,26 @@ class Dossier
         if (is_null($this->parent)) {
             return $this->nom;    
         } else {
-            return $this->parent->getFullPath() . '/'. $this->nom;
+            return $this->parent->getFullPath() . ' ▶ '. $this->nom;
         }
+    }
+
+    /**
+     * Get all parents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getParents()
+    {
+        $tmp=array();
+        if (is_null($this->parent)) {
+            array_push($tmp, $this);    
+        } else {
+            array_push($tmp, $this);    
+            $tmp = array_merge($tmp, $this->parent->getParents());
+        }
+
+        return $tmp;
     }
 
     /**

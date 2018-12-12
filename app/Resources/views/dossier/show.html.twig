@@ -1,36 +1,96 @@
+{% import 'tools.html.twig' as tools %}
+
 {% extends 'demo.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}" />
+{% endblock %}
+
+{% block headerscripts %}
+    <script type="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
+{% endblock %}
 
 {% block body %}
 
 <div class="one whole container centered">
     <div class="one whole white-bg bordered">
-        <div class="one whole padded">
-            <a class="round button info" href="{{ path('chantier_show', { 'slug': dossier.chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply"></i>&nbsp;&nbsp;Retour</a>
-            {% if not dossier.parent is null %}
-                <a class="round button success" href="{{ path('dossier_show', { 'id': dossier.parent.id }) }}" title="Ouvrir le dossier parent"><i class="icon-folder-open-alt"></i>&nbsp;&nbsp;{{ dossier.parent.nom }}</a>
-            {% endif %}
+        <div class="row">
+            <div class="one whole padded">
+                <a class="round button info" href="{{ path('chantier_show', { 'slug': dossier.chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply"></i>&nbsp;&nbsp;Retour</a>
+            </div>
         </div>
         <div class="one whole padded">
-            <div class="row">
-                <img class="pull-left pad-right" src="{{ asset('img/file-icons/folder.png') }}"/>
-                <h4 class="charcoal half-pad-top">{{ dossier.fullpath }}</h4>
+            <div class="row half-gap-bottom">
+                <div class="box asphalt">
+                        <h5 style="position:relative; top:8px;"> 
+                        <img class="pull-left double-pad-right pad-left" style="position:relative; top:-8px;" src="{{ asset('img/file-icons/folder.png') }}"/>
+                        {% for parent in dossier.parents|reverse %}
+                            {% if not loop.last %}
+                                <a href="{{ path('dossier_show', { 'id': parent.id }) }}" title="{{ parent.nom }}"><span class="white">{{ parent.nom }}</span></a>
+                                &nbsp;&#9654;&nbsp;
+                            {% else %}
+                                <span>{{ parent.nom }}</span>
+                            {% endif %}
+                        {% endfor %}
+                        </h5>
+                </div>
             </div>
-            <table class="charcoal">
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Slug</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ dossier.nom }}</td>
-                        <td>{{ dossier.slug }}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="box half-padded">
+                <div class="row centered white-bg bordered half-padded" style="min-height: 150px;">
+                    {% for sousdossier in dossier.sousdossiers %}
+                        <div class="one sixth three-up-small-tablet two-up-mobile padded align-center">
+                            <a href="{{ path('dossier_show', { 'id': sousdossier.id }) }}" title="{{ sousdossier.nom }}"><img src="{{ asset('img/file-icons/folder.png') }}"/></a>
+                            <p data-truncate="1" class="small">{{ sousdossier.nom }}</p>
+                        </div>
+                    {% endfor %}
+                    {% for document in dossier.documents %}
+                        <div class="one sixth three-up-small-tablet two-up-mobile padded align-center">
+                            <a href="{{ path('document_show', { 'id': document.id }) }}" title="{{ document.nom }}"><img src="{{ asset('img/file-icons/') ~ tools.file_icon(document.mimeType)|trim }}"/></a>
+                            <p data-truncate="1" class="small">{{ document.nom }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="one whole centered half-gap-top">
+                <div class="one whole no-pad" Title="Glissez / déplacez ou cliquez pour télécharger des documents...">
+                    <form id="btp40-dropzone" action="{{ oneup_uploader_endpoint('documents_chantier') }}" class="dropzone one whole info align-center" style="border:3px dashed; ">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function () { 
+
+            Dropzone.options.btp40Dropzone = {
+                params: {
+                    // l'identifiant du chantier et du dossier parent sont passés en paramètre du formulaire
+                    chantier: "{{ dossier.chantier.slug }}", 
+                    parent: "{{ dossier.id }}"
+                }, 
+                init: function() {
+                    this.on("sending", function(file, xhr, formData) {
+                         // on ajoute dans le formulaire la date de modification du fichier original (UNIX epoch time)
+                         formData.append("fileLastModified", file.lastModified);
+                         formData.append("mimeType", file.type);
+                    });
+                    this.on("complete", function(file) {
+                        if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+                            //location.reload();
+                        }
+                    });
+                },                
+                maxFilesize: 5, // MB
+                resizeHeight: 1280,
+                acceptedFiles: 'image/jpeg, image/png, image/bmp, image/gif, application/pdf, application/x-pdf, audio/x-wav, audio/mpeg'
+//                acceptedFiles: 'image/jpeg, image/png, image/bmp, image/gif, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf, application/x-pdf, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/x-7z-compressed, application/zip, application/x-zip-compressed, multipart/x-zip, audio/x-wav, audio/mpeg'
+            };
+        });
+
+    </script>
 {% endblock %}

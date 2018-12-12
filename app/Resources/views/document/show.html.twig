@@ -20,7 +20,8 @@
     {% endif %}
 </div>
 <div class="absolute top right triple-gapped">
-    <a class="round button half-gap-right" style="z-index:10; opacity: 0.66;" href="{{ path('document_fullscreen', { 'id': document.id }) }}" title="Plein écran"><i class="icon-fullscreen"></i></a>
-    <a class="round button " style="z-index:10; opacity: 0.66;" href="{{ path('chantier_show', { 'slug': document.chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply"></i></a>
+    <a class="round button" style="z-index:10; opacity: 0.66;" href="{{ path('document_fullscreen', { 'id': document.id }) }}" title="Plein écran"><i class="icon-fullscreen icon-2x"></i></a>
+    <a class="round button" style="z-index:10; opacity: 0.66;" href="{{ path('document_detail', { 'id': document.id }) }}" title="Voir le détail"><i class="icon-info-sign icon-2x"></i></a>
+    <a class="round button" style="z-index:10; opacity: 0.66;" href="{{ path('chantier_show', { 'slug': document.chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply icon-2x"></i></a>
 </div>
 {% endblock %}

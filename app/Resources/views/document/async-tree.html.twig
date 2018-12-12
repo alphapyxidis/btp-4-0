@@ -12,7 +12,7 @@
     <script type="text/javascript" src="{{ asset('/js/dropzone.js') }}"></script>
 {% endblock %}
 
-                        <div class="ten twelfths centered">
+                        <div class="ten twelfths skip-one">
                             <div class="one whole no-pad" Title="Glissez / déplacez ou cliquez pour télécharger des documents...">
                                 <form id="btp40-dropzone" action="{{ oneup_uploader_endpoint('documents_chantier') }}" class="dropzone one whole info align-center" style="border:3px dashed; ">
                                 </form>
@@ -20,11 +20,10 @@
                         </div>
                         <div id="error" class="ten twelfths skip-one half-gapped"></div>
                         <div class="ten twelfths skip-one half-padded bordered white-bg active" style="overflow:auto;">
-                            <div class="row">
+                            <div class="row" style="min-height: 150px;">
                                 <div id="btp40-jstree"></div>
                             </div>
                         </div>
-
 
 {% block javascripts %}
     <script>
