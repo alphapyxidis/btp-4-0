@@ -66,36 +66,32 @@ class DocumentController extends Controller
     }
 
     /**
-     * Finds and displays a document entity.
-     *
-     * @Route("/{id}", name="document_show", defaults={"id" = null}, requirements={"id"="\d+"})
+     * @Route("/detail/{id}", name="document_detail", defaults={"id" = null}, requirements={"id"="\d+"})
      * @Method("GET")
      */
-    public function showAction(Document $document)
+    public function detailAction(Document $document)
     {
         $deleteForm = $this->createDeleteForm($document);
 
-        return $this->render('document/show.html.twig', array(
+        return $this->render('document/detail.html.twig', array(
             'document' => $document,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Finds and displays a document entity.
-     *
-     * @Route("/detail/{id}", name="document_detail", defaults={"id" = null}, requirements={"id"="\d+"})
+     * @Route("/{id}", name="document_show", defaults={"id" = null}, requirements={"id"="\d+"})
      * @Method("GET")
      */
-    public function detailAction(Document $document)
+    public function showAction(Document $document)
     {
-        return $this->render('document/detail.html.twig', array(
+        return $this->render('document/show.html.twig', array(
             'document' => $document,
         ));
     }
 
     /**
-     * @Route("/plein-ecran/{id}", name="document_fullscreen", defaults={"id" = null}, requirements={"id"="\d+"})
+     * @Route("/{id}/plein-ecran", name="document_fullscreen", defaults={"id" = null}, requirements={"id"="\d+"})
      * @Method("GET")
      */
     public function fullscreenAction(Document $document)

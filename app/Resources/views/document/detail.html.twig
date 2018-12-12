@@ -5,22 +5,50 @@
 
 {% block body %}
 <div class="one whole container centered">
-    {% if 'image' in document.mimetype %}
-        <img class= "one whole centered" src="{{ asset('data/') ~ document.fichier }}"/>
-    {% else %}
-        {% if 'pdf' in document.mimetype %}
-        <iframe src="{{ asset('libs/pdfjs/web/viewer.html') }}?file={{ (asset('data/') ~ document.fichier)|url_encode }}" frameborder="0">
-        </iframe>         
-        {% else %}
+    <div class="one whole white-bg bordered">
+        <div class="one whole padded">
+            <a class="round button info" href="{{ path('chantier_show', { 'slug': document.chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply"></i>&nbsp;&nbsp;Retour</a>
+            {% if not document.parent is null %}
+                <a class="round button success" href="{{ path('dossier_show', { 'id': document.parent.id }) }}" title="Ouvrir le dossier parent"><i class="icon-folder-open-alt"></i>&nbsp;&nbsp;{{ document.parent.nom }}</a>
+            {% endif %}
+            <a class="round button question" href="{{ path('document_show', { 'id': document.id }) }}" title="Voir le document"><i class="icon-eye-open"></i>&nbsp;&nbsp;Aperçu</a>
+        </div>
+        <div class="one whole padded">
             <div class="row">
                 <img class="pull-left pad-right" src="{{ asset('img/file-icons/') ~ tools.file_icon(document.mimeType)|trim }}"/>
                 <h4 class="charcoal half-pad-top">{{ document.nom }}</h4>
-            </div>            
-        {% endif %}
-    {% endif %}
-</div>
-<div class="absolute top right gapped">
-    <a class="round button half-gap-right" style="z-index:10; opacity: 0.66;" href="{{ path('document_fullscreen', { 'id': document.id }) }}" title="Plein écran"><i class="icon-resize-full"></i></a>
-    <a class="round button " style="z-index:10; opacity: 0.66;" href="{{ path('chantier_show', { 'slug': document.chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply"></i></a>
+            </div>
+            <table class="charcoal">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Commentaire</th>
+                        <th>Fichier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ document.nom }}</td>
+                        <td>{{ document.commentaire }}</td>
+                        <td>{{ document.fichier }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('document_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('document_edit', { 'id': document.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
 </div>
 {% endblock %}

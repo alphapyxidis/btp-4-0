@@ -238,7 +238,7 @@
                 if (id[0] == 'folder') {
                     url = '{{ url('dossier_show') }}/' + id[1];
                 } else if (id[0] == 'file') {
-                    url = '{{ url('document_show') }}/' + id[1];
+                    url = '{{ url('document_detail') }}/' + id[1];
                 } else {
                     return false;
                 }
@@ -256,7 +256,7 @@
                 if (id[0] == 'folder') {
                     url = '{{ url('dossier_show') }}/' + id[1];
                 } else if (id[0] == 'file') {
-                    url = '{{ url('document_detail') }}/' + id[1];
+                    url = '{{ url('document_show') }}/' + id[1];
                 } else {
                     return false;
                 }
@@ -503,6 +503,7 @@
                         "animation" : 0,
                         "multiple" : false,
                         "force_text" : true,
+                        "dblclick_toggle" : false,
                         "check_callback" : true,
                         "data": {
                             "url": function (node) {
@@ -514,7 +515,7 @@
                             }
                         }
                     },
-                    "plugins": [ "dnd", "types", "contextmenu"],
+                    "plugins": [ "dnd", "types", "state", "contextmenu"],
                     "contextmenu": {items: customMenu},
                     "dnd" : {
                         "is_draggable" : function(node) {
