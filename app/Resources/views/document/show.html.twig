@@ -3,25 +3,34 @@
 
 {% extends 'demo.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/btp-4-0-comments.css') }}" />
+{% endblock %}
+
 {% block body %}
-<div class="one whole container centered">
-    {% if 'image' in document.mimetype %}
-        <img class= "one whole centered" src="{{ asset('data/') ~ document.fichier }}"/>
-    {% else %}
-        {% if 'pdf' in document.mimetype %}
-        <iframe src="{{ asset('libs/pdfjs/web/viewer.html') }}?file={{ (asset('data/') ~ document.fichier)|url_encode }}" frameborder="0">
-        </iframe>         
+
+    <div class="two tenths skip-one half-gap-right padded white-bg bordered" style="height: calc(100vh - 140px);overflow:auto;">
+        {% include '@FOSComment/Thread/async.html.twig' with {'id': document.id } %}
+    </div>            
+    <div class="six tenths">
+        {% if 'image' in document.mimetype %}
+            <img class= "one whole centered" src="{{ asset('data/') ~ document.fichier }}"/>
         {% else %}
-            <div class="row">
-                <img class="pull-left pad-right" src="{{ asset('img/file-icons/') ~ tools.file_icon(document.mimeType)|trim }}"/>
-                <h4 class="charcoal half-pad-top">{{ document.nom }}</h4>
-            </div>            
+            {% if 'pdf' in document.mimetype %}
+            <iframe src="{{ asset('libs/pdfjs/web/viewer.html') }}?file={{ (asset('data/') ~ document.fichier)|url_encode }}" frameborder="0">
+            </iframe>         
+            {% else %}
+                <div class="row">
+                    <img class="pull-left pad-right" src="{{ asset('img/file-icons/') ~ tools.file_icon(document.mimeType)|trim }}"/>
+                    <h4 class="charcoal half-pad-top">{{ document.nom }}</h4>
+                </div>            
+            {% endif %}
         {% endif %}
-    {% endif %}
-</div>
-<div class="absolute top right triple-gapped">
-    <a class="round button" style="z-index:10; opacity: 0.66;" href="{{ path('document_fullscreen', { 'id': document.id }) }}" title="Plein écran"><i class="icon-fullscreen icon-2x"></i></a>
-    <a class="round button" style="z-index:10; opacity: 0.66;" href="{{ path('document_detail', { 'id': document.id }) }}" title="Voir le détail"><i class="icon-info-sign icon-2x"></i></a>
-    <a class="round button" style="z-index:10; opacity: 0.66;" href="{{ path('chantier_show', { 'slug': document.chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply icon-2x"></i></a>
-</div>
+    </div>
+    <div class="absolute top right triple-gapped">
+        <a class="round button" style="z-index:10; opacity: 0.66;" href="{{ path('document_fullscreen', { 'id': document.id }) }}" title="Plein écran"><i class="icon-fullscreen icon-2x"></i></a>
+        <a class="round button" style="z-index:10; opacity: 0.66;" href="{{ path('document_detail', { 'id': document.id }) }}" title="Voir le détail"><i class="icon-info-sign icon-2x"></i></a>
+        <a class="round button" style="z-index:10; opacity: 0.66;" href="{{ path('chantier_show', { 'slug': document.chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply icon-2x"></i></a>
+    </div>
+
 {% endblock %}
