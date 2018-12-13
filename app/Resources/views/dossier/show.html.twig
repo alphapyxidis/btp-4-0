@@ -20,19 +20,23 @@
             </div>
         </div>
         <div class="one whole padded">
-            <div class="row half-gap-bottom">
-                <div class="box asphalt">
-                        <h5 style="position:relative; top:8px;"> 
-                        <img class="pull-left double-pad-right pad-left" style="position:relative; top:-8px;" src="{{ asset('img/file-icons/folder.png') }}"/>
-                        {% for parent in dossier.parents|reverse %}
-                            {% if not loop.last %}
-                                <a href="{{ path('dossier_show', { 'id': parent.id }) }}" title="{{ parent.nom }}"><span class="white">{{ parent.nom }}</span></a>
+            <div class="row">
+                <div class="box asphalt half-gap-bottom">
+                    <img class="pull-left pad-right" src="{{ asset('img/file-icons/folder-home.png') }}"style="position: relative; top:-6px;"/>
+                    {% for parent in dossier.parents|reverse %}
+                        {% if loop.first %}
+                            {% if parent.nom != dossier.chantier.nom %}
+                                <a href="{{ path('dossier_chantier', { 'slug': dossier.chantier.slug }) }}" title="{{ dossier.chantier.nom }}">{{ dossier.chantier.nom }}</a>
                                 &nbsp;&#9654;&nbsp;
-                            {% else %}
-                                <span>{{ parent.nom }}</span>
                             {% endif %}
-                        {% endfor %}
-                        </h5>
+                        {% endif %}
+                        {% if not loop.last %}
+                            <a href="{{ path('dossier_show', { 'id': parent.id }) }}" title="{{ parent.nom }}"><span class="white">{{ parent.nom }}</span></a>
+                            &nbsp;&#9654;&nbsp;
+                        {% else %}
+                            <span>{{ parent.nom }}</span>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
             <div class="box half-padded">
