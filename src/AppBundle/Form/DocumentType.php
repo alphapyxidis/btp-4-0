@@ -15,8 +15,7 @@ class DocumentType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('commentaire')
-            ->add('chantier');
+            ->add('commentaire');
     }
     
     /**
@@ -25,6 +24,7 @@ class DocumentType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
+            'validation_groups' => array('api'), // validation group pour exclure la règle de validation du formulaire @Assert/File(...)
             'data_class' => 'AppBundle\Entity\Document'
         ));
     }

@@ -22,44 +22,29 @@
                 <img class="pull-left pad-right" src="{{ asset('img/file-icons/') ~ tools.file_icon(document.mimeType)|trim }}"/>
                 <h4 class="charcoal half-pad-top">{{ document.nom }}</h4>
             </div>
-            <div class="row">
-                <div class="one half padded">
-                    <table class="charcoal">
-                        <thead>
-                            <tr>
-                                <th>Nom</th>
-                                <th>Commentaire</th>
-                                <th>Fichier</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{ document.nom }}</td>
-                                <td>{{ document.commentaire }}</td>
-                                <td>{{ document.fichier }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="one half padded">
-                    {% include '@FOSComment/Thread/async.html.twig' with {'id': document.id } %}
-                </div>            
+            <div class="one half white box bordered padded">
+                <a href="{{ path('document_download', { 'id': document.id }) }}" title="Télécharger le document"><i class="absolute top right charcoal icon-cloud-download icon-4x triple-pad-right" style="opacity:0.4;"></i></a>
+                <p class="small charcoal">
+                    ajouté le {{ document.fileUploadedAt|localizeddate('medium', 'short', 'fr-FR') }}, par <img src="{{ document.fileUploadedBy.picture }}" style="position: relative; top: 4px; width:16px; height:16px; border-radius: 50%;"/> {{ document.fileUploadedBy.realname}}
+                </p>
+                <p><b>Nom du fichier :</b> {{ document.originalFileName }}</p>
+                <p><b>Créé le :</b> {{ document.fileCreatedAt|localizeddate('medium', 'short', 'fr-FR') }}</p>
+                <p><b>Taille :</b> {{ document.fileSize|readable_filesize(0) }}</p>
+
+                {{ form_start(edit_form) }}
+                    {{ form_widget(edit_form) }}
+                    <input type="submit" value="Edit" />
+                {{ form_end(edit_form) }}
+
+                {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete">
+                {{ form_end(delete_form) }}
             </div>
+            <div class="one half padded">
+                {% include '@FOSComment/Thread/async.html.twig' with {'id': document.id } %}
+            </div>            
         </div>
     </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('document_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('document_edit', { 'id': document.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 </div>
 {% endblock %}

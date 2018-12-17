@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use League\Flysystem\Filesystem;
 
@@ -67,15 +68,26 @@ class DocumentController extends Controller
 
     /**
      * @Route("/detail/{id}", name="document_detail", defaults={"id" = null}, requirements={"id"="\d+"})
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function detailAction(Document $document)
+    public function detailAction(Request $request, Document $document)
     {
         $deleteForm = $this->createDeleteForm($document);
+        $deleteForm->handleRequest($request);
+
+        $editForm = $this->createForm('AppBundle\Form\DocumentType', $document);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('document_detail', array('id' => $document->getId()));
+        }
 
         return $this->render('document/detail.html.twig', array(
             'document' => $document,
             'delete_form' => $deleteForm->createView(),
+            'edit_form' => $editForm->createView(),
         ));
     }
 
@@ -102,28 +114,27 @@ class DocumentController extends Controller
     }
     
     /**
-     * Displays a form to edit an existing document entity.
-     *
-     * @Route("/{id}/edit", name="document_edit")
-     * @Method({"GET", "POST"})
+     * @Route("/{id}/download", name="document_download")
+     * @Method({"GET"})
      */
-    public function editAction(Request $request, Document $document)
+    public function downloadAction(Request $request, Document $document)
     {
-        $deleteForm = $this->createDeleteForm($document);
-        $editForm = $this->createForm('AppBundle\Form\DocumentType', $document);
-        $editForm->handleRequest($request);
+        $filesystem = $this->get('btp40_filesystem');
+        if ($filesystem->has($document->getFichier())) {
+            $content = $filesystem->read($document->getFichier());
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $response = new Response();
+    
+            //set headers
+            $response->headers->set('Content-Type', 'mime/type');
+            $response->headers->set('Content-Disposition', 'attachment;filename="'.$document->getOriginalFileName());
+        
+            $response->setContent($content);
+            return $response;
 
-            return $this->redirectToRoute('document_edit', array('id' => $document->getId()));
+        } else {
+            throw $this->createNotFoundException("Le fichier correspondant au document n'existe plus sur le serveur");
         }
-
-        return $this->render('document/edit.html.twig', array(
-            'document' => $document,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
     }
 
     /**
@@ -136,6 +147,8 @@ class DocumentController extends Controller
     {
         $form = $this->createDeleteForm($document);
         $form->handleRequest($request);
+
+        $chantier = $document->getChantier();
 
         if ($form->isSubmitted() && $form->isValid()) {
        
@@ -150,8 +163,7 @@ class DocumentController extends Controller
             $em->flush();
         }
 
-
-        return $this->redirectToRoute('document_index');
+        return $this->redirectToRoute('chantier_show', array('slug' => $chantier->getSlug()));
     }
 
     /**
