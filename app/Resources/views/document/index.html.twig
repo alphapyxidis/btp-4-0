@@ -12,9 +12,10 @@
     <table class="blue">
         <thead>
             <tr>
-                <th>Chantier</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Chantier', 'c.nom') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Nom', 'd.nom') }}</th>
-                <th>Commentaire</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Dossier', 'p.nom') }}</th>
+                <th>Description</th>
                 <th>Taille</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Date', 'd.fileCreatedAt') }}</th>
             </tr>
@@ -25,6 +26,7 @@
             <tr>
                 <td><a href="{{ path('chantier_show', { 'slug': document.chantier.slug }) }}">{{ document.chantier.nom }}</a></td>
                 <td><a class="noicon" href="{{ path('document_show', { 'id': document.id }) }}"><img class="pull-left pad-right" style="height:24px;" src="{{ asset('img/file-icons/' ~ tools.file_icon(document.mimeType)|trim )}}"/>{{ document.nom }}</a></td>
+                <td><a class="noicon" href="{{ path('dossier_show', { 'id': document.parent.id }) }}"><img class="pull-left pad-right" style="height:24px;" src="{{ asset('img/file-icons/folder.png' )}}"/>{{ document.parent.nom }}</a></td>
                 <td>{{ document.commentaire }}</td>
                 <td>{{ document.fileSize|readable_filesize(1, '') }}</td>
                 <td>{{ document.fileCreatedAt|localizeddate('short', 'short', 'fr-FR')  }}</td>

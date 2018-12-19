@@ -21,14 +21,20 @@ class DocumentController extends Controller
     /**
      * Lists all document entities.
      *
-     * @Route("s/", name="document_index")
+     * @Route("s/chantier/{slug}", name="document_index", defaults={"slug" = null})
      * @Method("GET")
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $slug)
     {
         $em    = $this->get('doctrine.orm.entity_manager');
-        $dql   = "SELECT d FROM AppBundle:Document d";
-        $query = $em->createQuery($dql);
+        if (is_null($slug)) {
+            $dql   = "SELECT d FROM AppBundle:Document d JOIN d.parent p JOIN d.chantier c"; 
+            $query = $em->createQuery($dql);
+        } else {
+            $dql   = "SELECT d FROM AppBundle:Document d JOIN d.parent p JOIN d.chantier c WHERE c.slug = :slug";
+            $query = $em->createQuery($dql);
+            $query->setParameter('slug', $slug);
+        }
     
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -38,32 +44,6 @@ class DocumentController extends Controller
         );
 
         return $this->render('document/index.html.twig', array('pagination' => $pagination));
-    }
-
-    /**
-     * Creates a new document entity.
-     *
-     * @Route("/new", name="document_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request)
-    {
-        $document = new Document();
-        $form = $this->createForm('AppBundle\Form\DocumentType', $document);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($document);
-            $em->flush();
-
-            return $this->redirectToRoute('document_show', array('id' => $document->getId()));
-        }
-
-        return $this->render('document/new.html.twig', array(
-            'document' => $document,
-            'form' => $form->createView(),
-        ));
     }
 
     /**
@@ -140,7 +120,7 @@ class DocumentController extends Controller
     /**
      * Deletes a document entity.
      *
-     * @Route("/{id}", name="document_delete")
+     * @Route("/delete/{id}", name="document_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Document $document)

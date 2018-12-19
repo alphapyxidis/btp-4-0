@@ -26,11 +26,18 @@ class Builder implements ContainerAwareInterface
             'route' => 'chantier_show',
             'routeParameters' => ['slug' => 'unite-de-production-premurs']
         ]);
+        $submenu->addChild('exemple documents', [
+            'route' => 'document_index',
+            'routeParameters' => ['slug' => 'unite-de-production-premurs']
+        ]);
         $submenu->addChild('exemple PIC', ['route' => 'pic']);
         $menu['Chantiers']->addChild('Autour de moi', ['route' => 'demo']);
         $menu->addChild('Documents', ['route' => 'document_index']);
         $menu['Documents']->addChild('Tous', ['route' => 'document_index']);
-        $menu['Documents']->addChild('Ajouter', ['route' => 'document_new']);
+        $menu['Documents']->addChild('Documents chantier ex', [
+            'route' => 'document_index',
+            'routeParameters' => ['slug' => 'unite-de-production-premurs']
+        ]);
         return $menu;
     }
 }
