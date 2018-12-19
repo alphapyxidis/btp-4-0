@@ -3,17 +3,20 @@
 {% extends './demo.html.twig' %}
 
 {% block body %}
-    <div class="row container centered">
+    <div class="row container centered white-bg padded bordered">
 
-        <h1>{% trans from 'FOSMessageBundle' %}messenger{% endtrans %}</h1>
+        <div class="box asphalt padded gap-bottom large"><i class="icon-envelope-alt gap-left gap-right"></i>{% trans from 'FOSMessageBundle' %}messenger{% endtrans %}</div>
 
-        <ul>
-            <li><a href="{{ url('fos_message_inbox') }}">{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</a></li>
-            <li><a href="{{ url('fos_message_sent') }}">{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</a></li>
-            <li><a href="{{ url('fos_message_deleted') }}">{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}</a></li>
-        </ul>
-
-        {% block fos_message_content %}{% endblock %}
+        <div class="row">
+            <div class="one fifth padded">
+                <h5><b><i class="icon-inbox charcoal gap-right"></i></b><a href="{{ url('fos_message_inbox') }}">{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</a></h5>
+                <h5><b><i class="icon-share charcoal gap-right"></i></b><a href="{{ url('fos_message_sent') }}">{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</a></h5>
+                <h5><b><i class="icon-trash charcoal gap-right"></i></b><a href="{{ url('fos_message_deleted') }}">{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}</a></h5>
+            </div>
+            <div class="four fifths bordered padded" style="height:500px; overflow:auto;">
+                {% block fos_message_content %}{% endblock %}
+            </div>
+        </div>
 
     </div>
 

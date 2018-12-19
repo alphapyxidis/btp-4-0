@@ -2,9 +2,11 @@
 
 {% block fos_message_content %}
 
-<h2>{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</h2>
+<h4 class="asphalt-bg half-padded"><i class="icon-inbox gap-right gap-left"></i>{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</h4>
 
-<a href="{{ url('fos_message_thread_new' )}}">{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</a>
+<div class="row gap-bottom">
+    <a class="round button success" href="{{ url('fos_message_thread_new' )}}"><i class="icon-edit"></i>&nbsp;{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</a>
+</div>
 
 {% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
 
