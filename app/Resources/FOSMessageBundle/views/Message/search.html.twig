@@ -2,7 +2,9 @@
 
 {% block fos_message_content %}
 
-<h2>{% trans from 'FOSMessageBundle' %}search{% endtrans %}</h2>
+<div class="asphalt-bg half-padded half-gap-bottom">
+    <i class="icon-search gap-right gap-left"></i>{% trans from 'FOSMessageBundle' %}search{% endtrans %}
+</div>
 
 <p>{% transchoice threads|length with {'%num%': threads|length } from 'FOSMessageBundle' %}
     threads_found

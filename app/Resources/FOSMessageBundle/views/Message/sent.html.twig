@@ -2,7 +2,9 @@
 
 {% block fos_message_content %}
 
-<h4 class="asphalt-bg half-padded"><i class="icon-share gap-right gap-left"></i>{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</h4>
+<div class="asphalt-bg half-padded half-gap-bottom">
+    <i class="icon-share gap-right gap-left"></i>{% trans from 'FOSMessageBundle' %}sent{% endtrans %}
+</div>
 
 {% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
 

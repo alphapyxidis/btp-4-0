@@ -26,7 +26,7 @@
                     {% endif %}
                 </td>
                 <td>
-                    {{ thread.createdBy }}
+                    {{ thread.createdBy.nickname }}
                 </td>
                 <td>
                     {{ thread.createdAt|date }}
@@ -37,7 +37,7 @@
                 <td>
                     {% if thread.lastMessage %}
                         <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}#message_{{ thread.lastMessage.id }}" title="{% trans from 'FOSMessageBundle' %}goto_last{% endtrans %}">
-                            →
+                            <i class="icon-caret-right"></i>
                         </a>
                         {% trans with {'%date%': thread.lastMessage.createdAt|date} from 'FOSMessageBundle' %}on{% endtrans %}
                         <br />
@@ -51,12 +51,16 @@
                         {% if fos_message_deleted_by_participant(thread) %}
                             {% set formAction %}{{ url('fos_message_thread_undelete', {'threadId': thread.id}) }}{% endset %}
                             {% set submitValue %}{% trans from 'FOSMessageBundle' %}undelete{% endtrans %}{% endset %}
+                            {% set iconName %}icon-undo{% endset %}
+                            {% set iconColor %}info{% endset %}
                         {% else %}
                             {% set formAction %}{{ url('fos_message_thread_delete', {'threadId': thread.id}) }}{% endset %}
                             {% set submitValue %}{% trans from 'FOSMessageBundle' %}delete{% endtrans %}{% endset %}
+                            {% set iconName %}icon-remove{% endset %}
+                            {% set iconColor %}error{% endset %}
                         {% endif %}
                         <form action="{{ formAction }}" method="post">
-                                <input type="submit" value="{{ submitValue }}" />
+                            <button type="submit" class="small round button {{ iconColor }}" title="{{ submitValue }}"><i class="{{ iconName }}"></i></button>
                         </form>
                     {% endif %}
                 </td>

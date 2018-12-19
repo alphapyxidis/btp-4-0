@@ -2,7 +2,9 @@
 
 {% block fos_message_content %}
 
-<h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2>
+<div class="asphalt-bg half-padded half-gap-bottom">
+    <i class="icon-share gap-right gap-left"></i>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}
+</div>
 
 <form action="{{ url('fos_message_thread_new') }}" method="post">
     {{ form_widget(form) }}
