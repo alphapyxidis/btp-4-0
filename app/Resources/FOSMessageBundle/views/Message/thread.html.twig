@@ -2,26 +2,29 @@
 
 {% block fos_message_content %}
 
-<h2>{{ thread.subject }}</h2>
+<div class="large purple half-padded half-gap-bottom truncate">
+    <i class="icon-chevron-right gap-right"></i><b>{{ thread.subject }}</b>
+</div>
 
-{% for message in thread.messages %}
-    <div class="messenger_thread_message">
-        <div class="messenger_thread_message_info">
-            {% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
+<div class="ten twelfths skip-one">
+    {% for message in thread.messages %}
+        <div class="messenger_thread_message half-padded">
+            <div class="messenger_thread_message_info question-bg">
+                <img class="pull-left half-gapped" src="{{ message.sender.picture }}" style="border-radius:50%; height:14px; width:14px;"/>{% trans with {'%sender%': message.sender.nickname|e, '%date%': message.createdAt|localizeddate('short', 'short', 'fr-FR')} from 'FOSMessageBundle' %}message_info{% endtrans %}
+            </div>
+
+            <div class="messenger_thread_message_body half-padded bordered charcoal" id="message_{{ message.id }}">
+                {{ message.body }}
+            </div>
         </div>
+    {% endfor %}
 
-        <div class="messenger_thread_message_body" id="message_{{ message.id }}">
-            {{ message.body }}
+    <form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
+        {{ form_widget(form) }}
+        <div class="half-gapped">
+            <button type="submit" class="pull-left round button question" title="{% trans from 'FOSMessageBundle' %}reply{% endtrans %}"><i class="icon-reply"></i>&nbsp;{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</button>
         </div>
-    </div>
-{% endfor %}
-
-<h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h3>
-
-<form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
-    {{ form_widget(form) }}
-
-    <input type="submit" />
-</form>
+    </form>
+</div>
 
 {% endblock %}

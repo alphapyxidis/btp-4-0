@@ -1,13 +1,13 @@
-<table>
+<table class="blue responsive" data-max="15">
 
     <thead>
         <tr>
             <th>{% trans from 'FOSMessageBundle' %}subject{% endtrans %}</th>
             <th>{% trans from 'FOSMessageBundle' %}starter{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}startdate{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}messages{% endtrans %}</th>
+            <th class="align-center">{% trans from 'FOSMessageBundle' %}startdate{% endtrans %}</th>
+            <th class="align-center">{% trans from 'FOSMessageBundle' %}messages{% endtrans %}</th>
             <th>{% trans from 'FOSMessageBundle' %}last_message{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}actions{% endtrans %}</th>
+            <th class="align-center">{% trans from 'FOSMessageBundle' %}actions{% endtrans %}</th>
         </tr>
     </thead>
 
@@ -16,43 +16,57 @@
     {% if threads %}
         {% for thread in threads %}
             <tr>
-                <td>
-                    <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}">
+                {% if not fos_message_is_read(thread) %}
+                    {% if loop.index is even %}
+                        {% set lineColor %}background-color:#f0e6f4;color:#9855b4 !important;{% endset %}
+                    {% else %}
+                        {% set lineColor %}background-color:#f7f4f6;color:#9855b4 !important;{% endset %}
+                    {% endif %}
+                {% else %}
+                    {% set lineColor %} {% endset %}
+                {% endif %}
+
+                <td class="truncate" style="{{ lineColor }}">
+                    {% if not fos_message_is_read(thread) %}
+                        <a class="small question round button half-gap-right" href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" title="{{ thread.subject }}">
+                            {% trans from 'FOSMessageBundle' %}new{% endtrans %}
+                        </a>                    
+                    {% endif %}
+
+                    <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" title="{{ thread.subject }}">
                         {{ thread.subject }}
                     </a>
-
-                    {% if not fos_message_is_read(thread) %}
-                        ({% trans from 'FOSMessageBundle' %}new{% endtrans %})
-                    {% endif %}
                 </td>
-                <td>
-                    {{ thread.createdBy.nickname }}
+                <td class="truncate" style="{{ lineColor }}">
+                    <img class="pull-left half-gap-right" src="{{ thread.createdBy.picture }}" style="border-radius:50%; height:16px; width:16px;"/>{{ thread.createdBy.nickname }}
                 </td>
-                <td>
-                    {{ thread.createdAt|date }}
+                <td class="truncate align-center" style="{{ lineColor }}">
+                    {{ thread.createdAt|localizeddate('short', 'short', 'fr-FR')}}
                 </td>
-                <td>
+                <td class="truncate align-center" style="{{ lineColor }}">
                     {{ thread.messages|length }}
                 </td>
-                <td>
+                <td class="truncate" style="{{ lineColor }}">
                     {% if thread.lastMessage %}
                         <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}#message_{{ thread.lastMessage.id }}" title="{% trans from 'FOSMessageBundle' %}goto_last{% endtrans %}">
-                            <i class="icon-caret-right"></i>
+                            <i class="icon-chevron-sign-right"></i>
+                        {% trans with {'%date%': thread.lastMessage.createdAt|localizeddate('short', 'short', 'fr-FR')} from 'FOSMessageBundle' %}on{% endtrans %}
                         </a>
-                        {% trans with {'%date%': thread.lastMessage.createdAt|date} from 'FOSMessageBundle' %}on{% endtrans %}
-                        <br />
-                        {% trans with {'%sender%': thread.lastMessage.sender|e } from 'FOSMessageBundle' %}by{% endtrans %}
+                        <br/>
+                        <span class="small charcoal">
+                        {% trans with {'%sender%': thread.lastMessage.sender.nickname|e } from 'FOSMessageBundle' %}by{% endtrans %}
+                        </span>
                     {% else %}
                         ----
                     {% endif %}
                 </td>
-                <td>
+                <td class="align-center" style="{{ lineColor }}">
                     {% if fos_message_can_delete_thread(thread) %}
                         {% if fos_message_deleted_by_participant(thread) %}
                             {% set formAction %}{{ url('fos_message_thread_undelete', {'threadId': thread.id}) }}{% endset %}
                             {% set submitValue %}{% trans from 'FOSMessageBundle' %}undelete{% endtrans %}{% endset %}
                             {% set iconName %}icon-undo{% endset %}
-                            {% set iconColor %}info{% endset %}
+                            {% set iconColor %}alert{% endset %}
                         {% else %}
                             {% set formAction %}{{ url('fos_message_thread_delete', {'threadId': thread.id}) }}{% endset %}
                             {% set submitValue %}{% trans from 'FOSMessageBundle' %}delete{% endtrans %}{% endset %}
@@ -68,7 +82,7 @@
         {% endfor %}
     {% else %}
         <tr>
-            <td colspan="6">
+            <td class="small charcoal" colspan="6">
                 {% trans from 'FOSMessageBundle' %}no_thread{% endtrans %}.
             </td>
         </tr>
