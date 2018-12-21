@@ -10,40 +10,41 @@
 {% block body %}
 <div class="one whole container centered">
     <div class="one whole white-bg bordered">
-        <div class="one whole padded">
-            <a class="round button info" href="{{ path('chantier_show', { 'slug': document.chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply"></i>&nbsp;&nbsp;Retour</a>
+        <div class="one whole">
+            <a class="round button info gap-top gap-left" href="{{ path('chantier_show', { 'slug': document.chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply"></i>&nbsp;&nbsp;Retour</a>
             {% if not document.parent is null %}
-                <a class="round button warning" href="{{ path('dossier_show', { 'id': document.parent.id }) }}" title="Ouvrir le dossier parent"><i class="icon-folder-open-alt"></i>&nbsp;&nbsp;{{ document.parent.nom }}</a>
+                <a class="round button warning gap-top gap-left" href="{{ path('dossier_show', { 'id': document.parent.id }) }}" title="Ouvrir le dossier parent"><i class="icon-folder-open-alt"></i>&nbsp;&nbsp;{{ document.parent.nom }}</a>
             {% endif %}
-            <a class="round button question" href="{{ path('document_show', { 'id': document.id }) }}" title="Voir le document"><i class="icon-eye-open"></i>&nbsp;&nbsp;Aperçu</a>
-            <a class="round button" href="{{ path('document_download', { 'id': document.id }) }}" title="Télécharger le document"><i class="icon-cloud-download"></i>&nbsp;Télécharger</a>
+            <a class="round button question gap-top gap-left" href="{{ path('document_show', { 'id': document.id }) }}" title="Voir le document"><i class="icon-eye-open"></i>&nbsp;&nbsp;Aperçu</a>
+            <a class="round button gap-top gap-left" href="{{ path('document_download', { 'id': document.id }) }}" title="Télécharger le document"><i class="icon-cloud-download"></i>&nbsp;Télécharger</a>
         </div>
         <div class="one whole padded">
             <div class="one half white box bordered padded">
-            {{ form_start(edit_form) }}
-                <div class="row">
-                    <div class="one twelfth no-pad">
-                        <img class="centered pad-top" src="{{ asset('img/file-icons/') ~ tools.file_icon(document.mimeType)|trim }}"/>
+                {{ form_start(edit_form) }}
+                    <div class="row">
+                        <div class="one twelfth mobile no-pad">
+                            <img class="centered pad-top" src="{{ asset('img/file-icons/') ~ tools.file_icon(document.mimeType)|trim }}"/>
+                        </div>
+                        <h4 class="eleven twelfths mobile charcoal half-pad-top">{{ form_widget(edit_form.nom) }}</h4>
                     </div>
-                    <h4 class="eleven twelfths charcoal half-pad-top">{{ form_widget(edit_form.nom) }}</h4>
-                </div>
-                <p class="small charcoal">
-                    ajouté le {{ document.fileUploadedAt|localizeddate('medium', 'short', 'fr-FR') }}, par <img src="{{ document.fileUploadedBy.picture }}" style="position: relative; top: 4px; width:16px; height:16px; border-radius: 50%;"/> {{ document.fileUploadedBy.realname}}
-                </p>
-                <p><b>Nom du fichier :</b> {{ document.originalFileName }}</p>
-                <p><b>Créé le :</b> {{ document.fileCreatedAt|localizeddate('medium', 'short', 'fr-FR') }}</p>
-                <p><b>Taille :</b> {{ document.fileSize|readable_filesize(0) }}</p>
-
-                     {{ form_widget(edit_form.commentaire) }}
-                <div class="half-gapped">
-                    <button type="submit" class="pull-left round button success" title="Mettre à jour les informations"><i class="icon-pencil"></i>&nbsp;Mettre à jour</button>
-                </div>
-            {{ form_end(edit_form) }}
-                    {{ form_start(delete_form) }}
-                        <button type="submit" class="pull-right round button error" title="Supprimer le document"><i class="icon-trash"></i>&nbsp;Supprimer</button>
-                    {{ form_end(delete_form) }}
+                    <p class="small charcoal">
+                        ajouté le {{ document.fileUploadedAt|localizeddate('medium', 'short', 'fr-FR') }}, par <img src="{{ document.fileUploadedBy.picture }}" style="position: relative; top: 4px; width:16px; height:16px; border-radius: 50%;"/> {{ document.fileUploadedBy.realname}}
+                    </p>
+                    <p><b>Nom du fichier :</b> {{ document.originalFileName }}</p>
+                    <p><b>Créé le :</b> {{ document.fileCreatedAt|localizeddate('medium', 'short', 'fr-FR') }}</p>
+                    <p><b>Taille :</b> {{ document.fileSize|readable_filesize(0) }}</p>
+                    <p><b>Description :</b></p> 
+                    {{ form_widget(edit_form.commentaire) }}
+                    <div class="half-gapped">
+                        <button type="submit" class="pull-left round button success" title="Mettre à jour les informations"><i class="icon-pencil"></i>&nbsp;Mettre à jour</button>
+                    </div>
+                {{ form_end(edit_form) }}
+                {{ form_start(delete_form) }}
+                    <button type="submit" class="pull-right round button error" title="Supprimer le document"><i class="icon-trash"></i>&nbsp;Supprimer</button>
+                {{ form_end(delete_form) }}
             </div>
             <div class="one half padded">
+                <h4 class="charcoal"><i class="icon-chevron-right"></i>&nbsp;&nbsp;Fil de discussion</h4>            
                 {% include '@FOSComment/Thread/async.html.twig' with {'id': document.id } %}
             </div>       
 

@@ -2,8 +2,8 @@
 
 {% block fos_message_content %}
 
-<div class="large purple half-padded half-gap-bottom truncate">
-    <i class="icon-chevron-right gap-right"></i><b>{{ thread.subject }}</b>
+<div class="purple half-padded half-gap-bottom truncate">
+    <b><i class="icon-chevron-right gap-right"></i>{{ thread.subject }}</b>
 </div>
 
 <div class="ten twelfths skip-one">
@@ -21,7 +21,7 @@
 
     <form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
         {{ form_widget(form) }}
-        <div class="half-gapped">
+        <div class="gapped">
             <button type="submit" class="pull-left round button question" title="{% trans from 'FOSMessageBundle' %}reply{% endtrans %}"><i class="icon-reply"></i>&nbsp;{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</button>
         </div>
     </form>

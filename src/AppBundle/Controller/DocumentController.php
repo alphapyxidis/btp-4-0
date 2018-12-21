@@ -28,12 +28,25 @@ class DocumentController extends Controller
     {
         $em    = $this->get('doctrine.orm.entity_manager');
         if (is_null($slug)) {
-            $dql   = "SELECT d FROM AppBundle:Document d JOIN d.parent p JOIN d.chantier c"; 
-            $query = $em->createQuery($dql);
+            // $dql   = "SELECT d FROM AppBundle:Document d JOIN d.parent p JOIN d.chantier c"; 
+            // $query = $em->createQuery($dql);
+
+            $query = $em->createQueryBuilder()
+            ->select('d')
+            ->from('AppBundle:Document', 'd')
+            ->Join('d.chantier', 'c')            
+            ->leftJoin('d.parent', 'p');            
         } else {
-            $dql   = "SELECT d FROM AppBundle:Document d JOIN d.parent p JOIN d.chantier c WHERE c.slug = :slug";
-            $query = $em->createQuery($dql);
-            $query->setParameter('slug', $slug);
+            // $dql   = "SELECT d FROM AppBundle:Document d JOIN d.parent p JOIN d.chantier c WHERE c.slug = :slug";
+            // $query = $em->createQuery($dql);
+
+            $query = $em->createQueryBuilder()
+            ->select('d')
+            ->from('AppBundle:Document', 'd')
+            ->Join('d.chantier', 'c')            
+            ->leftJoin('d.parent', 'p')
+            ->where('c.slug = :slug')
+            ->setParameter('slug', $slug);
         }
     
         $paginator  = $this->get('knp_paginator');
@@ -43,7 +56,7 @@ class DocumentController extends Controller
             10/*limit per page*/
         );
 
-        return $this->render('document/index.html.twig', array('pagination' => $pagination));
+        return $this->render('document/index.html.twig', array('pagination' => $pagination, 'slug' => $slug));
     }
 
     /**

@@ -1,24 +1,19 @@
 {% extends 'demo.html.twig' %}
 
 {% block body %}
-<div class="one whole container centered">
+<div class="one whole container centered white-bg padded bordered">
+    <a class="round button info" href="{{ path('chantier_show', { 'slug': chantier.slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply"></i>&nbsp;&nbsp;Retour</a>
+
     <h1>Chantier edit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+            <button class="round success" type="submit"><i class="icon-ok half-gap-right"></i>Valider</button>
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('chantier_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    {{ form_start(delete_form) }}
+        <button class="round error" type="submit"><i class="icon-remove half-gap-right"></i>Supprimer</button>
+    {{ form_end(delete_form) }}
 </div>
 {% endblock %}
 {% block javascripts %}

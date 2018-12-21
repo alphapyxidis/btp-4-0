@@ -4,12 +4,29 @@
 
 {% block body %}
 <div class="one whole container centered">
+    {% if not slug is null %}
+        <div class="one whole gap-bottom">
+            <a class="round button info gap-top gap-left" href="{{ path('chantier_show', { 'slug': slug }) }}" title="Retour à la page d'accueil du chantier"><i class="icon-reply"></i>&nbsp;&nbsp;Retour</a>
+        </div>
+        <div class="row">
+            <div class="box large asphalt half-gap-bottom">
+                {{ pagination[0].chantier.nom }}
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="box large asphalt half-gap-bottom">
+                Tous les documents
+            </div>
+        </div>
+    {% endif %}
+
     {# display navigation #}
     <div class="navigation">
         {{ knp_pagination_render(pagination) }}
     </div>
 
-    <table class="blue">
+    <table class="responsive blue" data-max="15">
         <thead>
             <tr>
                 <th>{{ knp_pagination_sortable(pagination, 'Chantier', 'c.nom') }}</th>
@@ -24,12 +41,16 @@
 
         {% for document in pagination %}
             <tr>
-                <td><a href="{{ path('chantier_show', { 'slug': document.chantier.slug }) }}">{{ document.chantier.nom }}</a></td>
-                <td><a class="noicon" href="{{ path('document_show', { 'id': document.id }) }}"><img class="pull-left pad-right" style="height:24px;" src="{{ asset('img/file-icons/' ~ tools.file_icon(document.mimeType)|trim )}}"/>{{ document.nom }}</a></td>
-                <td><a class="noicon" href="{{ path('dossier_show', { 'id': document.parent.id }) }}"><img class="pull-left pad-right" style="height:24px;" src="{{ asset('img/file-icons/folder.png' )}}"/>{{ document.parent.nom }}</a></td>
-                <td>{{ document.commentaire }}</td>
-                <td>{{ document.fileSize|readable_filesize(1, '') }}</td>
-                <td>{{ document.fileCreatedAt|localizeddate('short', 'short', 'fr-FR')  }}</td>
+                <td class="truncate"><a href="{{ path('chantier_show', { 'slug': document.chantier.slug }) }}">{{ document.chantier.nom }}</a></td>
+                <td class="truncate"><a class="noicon" href="{{ path('document_show', { 'id': document.id }) }}"><img class="pull-left pad-right" style="height:24px;" src="{{ asset('img/file-icons/' ~ tools.file_icon(document.mimeType)|trim )}}"/>{{ document.nom }}</a></td>
+                {% if document.parent is null %}
+                    <td class="truncate"></td>
+                {% else %}
+                    <td class="truncate"><a class="noicon" href="{{ path('dossier_show', { 'id': document.parent.id }) }}"><img class="pull-left pad-right" style="height:24px;" src="{{ asset('img/file-icons/folder.png' )}}"/>{{ document.parent.nom }}</a></td>
+                {% endif %}
+                <td class="truncate">{{ document.commentaire }}</td>
+                <td class="truncate">{{ document.fileSize|readable_filesize(1, '') }}</td>
+                <td class="truncate">{{ document.fileCreatedAt|localizeddate('short', 'short', 'fr-FR')  }}</td>
             </tr>
         {% endfor %}
         </tbody>
