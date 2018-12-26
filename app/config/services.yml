@@ -60,6 +60,12 @@ services:
         class: AppBundle\Uploader\Naming\DirectoryNamer
         arguments: ["@request_stack"]
 
+    btp40.user_to_nickname_transformer:
+        class: AppBundle\Form\DataTransformer\UserToNicknameTransformer
+        arguments: ["@doctrine"]
+
+    fos_user.user_to_username_transformer:
+        alias: btp40.user_to_nickname_transformer
          
 
 

@@ -30,6 +30,8 @@
 
         <link type="text/css" rel="stylesheet" href="{{ asset('/css/btp-4-0.css') }}">
 
+        {% import 'tools.html.twig' as tools %}
+
         {% block headerscripts %}{% endblock %}
     </head>
     <body class="charcoal-bg" style="overflow:hidden;">
@@ -41,9 +43,9 @@
                 {% if 'image' in document.mimetype %}
                     <img style="height:100vh; display:block; margin-left: auto;  margin-right: auto;" src="{{ asset('data/') ~ document.fichier }}"/>
                 {% else %}
-                <div class="row">
-                    <img class="pull-left pad-right" src="{{ asset('img/file-icons/') ~ tools.file_icon(document.mimeType)|trim }}"/>
-                    <h4 class="charcoal half-pad-top">{{ document.nom }}</h4>
+                <div class="container centered large charcoal-bg">
+                    <p class="large white triple-gapped triple-pad-top align-center">{{ document.nom }}</p>
+                    <div class="one third skip-one triple-padded"><img class="one whole triple-gap-top" src="{{ asset('img/file-icons/') ~ tools.file_icon(document.mimeType)|trim }}"/></div>
                 </div>            
                 {% endif %}
             {% endif %}
