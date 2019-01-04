@@ -33,7 +33,8 @@ class AdresseController extends Controller
 
         $api_user = $this->container->getParameter('geonames_user');
 
-        $service_url = 'http://api.geonames.org/postalCodeSearchJSON?placename_startsWith='.$q.'&maxRows=10&country=FR&style=short&username='.$api_user;
+//        $service_url = 'http://api.geonames.org/postalCodeSearchJSON?placename_startsWith='.$q.'&maxRows=10&country=FR&style=short&username='.$api_user;
+        $service_url = 'https://geo.api.gouv.fr/communes?nom='.$q.'&fields=nom,code,codesPostaux,centre&format=json';
         
         $curl = curl_init($service_url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

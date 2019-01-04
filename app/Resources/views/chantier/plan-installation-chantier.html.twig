@@ -154,8 +154,8 @@
                                 featureGroup: planinstallation,
                                 rectangle: true,
                                 circlemarker: false,
-                                circle: true,
-                                marker: true,
+                                circle: false,
+                                marker: false,
                                 polyline: {
                                     icon: btp40editicon,
                                     metric: true
@@ -174,7 +174,7 @@
                             openOnLeafletDraw: true,
                             useGrouping: false
                         });
-                        map.addControl(styleEditor);
+                        //map.addControl(styleEditor);
 
                         function savePic(picData) {
                             $.ajax('{{ url('patch_chantier', { 'slug': chantier.slug }) }}', {

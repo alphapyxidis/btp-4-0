@@ -1,5 +1,6 @@
 [{% for item in results -%}
-    {{ {id: item.placeName|upper|e, text:  item.placeName|upper|e, value: item.placeName|upper|e}|json_encode|raw }}
+    {# {{ {value: item.placeName|upper|e, text:  item.placeName|upper|e}|json_encode|raw }} #}
+    {{ {id: item.code, text:  item.nom|upper|e}|json_encode|raw }} 
     {# use "value" instead of "id" key, if you use jquery-ui #}
     {%- if not loop.last %},{% endif -%}
 {% endfor %}]

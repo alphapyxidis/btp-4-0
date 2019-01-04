@@ -14,8 +14,8 @@ class AdresseType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-/*        $builder->add('rue')->add('codePostal')->add('ville', AutocompleteType::class, ['class' => 'AppBundle:Adresse'])->add('lat')->add('lon'); */
-        $builder->add('rue')->add('codePostal')->add('ville')->add('lat')->add('lon');
+        $builder->add('rue')->add('codePostal')->add('ville', AutocompleteType::class, ['class' => 'AppBundle:Adresse']); 
+        /*$builder->add('rue')->add('codePostal')->add('ville')->add('lat')->add('lon');*/
     }/**
      * {@inheritdoc}
      */
@@ -33,7 +33,5 @@ class AdresseType extends AbstractType
     {
         return 'adresse';
     }
-
-    /*  http://api.geonames.org/postalCodeSearchJSON?postalcode=9011&maxRows=10&username=alphapyxidis */
 
 }
