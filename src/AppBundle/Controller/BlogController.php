@@ -46,7 +46,7 @@ class BlogController extends Controller
     {
         // i.e Sending a file from the resources folder in /web
         // in this example, the TextFile.txt needs to exist in the server
-        $publicResourcesFolderPath = $this->get('kernel')->getRootDir() . '/../web/ressources/';
+        $publicResourcesFolderPath = $this->get('kernel')->getRootDir() . '/../web/data/';
         $filename = "BTP 4.0 - le chantier du futur.pdf";
 
         // This should return the file located in /mySymfonyProject/web/public-resources/TextFile.txt

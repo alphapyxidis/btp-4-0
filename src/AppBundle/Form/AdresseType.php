@@ -14,8 +14,7 @@ class AdresseType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('rue')->add('codePostal')->add('ville', AutocompleteType::class, ['class' => 'AppBundle:Adresse']); 
-        /*$builder->add('rue')->add('codePostal')->add('ville')->add('lat')->add('lon');*/
+        $builder->add('rue')->add('codePostal')->add('ville'); 
     }/**
      * {@inheritdoc}
      */

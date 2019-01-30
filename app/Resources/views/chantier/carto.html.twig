@@ -19,7 +19,7 @@
                     <div class="noicon" id="map" style="height:640px;"></div>
                     <script>
 
-                            var map = L.map('map');
+                            var map = L.map('map').setView([46.75, 3.10], 6);
                             var markers = L.markerClusterGroup();   
 
                             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={{ mapbox_token }}', {
@@ -52,7 +52,7 @@
 
                             function onLocationError(e) {
                                 alert(e.message);
-                                map.setView([43.98, 4.85], 14);  // position par défaut
+                                map.setView([46.75, 3.10], 6);  // position par défaut
                             }
 
                             function mapmoved() {
@@ -74,8 +74,9 @@
                                         for(i = 0; i < data.length; i++) {  
                                             chantier = data[i];
                                             adresse = chantier['adresse'];
-                                            markers.addLayer(L.marker([ adresse['lat'], adresse['lon']], {icon: craneIcon}).addTo(map)
-                                                            .bindPopup('<a href="demo/chantier/' + chantier['slug'] + '"><b>' + chantier['nom'] + '</b></a><br> situé ' + adresse['rue'] + ' à ' + adresse['ville']));
+                                            markers.addLayer(L.marker([ adresse['lat'], adresse['lon']], {icon: craneIcon})
+                                                            .bindPopup('<a href="demo/chantier/' + chantier['slug'] + '"><b>' + chantier['nom'] + '</b></a><br> situé ' + adresse['rue'] + ' à ' + adresse['ville'])
+                                                            );
                                         }  
                                         map.addLayer(markers);
                                     },  
@@ -85,13 +86,15 @@
                                 });  
 
                             }
-
+{# 
                             map.on('locationfound', onLocationFound);
                             map.on('locationerror', onLocationError);
-
-                            map.locate({setView: true, maxZoom: 17}); 
-
+ 
+                            map.locate({setView: true, maxZoom: 6}); 
+#}
                             map.on('moveend', mapmoved);
+
+                            mapmoved();
                     </script>
                 </div>
 {% endblock  %}
