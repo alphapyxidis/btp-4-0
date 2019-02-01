@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * dossier controller.
  *
- * @Route("demo/dossier")
+ * @Route("lab/dossier")
  */
 class DossierController extends Controller
 {

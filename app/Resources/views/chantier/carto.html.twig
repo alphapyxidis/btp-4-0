@@ -15,7 +15,6 @@
 
 {% block body %}
                 <div class="one whole padded container centered">
-                    <h3>Les chantiers autour de ma position</h3>
                     <div class="noicon" id="map" style="height:640px;"></div>
                     <script>
 
@@ -75,7 +74,7 @@
                                             chantier = data[i];
                                             adresse = chantier['adresse'];
                                             markers.addLayer(L.marker([ adresse['lat'], adresse['lon']], {icon: craneIcon})
-                                                            .bindPopup('<a href="demo/chantier/' + chantier['slug'] + '"><b>' + chantier['nom'] + '</b></a><br> situé ' + adresse['rue'] + ' à ' + adresse['ville'])
+                                                            .bindPopup('<a href="lab/chantier/' + chantier['slug'] + '"><b>' + chantier['nom'] + '</b></a><br> situé ' + adresse['rue'] + ' à ' + adresse['ville'])
                                                             );
                                         }  
                                         map.addLayer(markers);

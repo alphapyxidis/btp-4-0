@@ -1,0 +1,43 @@
+{# app/Resources/views/navigation/presentation.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block navigation %}
+        <div class="container padded">
+                <div class="six eigths centered container charcoal">
+                    <nav role="navigation" class="nav nocollapse orange" title="Menu">
+                        <ul role="menubar">
+                            <li><a href="{{ url('accueil') }}"><i class="icon-rocket"></i> Le chantier du futur</a></li>
+                            <li><a href="{{ url('presentation') }}"><i class="icon-lightbulb"></i> Les enjeux de transformation</a></li>
+                            <li><a href="{{ url('resultats') }}"><i class="icon-dashboard"></i> Résultats de l'enquête</a></li>
+                            <li><a class="noicon" href="{{ url('rapport') }}"><i class="icon-file-text"></i> Rapport complet</a></li>
+                            <li><a href="{{ url('experimentation') }}"><i class="icon-beaker"></i> Expérimentation</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+{% endblock  %}
+
+{% block body %}
+                <div class="row">
+                <div class="four tenths skip-one padded double-gap-right white-bg charcoal justify">
+                    <h3 class="turquoise">Un réseau social pour vos chantiers</h3>
+                    <p>La gestion électronique des documents est apparue comme la première des fonctionnalités attendues, suivie par des outils de gestion des modifications, et enfin la planification.</p>
+                    <br>
+                    <p>La dématérialisation des documents semble déjà largement répandue, mais l'échange des fichiers se fait encore majoritairement de façon non structurée par envoi de pièces jointes dans des emails.</p>
+                    <br>
+                    <p>Plutôt que proposer une plateforme collaborative dédiée au partage de documents (comme par exemple <a class="noicon" href="https://www.kroqi.fr/" target="_blank">KROQI</a>, proposée par le PTNB), je souhaite tester si une ergonomie inspirée des réseaux sociaux n'est pas plus simple d'utilisation et si cela faciliterait son adoption sur les chantiers.</p>
+                    <p>A la manière des nouveaux outils de collaboration que représentent les <span class="purple">réseaux sociaux d'entreprise</span>, la zone d'expérimentation de ce site vous propose d'échanger des informations, des commentaires et des documents par le biais de pages dédiées à vos chantiers.</p>
+                </div>
+                <div class="four tenths padded white-bg charcoal justify">
+                    <h3 class="turquoise">Expérimentation</h3>
+                    <p>Cette section du site web est consacrée à cette expérimentation.</p> 
+                    <p>Vous pourrez créér pour chacun de vos chantiers une "page" sur laquelle vous pourrez partager un fil de discussion et inviter vos partenaires sur cet espace collaboratif.</p>
+                    <br>
+                    <p>Prochainement une application mobile Android viendra compléter cette maquette pour confirmer que la combinaison des smartphones et du stockage sur le cloud est une solution adaptée à la collaboration sur les chantiers.</p>
+                    <br>
+                    <a class="eight tenths skip-one round button large purple" href="{{ url('lab') }}"><i class="icon-beaker"></i> connectez vous au Lab...</a> 
+                </div>
+            </div>
+{% endblock  %}
+

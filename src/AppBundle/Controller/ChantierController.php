@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Chantier controller.
  *
- * @Route("demo/chantier")
+ * @Route("lab/chantier")
  */
 class ChantierController extends Controller
 {

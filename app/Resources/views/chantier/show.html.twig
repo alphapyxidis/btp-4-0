@@ -21,7 +21,7 @@
             <div class="one whole bordered white-bg">
                 <div class="one whole padded">
                     <a class="round button error noicon half-gap-right" href="{{ path('pic_chantier', { 'slug': chantier.slug }) }}"><i class="icon-map-marker"></i>&nbsp;&nbsp;Plan Installation</a>
-                    <a class="round button purple noicon half-gap-right" href="{{ path('planning_chantier', { 'slug': chantier.slug }) }}"><i class="icon-tasks"></i>&nbsp;&nbsp;Planning</a>
+                    <a class="round button purple noicon half-gap-right" href="{{ path('planning_chantier', { 'slug': chantier.slug }) }}" target="_blank"><i class="icon-tasks"></i>&nbsp;&nbsp;Planning</a>
                     {% if chantier.webcam|length > 0 %}
                         <a class="round button success noicon half-gap-right" href="{{ chantier.webcam }}" title="webcam chantier" target="_blank"><i class="icon-facetime-video"></i>&nbsp;&nbsp;Webcam</a>
                     {% endif %}

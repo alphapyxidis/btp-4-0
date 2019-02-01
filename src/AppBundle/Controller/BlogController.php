@@ -32,6 +32,14 @@ class BlogController extends Controller
     } 
 
     /**
+     * @Route("/experimentation", name="experimentation")
+     */
+    public function experimentationAction()
+    {
+        return $this->render('navigation/experimentation.html.twig');
+    } 
+
+    /**
      * @Route("/resultats", name="resultats")
      */
     public function resultatsAction()
@@ -56,15 +64,15 @@ class BlogController extends Controller
 
 
     /**
-     * @Route("/demo", name="demo")
+     * @Route("/lab", name="lab")
      */
-    public function demoAction(Request $request)
+    public function labAction(Request $request)
     {
         return $this->render('chantier/carto.html.twig'); 
     }
 
     /**
-     * @Route("/demo/plan-installation-chantier", name="pic")
+     * @Route("/lab/plan-installation-chantier", name="pic")
      */
     public function picAction()
     {

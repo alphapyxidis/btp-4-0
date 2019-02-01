@@ -14,7 +14,7 @@ use League\Flysystem\Filesystem;
 /**
  * Document controller.
  *
- * @Route("demo/document")
+ * @Route("lab/document")
  */
 class DocumentController extends Controller
 {

@@ -67,14 +67,14 @@ fos_comment_api:
 
 fos_message:
     resource: "@FOSMessageBundle/Resources/config/routing.xml"
-    prefix: /demo/message
+    prefix: /lab/message
 
 oneup_uploader:
     resource: .
     type: uploader
 
 gantt:
-    path: /demo/planning
+    path: /lab/planning
     controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
     defaults:
         path: /libs/jquery.gantt/gantt.html

@@ -14,7 +14,7 @@ class Builder implements ContainerAwareInterface
     {
         $menu = $factory->createItem('Menu principal');
 
-        $menu->addChild('Accueil', ['route' => 'demo']);
+        $menu->addChild('Accueil', ['route' => 'lab']);
 
         // create another menu item
         $menu->addChild('Chantiers', ['route' => 'chantier_index']);
@@ -31,7 +31,7 @@ class Builder implements ContainerAwareInterface
             'routeParameters' => ['slug' => 'unite-de-production-premurs']
         ]);
         $submenu->addChild('exemple PIC', ['route' => 'pic']);
-        $menu['Chantiers']->addChild('Autour de moi', ['route' => 'demo']);
+        $menu['Chantiers']->addChild('Autour de moi', ['route' => 'lab']);
         $menu->addChild('Documents', ['route' => 'document_index']);
         $menu['Documents']->addChild('Tous', ['route' => 'document_index']);
         $menu['Documents']->addChild('Documents chantier ex', [
