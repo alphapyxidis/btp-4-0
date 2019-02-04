@@ -17,9 +17,8 @@ class ChantierType extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
-            ->add('adresse', AdresseType::class)
             ->add('webcam')
-            ->add('user');
+            ->add('adresse', AdresseType::class);
     }
     
     /**

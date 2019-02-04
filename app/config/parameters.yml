@@ -21,3 +21,7 @@ parameters:
     auth0_client_id: 5vUvZdci7p7b6X1g3LY8eDdo0sWLWGal
     auth0_client_secret: 6rSlAfIZU53RR4njQ9EzMCfWPGKWQ6Fcng4VXVYV3coFWs-TQOZ_UCBBZOLn9Gh6
     auth0_api_grant_id: cgr_2XdYO1ZMwrLNa4Ef
+    ubiwan_server_key: B220-1EAC
+    ubiwan_license_key: L9NRD-PQAUP-XNP1I-HCJLP
+    ubiwan_user: VERMOREL
+    ubiwan_password: d490be82e5410413ac895fac3bfe723d

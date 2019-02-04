@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Chantier controller.
@@ -15,6 +16,27 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ChantierController extends Controller
 {
+
+    /**
+     * rebuild slugs for all chantier entities.
+     *
+     * @Route("s/rebuild-slug", name="chantier_reslug")
+     * @Method("GET")
+     */
+    public function reslugAction(Request $request)
+    {
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $repository = $this->getDoctrine()->getRepository(Chantier::class);
+        $chantiers = $repository->FindAll();
+        foreach($chantiers as $chantier){
+            $newName = strtoupper(rtrim($chantier->getDescription()));
+            $chantier->setNom($newName);
+            $em->persist($chantier);
+            $em->flush();
+         }
+        return $this->redirectToRoute('chantier_index', array('page' => 1));
+    }
+
      /**
      * Lists all chantier entities.
      *
@@ -119,6 +141,15 @@ class ChantierController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            if(isset($_POST['cp_ville'])) {
+                $detail = explode(":",$_POST['cp_ville']);
+                $adresse = $chantier->getAdresse();
+                $adresse->setcodePostal($detail[0]);
+                $adresse->setVille($detail[1]);
+                $adresse->updateCodeInsee();
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('chantier_edit', array('slug' => $chantier->getSlug()));

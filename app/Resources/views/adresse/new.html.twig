@@ -2,18 +2,18 @@
 
 {% block body %}
 <div class="one whole">
-    <h1>Adresse creation</h1>
+    <h3>Ajouter une adresse</h3>
 
     {{ form_start(form) }}
 
         {{ form_widget(form) }}
 
-        <input type="submit" value="Create" />
+        <input type="submit" value="Ajouter" />
     {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('adresse_index') }}">Back to the list</a>
+            <a href="{{ path('adresse_index') }}">Retour à la liste</a>
         </li>
     </ul>
 </div>

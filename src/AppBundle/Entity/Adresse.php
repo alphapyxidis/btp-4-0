@@ -214,4 +214,31 @@ class Adresse
     {
         return $this->codeInsee;
     }
+
+    /* retrouve le code INSEE à partir du code postal et de la ville */
+    public function updateCodeInsee()
+    {
+
+        $service_url = 'https://geo.api.gouv.fr/communes?nom='.urlencode($this->ville).'&codePostal='.$this->codePostal.'&fields=code&format=json';
+
+        $curl = curl_init($service_url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $curl_response = curl_exec($curl);
+        if ($curl_response === false) {
+            $info = curl_getinfo($curl);
+            curl_close($curl);
+            die('error occured during curl exec. Additioanl info: ' . var_export($info));
+        }
+        curl_close($curl);
+        $decoded = json_decode($curl_response);
+        if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
+            die('error occured: ' . $decoded->response->errormessage);
+        }
+
+        $curl_response = json_decode($curl_response, true);
+
+        $this->codeInsee = $curl_response[0]['code'];
+ 
+        return $this;
+    }    
 }

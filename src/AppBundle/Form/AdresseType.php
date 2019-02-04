@@ -5,7 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class AdresseType extends AbstractType
 {
@@ -14,7 +14,7 @@ class AdresseType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('rue')->add('codePostal')->add('ville'); 
+        $builder->add('rue')->add('codePostal', HiddenType::class)->add('ville', HiddenType::class)->add('lat', HiddenType::class)->add('lon', HiddenType::class)->add('codeInsee', HiddenType::class); 
     }/**
      * {@inheritdoc}
      */

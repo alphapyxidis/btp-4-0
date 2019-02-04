@@ -18,17 +18,28 @@
                     <div class="noicon" id="map" style="height:640px;"></div>
                     <script>
 
-                            var map = L.map('map').setView([46.75, 3.10], 6);
-                            var markers = L.markerClusterGroup();   
+                            var markers = L.markerClusterGroup();
 
-                            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={{ mapbox_token }}', {
-                            attribution: 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-                            maxZoom: 18,
-                            id: 'mapbox.streets', // 'mapbox.streets' 'mapbox.outdoors' 'mapbox.light'
-                            accessToken: '{{ mapbox_token }}'
-                            }).addTo(map);
+                            var mapboxUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={{ mapbox_token }}';
+                            var mapboxAttribution = 'Map data <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
 
+                            var outdoor = L.tileLayer(mapboxUrl, {id: 'mapbox.outdoors', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
+                                grayscale = L.tileLayer(mapboxUrl, {id: 'mapbox.light', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
+                                satellite = L.tileLayer(mapboxUrl, {id: 'mapbox.satellite', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19}),
+                                streets   = L.tileLayer(mapboxUrl, {id: 'mapbox.streets', accessToken: '{{ mapbox_token }}', attribution: mapboxAttribution, maxZoom: 19});
+
+                            var baseMaps = {
+                                "courbes de niveau": outdoor,
+                                "plan": streets,
+                                "échelle de gris": grayscale,
+                                "vue satellite": satellite
+                            };                               
+
+                            var map = L.map('map', {center: [46.75, 3.10], zoom: 6, layers: [streets]});
+            
                             L.control.scale().addTo(map);
+
+                            L.control.layers(baseMaps).addTo(map);
 
                             var craneIcon = L.icon({
                                 iconUrl: "{{ asset('img/marker.png') }}",

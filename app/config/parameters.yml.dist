@@ -30,3 +30,7 @@ parameters:
     auth0_client_id: xxxxxxxx
     auth0_client_secret: xxxxxxxxxx
     auth0_api_grant_id: xxxxxxxx
+    ubiwan_server_key: xxxx-xxxx
+    ubiwan_license_key: xxxxx-xxxxx-xxxxx-xxxxx
+    ubiwan_user: xxxxxxxx
+    ubiwan_password: xxxxxxx
