@@ -12,7 +12,7 @@
     "babel-preset-env": "^1.6.0",
     "babelify": "^7.3.0",
     "browserify": "^14.4.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.13.1",
     "watchify": "^3.9.0"
   }
 }
